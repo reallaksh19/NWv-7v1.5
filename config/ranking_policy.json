@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "freshness": { "model": "exponential", "halfLifeHours": 10, "longFormHalfLifeHours": 36 },
+  "weights": {
+    "freshnessMaxBoost": 3.0,
+    "tier1Boost": 0.5, "localTierBoost": 0.25,
+    "keywordMatchBoost": 2.0,
+    "sentiment": { "positiveBoost": 0.5, "negativeBoost": 0.3 },
+    "visual": { "videoBoost": 1.3, "imageBoost": 1.15 },
+    "viewedPenalty": 0.4,
+    "softBoostCap": 2.0
+  },
+  "highImpactKeywords": [
+    { "term": "War", "requireSeverityContext": true },
+    { "term": "Budget" }, { "term": "Election" }, { "term": "Summit" },
+    { "term": "Treaty" }, { "term": "Crash" }, { "term": "Landfall" },
+    { "term": "Verdict" }, { "term": "Resigns" }, { "term": "Assassination" }
+  ],
+  "severityLexicon": [
+    "killed","dead","death toll","casualt","injured","wounded","strike","airstrike",
+    "missile","drone attack","attack","explosion","blast","bombing","shooting",
+    "earthquake","tsunami","cyclone","flood","wildfire","evacuat","outbreak",
+    "invasion","ceasefire","coup","assassinat","resigns","impeach","verdict","derail","collapse"
+  ],
+  "entertainmentGuard": [
+    "god of war","call of duty","state of play","gameplay","official trailer",
+    "teaser trailer","movie trailer","gameplay trailer","box office","web series",
+    "season premiere","season finale","new season","streaming service","ott release"
+  ],
+  "geoScale": {
+    "global": ["world","international","global","un","united nations","iran","gaza","israel",
+               "ukraine","russia","gulf","west asia","middle east","u.s.","united states","china","nato"],
+    "national": ["india","modi","parliament","nationwide","central govt","supreme court"],
+    "regional": ["tamil nadu","kerala","karnataka","chennai","district","state government","state capital"]
+  },
+  "severityBoost": 1.6,
+  "trending": { "minDecayedScore": 12.0, "minSourceCount": 2 },
+  "pins": { "breakingAlwaysTop": true, "breakingBypassMinImpact": true }
+}

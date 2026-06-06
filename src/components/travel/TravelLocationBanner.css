@@ -1,0 +1,48 @@
+.travel-location-banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin: 22px 0 16px;
+  padding: 11px 14px;
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  border-left: 3px solid rgba(251, 191, 36, 0.72);
+  border-radius: 14px;
+  background:
+    radial-gradient(320px 120px at 100% 0%, rgba(251, 191, 36, 0.10), transparent 70%),
+    rgba(30, 17, 7, 0.72);
+  color: #fef3c7;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.travel-location-banner__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.14);
+  font-size: 1.18rem;
+}
+
+.travel-location-banner__copy {
+  min-width: 0;
+}
+
+.travel-location-banner__copy strong,
+.travel-location-banner__copy span {
+  display: block;
+}
+
+.travel-location-banner__copy strong {
+  color: #fef3c7;
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+.travel-location-banner__copy span {
+  margin-top: 2px;
+  color: #fcd34d;
+  font-size: 0.74rem;
+  font-weight: 800;
+}

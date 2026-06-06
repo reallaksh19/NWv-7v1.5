@@ -1,0 +1,840 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": 1780627108193,
+  "summary": {
+    "routesDetected": 14,
+    "navDestinations": 12,
+    "contractsDefined": 14,
+    "staticJsonFiles": 36,
+    "workflows": 11,
+    "migrationStatusCounts": {
+      "MIGRATED": 7,
+      "DERIVED": 5,
+      "LOCAL_ONLY": 2
+    },
+    "warningCount": 3,
+    "errorCount": 0,
+    "sectionsRetainGap": {
+      "collectorRetainHours": 24,
+      "adapterMaxAgeHours": 36,
+      "gap": true
+    }
+  },
+  "detected": {
+    "routes": [
+      "/",
+      "/insight",
+      "/markets",
+      "/up-ahead",
+      "/my-planner",
+      "/more",
+      "/weather",
+      "/tech-social",
+      "/newspaper",
+      "/settings",
+      "/refresh",
+      "/following",
+      "/following/:topicId",
+      "/data-health"
+    ],
+    "nav": [
+      {
+        "path": "/",
+        "label": "Main"
+      },
+      {
+        "path": "/insight",
+        "label": "Insight"
+      },
+      {
+        "path": "/up-ahead",
+        "label": "Up Ahead"
+      },
+      {
+        "path": "/my-planner",
+        "label": "Planner"
+      },
+      {
+        "path": "/markets",
+        "label": "Market"
+      },
+      {
+        "path": "/weather",
+        "label": "Weather"
+      },
+      {
+        "path": "/settings",
+        "label": "Settings"
+      },
+      {
+        "path": "/newspaper",
+        "label": "Newspaper"
+      },
+      {
+        "path": "/tech-social",
+        "label": "Buzz"
+      },
+      {
+        "path": "/following",
+        "label": "Following"
+      },
+      {
+        "path": "/refresh",
+        "label": "Refresh"
+      },
+      {
+        "path": "/more",
+        "label": "More"
+      }
+    ],
+    "adapterSchemas": {
+      "src/adapters/breakingSnapshotFetcher.js": [
+        1
+      ],
+      "src/adapters/sectionsSnapshotFetcher.js": [
+        1,
+        2
+      ]
+    },
+    "workflows": {
+      "breaking_refresh.yml": {
+        "runs": [
+          "scripts/fetch_breaking_news.py",
+          "scripts/test_breaking_news_core.py"
+        ],
+        "staged": [
+          "public/newsdata/breaking_latest.json"
+        ]
+      },
+      "certification.yml": {
+        "runs": [],
+        "staged": []
+      },
+      "ci.yml": {
+        "runs": [],
+        "staged": []
+      },
+      "daily_brief.yml": {
+        "runs": [
+          "scripts/daily_brief.py"
+        ],
+        "staged": [
+          "public/data/epaper_data.json"
+        ]
+      },
+      "deploy.yml": {
+        "runs": [
+          "scripts/write_pages_data_manifest.mjs"
+        ],
+        "staged": []
+      },
+      "insight-real-snapshot-quality.yml": {
+        "runs": [
+          "scripts/verify_real_insight_quality_report.mjs"
+        ],
+        "staged": []
+      },
+      "market_refresh.yml": {
+        "runs": [
+          "scripts/market_snapshot_worker.py"
+        ],
+        "staged": [
+          "public/data/market_snapshot.json",
+          "public/data/market_metrics.json",
+          "public/data/source_health.json",
+          "public/data/mutual_fund_snapshot.json",
+          "public/data/fx_snapshot.json"
+        ]
+      },
+      "news_prefetch.yml": {
+        "runs": [
+          "scripts/fetch_insight_stories.py",
+          "scripts/fetch_sections_stories.py",
+          "scripts/generate_quality_dashboard.mjs",
+          "scripts/prefetch_commit_decision.py",
+          "scripts/validate_insight_prefetch_output.py",
+          "scripts/validate_quality_dashboard.mjs",
+          "scripts/validate_sections_prefetch_output.py"
+        ],
+        "staged": [
+          "public/newsdata/insight_latest.json",
+          "public/newsdata/sections_latest.json",
+          "public/newsdata/source_health.json",
+          "public/newsdata/prefetch_commit_manifest.json"
+        ]
+      },
+      "travel-local-news.yml": {
+        "runs": [
+          "scripts/collect_travel_local_news.mjs"
+        ],
+        "staged": [
+          "public/data/travel-local-*.json"
+        ]
+      },
+      "upahead_refresh.yml": {
+        "runs": [
+          "scripts/fetch_festivals.py",
+          "scripts/fetch_upahead_events.py"
+        ],
+        "staged": [
+          "public/data/",
+          "public/newsdata/source_health.json"
+        ]
+      },
+      "weather_refresh.yml": {
+        "runs": [
+          "scripts/weather_snapshot_worker.py"
+        ],
+        "staged": [
+          "public/data/weather_snapshot.json"
+        ]
+      }
+    },
+    "staticJson": {
+      "public/data/blacklist.json": {
+        "sizeBytes": 2,
+        "schemaVersion": null
+      },
+      "public/data/epaper_data.json": {
+        "sizeBytes": 93502,
+        "schemaVersion": null
+      },
+      "public/data/fx_snapshot.json": {
+        "sizeBytes": 2441,
+        "schemaVersion": "2.0.0"
+      },
+      "public/data/market_metrics.json": {
+        "sizeBytes": 176970,
+        "schemaVersion": "2.0.0"
+      },
+      "public/data/market_snapshot.json": {
+        "sizeBytes": 37119,
+        "schemaVersion": "2.0.0"
+      },
+      "public/data/mutual_fund_snapshot.json": {
+        "sizeBytes": 165823,
+        "schemaVersion": "2.0.0"
+      },
+      "public/data/source_health.json": {
+        "sizeBytes": 3082,
+        "schemaVersion": "1.0.0"
+      },
+      "public/data/travel-local-chennai.json": {
+        "sizeBytes": 289,
+        "schemaVersion": 1
+      },
+      "public/data/travel-local-colombo.json": {
+        "sizeBytes": 293,
+        "schemaVersion": 1
+      },
+      "public/data/travel-local-muscat.json": {
+        "sizeBytes": 286,
+        "schemaVersion": 1
+      },
+      "public/data/travel-local-trichy.json": {
+        "sizeBytes": 287,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy-chennai.json": {
+        "sizeBytes": 3021,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy-colombo.json": {
+        "sizeBytes": 3067,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy-muscat.json": {
+        "sizeBytes": 2978,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy-trichy.json": {
+        "sizeBytes": 2988,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy.generated.json": {
+        "sizeBytes": 13942,
+        "schemaVersion": 1
+      },
+      "public/data/travel-source-policy.json": {
+        "sizeBytes": 1646,
+        "schemaVersion": 1
+      },
+      "public/data/up_ahead.json": {
+        "sizeBytes": 572447,
+        "schemaVersion": 1
+      },
+      "public/data/user_plan.json": {
+        "sizeBytes": 332694,
+        "schemaVersion": null
+      },
+      "public/data/weather_snapshot.json": {
+        "sizeBytes": 87418,
+        "schemaVersion": "1.0.0"
+      },
+      "public/newsdata/breaking_latest.json": {
+        "sizeBytes": 7747,
+        "schemaVersion": 1
+      },
+      "public/newsdata/insight_2026-05-13.json": {
+        "sizeBytes": 664320,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-14.json": {
+        "sizeBytes": 684860,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-15.json": {
+        "sizeBytes": 711701,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-16.json": {
+        "sizeBytes": 592766,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-17.json": {
+        "sizeBytes": 478122,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-18.json": {
+        "sizeBytes": 556221,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_2026-05-19.json": {
+        "sizeBytes": 714116,
+        "schemaVersion": 2
+      },
+      "public/newsdata/insight_latest.json": {
+        "sizeBytes": 1158117,
+        "schemaVersion": 3
+      },
+      "public/newsdata/insight_quality_report.json": {
+        "sizeBytes": 2838,
+        "schemaVersion": 3
+      },
+      "public/newsdata/prefetch_commit_manifest.json": {
+        "sizeBytes": 1975,
+        "schemaVersion": null
+      },
+      "public/newsdata/quality_dashboard.json": {
+        "sizeBytes": 1473,
+        "schemaVersion": 1
+      },
+      "public/newsdata/quality_dashboard_history.json": {
+        "sizeBytes": 792,
+        "schemaVersion": 1
+      },
+      "public/newsdata/real_insight_quality_report.json": {
+        "sizeBytes": 9575,
+        "schemaVersion": 3
+      },
+      "public/newsdata/sections_latest.json": {
+        "sizeBytes": 314368,
+        "schemaVersion": 2
+      },
+      "public/newsdata/source_health.json": {
+        "sizeBytes": 5541,
+        "schemaVersion": null
+      }
+    }
+  },
+  "destinations": [
+    {
+      "destination": "Main",
+      "route": "/",
+      "navLabel": "Main",
+      "destinationType": "feed",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/newsdata/sections_latest.json",
+        "public/newsdata/breaking_latest.json"
+      ],
+      "producers": [
+        "scripts/fetch_sections_stories.py",
+        "scripts/fetch_breaking_news.py"
+      ],
+      "workflows": [
+        "news_prefetch.yml",
+        "breaking_refresh.yml"
+      ],
+      "validators": [
+        "scripts/validate_sections_prefetch_output.py"
+      ],
+      "consumers": [
+        "src/adapters/sectionsSnapshotFetcher.js",
+        "src/adapters/breakingSnapshotFetcher.js"
+      ],
+      "note": "Collector retains 24h but adapter accepts 36h \u2014 the 24-36h band is never populated.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/newsdata/sections_latest.json",
+          "sizeBytes": 314368,
+          "schemaVersion": 2
+        },
+        {
+          "path": "public/newsdata/breaking_latest.json",
+          "sizeBytes": 7747,
+          "schemaVersion": 1
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/fetch_sections_stories.py": true,
+        "scripts/fetch_breaking_news.py": true
+      },
+      "outputStaged": {
+        "public/newsdata/sections_latest.json": true,
+        "public/newsdata/breaking_latest.json": true
+      },
+      "adapterSchemas": {
+        "src/adapters/sectionsSnapshotFetcher.js": [
+          1,
+          2
+        ],
+        "src/adapters/breakingSnapshotFetcher.js": [
+          1
+        ]
+      }
+    },
+    {
+      "destination": "Insight",
+      "route": "/insight",
+      "navLabel": "Insight",
+      "destinationType": "feed",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/newsdata/insight_latest.json"
+      ],
+      "producers": [
+        "scripts/fetch_insight_stories.py"
+      ],
+      "workflows": [
+        "news_prefetch.yml"
+      ],
+      "validators": [
+        "scripts/validate_insight_prefetch_output.py"
+      ],
+      "consumers": [
+        "src/adapters/insightSnapshotFetcher.js"
+      ],
+      "note": "Flat stories[]; slotMeta intentionally not used for display. Clusters must stay additive.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/newsdata/insight_latest.json",
+          "sizeBytes": 1158117,
+          "schemaVersion": 3
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/fetch_insight_stories.py": true
+      },
+      "outputStaged": {
+        "public/newsdata/insight_latest.json": true
+      }
+    },
+    {
+      "destination": "Up Ahead",
+      "route": "/up-ahead",
+      "navLabel": "Up Ahead",
+      "destinationType": "actionable",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/data/up_ahead.json"
+      ],
+      "producers": [
+        "scripts/fetch_upahead_events.py",
+        "scripts/fetch_festivals.py"
+      ],
+      "workflows": [
+        "upahead_refresh.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/services/upAheadService.js"
+      ],
+      "note": "Already enforces [now-1d, now+7d]; planner eligibility [-6h, +7d]. Needs explicit horizon contract + lifecycle objects.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/data/up_ahead.json",
+          "sizeBytes": 572447,
+          "schemaVersion": 1
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/fetch_upahead_events.py": true,
+        "scripts/fetch_festivals.py": true
+      },
+      "outputStaged": {
+        "public/data/up_ahead.json": true
+      }
+    },
+    {
+      "destination": "Planner",
+      "route": "/my-planner",
+      "navLabel": "Planner",
+      "destinationType": "actionable_local",
+      "migrationStatus": "DERIVED",
+      "expectedStaticJson": [
+        "public/data/up_ahead.json"
+      ],
+      "producers": [
+        "scripts/fetch_upahead_events.py"
+      ],
+      "workflows": [
+        "upahead_refresh.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useMyPlannerPageViewModel.js"
+      ],
+      "note": "Derived from up_ahead.json + device-local saved plan. Optional static planner_latest.json is the only genuinely new output here.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/data/up_ahead.json",
+          "sizeBytes": 572447,
+          "schemaVersion": 1
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/fetch_upahead_events.py": true
+      },
+      "outputStaged": {
+        "public/data/up_ahead.json": true
+      }
+    },
+    {
+      "destination": "Market",
+      "route": "/markets",
+      "navLabel": "Market",
+      "destinationType": "snapshot",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/data/market_snapshot.json",
+        "public/data/market_metrics.json",
+        "public/data/mutual_fund_snapshot.json",
+        "public/data/fx_snapshot.json"
+      ],
+      "producers": [
+        "scripts/market_snapshot_worker.py"
+      ],
+      "workflows": [
+        "market_refresh.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/context/MarketContext.jsx",
+        "src/services/indianMarketStableService.js"
+      ],
+      "note": "Fully migrated to market_snapshot.json. Do NOT introduce market_latest.json \u2014 add envelope + validity in place.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/data/market_snapshot.json",
+          "sizeBytes": 37119,
+          "schemaVersion": "2.0.0"
+        },
+        {
+          "path": "public/data/market_metrics.json",
+          "sizeBytes": 176970,
+          "schemaVersion": "2.0.0"
+        },
+        {
+          "path": "public/data/mutual_fund_snapshot.json",
+          "sizeBytes": 165823,
+          "schemaVersion": "2.0.0"
+        },
+        {
+          "path": "public/data/fx_snapshot.json",
+          "sizeBytes": 2441,
+          "schemaVersion": "2.0.0"
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/market_snapshot_worker.py": true
+      },
+      "outputStaged": {
+        "public/data/market_snapshot.json": true,
+        "public/data/market_metrics.json": true,
+        "public/data/mutual_fund_snapshot.json": true,
+        "public/data/fx_snapshot.json": true
+      }
+    },
+    {
+      "destination": "Weather",
+      "route": "/weather",
+      "navLabel": "Weather",
+      "destinationType": "utility",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/data/weather_snapshot.json"
+      ],
+      "producers": [
+        "scripts/weather_snapshot_worker.py"
+      ],
+      "workflows": [
+        "weather_refresh.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/services/weatherService.js"
+      ],
+      "note": "Already static-first: weatherService reads weather_snapshot.json. Do NOT introduce weather_latest.json/fetch_weather_static.py.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/data/weather_snapshot.json",
+          "sizeBytes": 87418,
+          "schemaVersion": "1.0.0"
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/weather_snapshot_worker.py": true
+      },
+      "outputStaged": {
+        "public/data/weather_snapshot.json": true
+      }
+    },
+    {
+      "destination": "Buzz",
+      "route": "/tech-social",
+      "navLabel": "Buzz",
+      "destinationType": "feed_trend",
+      "migrationStatus": "DERIVED",
+      "expectedStaticJson": [],
+      "producers": [],
+      "workflows": [],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useTechSocialPageViewModel.js",
+        "src/data/datasets/buzzDataset.js"
+      ],
+      "note": "DERIVED, not greenfield: buzzDataset.load() builds trends from loadSectionsDataset() (technology/entertainment/social + viral-filtered world/india/local) with a live rssAggregator fallback for technology. A precomputed buzz_latest.json is OPTIONAL enrichment that must fall back to this derived path, shaped to the buzzDataset/buzzSlo buckets.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {}
+    },
+    {
+      "destination": "Newspaper",
+      "route": "/newspaper",
+      "navLabel": "Newspaper",
+      "destinationType": "derived",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/data/epaper_data.json"
+      ],
+      "producers": [
+        "scripts/daily_brief.py"
+      ],
+      "workflows": [
+        "daily_brief.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useNewspaperPageViewModel.js"
+      ],
+      "note": "Already produced by daily_brief.py -> epaper_data.json. Edition builder should extend this, not create newspaper_latest.json in parallel.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/data/epaper_data.json",
+          "sizeBytes": 93502,
+          "schemaVersion": null
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/daily_brief.py": true
+      },
+      "outputStaged": {
+        "public/data/epaper_data.json": true
+      }
+    },
+    {
+      "destination": "Following",
+      "route": "/following",
+      "navLabel": "Following",
+      "destinationType": "derived",
+      "migrationStatus": "DERIVED",
+      "expectedStaticJson": [],
+      "producers": [],
+      "workflows": [],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useFollowingTabViewModel.js"
+      ],
+      "note": "followedTopics is device-local; stories derived from migrated Sections/Insight at runtime. Static topic index is optional enrichment.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {}
+    },
+    {
+      "destination": "Topic Detail",
+      "route": "/following/:topicId",
+      "navLabel": null,
+      "destinationType": "derived",
+      "migrationStatus": "DERIVED",
+      "expectedStaticJson": [],
+      "producers": [],
+      "workflows": [],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useTopicDetailViewModel.js"
+      ],
+      "note": "Sub-route of Following; derived. Not bottom-nav visible.",
+      "routeDeclared": true,
+      "navVisible": false,
+      "staticPresent": [],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {}
+    },
+    {
+      "destination": "Data Health",
+      "route": "/data-health",
+      "navLabel": null,
+      "destinationType": "status",
+      "migrationStatus": "MIGRATED",
+      "expectedStaticJson": [
+        "public/newsdata/quality_dashboard.json",
+        "public/newsdata/insight_quality_report.json"
+      ],
+      "producers": [
+        "scripts/generate_quality_dashboard.mjs"
+      ],
+      "workflows": [
+        "news_prefetch.yml"
+      ],
+      "validators": [
+        "scripts/validate_quality_dashboard.mjs"
+      ],
+      "consumers": [
+        "src/data/datasets/qualityDashboardDataset.js"
+      ],
+      "note": "Already served by quality_dashboard.json. Any unified dashboard should extend this file, not add data_health_dashboard.json beside it.",
+      "routeDeclared": true,
+      "navVisible": false,
+      "staticPresent": [
+        {
+          "path": "public/newsdata/quality_dashboard.json",
+          "sizeBytes": 1473,
+          "schemaVersion": 1
+        },
+        {
+          "path": "public/newsdata/insight_quality_report.json",
+          "sizeBytes": 2838,
+          "schemaVersion": 3
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {
+        "scripts/generate_quality_dashboard.mjs": true
+      },
+      "outputStaged": {
+        "public/newsdata/quality_dashboard.json": false,
+        "public/newsdata/insight_quality_report.json": false
+      }
+    },
+    {
+      "destination": "Refresh",
+      "route": "/refresh",
+      "navLabel": "Refresh",
+      "destinationType": "status",
+      "migrationStatus": "DERIVED",
+      "expectedStaticJson": [
+        "public/newsdata/source_health.json"
+      ],
+      "producers": [],
+      "workflows": [
+        "news_prefetch.yml"
+      ],
+      "validators": [],
+      "consumers": [
+        "src/viewModels/useRefreshPageViewModel.js"
+      ],
+      "note": "Runtime freshness view. Could surface a small refresh_status.json, but reuse source_health + prefetch_commit_manifest first.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [
+        {
+          "path": "public/newsdata/source_health.json",
+          "sizeBytes": 5541,
+          "schemaVersion": null
+        }
+      ],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {
+        "public/newsdata/source_health.json": true
+      }
+    },
+    {
+      "destination": "Settings",
+      "route": "/settings",
+      "navLabel": "Settings",
+      "destinationType": "local",
+      "migrationStatus": "LOCAL_ONLY",
+      "expectedStaticJson": [],
+      "producers": [],
+      "workflows": [],
+      "validators": [],
+      "consumers": [
+        "src/pages/SettingsPage.jsx"
+      ],
+      "note": "Device-local preferences. No data pipeline.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {}
+    },
+    {
+      "destination": "More",
+      "route": "/more",
+      "navLabel": "More",
+      "destinationType": "local_routing",
+      "migrationStatus": "LOCAL_ONLY",
+      "expectedStaticJson": [],
+      "producers": [],
+      "workflows": [],
+      "validators": [],
+      "consumers": [
+        "src/pages/MorePage.jsx"
+      ],
+      "note": "Navigation/diagnostics hub. No data pipeline.",
+      "routeDeclared": true,
+      "navVisible": true,
+      "staticPresent": [],
+      "staticMissing": [],
+      "producersWired": {},
+      "outputStaged": {}
+    }
+  ],
+  "warnings": [
+    "[Data Health] committed output not staged by any workflow: public/newsdata/quality_dashboard.json",
+    "[Data Health] committed output not staged by any workflow: public/newsdata/insight_quality_report.json",
+    "[Main] Sections collector retains 24h but adapter accepts 36h \u2014 12h window never populated."
+  ],
+  "errors": []
+}

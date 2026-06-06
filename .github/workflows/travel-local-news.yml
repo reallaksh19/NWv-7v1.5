@@ -1,0 +1,85 @@
+name: Travel local news prefetch
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      location_key:
+        description: 'Travel location key (colombo, muscat, chennai, trichy)'
+        required: false
+        default: 'colombo'
+
+concurrency:
+  group: travel-local-news-${{ github.event.inputs.location_key || 'all' }}
+  cancel-in-progress: true
+
+jobs:
+  collect-travel-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      # On schedule: run all locations. On manual dispatch with a specific location: run only that one.
+      matrix:
+        location: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.location_key && fromJSON(format('["{0}"]', github.event.inputs.location_key)) || fromJSON('["colombo","muscat","chennai","trichy"]') }}
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Collect travel local news
+        run: node scripts/collect_travel_local_news.mjs
+        env:
+          TRAVEL_LOCATION_KEY: ${{ matrix.location }}
+
+      - name: Commit updated travel news JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/travel-local-*.json
+          if git diff --staged --quiet; then
+            echo "No travel news changes for ${{ matrix.location }} — skipping commit"
+            exit 0
+          fi
+          git commit -m "chore: update travel-local ${{ matrix.location }} news JSON [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1
+
+      - name: Open issue on workflow failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `travel-local-news failure (${{ matrix.location }}): ${new Date().toISOString()}`;
+            const body = [
+              'Automated alert from `travel-local-news.yml`.',
+              '',
+              `- Location: ${{ matrix.location }}`,
+              `- Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `- Ref: ${context.ref}`,
+              `- Commit: ${context.sha}`
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['automation', 'travel-news-failure']
+            });

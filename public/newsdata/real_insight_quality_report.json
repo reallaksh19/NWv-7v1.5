@@ -1,0 +1,364 @@
+{
+  "status": "PASS",
+  "benchmarkVersion": "real-insight-snapshot-quality-v1",
+  "generatedAt": 1780565906555,
+  "contentHash": "d2bdf603e76bda5a",
+  "schemaVersion": 3,
+  "collectorVersion": "insight-collector-json-v3",
+  "storyCount": 694,
+  "sourceGroupCount": 11,
+  "grade": "C",
+  "parentCount": 10,
+  "avgAngles": 1.6,
+  "avgTemporalTiers": 1.5,
+  "avgEvolutionRoles": 1.8,
+  "baseReportShare": 0.09523809523809523,
+  "multiAngleCount": 6,
+  "weakParentCount": 0,
+  "runtimeQualityGate": {
+    "attempted": false,
+    "recovered": false,
+    "reason": "first-pass acceptable",
+    "before": {
+      "grade": "C",
+      "tone": "warn",
+      "title": "Thin but usable signal",
+      "signalScore": 57,
+      "sourceLabel": "Live",
+      "rankedCount": 10,
+      "storyCount": 635,
+      "risingCount": 1,
+      "thinCount": 0,
+      "multiAngleCount": 6,
+      "lowAngleCount": 4,
+      "strongAngleCount": 0,
+      "avgAngles": 1.6,
+      "avgChildren": 2.1,
+      "avgScore": 0.6601287986563259,
+      "sourceDiversityCoverage": 10,
+      "snapshotCoverage": 2,
+      "coverageLabel": "6/10",
+      "warnings": [
+        "4 cluster(s) have fewer than two visible child angles.",
+        "No cluster currently exposes three or more visible child angles.",
+        "8 cluster(s) have weak snapshot coverage.",
+        "591 duplicate/near-duplicate item(s) were hidden or downgraded."
+      ]
+    },
+    "after": {
+      "grade": "C",
+      "tone": "warn",
+      "title": "Thin but usable signal",
+      "signalScore": 57,
+      "sourceLabel": "Live",
+      "rankedCount": 10,
+      "storyCount": 635,
+      "risingCount": 1,
+      "thinCount": 0,
+      "multiAngleCount": 6,
+      "lowAngleCount": 4,
+      "strongAngleCount": 0,
+      "avgAngles": 1.6,
+      "avgChildren": 2.1,
+      "avgScore": 0.6601287986563259,
+      "sourceDiversityCoverage": 10,
+      "snapshotCoverage": 2,
+      "coverageLabel": "6/10",
+      "warnings": [
+        "4 cluster(s) have fewer than two visible child angles.",
+        "No cluster currently exposes three or more visible child angles.",
+        "8 cluster(s) have weak snapshot coverage.",
+        "591 duplicate/near-duplicate item(s) were hidden or downgraded."
+      ]
+    }
+  },
+  "parents": [
+    {
+      "parentId": "cluster_189_5155c546b8596f08",
+      "headline": "Maharashtra government acquires Mumbai’s iconic Air India building in ₹1,601 crore deal",
+      "score": 0.7367143876382675,
+      "postTreeScore": 1.1567,
+      "childCount": 3,
+      "angles": [
+        "fact_update",
+        "regional_followup"
+      ],
+      "temporalTiers": [
+        "breaking",
+        "developing"
+      ],
+      "evolutionRoles": [
+        "fact_update"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_225_5dad586152077ffe",
+      "headline": "With No National Security Experience, Bill Pulte To Replace Tulsi Gabbard",
+      "score": 0.7199133864516649,
+      "postTreeScore": 1.0999,
+      "childCount": 2,
+      "angles": [
+        "base_report",
+        "official_response"
+      ],
+      "temporalTiers": [
+        "established",
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "corroboration",
+        "official_response"
+      ],
+      "baseReportShare": 0.5,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_45_544a5899f4ce08e2",
+      "headline": "Karnataka’s new Deputy CM was once an athlete, then a scientist",
+      "score": 0.6581766666666666,
+      "postTreeScore": 1.0582,
+      "childCount": 2,
+      "angles": [
+        "regional_followup",
+        "official_response"
+      ],
+      "temporalTiers": [
+        "reaction",
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "corroboration",
+        "official_response"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_501_d1469fdaf11fae78",
+      "headline": "CBSE re-evaluation portal goes live after delays; students report glitches",
+      "score": 0.6632467197849983,
+      "postTreeScore": 1.0432,
+      "childCount": 2,
+      "angles": [
+        "official_response",
+        "market_reaction"
+      ],
+      "temporalTiers": [
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "first_report",
+        "corroboration"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_74_00a3029d813c09ee",
+      "headline": "Ukrainian drones hit St Petersburg as Putin's flagship economic forum opens",
+      "score": 0.5492732802150018,
+      "postTreeScore": 0.9293,
+      "childCount": 2,
+      "angles": [
+        "base_report",
+        "regional_followup"
+      ],
+      "temporalTiers": [
+        "breaking",
+        "developing"
+      ],
+      "evolutionRoles": [
+        "first_report",
+        "cause_claim"
+      ],
+      "baseReportShare": 0.5,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_49_effcfae11f10cc6a",
+      "headline": "U.S. President Trump confirms he called Netanyahu ‘crazy’ in phone call",
+      "score": 0.5285933333333332,
+      "postTreeScore": 0.9286,
+      "childCount": 2,
+      "angles": [
+        "regional_followup",
+        "official_response"
+      ],
+      "temporalTiers": [
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "cause_claim",
+        "official_response"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_543_d566357576580c46",
+      "headline": "CJI administers oath of office to five new Supreme Court judges; strength rises to 37",
+      "score": 0.6971633864516651,
+      "postTreeScore": 0.7672,
+      "childCount": 2,
+      "angles": [
+        "official_response"
+      ],
+      "temporalTiers": [
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "fact_update"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_249_28732fcfcce7772d",
+      "headline": "Over two lakh applicants paid $100,000 for H-1B visas: DHS Secretary Mullin",
+      "score": 0.6965633864516649,
+      "postTreeScore": 0.7666,
+      "childCount": 2,
+      "angles": [
+        "fact_update"
+      ],
+      "temporalTiers": [
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "first_report",
+        "corroboration"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_100_a0e3d3c8c5dcf77c",
+      "headline": "DK Shivakumar to take oath as Karnataka CM; Dalit leader G Parameshwara the next DCM",
+      "score": 0.6814967197849984,
+      "postTreeScore": 0.7515,
+      "childCount": 2,
+      "angles": [
+        "regional_followup"
+      ],
+      "temporalTiers": [
+        "breaking",
+        "reaction"
+      ],
+      "evolutionRoles": [
+        "first_report",
+        "corroboration"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    },
+    {
+      "parentId": "cluster_399_4ba667a9315761f1",
+      "headline": "'Singam' K Annamalai: BJP's Tamil Nadu Star Rose Fast, Fell Faster",
+      "score": 0.6701467197849983,
+      "postTreeScore": 0.7401,
+      "childCount": 2,
+      "angles": [
+        "market_reaction"
+      ],
+      "temporalTiers": [
+        "breaking"
+      ],
+      "evolutionRoles": [
+        "first_report",
+        "accountability"
+      ],
+      "baseReportShare": 0,
+      "weakTree": false
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "ratchetGate": {
+    "status": "FAIL",
+    "gateVersion": "real-insight-snapshot-ratchet-v1",
+    "grade": "C",
+    "score": 76,
+    "passed": [
+      {
+        "id": "grade-floor",
+        "label": "Real snapshot grade floor",
+        "actual": "C",
+        "required": "A/B/C"
+      },
+      {
+        "id": "parent-count",
+        "label": "Parent cluster count",
+        "actual": 10,
+        "required": ">= 3"
+      },
+      {
+        "id": "avg-angle-count",
+        "label": "Average visible angle count",
+        "actual": 1.6,
+        "required": ">= 1.4"
+      },
+      {
+        "id": "avg-evolution-role-count",
+        "label": "Average evolution role count",
+        "actual": 1.8,
+        "required": ">= 1.6"
+      },
+      {
+        "id": "base-report-share",
+        "label": "Base report share",
+        "actual": 0.095,
+        "required": "<= 0.55"
+      },
+      {
+        "id": "multi-angle-parent-count",
+        "label": "Multi-angle parent count",
+        "actual": 6,
+        "required": ">= 1"
+      },
+      {
+        "id": "top-parent-angle-count",
+        "label": "Top parent angle count",
+        "actual": 2,
+        "required": ">= 2"
+      },
+      {
+        "id": "top-parent-child-depth",
+        "label": "Top parent child depth",
+        "actual": 3,
+        "required": ">= 2"
+      },
+      {
+        "id": "weak-parent-ratio",
+        "label": "Weak parent ratio",
+        "actual": 0,
+        "required": "<= 0.5"
+      }
+    ],
+    "failed": [
+      {
+        "id": "avg-temporal-tier-count",
+        "label": "Average temporal tier count",
+        "actual": 1.5,
+        "required": ">= 1.8",
+        "severity": "fail",
+        "fix": "C+E output should cover multiple event-time tiers, not only source buckets."
+      }
+    ],
+    "summary": {
+      "parentCount": 10,
+      "avgAngles": 1.6,
+      "avgTemporalTiers": 1.5,
+      "avgEvolutionRoles": 1.8,
+      "baseReportShare": 0.095,
+      "multiAngleCount": 6,
+      "weakParentCount": 0,
+      "weakParentRatio": 0,
+      "topParentAngles": 2,
+      "topParentChildren": 3,
+      "storyCount": 694,
+      "sourceGroupCount": 11
+    }
+  }
+}

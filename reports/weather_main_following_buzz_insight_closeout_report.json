@@ -1,0 +1,103 @@
+{
+  "status": "FAIL",
+  "generatedAt": "2026-05-20T14:05:46.490Z",
+  "scope": [
+    "stale certification manifest",
+    "On This Day default OFF and naming bug",
+    "Weather city add/delete refresh",
+    "Colombo vertical weather tab",
+    "Following Sri Lanka LK/en",
+    "Up Ahead raw HTML text",
+    "Buzz raw HTML text",
+    "Main desktop overlap",
+    "mobile header compact brief",
+    "Insight duplicate grade"
+  ],
+  "staticChecks": [
+    {
+      "name": "package script: test:weather-main-following-buzz-insight-closeout",
+      "status": "PASS",
+      "detail": "test:weather-main-following-buzz-insight-closeout is present in package.json"
+    },
+    {
+      "name": "manifest command: weather-main-following-buzz-insight-closeout",
+      "status": "PASS",
+      "detail": "weather-main-following-buzz-insight-closeout is present in certification_manifest.json"
+    },
+    {
+      "name": "On This Day policy exists",
+      "status": "PASS",
+      "detail": "On This Day default OFF policy is present"
+    },
+    {
+      "name": "MainPage strips On This Day at source",
+      "status": "PASS",
+      "detail": "MainPage strips On This Day before topline and avoids boolean/function naming bug"
+    },
+    {
+      "name": "Topline supports includeOnThisDay",
+      "status": "PASS",
+      "detail": "generateTopline can disable On This Day safely"
+    },
+    {
+      "name": "Colombo in weather registry",
+      "status": "PASS",
+      "detail": "Colombo and configured city helper exist"
+    },
+    {
+      "name": "DetailedWeatherCard uses configured cities",
+      "status": "PASS",
+      "detail": "Weather vertical tabs use central configured cities"
+    },
+    {
+      "name": "WeatherLocationManager refreshes after city changes",
+      "status": "PASS",
+      "detail": "Weather manager can force refresh after add/delete"
+    },
+    {
+      "name": "Following Sri Lanka edition inference",
+      "status": "PASS",
+      "detail": "Following tab can infer Sri Lanka as LK/en"
+    },
+    {
+      "name": "HTML sanitizer exists",
+      "status": "PASS",
+      "detail": "Shared HTML text sanitizer exists"
+    },
+    {
+      "name": "Buzz and Up Ahead sanitize feed text",
+      "status": "PASS",
+      "detail": "ImageCard, NewsSection, and UpAhead sanitize HTML-like feed text"
+    }
+  ],
+  "runtimeChecks": [
+    {
+      "name": "Insight real snapshot ratchetGate exists",
+      "status": "FAIL",
+      "detail": "real_insight_quality_report.json exists but ratchetGate is missing"
+    },
+    {
+      "name": "Insight real snapshot strict status",
+      "status": "PASS",
+      "detail": "Strict status is UNKNOWN"
+    }
+  ],
+  "commandRuns": [
+    {
+      "command": "npm run test:weather-closeout-regression-static",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-05-20T14:05:39.669Z",
+      "stdoutTail": "\n> news-weather-app@1.0.0 test:weather-closeout-regression-static\n> node scripts/test_weather_closeout_regression_static.mjs\n\n{\n  \"status\": \"PASS\",\n  \"checked\": \"weather closeout regression hardening\",\n  \"guarantees\": [\n    \"topline sourceData is not self-referential\",\n    \"On This Day is stripped at source before topline\",\n    \"TimelineHeader mobile brief exists without dangling fragment close\",\n    \"TopicSearch has country inference path\",\n    \"Weather manager has force-refresh path\"\n  ]\n}\n",
+      "stderrTail": ""
+    },
+    {
+      "command": "npm run test:weather-main-following-buzz-insight-closeout",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-05-20T14:05:43.119Z",
+      "stdoutTail": "\n> news-weather-app@1.0.0 test:weather-main-following-buzz-insight-closeout\n> node scripts/test_weather_main_following_buzz_insight_closeout_static.mjs\n\n{\n  \"status\": \"PASS\",\n  \"checked\": \"Weather/Main/Following/Buzz/Insight closeout\"\n}\n",
+      "stderrTail": ""
+    }
+  ]
+}

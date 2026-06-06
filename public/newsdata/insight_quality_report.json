@@ -1,0 +1,150 @@
+{
+  "angleHintCoverage": 1.0,
+  "collectorVersion": "insight-collector-json-v3",
+  "contentHash": "69fce93b47c61dae",
+  "errors": [],
+  "fetchedAt": 1779892733940,
+  "generatedAt": 1780382780629,
+  "nonBaseAngleStoryCount": 270,
+  "schemaVersion": 3,
+  "slotHealth": {
+    "minus12h": {
+      "fetchedAt": 1779892733940,
+      "linkedStories": 78,
+      "qualityStoryCount": 78,
+      "sourceGroupCount": 4,
+      "storyIds": 78,
+      "thin": false
+    },
+    "minus24h": {
+      "fetchedAt": 1779892733940,
+      "linkedStories": 55,
+      "qualityStoryCount": 55,
+      "sourceGroupCount": 3,
+      "storyIds": 55,
+      "thin": false
+    },
+    "minus4h": {
+      "fetchedAt": 1779892733940,
+      "linkedStories": 60,
+      "qualityStoryCount": 60,
+      "sourceGroupCount": 3,
+      "storyIds": 60,
+      "thin": false
+    },
+    "now": {
+      "fetchedAt": 1779892733940,
+      "linkedStories": 80,
+      "qualityStoryCount": 80,
+      "sourceGroupCount": 4,
+      "storyIds": 80,
+      "thin": false
+    }
+  },
+  "sourceGroupCount": 11,
+  "status": "WARN",
+  "storyCount": 703,
+  "thresholds": {
+    "minAngleHintCoverage": 0.35,
+    "minNonBaseAngleStories": 6,
+    "minSourceGroups": 5,
+    "minTotalStories": 24,
+    "minUsable24hStories": 18
+  },
+  "topAngles": [
+    {
+      "angle": "base_report",
+      "count": 433
+    },
+    {
+      "angle": "market_reaction",
+      "count": 93
+    },
+    {
+      "angle": "official_response",
+      "count": 59
+    },
+    {
+      "angle": "regional_followup",
+      "count": 30
+    },
+    {
+      "angle": "fact_update",
+      "count": 27
+    },
+    {
+      "angle": "reaction_public",
+      "count": 26
+    },
+    {
+      "angle": "expert_analysis",
+      "count": 19
+    },
+    {
+      "angle": "investigative_detail",
+      "count": 9
+    },
+    {
+      "angle": "opinion_editorial",
+      "count": 5
+    },
+    {
+      "angle": "correction",
+      "count": 1
+    },
+    {
+      "angle": "background_context",
+      "count": 1
+    }
+  ],
+  "topSources": [
+    {
+      "count": 160,
+      "sourceGroup": "the_hindu"
+    },
+    {
+      "count": 140,
+      "sourceGroup": "ndtv"
+    },
+    {
+      "count": 89,
+      "sourceGroup": "economic_times"
+    },
+    {
+      "count": 88,
+      "sourceGroup": "business_line"
+    },
+    {
+      "count": 50,
+      "sourceGroup": "times_of_india"
+    },
+    {
+      "count": 49,
+      "sourceGroup": "gadgets360"
+    },
+    {
+      "count": 41,
+      "sourceGroup": "bbc"
+    },
+    {
+      "count": 31,
+      "sourceGroup": "google_news"
+    },
+    {
+      "count": 21,
+      "sourceGroup": "espn"
+    },
+    {
+      "count": 19,
+      "sourceGroup": "reuters"
+    },
+    {
+      "count": 15,
+      "sourceGroup": "moneycontrol"
+    }
+  ],
+  "usable36hStoryCount": 0,
+  "warnings": [
+    "Thin usable 36h pool: 0 stories < recommended 18"
+  ]
+}

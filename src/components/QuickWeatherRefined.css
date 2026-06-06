@@ -1,0 +1,302 @@
+/* -------------------------------------------------------------------------- */
+/* QuickWeather Visual Refinements - Crisp & Modern Redesign                 */
+/* -------------------------------------------------------------------------- */
+
+.quick-weather-card {
+    border: 1px solid rgba(45, 212, 191, 0.15) !important;
+    border-radius: 24px !important;
+    background:
+        radial-gradient(600px 200px at 100% 0%, rgba(20, 184, 166, 0.12), transparent 80%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.88)) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    padding: 20px !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quick-weather-card:hover {
+    border-color: rgba(45, 212, 191, 0.25) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 20px rgba(20, 184, 166, 0.03);
+}
+
+/* Configuration Bar */
+.quick-weather-card .qw-config-bar {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 16px !important;
+    flex-wrap: wrap !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-bottom: 12px !important;
+}
+
+.quick-weather-card .qw-config-title {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: #f1f5f9 !important;
+    letter-spacing: -0.01em !important;
+    text-transform: uppercase;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.05em !important;
+    color: #94a3b8 !important;
+}
+
+.qw-config-input {
+    width: 120px !important;
+    height: 32px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    color: #f8fafc !important;
+    padding: 0 14px !important;
+    font-size: 0.78rem !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.qw-config-input:focus {
+    border-color: rgba(45, 212, 191, 0.4) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    box-shadow: 0 0 10px rgba(45, 212, 191, 0.1) !important;
+}
+
+.qw-config-add-btn {
+    height: 32px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(45, 212, 191, 0.25) !important;
+    background: rgba(20, 184, 166, 0.12) !important;
+    color: #2dd4bf !important;
+    padding: 0 14px !important;
+    cursor: pointer !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+    outline: none !important;
+}
+
+.qw-config-add-btn:hover {
+    border-color: rgba(45, 212, 191, 0.45) !important;
+    background: rgba(20, 184, 166, 0.2) !important;
+    color: #ccfbf1 !important;
+    transform: scale(1.02) !important;
+}
+
+/* Cities List & Rows */
+.qw-cities-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.quick-weather-card .qw-city-row {
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 16px !important;
+    background: rgba(15, 23, 42, 0.4) !important;
+    color: #cbd5e1 !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 12px 16px !important;
+    cursor: pointer !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-weather-card .qw-city-row:hover {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.quick-weather-card .qw-city-row--active {
+    border-color: rgba(45, 212, 191, 0.35) !important;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.12), rgba(59, 130, 246, 0.04)) !important;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 15px rgba(20, 184, 166, 0.08) !important;
+}
+
+.quick-weather-card .qw-city-row--active:hover {
+    border-color: rgba(45, 212, 191, 0.5) !important;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.16), rgba(59, 130, 246, 0.06)) !important;
+}
+
+/* City Info Elements */
+.quick-weather-card .qw-city-row__name {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    letter-spacing: -0.01em !important;
+}
+
+.quick-weather-card .qw-city-row__temp {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #f8fafc !important;
+}
+
+
+/* Forecast Slots inside City Cards */
+.quick-weather-card .qw-city-slot__label {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+    letter-spacing: 0.03em !important;
+}
+
+.quick-weather-card .qw-city-slot__temp {
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+}
+
+.quick-weather-card .qw-pop-high {
+    color: #60a5fa !important;
+    font-weight: 700 !important;
+    font-size: 0.66rem !important;
+}
+
+.quick-weather-card .qw-pop-low {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    font-size: 0.66rem !important;
+}
+
+/* AI Assistant & Highlights Container */
+section.quick-weather-card div.qw-highlight-text-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-top: 18px !important;
+    box-shadow: none !important;
+}
+
+/* Highlight Header Badge Row */
+.qw-bot-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 4px !important;
+    margin-bottom: 2px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.qw-location-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: rgba(2, 6, 23, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding: 5px 12px !important;
+    border-radius: 999px !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: #f1f5f9 !important;
+}
+
+.qw-location-pin {
+    color: #f43f5e !important;
+    font-size: 0.78rem !important;
+    filter: drop-shadow(0 0 3px rgba(244, 63, 94, 0.35)) !important;
+}
+
+
+/* Avatar and Speech Bubble Wrap */
+.qw-bot-body {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Speech Bubble Glass Card */
+.qw-bot-bubble {
+    position: relative !important;
+    flex-grow: 1 !important;
+    padding: 14px 18px !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(45, 212, 191, 0.22) !important;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(59, 130, 246, 0.05)) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.qw-bot-text {
+    display: block !important;
+    color: #f8fafc !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Severe Warnings Banner */
+.quick-weather-card .qw-severe-banner {
+    margin-top: 12px !important;
+    padding: 12px 16px !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(127, 29, 29, 0.25)) !important;
+    color: #fee2e2 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.08) !important;
+    animation: qw-pulse-border 2.5s infinite ease-in-out;
+}
+
+@keyframes qw-pulse-border {
+    0% { border-color: rgba(239, 68, 68, 0.3); }
+    50% { border-color: rgba(239, 68, 68, 0.55); box-shadow: 0 0 10px rgba(239, 68, 68, 0.15); }
+    100% { border-color: rgba(239, 68, 68, 0.3); }
+}
+
+.qw-severe-icon {
+    font-size: 1.15rem !important;
+    filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5));
+}
+
+.qw-severe-text {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    text-transform: uppercase !important;
+}
+
+/* Responsive Overrides */
+@media (min-width: 900px) {
+    .quick-weather-card {
+        min-height: 180px;
+    }
+    .qw-config-bar {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .qw-config-bar {
+        align-items: stretch !important;
+    }
+    .qw-config-bar form {
+        width: 100%;
+    }
+    .qw-config-input {
+        flex: 1;
+        width: 100% !important;
+    }
+}

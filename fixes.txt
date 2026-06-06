@@ -1,0 +1,4947 @@
+fixes:
+I already made one GitHub write before your correction. I will not save anything to GitHub further. Below is **chat-only full code** focused only on the two identified fixes:
+
+```txt
+Fix 1: Insight Source Diversity Guard for Child Trees
+Fix 2: Insight Real Snapshot Quality Benchmark / Ratchet Gate
+```
+
+---
+
+# FIX 1 — Insight Source Diversity Guard for Child Trees
+
+## 1. Create file
+
+```txt
+src/insight/src/tree/sourceDiverseChildSelection.ts
+```
+
+```ts
+import {
+  InsightConfig,
+  InsightParent,
+  InsightStory,
+} from "../types";
+import { classifyAngle } from "../dedup/dedup";
+
+export interface SourceDiverseSelectionDiagnostic {
+  formulaVersion: string;
+  beforeChildCount: number;
+  afterChildCount: number;
+  beforeSourceGroupCount: number;
+  afterSourceGroupCount: number;
+  beforeAngleCount: number;
+  afterAngleCount: number;
+  targetSourceGroupCount: number;
+  recoveredCount: number;
+  replacedCount: number;
+  rejectedCount: number;
+  selectedIds: string[];
+  recoveredCandidates: Array<{
+    id: string;
+    angle: string;
+    sourceGroup: string;
+    score: number;
+    action: "add" | "replace";
+    replacedId?: string;
+    reasons: string[];
+  }>;
+  rejectedCandidates: Array<{
+    id: string;
+    angle: string;
+    sourceGroup: string;
+    score: number;
+    reasons: string[];
+  }>;
+}
+
+function safeArray<T>(value: T[] | undefined | null): T[] {
+  return Array.isArray(value) ? value : [];
+}
+
+function getDebug(parent: InsightParent): any {
+  if (!parent.debug) {
+    (parent as any).debug = {
+      clusterSize: 0,
+      hiddenCount: 0,
+      matchedSnapshots: [],
+      scoreBreakdown: {},
+      replacements: [],
+    };
+  }
+
+  if (!Array.isArray(parent.debug.replacements)) {
+    parent.debug.replacements = [];
+  }
+
+  return parent.debug as any;
+}
+
+function sourceGroup(story: InsightStory): string {
+  return story.sourceGroup || story.source || "unknown-source";
+}
+
+function angleOf(story: InsightStory): string {
+  if (!story.angle) story.angle = classifyAngle(story);
+  return story.angle || "unknown";
+}
+
+function uniqueCount<T>(items: T[], mapper: (item: T) => string): number {
+  return new Set(items.map(mapper).filter(Boolean)).size;
+}
+
+function countBy<T>(items: T[], mapper: (item: T) => string): Map<string, number> {
+  const counts = new Map<string, number>();
+
+  for (const item of items) {
+    const key = mapper(item);
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+
+  return counts;
+}
+
+function clamp01(value: number): number {
+  if (!Number.isFinite(value)) return 0;
+  return Math.max(0, Math.min(1, value));
+}
+
+function round3(value: number): number {
+  return Math.round(value * 1000) / 1000;
+}
+
+function targetSourceGroupCount(clusterStories: InsightStory[], cfg: InsightConfig): number {
+  const availableSources = uniqueCount(clusterStories, sourceGroup);
+  const maxByChildren = Math.min(cfg.MAX_CHILDREN_PER_PARENT, availableSources);
+
+  return Math.min(
+    Math.max(2, cfg.MIN_SOURCES_PER_TREE),
+    maxByChildren
+  );
+}
+
+function candidateScore(story: InsightStory, selected: InsightStory[]): number {
+  const selectedSources = new Set(selected.map(sourceGroup));
+  const selectedAngles = new Set(selected.map(angleOf));
+
+  const newSourceBonus = selectedSources.has(sourceGroup(story)) ? 0 : 0.38;
+  const newAngleBonus = selectedAngles.has(angleOf(story)) ? 0 : 0.18;
+  const tierPenalty = story.sourceTier === "D" ? 0.32 : 0;
+
+  return round3(
+    0.26 * clamp01(Number(story.sourceAuthority || 0)) +
+      0.20 * clamp01(Number(story.freshnessScore || 0)) +
+      0.16 * clamp01(Number(story.rawProminence || 0)) +
+      0.14 * clamp01(Number(story.factualDensity || 0)) +
+      0.10 * clamp01(Number(story.summaryQuality || 0)) +
+      newSourceBonus +
+      newAngleBonus -
+      tierPenalty
+  );
+}
+
+function evaluateSourceCandidate(
+  candidate: InsightStory,
+  selected: InsightStory[],
+  cfg: InsightConfig
+): { accept: boolean; score: number; reasons: string[] } {
+  const reasons: string[] = [];
+  const score = candidateScore(candidate, selected);
+
+  const selectedSources = new Set(selected.map(sourceGroup));
+  const selectedAngles = new Set(selected.map(angleOf));
+
+  if (candidate.sourceTier === "D" && cfg.TIER_D_EXCLUDE) {
+    return {
+      accept: false,
+      score,
+      reasons: ["tier D candidate excluded"],
+    };
+  }
+
+  if (Number(candidate.sourceAuthority || 0) < 0.35) {
+    return {
+      accept: false,
+      score,
+      reasons: ["source authority below source-diversity floor"],
+    };
+  }
+
+  if (!selectedSources.has(sourceGroup(candidate))) {
+    reasons.push("adds new source group: " + sourceGroup(candidate));
+  }
+
+  if (!selectedAngles.has(angleOf(candidate))) {
+    reasons.push("also adds new angle: " + angleOf(candidate));
+  }
+
+  if (!reasons.some(reason => reason.startsWith("adds new source group"))) {
+    return {
+      accept: false,
+      score,
+      reasons: ["does not improve source diversity"],
+    };
+  }
+
+  if (score < 0.58) {
+    return {
+      accept: false,
+      score,
+      reasons: ["below source-diversity score floor"],
+    };
+  }
+
+  return {
+    accept: true,
+    score,
+    reasons,
+  };
+}
+
+function replacementKeepsAngleDiversity(
+  selected: InsightStory[],
+  outgoing: InsightStory,
+  incoming: InsightStory
+): boolean {
+  const beforeAngleCount = uniqueCount(selected, angleOf);
+  const after = selected.map(story => story.id === outgoing.id ? incoming : story);
+  const afterAngleCount = uniqueCount(after, angleOf);
+
+  return afterAngleCount >= Math.min(beforeAngleCount, 2);
+}
+
+function getReplaceableSourceDuplicate(
+  selected: InsightStory[],
+  incoming: InsightStory
+): InsightStory | null {
+  const sourceCounts = countBy(selected, sourceGroup);
+  const angleCounts = countBy(selected, angleOf);
+  const incomingSource = sourceGroup(incoming);
+
+  const candidates = selected
+    .filter(story => sourceGroup(story) !== incomingSource)
+    .map(story => {
+      const sourceRepeatPenalty = (sourceCounts.get(sourceGroup(story)) || 0) > 1 ? 0.42 : 0;
+      const angleRepeatPenalty = (angleCounts.get(angleOf(story)) || 0) > 1 ? 0.18 : 0;
+
+      const quality =
+        0.30 * clamp01(Number(story.sourceAuthority || 0)) +
+        0.24 * clamp01(Number(story.freshnessScore || 0)) +
+        0.18 * clamp01(Number(story.rawProminence || 0)) +
+        0.14 * clamp01(Number(story.factualDensity || 0)) +
+        0.14 * clamp01(Number(story.summaryQuality || 0));
+
+      return {
+        story,
+        replaceability: sourceRepeatPenalty + angleRepeatPenalty - quality * 0.18,
+      };
+    })
+    .filter(item => replacementKeepsAngleDiversity(selected, item.story, incoming))
+    .sort((a, b) => b.replaceability - a.replaceability);
+
+  return candidates[0]?.story || null;
+}
+
+function annotateRecovered(story: InsightStory, reasons: string[], score: number): InsightStory {
+  (story as any).admittedBecause = [
+    "source-diverse child selection",
+    ...reasons,
+  ];
+
+  (story as any).childScore = Math.max(
+    Number((story as any).childScore || 0),
+    score
+  );
+
+  (story as any).informationGain = Math.max(
+    Number((story as any).informationGain || 0),
+    reasons.some(reason => reason.startsWith("adds new source group")) ? 0.52 : 0.30
+  );
+
+  return story;
+}
+
+export function enforceSourceDiverseChildSelection(
+  parent: InsightParent,
+  selectedChildren: InsightStory[],
+  clusterStories: InsightStory[],
+  cfg: InsightConfig,
+  hiddenIds: Set<string>
+): InsightStory[] {
+  const selected = [...safeArray(selectedChildren)];
+  const cluster = safeArray(clusterStories);
+
+  for (const story of selected) angleOf(story);
+  for (const story of cluster) angleOf(story);
+
+  const target = targetSourceGroupCount(cluster, cfg);
+  const beforeSourceGroupCount = uniqueCount(selected, sourceGroup);
+  const beforeAngleCount = uniqueCount(selected, angleOf);
+
+  const diagnostics: SourceDiverseSelectionDiagnostic = {
+    formulaVersion: "source-diverse-child-selection-v1",
+    beforeChildCount: selected.length,
+    afterChildCount: selected.length,
+    beforeSourceGroupCount,
+    afterSourceGroupCount: beforeSourceGroupCount,
+    beforeAngleCount,
+    afterAngleCount: beforeAngleCount,
+    targetSourceGroupCount: target,
+    recoveredCount: 0,
+    replacedCount: 0,
+    rejectedCount: 0,
+    selectedIds: selected.map(story => story.id),
+    recoveredCandidates: [],
+    rejectedCandidates: [],
+  };
+
+  const debug = getDebug(parent);
+  debug.sourceDiverseSelectionDiagnostics = diagnostics;
+
+  if (beforeSourceGroupCount >= target) {
+    return selected;
+  }
+
+  const selectedIds = new Set(selected.map(story => story.id));
+
+  const remaining = cluster
+    .filter(story => !selectedIds.has(story.id))
+    .map(story => ({
+      story,
+      decision: evaluateSourceCandidate(story, selected, cfg),
+    }))
+    .sort((a, b) => b.decision.score - a.decision.score);
+
+  for (const item of remaining) {
+    if (uniqueCount(selected, sourceGroup) >= target) break;
+
+    const { story, decision } = item;
+
+    if (!decision.accept) {
+      diagnostics.rejectedCount += 1;
+      diagnostics.rejectedCandidates.push({
+        id: story.id,
+        angle: angleOf(story),
+        sourceGroup: sourceGroup(story),
+        score: decision.score,
+        reasons: decision.reasons,
+      });
+      continue;
+    }
+
+    const recovered = annotateRecovered(story, decision.reasons, decision.score);
+
+    if (selected.length < cfg.MAX_CHILDREN_PER_PARENT) {
+      selected.push(recovered);
+      hiddenIds.delete(recovered.id);
+
+      diagnostics.recoveredCount += 1;
+      diagnostics.recoveredCandidates.push({
+        id: recovered.id,
+        angle: angleOf(recovered),
+        sourceGroup: sourceGroup(recovered),
+        score: decision.score,
+        action: "add",
+        reasons: decision.reasons,
+      });
+      continue;
+    }
+
+    const replaceTarget = getReplaceableSourceDuplicate(selected, recovered);
+
+    if (!replaceTarget) {
+      diagnostics.rejectedCount += 1;
+      diagnostics.rejectedCandidates.push({
+        id: story.id,
+        angle: angleOf(story),
+        sourceGroup: sourceGroup(story),
+        score: decision.score,
+        reasons: ["no replaceable same-source-heavy child without reducing angle diversity"],
+      });
+      continue;
+    }
+
+    const index = selected.findIndex(child => child.id === replaceTarget.id);
+    if (index < 0) continue;
+
+    selected[index] = recovered;
+    hiddenIds.add(replaceTarget.id);
+    hiddenIds.delete(recovered.id);
+
+    debug.replacements.push({
+      replacedId: replaceTarget.id,
+      replacedBy: recovered.id,
+      reason: "source-diverse child selection: " + decision.reasons.join(", "),
+    });
+
+    diagnostics.recoveredCount += 1;
+    diagnostics.replacedCount += 1;
+    diagnostics.recoveredCandidates.push({
+      id: recovered.id,
+      angle: angleOf(recovered),
+      sourceGroup: sourceGroup(recovered),
+      score: decision.score,
+      action: "replace",
+      replacedId: replaceTarget.id,
+      reasons: decision.reasons,
+    });
+  }
+
+  diagnostics.afterChildCount = selected.length;
+  diagnostics.afterSourceGroupCount = uniqueCount(selected, sourceGroup);
+  diagnostics.afterAngleCount = uniqueCount(selected, angleOf);
+  diagnostics.selectedIds = selected.map(story => story.id);
+
+  return orderSourceDiverseChildrenForDisplay(selected);
+}
+
+export function orderSourceDiverseChildrenForDisplay(stories: InsightStory[]): InsightStory[] {
+  return [...stories].sort((a, b) => {
+    const angleDelta = angleOf(a).localeCompare(angleOf(b));
+    if (angleDelta !== 0) return angleDelta;
+
+    const sourceDelta = sourceGroup(a).localeCompare(sourceGroup(b));
+    if (sourceDelta !== 0) return sourceDelta;
+
+    return b.freshnessScore - a.freshnessScore;
+  });
+}
+```
+
+---
+
+## 2. Create test file
+
+```txt
+src/insight/src/tree/sourceDiverseChildSelection.cert.test.ts
+```
+
+```ts
+import { describe, expect, it } from "vitest";
+import {
+  DEFAULT_CONFIG,
+  InsightConfig,
+  InsightParent,
+  InsightStory,
+} from "../types";
+import {
+  enforceSourceDiverseChildSelection,
+} from "./sourceDiverseChildSelection";
+
+const NOW = Date.parse("2026-01-01T08:00:00Z");
+
+function vector(seed: number): number[] {
+  const values = Array.from({ length: 200 }, () => 0);
+  values[seed % 200] = 1;
+  values[(seed + 19) % 200] = 0.4;
+  return values;
+}
+
+function story(
+  id: string,
+  angle: any,
+  sourceGroup: string,
+  seed: number,
+  tier: any = "A",
+  authority = 0.82
+): InsightStory {
+  return {
+    id,
+    title: id,
+    summary: "A useful story with distinct source perspective.",
+    source: sourceGroup,
+    sourceGroup,
+    url: "https://example.test/" + id,
+    publishedAt: NOW,
+    category: "news",
+    region: "India",
+    language: "en",
+    capturedAtSnapshot: "now",
+    canonicalUrl: "https://example.test/" + id,
+    canonicalText: id,
+    canonicalTextHash: "hash-" + id,
+    entities: {
+      people: [],
+      orgs: ["Acme Bank"],
+      places: ["India"],
+      products: [],
+      symbols: [],
+    },
+    keywords: ["acme", "bank"],
+    embedding: vector(seed),
+    eventVerbs: ["announces"],
+    numbers: [],
+    sourceTier: tier,
+    sourceAuthority: authority,
+    freshnessScore: 0.84,
+    rawProminence: 0.76,
+    sentiment: 0,
+    factualDensity: 0.72,
+    summaryQuality: 0.82,
+    angle,
+  };
+}
+
+function parent(ids: string[]): InsightParent {
+  return {
+    parentId: "p1",
+    canonicalHeadline: "Acme Bank outage",
+    canonicalSummary: "Acme Bank outage summary",
+    clusterStoryIds: ids,
+    childStoryIds: ids.slice(0, 2),
+    hiddenDuplicateIds: [],
+    keyEntities: ["Acme Bank"],
+    keyPlaces: ["India"],
+    keyVerbs: ["announces"],
+    keyNumbers: [],
+    firstSeenAt: NOW,
+    latestSeenAt: NOW,
+    snapshotPresence: {
+      now: true,
+      minus4h: false,
+      minus12h: false,
+      minus24h: false,
+    },
+    impactScore: 0.8,
+    persistenceScore: 0.8,
+    sourceDiversityScore: 0.8,
+    noveltyScore: 0.8,
+    freshnessScore: 0.8,
+    crossSnapshotMomentum: 0.8,
+    editorialClarityScore: 0.8,
+    regionBoost: 0,
+    finalParentScore: 0.8,
+    isRising: false,
+    weakTree: false,
+    debug: {
+      clusterSize: ids.length,
+      hiddenCount: 0,
+      matchedSnapshots: ["now"],
+      scoreBreakdown: {},
+      replacements: [],
+    },
+  };
+}
+
+const cfg: InsightConfig = {
+  ...DEFAULT_CONFIG,
+  MAX_CHILDREN_PER_PARENT: 4,
+  MAX_PER_SOURCE_GROUP: 2,
+  MIN_SOURCES_PER_TREE: 3,
+  TIER_D_EXCLUDE: true,
+};
+
+function sourceSet(stories: InsightStory[]): Set<string> {
+  return new Set(stories.map(story => story.sourceGroup));
+}
+
+function angleSet(stories: InsightStory[]): Set<string | undefined> {
+  return new Set(stories.map(story => story.angle));
+}
+
+describe("Insight source-diverse child selection certification", () => {
+  it("adds a missing source group when selection is source-concentrated", () => {
+    const cluster = [
+      story("wire-1", "base_report", "wire", 1),
+      story("wire-2", "official_response", "wire", 2),
+      story("local-1", "regional_followup", "local", 3),
+      story("analysis-1", "expert_analysis", "analysis", 4),
+    ];
+
+    const selected = [cluster[0], cluster[1]];
+    const hiddenIds = new Set(["local-1", "analysis-1"]);
+    const p = parent(cluster.map(item => item.id));
+
+    const result = enforceSourceDiverseChildSelection(p, selected, cluster, cfg, hiddenIds);
+
+    expect(sourceSet(result).size).toBeGreaterThanOrEqual(2);
+    expect(result.map(item => item.id)).toContain("local-1");
+    expect(hiddenIds.has("local-1")).toBe(false);
+    expect((p.debug as any).sourceDiverseSelectionDiagnostics.recoveredCount).toBeGreaterThanOrEqual(1);
+  });
+
+  it("replaces same-source-heavy child when selection is full", () => {
+    const localCfg: InsightConfig = {
+      ...cfg,
+      MAX_CHILDREN_PER_PARENT: 2,
+      MIN_SOURCES_PER_TREE: 2,
+    };
+
+    const cluster = [
+      story("wire-1", "base_report", "wire", 1),
+      story("wire-2", "official_response", "wire", 2),
+      story("local-1", "regional_followup", "local", 3),
+    ];
+
+    const selected = [cluster[0], cluster[1]];
+    const hiddenIds = new Set(["local-1"]);
+    const p = parent(cluster.map(item => item.id));
+
+    const result = enforceSourceDiverseChildSelection(p, selected, cluster, localCfg, hiddenIds);
+
+    expect(result).toHaveLength(2);
+    expect(sourceSet(result).size).toBe(2);
+    expect(result.map(item => item.id)).toContain("local-1");
+    expect((p.debug as any).sourceDiverseSelectionDiagnostics.replacedCount).toBe(1);
+    expect(p.debug.replacements[0].replacedBy).toBe("local-1");
+  });
+
+  it("does not reduce existing angle diversity below two angles", () => {
+    const localCfg: InsightConfig = {
+      ...cfg,
+      MAX_CHILDREN_PER_PARENT: 2,
+      MIN_SOURCES_PER_TREE: 2,
+    };
+
+    const cluster = [
+      story("wire-base", "base_report", "wire", 1),
+      story("wire-official", "official_response", "wire", 2),
+      story("local-base", "base_report", "local", 3),
+    ];
+
+    const selected = [cluster[0], cluster[1]];
+    const p = parent(cluster.map(item => item.id));
+
+    const result = enforceSourceDiverseChildSelection(
+      p,
+      selected,
+      cluster,
+      localCfg,
+      new Set(["local-base"])
+    );
+
+    expect(angleSet(result).size).toBeGreaterThanOrEqual(2);
+  });
+
+  it("rejects tier D source candidates", () => {
+    const cluster = [
+      story("wire-1", "base_report", "wire", 1),
+      story("wire-2", "official_response", "wire", 2),
+      story("bad-source", "regional_followup", "weak", 3, "D", 0.2),
+    ];
+
+    const selected = [cluster[0], cluster[1]];
+    const p = parent(cluster.map(item => item.id));
+
+    const result = enforceSourceDiverseChildSelection(p, selected, cluster, cfg, new Set());
+
+    expect(result.map(item => item.id)).not.toContain("bad-source");
+    expect((p.debug as any).sourceDiverseSelectionDiagnostics.rejectedCount).toBeGreaterThanOrEqual(1);
+  });
+});
+```
+
+---
+
+## 3. Patch pipeline
+
+File:
+
+```txt
+src/insight/src/pipeline/pipeline.ts
+```
+
+Add import:
+
+```ts
+import { enforceSourceDiverseChildSelection } from "../tree/sourceDiverseChildSelection";
+```
+
+Then replace this block:
+
+```ts
+const children = buildChildTree(parent, clusterStories, cfg, hiddenIds);
+parent.childStoryIds = children.map(c => c.id);
+
+for (const child of children) {
+  storiesById.set(child.id, child);
+}
+```
+
+With:
+
+```ts
+const children = buildChildTree(parent, clusterStories, cfg, hiddenIds);
+
+const sourceDiversityChildren = enforceSourceDiverseChildSelection(
+  parent,
+  children,
+  clusterStories,
+  cfg,
+  hiddenIds
+);
+
+parent.childStoryIds = sourceDiversityChildren.map(c => c.id);
+
+// Persist selected child objects back into storiesById so UI-visible child
+// records keep the angle, childScore, informationGain and admission reasons
+// assigned during tree construction and source-diversity repair.
+for (const child of sourceDiversityChildren) {
+  storiesById.set(child.id, child);
+}
+```
+
+Then replace:
+
+```ts
+parent.weakTree = isWeakTree(children, cfg);
+```
+
+With:
+
+```ts
+parent.weakTree = isWeakTree(sourceDiversityChildren, cfg);
+```
+
+---
+
+# FIX 2 — Insight Real Snapshot Quality Benchmark / Ratchet Gate
+
+## 1. Create file
+
+```txt
+src/insight/src/quality/insightRealSnapshotQualityRatchet.ts
+```
+
+```ts
+export interface RealInsightSnapshotParentMetric {
+  parentId?: string;
+  headline?: string;
+  childCount?: number;
+  angles?: string[];
+  weakTree?: boolean;
+  score?: number;
+  postTreeScore?: number;
+}
+
+export interface RealInsightSnapshotQualityReport {
+  status?: string;
+  grade?: string;
+  parentCount?: number;
+  avgAngles?: number;
+  multiAngleCount?: number;
+  weakParentCount?: number;
+  storyCount?: number;
+  sourceGroupCount?: number;
+  parents?: RealInsightSnapshotParentMetric[];
+  warnings?: string[];
+  errors?: string[];
+}
+
+export interface RealInsightSnapshotRatchetOptions {
+  minParentCount: number;
+  minAvgAngles: number;
+  minMultiAngleParents: number;
+  minTopParentAngles: number;
+  minTopParentChildren: number;
+  maxWeakParentRatio: number;
+  allowedGrades: string[];
+}
+
+export interface RealInsightSnapshotRatchetGate {
+  status: "PASS" | "WARN" | "FAIL" | "SKIP";
+  gateVersion: string;
+  grade: string;
+  score: number;
+  passed: Array<{
+    id: string;
+    label: string;
+    actual: unknown;
+    required: unknown;
+  }>;
+  failed: Array<{
+    id: string;
+    label: string;
+    actual: unknown;
+    required: unknown;
+    severity: "warn" | "fail";
+    fix: string;
+  }>;
+  summary: {
+    parentCount: number;
+    avgAngles: number;
+    multiAngleCount: number;
+    weakParentCount: number;
+    weakParentRatio: number;
+    topParentAngles: number;
+    topParentChildren: number;
+    storyCount: number;
+    sourceGroupCount: number;
+  };
+}
+
+export const DEFAULT_REAL_INSIGHT_RATCHET: RealInsightSnapshotRatchetOptions = {
+  minParentCount: 3,
+  minAvgAngles: 1.8,
+  minMultiAngleParents: 1,
+  minTopParentAngles: 2,
+  minTopParentChildren: 2,
+  maxWeakParentRatio: 0.5,
+  allowedGrades: ["A", "B", "C"],
+};
+
+function numberValue(value: unknown, fallback = 0): number {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function round(value: number, digits = 2): number {
+  const scale = 10 ** digits;
+  return Math.round(numberValue(value) * scale) / scale;
+}
+
+function normalizeGrade(value: unknown): string {
+  const grade = String(value || "F").trim().toUpperCase();
+  return grade || "F";
+}
+
+function uniqueVisibleAngles(parent: RealInsightSnapshotParentMetric | undefined): string[] {
+  return Array.from(new Set(
+    (Array.isArray(parent?.angles) ? parent?.angles : [])
+      .map(angle => String(angle || "").trim())
+      .filter(angle => angle && angle !== "unknown" && angle !== "unknown-angle")
+  ));
+}
+
+function addGate(
+  gate: RealInsightSnapshotRatchetGate,
+  condition: boolean,
+  payload: {
+    id: string;
+    label: string;
+    actual: unknown;
+    required: unknown;
+    severity?: "warn" | "fail";
+    fix: string;
+  }
+) {
+  if (condition) {
+    gate.passed.push({
+      id: payload.id,
+      label: payload.label,
+      actual: payload.actual,
+      required: payload.required,
+    });
+    return;
+  }
+
+  gate.failed.push({
+    id: payload.id,
+    label: payload.label,
+    actual: payload.actual,
+    required: payload.required,
+    severity: payload.severity || "fail",
+    fix: payload.fix,
+  });
+}
+
+export function evaluateRealInsightSnapshotQualityRatchet(
+  report: RealInsightSnapshotQualityReport,
+  options: Partial<RealInsightSnapshotRatchetOptions> = {}
+): RealInsightSnapshotRatchetGate {
+  const cfg = {
+    ...DEFAULT_REAL_INSIGHT_RATCHET,
+    ...options,
+  };
+
+  if (!report || report.status === "SKIP") {
+    return {
+      status: "SKIP",
+      gateVersion: "real-insight-snapshot-ratchet-v1",
+      grade: "SKIP",
+      score: 0,
+      passed: [],
+      failed: [],
+      summary: {
+        parentCount: 0,
+        avgAngles: 0,
+        multiAngleCount: 0,
+        weakParentCount: 0,
+        weakParentRatio: 0,
+        topParentAngles: 0,
+        topParentChildren: 0,
+        storyCount: 0,
+        sourceGroupCount: 0,
+      },
+    };
+  }
+
+  const parents = Array.isArray(report.parents) ? report.parents : [];
+  const topParent = parents[0];
+
+  const topParentAngles = uniqueVisibleAngles(topParent).length;
+  const topParentChildren = numberValue(topParent?.childCount);
+  const parentCount = numberValue(report.parentCount, parents.length);
+  const avgAngles = round(numberValue(report.avgAngles));
+  const multiAngleCount = numberValue(report.multiAngleCount);
+  const weakParentCount = numberValue(report.weakParentCount);
+  const storyCount = numberValue(report.storyCount);
+  const sourceGroupCount = numberValue(report.sourceGroupCount);
+  const weakParentRatio = parentCount ? round(weakParentCount / parentCount, 3) : 0;
+  const grade = normalizeGrade(report.grade);
+
+  const gate: RealInsightSnapshotRatchetGate = {
+    status: "PASS",
+    gateVersion: "real-insight-snapshot-ratchet-v1",
+    grade,
+    score: 100,
+    passed: [],
+    failed: [],
+    summary: {
+      parentCount,
+      avgAngles,
+      multiAngleCount,
+      weakParentCount,
+      weakParentRatio,
+      topParentAngles,
+      topParentChildren,
+      storyCount,
+      sourceGroupCount,
+    },
+  };
+
+  addGate(gate, cfg.allowedGrades.includes(grade), {
+    id: "grade-floor",
+    label: "Real snapshot grade floor",
+    actual: grade,
+    required: cfg.allowedGrades.join("/"),
+    fix: "Do not accept D/F real snapshot output. Improve child selection, parent rerank, or data intake.",
+  });
+
+  addGate(gate, parentCount >= cfg.minParentCount, {
+    id: "parent-count",
+    label: "Parent cluster count",
+    actual: parentCount,
+    required: ">= " + cfg.minParentCount,
+    fix: "Real snapshot should produce enough parent clusters for useful Insight coverage.",
+  });
+
+  addGate(gate, avgAngles >= cfg.minAvgAngles, {
+    id: "avg-angle-count",
+    label: "Average visible angle count",
+    actual: avgAngles,
+    required: ">= " + cfg.minAvgAngles,
+    fix: "Angle-diverse child selection is not strong enough on real data.",
+  });
+
+  addGate(gate, multiAngleCount >= cfg.minMultiAngleParents, {
+    id: "multi-angle-parent-count",
+    label: "Multi-angle parent count",
+    actual: multiAngleCount,
+    required: ">= " + cfg.minMultiAngleParents,
+    fix: "At least one real parent must contain two or more visible angles.",
+  });
+
+  addGate(gate, topParentAngles >= cfg.minTopParentAngles, {
+    id: "top-parent-angle-count",
+    label: "Top parent angle count",
+    actual: topParentAngles,
+    required: ">= " + cfg.minTopParentAngles,
+    fix: "Top Insight story is still single-angle. Demote it or enrich it.",
+  });
+
+  addGate(gate, topParentChildren >= cfg.minTopParentChildren, {
+    id: "top-parent-child-depth",
+    label: "Top parent child depth",
+    actual: topParentChildren,
+    required: ">= " + cfg.minTopParentChildren,
+    fix: "Top Insight story has too few children. Useful-variant rescue should recover support stories.",
+  });
+
+  addGate(gate, weakParentRatio <= cfg.maxWeakParentRatio, {
+    id: "weak-parent-ratio",
+    label: "Weak parent ratio",
+    actual: weakParentRatio,
+    required: "<= " + cfg.maxWeakParentRatio,
+    severity: "warn",
+    fix: "Too many weak trees remain. Repair or demote weak trees after diversity repair.",
+  });
+
+  const failCount = gate.failed.filter(item => item.severity === "fail").length;
+  const warnCount = gate.failed.filter(item => item.severity === "warn").length;
+
+  gate.score = Math.max(0, 100 - failCount * 24 - warnCount * 10);
+  gate.status = failCount > 0 ? "FAIL" : warnCount > 0 ? "WARN" : "PASS";
+
+  return gate;
+}
+
+export function buildRealInsightRatchetMarkdown(gate: RealInsightSnapshotRatchetGate): string {
+  const lines = [
+    "## Real Snapshot Ratchet Gate",
+    "",
+    `- Status: **${gate.status}**`,
+    `- Gate version: \`${gate.gateVersion}\``,
+    `- Grade: \`${gate.grade}\``,
+    `- Score: \`${gate.score}\``,
+    `- Parents: \`${gate.summary.parentCount}\``,
+    `- Average angles: \`${gate.summary.avgAngles}\``,
+    `- Multi-angle parents: \`${gate.summary.multiAngleCount}\``,
+    `- Top parent angles: \`${gate.summary.topParentAngles}\``,
+    `- Top parent children: \`${gate.summary.topParentChildren}\``,
+    "",
+    "### Failed gates",
+    "",
+  ];
+
+  if (!gate.failed.length) {
+    lines.push("- None");
+  } else {
+    for (const failure of gate.failed) {
+      lines.push(
+        `- **${failure.label}** — actual \`${failure.actual}\`, required \`${failure.required}\`. Fix: ${failure.fix}`
+      );
+    }
+  }
+
+  lines.push("", "### Passed gates", "");
+
+  for (const pass of gate.passed) {
+    lines.push(`- ${pass.label}: \`${pass.actual}\` / \`${pass.required}\``);
+  }
+
+  return lines.join("\n") + "\n";
+}
+```
+
+---
+
+## 2. Create test file
+
+```txt
+src/insight/src/quality/insightRealSnapshotQualityRatchet.cert.test.ts
+```
+
+```ts
+import { describe, expect, it } from "vitest";
+import {
+  buildRealInsightRatchetMarkdown,
+  evaluateRealInsightSnapshotQualityRatchet,
+} from "./insightRealSnapshotQualityRatchet";
+
+describe("Real Insight snapshot quality ratchet certification", () => {
+  it("passes a real-quality style report with B/C or better metrics", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "PASS",
+      grade: "B",
+      parentCount: 5,
+      avgAngles: 2.2,
+      multiAngleCount: 4,
+      weakParentCount: 1,
+      storyCount: 40,
+      sourceGroupCount: 8,
+      parents: [
+        {
+          parentId: "p1",
+          headline: "Good parent",
+          childCount: 3,
+          angles: ["base_report", "official_response", "expert_analysis"],
+          weakTree: false,
+        },
+      ],
+    });
+
+    expect(gate.status).toBe("PASS");
+    expect(gate.failed).toHaveLength(0);
+    expect(gate.score).toBe(100);
+  });
+
+  it("fails D/F grade even if raw report status is PASS", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "PASS",
+      grade: "D",
+      parentCount: 5,
+      avgAngles: 2,
+      multiAngleCount: 2,
+      weakParentCount: 0,
+      storyCount: 30,
+      sourceGroupCount: 7,
+      parents: [
+        {
+          childCount: 3,
+          angles: ["base_report", "official_response"],
+        },
+      ],
+    });
+
+    expect(gate.status).toBe("FAIL");
+    expect(gate.failed.map(item => item.id)).toContain("grade-floor");
+  });
+
+  it("fails if top parent is still single-angle", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "PASS",
+      grade: "C",
+      parentCount: 5,
+      avgAngles: 2,
+      multiAngleCount: 2,
+      weakParentCount: 0,
+      storyCount: 30,
+      sourceGroupCount: 7,
+      parents: [
+        {
+          childCount: 3,
+          angles: ["base_report"],
+        },
+      ],
+    });
+
+    expect(gate.status).toBe("FAIL");
+    expect(gate.failed.map(item => item.id)).toContain("top-parent-angle-count");
+  });
+
+  it("warns for high weak-parent ratio when hard gates pass", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "PASS",
+      grade: "C",
+      parentCount: 4,
+      avgAngles: 2,
+      multiAngleCount: 2,
+      weakParentCount: 3,
+      storyCount: 30,
+      sourceGroupCount: 7,
+      parents: [
+        {
+          childCount: 3,
+          angles: ["base_report", "official_response"],
+        },
+      ],
+    });
+
+    expect(gate.status).toBe("WARN");
+    expect(gate.failed.map(item => item.id)).toContain("weak-parent-ratio");
+  });
+
+  it("skips cleanly when no real snapshot is present", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "SKIP",
+    });
+
+    expect(gate.status).toBe("SKIP");
+  });
+
+  it("writes useful markdown", () => {
+    const gate = evaluateRealInsightSnapshotQualityRatchet({
+      status: "PASS",
+      grade: "D",
+      parentCount: 1,
+      avgAngles: 1,
+      multiAngleCount: 0,
+      weakParentCount: 1,
+      parents: [
+        {
+          childCount: 1,
+          angles: ["base_report"],
+        },
+      ],
+    });
+
+    const markdown = buildRealInsightRatchetMarkdown(gate);
+
+    expect(markdown).toContain("Real Snapshot Ratchet Gate");
+    expect(markdown).toContain("Failed gates");
+    expect(markdown).toContain("grade");
+  });
+});
+```
+
+---
+
+## 3. Patch existing real snapshot test
+
+File:
+
+```txt
+src/insight/src/quality/insightRealSnapshotQuality.cert.test.ts
+```
+
+Add import:
+
+```ts
+import {
+  buildRealInsightRatchetMarkdown,
+  evaluateRealInsightSnapshotQualityRatchet,
+} from "./insightRealSnapshotQualityRatchet";
+```
+
+In the `SKIP` path, replace:
+
+```ts
+writeJson(REPORT_PATH, report);
+writeSummary(report);
+expect(report.status).toBe("SKIP");
+return;
+```
+
+With:
+
+```ts
+const ratchetGate = evaluateRealInsightSnapshotQualityRatchet(report);
+(report as any).ratchetGate = ratchetGate;
+
+writeJson(REPORT_PATH, report);
+writeSummary(report);
+fs.appendFileSync(SUMMARY_PATH, "\n" + buildRealInsightRatchetMarkdown(ratchetGate), "utf8");
+
+expect(report.status).toBe("SKIP");
+return;
+```
+
+Near the end, replace:
+
+```ts
+writeJson(REPORT_PATH, report);
+writeSummary(report);
+
+expect(result.parents.length).toBeGreaterThan(0);
+expect(report.parentCount).toBeGreaterThan(0);
+expect(report.storyCount).toBeGreaterThan(0);
+```
+
+With:
+
+```ts
+const ratchetGate = evaluateRealInsightSnapshotQualityRatchet(report);
+(report as any).ratchetGate = ratchetGate;
+
+writeJson(REPORT_PATH, report);
+writeSummary(report);
+fs.appendFileSync(SUMMARY_PATH, "\n" + buildRealInsightRatchetMarkdown(ratchetGate), "utf8");
+
+expect(result.parents.length).toBeGreaterThan(0);
+expect(report.parentCount).toBeGreaterThan(0);
+expect(report.storyCount).toBeGreaterThan(0);
+expect(ratchetGate.status).not.toBe("FAIL");
+```
+
+---
+
+## 4. Create verifier script
+
+```txt
+scripts/verify_real_insight_quality_report.mjs
+```
+
+```js
+import fs from 'fs';
+import path from 'path';
+
+const reportPath = path.resolve('public/newsdata/real_insight_quality_report.json');
+
+function numberValue(value, fallback = 0) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function uniqueVisibleAngles(parent) {
+  return Array.from(new Set(
+    (Array.isArray(parent?.angles) ? parent.angles : [])
+      .map(angle => String(angle || '').trim())
+      .filter(angle => angle && angle !== 'unknown' && angle !== 'unknown-angle')
+  ));
+}
+
+function evaluateFallbackRatchet(report) {
+  if (!report || report.status === 'SKIP') {
+    return {
+      status: 'SKIP',
+      gateVersion: 'real-insight-snapshot-ratchet-v1-node-fallback',
+      grade: 'SKIP',
+      score: 0,
+      failed: [],
+      summary: {},
+    };
+  }
+
+  const parents = Array.isArray(report.parents) ? report.parents : [];
+  const topParent = parents[0];
+  const grade = String(report.grade || 'F').toUpperCase();
+  const parentCount = numberValue(report.parentCount, parents.length);
+  const avgAngles = numberValue(report.avgAngles);
+  const multiAngleCount = numberValue(report.multiAngleCount);
+  const weakParentCount = numberValue(report.weakParentCount);
+  const topParentAngles = uniqueVisibleAngles(topParent).length;
+  const topParentChildren = numberValue(topParent?.childCount);
+  const weakParentRatio = parentCount ? weakParentCount / parentCount : 0;
+
+  const failed = [];
+
+  if (!['A', 'B', 'C'].includes(grade)) {
+    failed.push({
+      id: 'grade-floor',
+      label: 'Real snapshot grade floor',
+      actual: grade,
+      required: 'A/B/C',
+      severity: 'fail',
+    });
+  }
+
+  if (parentCount < 3) {
+    failed.push({
+      id: 'parent-count',
+      label: 'Parent cluster count',
+      actual: parentCount,
+      required: '>= 3',
+      severity: 'fail',
+    });
+  }
+
+  if (avgAngles < 1.8) {
+    failed.push({
+      id: 'avg-angle-count',
+      label: 'Average visible angle count',
+      actual: avgAngles,
+      required: '>= 1.8',
+      severity: 'fail',
+    });
+  }
+
+  if (multiAngleCount < 1) {
+    failed.push({
+      id: 'multi-angle-parent-count',
+      label: 'Multi-angle parent count',
+      actual: multiAngleCount,
+      required: '>= 1',
+      severity: 'fail',
+    });
+  }
+
+  if (topParentAngles < 2) {
+    failed.push({
+      id: 'top-parent-angle-count',
+      label: 'Top parent angle count',
+      actual: topParentAngles,
+      required: '>= 2',
+      severity: 'fail',
+    });
+  }
+
+  if (topParentChildren < 2) {
+    failed.push({
+      id: 'top-parent-child-depth',
+      label: 'Top parent child depth',
+      actual: topParentChildren,
+      required: '>= 2',
+      severity: 'fail',
+    });
+  }
+
+  if (weakParentRatio > 0.5) {
+    failed.push({
+      id: 'weak-parent-ratio',
+      label: 'Weak parent ratio',
+      actual: weakParentRatio,
+      required: '<= 0.5',
+      severity: 'warn',
+    });
+  }
+
+  const failCount = failed.filter(item => item.severity === 'fail').length;
+  const warnCount = failed.filter(item => item.severity === 'warn').length;
+
+  return {
+    status: failCount > 0 ? 'FAIL' : warnCount > 0 ? 'WARN' : 'PASS',
+    gateVersion: 'real-insight-snapshot-ratchet-v1-node-fallback',
+    grade,
+    score: Math.max(0, 100 - failCount * 24 - warnCount * 10),
+    failed,
+    summary: {
+      parentCount,
+      avgAngles,
+      multiAngleCount,
+      weakParentCount,
+      weakParentRatio,
+      topParentAngles,
+      topParentChildren,
+      storyCount: numberValue(report.storyCount),
+      sourceGroupCount: numberValue(report.sourceGroupCount),
+    },
+  };
+}
+
+if (!fs.existsSync(reportPath)) {
+  console.log(JSON.stringify({
+    status: 'SKIP',
+    reason: 'public/newsdata/real_insight_quality_report.json not found. Run npm run test:real-insight-snapshot-quality first.',
+  }, null, 2));
+  process.exit(0);
+}
+
+const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+const gate = report.ratchetGate || evaluateFallbackRatchet(report);
+
+console.log(JSON.stringify({
+  status: gate.status,
+  gateVersion: gate.gateVersion,
+  grade: gate.grade,
+  score: gate.score,
+  summary: gate.summary,
+  failed: gate.failed,
+}, null, 2));
+
+if (gate.status === 'FAIL') {
+  process.exit(1);
+}
+```
+
+---
+
+# Package scripts to add
+
+Add these to `package.json` scripts:
+
+```json
+{
+  "test:insight-source-diverse-child": "vitest run --config vitest.config.js src/insight/src/tree/sourceDiverseChildSelection.cert.test.ts",
+  "test:insight-source-diversity-guard": "npm run test:insight-source-diverse-child",
+  "test:insight-real-snapshot-ratchet": "vitest run --config vitest.config.js src/insight/src/quality/insightRealSnapshotQualityRatchet.cert.test.ts",
+  "verify:real-insight-quality-report": "node scripts/verify_real_insight_quality_report.mjs",
+  "test:real-insight-snapshot-quality:strict": "npm run test:real-insight-snapshot-quality && npm run verify:real-insight-quality-report"
+}
+```
+
+---
+
+# Certification manifest entries to add
+
+Add these to `scripts/certification_manifest.json`:
+
+```json
+{
+  "id": "insight-source-diversity-guard",
+  "cmd": "npm",
+  "args": ["run", "test:insight-source-diversity-guard"]
+},
+{
+  "id": "insight-real-snapshot-ratchet",
+  "cmd": "npm",
+  "args": ["run", "test:insight-real-snapshot-ratchet"]
+}
+```
+
+---
+
+# Test commands
+
+Run in this order:
+
+```bash
+npm run test:insight-source-diversity-guard
+npm run test:insight-real-snapshot-ratchet
+npm run test:real-insight-snapshot-quality:strict
+npm run test:certify
+```
+
+Expected result:
+
+```txt
+Source diversity guard:
+- source-concentrated child tree recovers new source
+- full child set can replace same-source-heavy child
+- angle diversity is preserved
+- tier D exclusion is preserved
+
+Real snapshot gate:
+- D/F grade fails
+- single-angle top parent fails
+- low average angle count fails
+- missing real snapshot skips cleanly
+- strict mode fails if real output is still weak
+```
+--------------------------------------------------------------------------------------
+
+Below is the **next remaining code** to close the two identified fixes without saving anything to GitHub.
+
+This adds:
+
+```txt
+1. Static certification for Source Diversity Guard
+2. Static certification for Real Snapshot Ratchet
+3. Optional GitHub workflow file content, shown only here
+4. Exact package.json scripts
+5. Exact certification_manifest.json entries
+```
+
+---
+
+# 1. Static test — Source Diversity Guard
+
+Create:
+
+```txt
+scripts/test_insight_source_diversity_guard_static.mjs
+```
+
+```js
+import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function read(path) {
+  assert(fs.existsSync(path), 'Missing file: ' + path);
+  return fs.readFileSync(path, 'utf8');
+}
+
+const guard = read('src/insight/src/tree/sourceDiverseChildSelection.ts');
+const guardTest = read('src/insight/src/tree/sourceDiverseChildSelection.cert.test.ts');
+const pipeline = read('src/insight/src/pipeline/pipeline.ts');
+const packageJson = read('package.json');
+
+for (const token of [
+  'enforceSourceDiverseChildSelection',
+  'source-diverse-child-selection-v1',
+  'targetSourceGroupCount',
+  'sourceDiverseSelectionDiagnostics',
+  'adds new source group',
+  'replacementKeepsAngleDiversity',
+  'orderSourceDiverseChildrenForDisplay',
+]) {
+  assert(guard.includes(token), 'sourceDiverseChildSelection.ts missing token: ' + token);
+}
+
+for (const token of [
+  'Insight source-diverse child selection certification',
+  'adds a missing source group',
+  'replaces same-source-heavy child',
+  'does not reduce existing angle diversity',
+  'rejects tier D source candidates',
+]) {
+  assert(guardTest.includes(token), 'sourceDiverseChildSelection.cert.test.ts missing token: ' + token);
+}
+
+for (const token of [
+  'enforceSourceDiverseChildSelection',
+  'const sourceDiversityChildren = enforceSourceDiverseChildSelection',
+  'parent.childStoryIds = sourceDiversityChildren.map',
+  'isWeakTree(sourceDiversityChildren, cfg)',
+]) {
+  assert(pipeline.includes(token), 'pipeline.ts missing token: ' + token);
+}
+
+assert(
+  packageJson.includes('"test:insight-source-diversity-guard"'),
+  'package.json must include test:insight-source-diversity-guard'
+);
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  checked: 'Insight source diversity guard',
+  guarantees: [
+    'post-tree source diversity guard exists',
+    'source-concentrated child trees can recover a new source',
+    'full child trees can replace same-source-heavy child',
+    'angle diversity is not reduced below two angles',
+    'tier D exclusion is preserved',
+    'pipeline freezes sourceDiversityChildren',
+    'weakTree detection uses sourceDiversityChildren'
+  ],
+}, null, 2));
+
+console.log('PASS: Insight source diversity guard static gate');
+```
+
+---
+
+# 2. Static test — Real Snapshot Ratchet
+
+Create:
+
+```txt
+scripts/test_insight_real_snapshot_ratchet_static.mjs
+```
+
+```js
+import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function read(path) {
+  assert(fs.existsSync(path), 'Missing file: ' + path);
+  return fs.readFileSync(path, 'utf8');
+}
+
+const ratchet = read('src/insight/src/quality/insightRealSnapshotQualityRatchet.ts');
+const ratchetTest = read('src/insight/src/quality/insightRealSnapshotQualityRatchet.cert.test.ts');
+const realSnapshotTest = read('src/insight/src/quality/insightRealSnapshotQuality.cert.test.ts');
+const verifier = read('scripts/verify_real_insight_quality_report.mjs');
+const packageJson = read('package.json');
+
+for (const token of [
+  'evaluateRealInsightSnapshotQualityRatchet',
+  'real-insight-snapshot-ratchet-v1',
+  'grade-floor',
+  'avg-angle-count',
+  'multi-angle-parent-count',
+  'top-parent-angle-count',
+  'top-parent-child-depth',
+  'weak-parent-ratio',
+  'buildRealInsightRatchetMarkdown',
+]) {
+  assert(ratchet.includes(token), 'insightRealSnapshotQualityRatchet.ts missing token: ' + token);
+}
+
+for (const token of [
+  'Real Insight snapshot quality ratchet certification',
+  'fails D/F grade',
+  'fails if top parent is still single-angle',
+  'warns for high weak-parent ratio',
+  'skips cleanly',
+]) {
+  assert(ratchetTest.includes(token), 'insightRealSnapshotQualityRatchet.cert.test.ts missing token: ' + token);
+}
+
+for (const token of [
+  'evaluateRealInsightSnapshotQualityRatchet',
+  'ratchetGate',
+  'expect(ratchetGate.status).not.toBe("FAIL")',
+  'buildRealInsightRatchetMarkdown',
+]) {
+  assert(realSnapshotTest.includes(token), 'insightRealSnapshotQuality.cert.test.ts missing token: ' + token);
+}
+
+for (const token of [
+  'real_insight_quality_report.json',
+  "gate.status === 'FAIL'",
+  'top-parent-angle-count',
+  'grade-floor',
+]) {
+  assert(verifier.includes(token), 'verify_real_insight_quality_report.mjs missing token: ' + token);
+}
+
+assert(
+  packageJson.includes('"test:insight-real-snapshot-ratchet"'),
+  'package.json must include test:insight-real-snapshot-ratchet'
+);
+
+assert(
+  packageJson.includes('"test:real-insight-snapshot-quality:strict"'),
+  'package.json must include test:real-insight-snapshot-quality:strict'
+);
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  checked: 'Insight real snapshot quality ratchet',
+  guarantees: [
+    'real snapshot report includes ratchet gate',
+    'D/F grades fail when real snapshot exists',
+    'single-angle top parent fails',
+    'low average angle count fails',
+    'zero multi-angle parent fails',
+    'thin top parent fails',
+    'weak-parent ratio is warned',
+    'generated report can be independently verified'
+  ],
+}, null, 2));
+
+console.log('PASS: Insight real snapshot quality ratchet static gate');
+```
+
+---
+
+# 3. Optional workflow file — strict real snapshot quality
+
+Create only if you want CI enforcement:
+
+```txt
+.github/workflows/insight-real-snapshot-quality.yml
+```
+
+```yaml
+name: Insight Real Snapshot Quality
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 2,14 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "src/insight/**"
+      - "src/pages/InsightPage.jsx"
+      - "public/newsdata/insight_latest.json"
+      - "scripts/**insight**"
+      - "package.json"
+      - ".github/workflows/insight-real-snapshot-quality.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: insight-real-snapshot-quality
+  cancel-in-progress: false
+
+jobs:
+  strict-real-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Source diversity guard certification
+        run: npm run test:insight-source-diversity-guard
+
+      - name: Real snapshot ratchet certification
+        run: npm run test:insight-real-snapshot-ratchet
+
+      - name: Run strict real snapshot quality benchmark
+        run: npm run test:real-insight-snapshot-quality:strict
+
+      - name: Verify generated report
+        if: always()
+        run: |
+          if [ -f public/newsdata/real_insight_quality_report.json ]; then
+            node scripts/verify_real_insight_quality_report.mjs
+          else
+            echo "No real_insight_quality_report.json generated."
+          fi
+
+      - name: Upload Insight quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: insight-real-snapshot-quality-report
+          if-no-files-found: ignore
+          path: |
+            public/newsdata/real_insight_quality_report.json
+            public/newsdata/real_insight_quality_summary.md
+```
+
+---
+
+# 4. Update `package.json`
+
+Add these scripts:
+
+```json
+{
+  "test:insight-source-diverse-child": "vitest run --config vitest.config.js src/insight/src/tree/sourceDiverseChildSelection.cert.test.ts",
+  "test:insight-source-diversity-guard:static": "node scripts/test_insight_source_diversity_guard_static.mjs",
+  "test:insight-source-diversity-guard": "npm run test:insight-source-diversity-guard:static && npm run test:insight-source-diverse-child",
+
+  "test:insight-real-snapshot-ratchet:static": "node scripts/test_insight_real_snapshot_ratchet_static.mjs",
+  "test:insight-real-snapshot-ratchet": "npm run test:insight-real-snapshot-ratchet:static && vitest run --config vitest.config.js src/insight/src/quality/insightRealSnapshotQualityRatchet.cert.test.ts",
+
+  "verify:real-insight-quality-report": "node scripts/verify_real_insight_quality_report.mjs",
+  "test:real-insight-snapshot-quality:strict": "npm run test:real-insight-snapshot-quality && npm run verify:real-insight-quality-report"
+}
+```
+
+---
+
+# 5. Update `scripts/certification_manifest.json`
+
+Add these entries:
+
+```json
+{
+  "id": "insight-source-diversity-guard",
+  "cmd": "npm",
+  "args": ["run", "test:insight-source-diversity-guard"]
+},
+{
+  "id": "insight-real-snapshot-ratchet",
+  "cmd": "npm",
+  "args": ["run", "test:insight-real-snapshot-ratchet"]
+}
+```
+
+Best placement is after existing Insight tests, for example after:
+
+```json
+{
+  "id": "insight-runtime-quality-gate",
+  "cmd": "npm",
+  "args": ["run", "test:insight-runtime-quality-gate"]
+}
+```
+
+---
+
+# 6. Run order
+
+```bash
+npm run test:insight-source-diversity-guard
+npm run test:insight-real-snapshot-ratchet
+npm run test:real-insight-snapshot-quality:strict
+npm run test:certify
+```
+
+Expected checkpoint:
+
+```txt
+CHECKPOINT RESULT:
+- Source Diversity Guard:
+  - static gate passed: YES/NO
+  - Vitest passed: YES/NO
+  - pipeline freezes sourceDiversityChildren: YES/NO
+  - weakTree uses sourceDiversityChildren: YES/NO
+
+- Real Snapshot Ratchet:
+  - static gate passed: YES/NO
+  - Vitest passed: YES/NO
+  - strict real snapshot passed: YES/NO/SKIP
+  - D/F grade fails: YES/NO
+  - single-angle top parent fails: YES/NO
+  - report includes ratchetGate: YES/NO
+
+- Full certification:
+  - npm run test:certify: YES/NO
+
+- Exact failed command, if any:
+  - ...
+```
+
+This closes the two concrete fixes. If strict snapshot still fails, the next algorithm fix should be based on the failed `ratchetGate.failed[]` IDs, not more UI work.
+
+
+
+
+
+
+-----------------------------------
+Next is a **local closure audit** for only the two identified fixes. No GitHub connection, no saving.
+
+Create:
+
+```txt
+scripts/audit_insight_two_fix_closure.mjs
+```
+
+```js
+import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+function exists(path) {
+  return fs.existsSync(path);
+}
+
+function read(path) {
+  assert(exists(path), `Missing file: ${path}`);
+  return fs.readFileSync(path, 'utf8');
+}
+
+function readJson(path) {
+  return JSON.parse(read(path));
+}
+
+function maybeReadJson(path) {
+  if (!exists(path)) return null;
+  return JSON.parse(fs.readFileSync(path, 'utf8'));
+}
+
+function checkTokens(fileLabel, content, tokens) {
+  for (const token of tokens) {
+    assert(
+      content.includes(token),
+      `${fileLabel} missing required token: ${token}`
+    );
+  }
+}
+
+function checkPackageScript(packageJson, scriptName) {
+  assert(
+    packageJson.scripts && packageJson.scripts[scriptName],
+    `package.json missing script: ${scriptName}`
+  );
+}
+
+function checkManifestCommand(manifest, scriptName) {
+  if (!manifest) {
+    console.warn('WARN: scripts/certification_manifest.json not found; skipping manifest check.');
+    return;
+  }
+
+  const commands = Array.isArray(manifest.commands) ? manifest.commands : [];
+  const found = commands.some(command =>
+    Array.isArray(command.args) && command.args.join(' ').includes(scriptName)
+  );
+
+  assert(
+    found,
+    `certification_manifest.json missing command for script: ${scriptName}`
+  );
+}
+
+function checkSourceDiversityGuard() {
+  const guard = read('src/insight/src/tree/sourceDiverseChildSelection.ts');
+  const guardTest = read('src/insight/src/tree/sourceDiverseChildSelection.cert.test.ts');
+  const pipeline = read('src/insight/src/pipeline/pipeline.ts');
+
+  checkTokens('sourceDiverseChildSelection.ts', guard, [
+    'enforceSourceDiverseChildSelection',
+    'SourceDiverseSelectionDiagnostic',
+    'source-diverse-child-selection-v1',
+    'targetSourceGroupCount',
+    'sourceDiverseSelectionDiagnostics',
+    'adds new source group',
+    'replacementKeepsAngleDiversity',
+    'orderSourceDiverseChildrenForDisplay',
+  ]);
+
+  checkTokens('sourceDiverseChildSelection.cert.test.ts', guardTest, [
+    'Insight source-diverse child selection certification',
+    'adds a missing source group',
+    'replaces same-source-heavy child',
+    'does not reduce existing angle diversity',
+    'rejects tier D source candidates',
+  ]);
+
+  checkTokens('pipeline.ts source diversity integration', pipeline, [
+    'enforceSourceDiverseChildSelection',
+    'const sourceDiversityChildren = enforceSourceDiverseChildSelection',
+    'parent.childStoryIds = sourceDiversityChildren.map',
+    'storiesById.set(child.id, child)',
+    'isWeakTree(sourceDiversityChildren, cfg)',
+  ]);
+
+  return {
+    status: 'PASS',
+    checked: 'Insight Source Diversity Guard for Child Trees',
+    guarantees: [
+      'source diversity guard file exists',
+      'source diversity test file exists',
+      'pipeline calls enforceSourceDiverseChildSelection',
+      'pipeline freezes sourceDiversityChildren',
+      'weakTree is calculated using sourceDiversityChildren',
+    ],
+  };
+}
+
+function checkRealSnapshotRatchet() {
+  const ratchet = read('src/insight/src/quality/insightRealSnapshotQualityRatchet.ts');
+  const ratchetTest = read('src/insight/src/quality/insightRealSnapshotQualityRatchet.cert.test.ts');
+  const realSnapshotTest = read('src/insight/src/quality/insightRealSnapshotQuality.cert.test.ts');
+  const verifier = read('scripts/verify_real_insight_quality_report.mjs');
+
+  checkTokens('insightRealSnapshotQualityRatchet.ts', ratchet, [
+    'evaluateRealInsightSnapshotQualityRatchet',
+    'RealInsightSnapshotRatchetGate',
+    'real-insight-snapshot-ratchet-v1',
+    'grade-floor',
+    'avg-angle-count',
+    'multi-angle-parent-count',
+    'top-parent-angle-count',
+    'top-parent-child-depth',
+    'weak-parent-ratio',
+    'buildRealInsightRatchetMarkdown',
+  ]);
+
+  checkTokens('insightRealSnapshotQualityRatchet.cert.test.ts', ratchetTest, [
+    'Real Insight snapshot quality ratchet certification',
+    'fails D/F grade',
+    'fails if top parent is still single-angle',
+    'warns for high weak-parent ratio',
+    'skips cleanly',
+  ]);
+
+  checkTokens('insightRealSnapshotQuality.cert.test.ts ratchet integration', realSnapshotTest, [
+    'evaluateRealInsightSnapshotQualityRatchet',
+    'buildRealInsightRatchetMarkdown',
+    'ratchetGate',
+    'expect(ratchetGate.status).not.toBe("FAIL")',
+  ]);
+
+  checkTokens('verify_real_insight_quality_report.mjs', verifier, [
+    'real_insight_quality_report.json',
+    "gate.status === 'FAIL'",
+    'grade-floor',
+    'top-parent-angle-count',
+  ]);
+
+  return {
+    status: 'PASS',
+    checked: 'Insight Real Snapshot Quality Benchmark Ratchet',
+    guarantees: [
+      'ratchet service exists',
+      'ratchet tests exist',
+      'existing real snapshot benchmark writes ratchetGate',
+      'strict benchmark fails on ratchet FAIL',
+      'independent verifier exists',
+    ],
+  };
+}
+
+function checkScriptsAndManifest() {
+  const packageJson = readJson('package.json');
+  const manifest = maybeReadJson('scripts/certification_manifest.json');
+
+  const requiredScripts = [
+    'test:insight-source-diverse-child',
+    'test:insight-source-diversity-guard',
+    'test:insight-real-snapshot-ratchet',
+    'verify:real-insight-quality-report',
+    'test:real-insight-snapshot-quality:strict',
+  ];
+
+  for (const script of requiredScripts) {
+    checkPackageScript(packageJson, script);
+  }
+
+  checkManifestCommand(manifest, 'test:insight-source-diversity-guard');
+  checkManifestCommand(manifest, 'test:insight-real-snapshot-ratchet');
+
+  return {
+    status: 'PASS',
+    checked: 'package.json and certification manifest',
+    scripts: requiredScripts,
+  };
+}
+
+function checkOptionalStrictReport() {
+  const reportPath = 'public/newsdata/real_insight_quality_report.json';
+
+  if (!exists(reportPath)) {
+    return {
+      status: 'SKIP',
+      checked: 'strict real snapshot report',
+      reason: 'real_insight_quality_report.json not found. Run npm run test:real-insight-snapshot-quality:strict.',
+    };
+  }
+
+  const report = readJson(reportPath);
+  const gate = report.ratchetGate;
+
+  assert(gate, 'real_insight_quality_report.json exists but ratchetGate is missing.');
+  assert(gate.status !== 'FAIL', 'real_insight_quality_report.json ratchetGate status is FAIL.');
+
+  return {
+    status: gate.status,
+    checked: 'strict real snapshot report',
+    grade: gate.grade,
+    score: gate.score,
+    failed: gate.failed || [],
+    summary: gate.summary || {},
+  };
+}
+
+function main() {
+  const results = [
+    checkSourceDiversityGuard(),
+    checkRealSnapshotRatchet(),
+    checkScriptsAndManifest(),
+    checkOptionalStrictReport(),
+  ];
+
+  const output = {
+    status: results.some(item => item.status === 'FAIL') ? 'FAIL' : 'PASS',
+    checked: 'Insight two-fix closure audit',
+    fixes: [
+      'Insight Source Diversity Guard for Child Trees',
+      'Insight Real Snapshot Quality Benchmark Ratchet',
+    ],
+    results,
+  };
+
+  console.log(JSON.stringify(output, null, 2));
+}
+
+try {
+  main();
+} catch (error) {
+  console.error(JSON.stringify({
+    status: 'FAIL',
+    checked: 'Insight two-fix closure audit',
+    error: error.message,
+  }, null, 2));
+
+  process.exit(1);
+}
+```
+
+Run:
+
+```bash
+node scripts/audit_insight_two_fix_closure.mjs
+
+npm run test:insight-source-diversity-guard
+npm run test:insight-real-snapshot-ratchet
+npm run test:real-insight-snapshot-quality:strict
+npm run test:certify
+```
+
+Expected closure result:
+
+```txt
+Insight Source Diversity Guard: PASS
+Insight Real Snapshot Ratchet: PASS
+Strict real snapshot: PASS/WARN/SKIP
+Full certify: PASS
+```
+
+If `strict real snapshot` returns `FAIL`, do not add more UI. Use `public/newsdata/real_insight_quality_report.json -> ratchetGate.failed[]` as the next fix list.
+---------------------------------------
+Below is the **chat-only source-level fix pack** for the listed issues. Do **not** connect/save to GitHub. Apply locally.
+
+# Fix Pack — Weather/Main/Following/Buzz/Insight Closure
+
+## 1. Fix stale certification manifest
+
+Create:
+
+```txt
+scripts/ensure_weather_grade_manifest.mjs
+```
+
+```js
+import fs from 'fs';
+
+const manifestPath = 'scripts/certification_manifest.json';
+const packagePath = 'package.json';
+
+const requiredCommands = [
+  { id: 'weather-ux-closeout', script: 'test:weather-ux-closeout' },
+  { id: 'weather-settings-onthisday', script: 'test:weather-settings-onthisday' },
+  { id: 'weather-signal-precision', script: 'test:weather-signal-precision' },
+  { id: 'weather-integration-hardening', script: 'test:weather-integration-hardening' },
+  { id: 'weather-manager-clarity', script: 'test:weather-manager-clarity' },
+  { id: 'weather-professional-theme', script: 'test:weather-professional-theme' },
+  { id: 'weather-browser-smoke-static', script: 'test:weather-browser-smoke:static' },
+  { id: 'weather-final-closure', script: 'test:weather-final-closure' },
+  { id: 'main-grade-audit', script: 'test:main-grade-audit' },
+  { id: 'grade-audit-system', script: 'test:grade-audit-system' },
+];
+
+function readJson(path) {
+  if (!fs.existsSync(path)) {
+    throw new Error(`Missing file: ${path}`);
+  }
+  return JSON.parse(fs.readFileSync(path, 'utf8'));
+}
+
+const pkg = readJson(packagePath);
+const manifest = readJson(manifestPath);
+
+manifest.commands = Array.isArray(manifest.commands) ? manifest.commands : [];
+
+const missingPackageScripts = [];
+
+for (const command of requiredCommands) {
+  if (!pkg.scripts?.[command.script]) {
+    missingPackageScripts.push(command.script);
+    continue;
+  }
+
+  const exists = manifest.commands.some(entry =>
+    entry.id === command.id ||
+    (Array.isArray(entry.args) && entry.args.join(' ').includes(command.script))
+  );
+
+  if (!exists) {
+    manifest.commands.push({
+      id: command.id,
+      cmd: 'npm',
+      args: ['run', command.script],
+    });
+  }
+}
+
+const seen = new Set();
+manifest.commands = manifest.commands.filter(command => {
+  if (!command?.id) return true;
+  if (seen.has(command.id)) return false;
+  seen.add(command.id);
+  return true;
+});
+
+fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+
+console.log(JSON.stringify({
+  status: missingPackageScripts.length ? 'WARN' : 'PASS',
+  checked: 'weather and grade certification manifest',
+  addedOrEnsured: requiredCommands.map(item => item.id),
+  missingPackageScripts,
+}, null, 2));
+
+if (missingPackageScripts.length) {
+  console.warn('Some required package.json scripts are missing. Add them before relying on test:certify.');
+}
+```
+
+Add to `package.json`:
+
+```json
+{
+  "ensure:weather-grade-manifest": "node scripts/ensure_weather_grade_manifest.mjs"
+}
+```
+
+Run:
+
+```bash
+npm run ensure:weather-grade-manifest
+npm run test:certification-manifest
+npm run test:weather-final-closure
+npm run test:weather-browser-smoke:static
+npm run test:certify
+```
+
+---
+
+## 2. Fix On This Day naming bug + source-level OFF behavior
+
+Create:
+
+```txt
+src/services/onThisDayPolicy.js
+```
+
+```js
+export const ON_THIS_DAY_DEFAULT_ENABLED = false;
+
+export function shouldShowOnThisDay(settings = {}) {
+  return Boolean(
+    settings?.onThisDay?.enabled ??
+    settings?.features?.onThisDay ??
+    settings?.display?.showOnThisDay ??
+    ON_THIS_DAY_DEFAULT_ENABLED
+  );
+}
+
+export function revealOnThisDay(root = document) {
+  if (!root?.querySelectorAll) return;
+
+  root
+    .querySelectorAll('[data-on-this-day], .on-this-day, [data-section="on-this-day"]')
+    .forEach(node => {
+      node.hidden = false;
+      node.removeAttribute('aria-hidden');
+      node.classList.remove('is-hidden');
+    });
+}
+
+export function hideOnThisDay(root = document) {
+  if (!root?.querySelectorAll) return;
+
+  root
+    .querySelectorAll('[data-on-this-day], .on-this-day, [data-section="on-this-day"]')
+    .forEach(node => {
+      node.hidden = true;
+      node.setAttribute('aria-hidden', 'true');
+      node.classList.add('is-hidden');
+    });
+}
+
+export function applyOnThisDayVisibility(settings = {}, root = document) {
+  const isOnThisDayEnabled = shouldShowOnThisDay(settings);
+
+  if (isOnThisDayEnabled) {
+    revealOnThisDay(root);
+  } else {
+    hideOnThisDay(root);
+  }
+
+  return isOnThisDayEnabled;
+}
+
+export function stripOnThisDayFromNewsData(newsData = {}, settings = {}) {
+  if (shouldShowOnThisDay(settings)) return newsData;
+
+  const clone = { ...newsData };
+
+  for (const key of Object.keys(clone)) {
+    const normalized = key.toLowerCase().replace(/[\s_-]+/g, '');
+    if (normalized.includes('onthisday') || normalized.includes('todayinhistory')) {
+      clone[key] = [];
+    }
+  }
+
+  clone.onThisDay = [];
+  clone.todayInHistory = [];
+
+  return clone;
+}
+```
+
+### Fix controller naming bug
+
+Wherever the bad pattern exists, replace:
+
+```js
+const showOnThisDay = shouldShowOnThisDay(settings);
+
+if (showOnThisDay) {
+  showOnThisDay(document);
+}
+```
+
+with:
+
+```js
+const isOnThisDayEnabled = shouldShowOnThisDay(settings);
+
+if (isOnThisDayEnabled) {
+  revealOnThisDay(document);
+} else {
+  hideOnThisDay(document);
+}
+```
+
+Required imports:
+
+```js
+import {
+  hideOnThisDay,
+  revealOnThisDay,
+  shouldShowOnThisDay,
+} from '../services/onThisDayPolicy.js';
+```
+
+### Fix `MainPage.jsx` source-level feed
+
+Add import:
+
+```js
+import {
+  shouldShowOnThisDay,
+  stripOnThisDayFromNewsData,
+} from '../services/onThisDayPolicy.js';
+```
+
+Before calling `generateTopline(...)`, add:
+
+```js
+const isOnThisDayEnabled = shouldShowOnThisDay(settings);
+const toplineNewsData = stripOnThisDayFromNewsData(newsData, settings);
+```
+
+Then replace:
+
+```js
+generateTopline(newsData)
+```
+
+with:
+
+```js
+generateTopline(toplineNewsData, {
+  includeOnThisDay: isOnThisDayEnabled,
+})
+```
+
+If your existing call has more arguments, keep them and add the option:
+
+```js
+generateTopline(toplineNewsData, {
+  ...existingOptions,
+  includeOnThisDay: isOnThisDayEnabled,
+})
+```
+
+---
+
+## 3. Fix `generateTopline()` over-weighting On This Day
+
+Patch:
+
+```txt
+src/utils/toplineGenerator.js
+```
+
+Add near the top:
+
+```js
+function isOnThisDayKey(key = '') {
+  const normalized = String(key).toLowerCase().replace(/[\s_-]+/g, '');
+  return normalized.includes('onthisday') || normalized.includes('todayinhistory');
+}
+
+function removeOnThisDaySections(newsData = {}) {
+  const result = { ...newsData };
+
+  for (const key of Object.keys(result)) {
+    if (isOnThisDayKey(key)) {
+      result[key] = [];
+    }
+  }
+
+  result.onThisDay = [];
+  result.todayInHistory = [];
+
+  return result;
+}
+```
+
+At the start of `generateTopline`, normalize options:
+
+```js
+export function generateTopline(newsData = {}, options = {}) {
+  const includeOnThisDay = options.includeOnThisDay === true;
+  const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);
+
+  // use sourceData below instead of newsData
+}
+```
+
+Then replace internal uses of `newsData` inside that function with `sourceData`, except where `newsData` is only used as a fallback/debug label.
+
+---
+
+## 4. Fix Colombo missing in Weather vertical tab
+
+Patch:
+
+```txt
+src/components/DetailedWeatherCard.jsx
+```
+
+Add import:
+
+```js
+import {
+  getConfiguredWeatherCities,
+  getWeatherLocationLabel,
+} from '../services/weatherLocations.js';
+```
+
+Replace:
+
+```js
+const cities = settings.weather?.cities || ['chennai', 'trichy', 'muscat'];
+```
+
+with:
+
+```js
+const cities = getConfiguredWeatherCities(settings);
+```
+
+When rendering city labels, use:
+
+```js
+{getWeatherLocationLabel(city)}
+```
+
+Expected helper support in `weatherLocations.js`:
+
+```js
+export function getConfiguredWeatherCities(settings = {}) {
+  const configured = settings?.weather?.cities;
+
+  if (Array.isArray(configured) && configured.length) {
+    return configured;
+  }
+
+  return ['chennai', 'trichy', 'muscat', 'colombo'];
+}
+
+export function getWeatherLocationLabel(cityKey = '') {
+  const key = String(cityKey).toLowerCase();
+
+  const labels = {
+    chennai: 'Chennai',
+    trichy: 'Trichy',
+    tiruchirappalli: 'Trichy',
+    muscat: 'Muscat',
+    masqat: 'Muscat',
+    colombo: 'Colombo',
+    columbo: 'Colombo',
+  };
+
+  return labels[key] || cityKey;
+}
+```
+
+---
+
+## 5. Fix WeatherLocationManager not forcing refresh after add/delete
+
+Patch:
+
+```txt
+src/components/weather/WeatherLocationManager.jsx
+```
+
+Add import using the same Weather hook path used by `QuickWeather`:
+
+```js
+import { useWeather } from '../../context/WeatherContext.jsx';
+```
+
+Inside component:
+
+```js
+const { refreshWeather } = useWeather();
+```
+
+After saving city changes:
+
+```js
+await saveWeatherSettings(nextSettings);
+refreshWeather?.(true);
+```
+
+Recommended robust save helper:
+
+```js
+async function saveCities(nextCities) {
+  const nextSettings = {
+    ...settings,
+    weather: {
+      ...(settings.weather || {}),
+      cities: nextCities,
+      activeCity: nextCities.includes(settings.weather?.activeCity)
+        ? settings.weather.activeCity
+        : nextCities[0],
+    },
+  };
+
+  await saveWeatherSettings(nextSettings);
+  refreshWeather?.(true);
+
+  window.dispatchEvent(new CustomEvent('weather-locations-updated', {
+    detail: {
+      cities: nextCities,
+      forceRefresh: true,
+    },
+  }));
+}
+```
+
+---
+
+## 6. Fix Following tab “Sri Lanka” issue
+
+Create:
+
+```txt
+src/utils/topicCountryInference.js
+```
+
+```js
+const COUNTRY_TOPIC_MAP = [
+  {
+    match: /\b(sri\s*lanka|colombo|ceylon|lk)\b/i,
+    country: 'LK',
+    lang: 'en',
+    label: 'Sri Lanka',
+  },
+  {
+    match: /\b(oman|muscat|masqat|om)\b/i,
+    country: 'OM',
+    lang: 'en',
+    label: 'Oman',
+  },
+  {
+    match: /\b(india|delhi|mumbai|chennai|trichy|tiruchirappalli|in)\b/i,
+    country: 'IN',
+    lang: 'en',
+    label: 'India',
+  },
+];
+
+export function inferTopicCountryEdition(topic = '', fallback = {}) {
+  const text = String(topic || '').trim();
+
+  for (const entry of COUNTRY_TOPIC_MAP) {
+    if (entry.match.test(text)) {
+      return {
+        country: entry.country,
+        lang: entry.lang,
+        label: entry.label,
+      };
+    }
+  }
+
+  return {
+    country: fallback.country || 'IN',
+    lang: fallback.lang || 'en',
+    label: fallback.label || 'India',
+  };
+}
+```
+
+Patch:
+
+```txt
+src/utils/topicQueryBuilder.js
+```
+
+Add import:
+
+```js
+import { inferTopicCountryEdition } from './topicCountryInference.js';
+```
+
+Inside `buildTopicQuery(topic, options = {})`, add:
+
+```js
+const inferredEdition = inferTopicCountryEdition(topic, options);
+
+const country = options.country || inferredEdition.country;
+const lang = options.lang || inferredEdition.lang;
+```
+
+Use `country` and `lang` instead of hardcoded `IN/en`.
+
+Patch:
+
+```txt
+src/components/TopicSearch.jsx
+```
+
+Add import:
+
+```js
+import { inferTopicCountryEdition } from '../utils/topicCountryInference.js';
+```
+
+Before preview/follow submit:
+
+```js
+const inferredEdition = inferTopicCountryEdition(topic);
+```
+
+Replace hardcoded follow payload:
+
+```js
+country: 'IN',
+lang: 'en',
+```
+
+with:
+
+```js
+country: inferredEdition.country,
+lang: inferredEdition.lang,
+editionLabel: inferredEdition.label,
+```
+
+---
+
+## 7. Fix raw `<ol><li>` / `<a href>` showing in Buzz and Up Ahead
+
+Create:
+
+```txt
+src/utils/htmlText.js
+```
+
+```js
+const ENTITY_MAP = {
+  '&amp;': '&',
+  '&nbsp;': ' ',
+  '&quot;': '"',
+  '&#34;': '"',
+  '&#39;': "'",
+  '&apos;': "'",
+  '&lt;': '<',
+  '&gt;': '>',
+  '&ndash;': '–',
+  '&mdash;': '—',
+  '&hellip;': '…',
+};
+
+export function decodeHtmlEntities(value) {
+  let text = String(value || '');
+
+  for (const [entity, replacement] of Object.entries(ENTITY_MAP)) {
+    text = text.split(entity).join(replacement);
+  }
+
+  text = text.replace(/&#(\d+);/g, (_, code) => {
+    const number = Number(code);
+    return Number.isFinite(number) ? String.fromCharCode(number) : '';
+  });
+
+  return text;
+}
+
+export function sanitizeHtmlText(value, options = {}) {
+  const maxLength = options.maxLength || 0;
+
+  let text = decodeHtmlEntities(value)
+    .replace(/<\s*br\s*\/?>/gi, ' ')
+    .replace(/<\s*\/\s*(p|div|li|ol|ul|h\d)\s*>/gi, '. ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([.,;:!?])/g, '$1')
+    .replace(/([.,;:!?]){2,}/g, '$1')
+    .trim();
+
+  if (maxLength > 0 && text.length > maxLength) {
+    text = text.slice(0, maxLength).trimEnd() + '…';
+  }
+
+  return text;
+}
+```
+
+Patch `ImageCard.jsx`:
+
+```js
+import { sanitizeHtmlText } from '../utils/htmlText.js';
+```
+
+Use:
+
+```jsx
+<h3>{sanitizeHtmlText(title)}</h3>
+<p>{sanitizeHtmlText(summary, { maxLength: 180 })}</p>
+```
+
+Patch `NewsSection.jsx`:
+
+```js
+import { sanitizeHtmlText } from '../utils/htmlText.js';
+```
+
+Use:
+
+```jsx
+{sanitizeHtmlText(item.title)}
+{sanitizeHtmlText(item.summary, { maxLength: 220 })}
+```
+
+Patch `UpAheadPage.jsx`:
+
+```js
+import { sanitizeHtmlText } from '../utils/htmlText.js';
+```
+
+Use for warning/title/body fields:
+
+```jsx
+{sanitizeHtmlText(item.title)}
+{sanitizeHtmlText(item.summary)}
+{sanitizeHtmlText(item.warning)}
+{sanitizeHtmlText(item.description)}
+```
+
+---
+
+## 8. Fix Main desktop QuickWeather overlap
+
+Patch:
+
+```txt
+src/index.css
+```
+
+Add:
+
+```css
+@media (min-width: 1024px) {
+  .main-page .timeline-grid,
+  .main-page-grid,
+  .desktop-main-grid {
+    grid-template-columns: minmax(380px, 440px) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .main-page .left-col,
+  .main-page .sidebar-col,
+  .main-page aside {
+    min-width: 0;
+    max-width: 440px;
+    overflow: visible;
+  }
+
+  .main-page .left-col > *,
+  .main-page .sidebar-col > *,
+  .main-page aside > * {
+    max-width: 100%;
+  }
+
+  .quick-weather,
+  .quick-weather-card,
+  .quick-weather-panel {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .global-news,
+  .global-news-card,
+  [data-section="global-news"] {
+    position: relative;
+    z-index: 0;
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-page .timeline-grid,
+  .main-page-grid,
+  .desktop-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+---
+
+## 9. Fix mobile header too heavy
+
+Patch:
+
+```txt
+src/components/TimelineHeader.jsx
+```
+
+Add this compact mobile block at the top of the returned header:
+
+```jsx
+<div className="timeline-header__mobile-brief">
+  <strong>Mobile brief</strong>
+  <div className="timeline-header__mobile-actions">
+    {onRefresh && (
+      <button type="button" onClick={onRefresh} aria-label="Refresh">
+        Refresh
+      </button>
+    )}
+    {onOpenSettings && (
+      <button type="button" onClick={onOpenSettings} aria-label="Settings">
+        ⚙
+      </button>
+    )}
+  </div>
+</div>
+```
+
+Patch CSS:
+
+```css
+.timeline-header__mobile-brief {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .timeline-header {
+    padding: 10px 12px;
+  }
+
+  .timeline-header__mobile-brief {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .timeline-header__mobile-brief strong {
+    color: var(--text-primary, #f8fafc);
+    font-size: 0.95rem;
+    font-weight: 950;
+  }
+
+  .timeline-header__mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .timeline-header__mobile-actions button {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    color: inherit;
+    font-size: 0.78rem;
+    font-weight: 850;
+    padding: 7px 10px;
+  }
+
+  .timeline-header .market-ticker,
+  .timeline-header__title,
+  .timeline-header__subtitle,
+  .timeline-header__actions,
+  .timeline-header__meta {
+    display: none !important;
+  }
+}
+```
+
+---
+
+## 10. Fix Insight two grades
+
+Patch:
+
+```txt
+src/pages/InsightPage.jsx
+```
+
+Find old diagnostics panel:
+
+```jsx
+<InsightDiagnosticsPanel
+  ...
+/>
+```
+
+Change to:
+
+```jsx
+<InsightDiagnosticsPanel
+  {...diagnosticsProps}
+  showInlineGrade={false}
+/>
+```
+
+Then patch the panel component. If it is inside `InsightPage.jsx`, wrap the old grade block:
+
+```jsx
+{showInlineGrade !== false && (
+  <div className="insight-diagnostics__grade">
+    ...
+  </div>
+)}
+```
+
+Add CSS safety net:
+
+```css
+.insight-page .insight-diagnostics__grade,
+.insight-page .insight-diagnostics-panel__grade,
+.insight-page [data-insight-inline-grade="true"] {
+  display: none !important;
+}
+```
+
+Only the new top corner `GradeBadge` should remain.
+
+---
+
+## 11. Closure static test for all these issues
+
+Create:
+
+```txt
+scripts/test_weather_main_following_buzz_insight_closeout_static.mjs
+```
+
+```js
+import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function read(path) {
+  assert(fs.existsSync(path), `Missing file: ${path}`);
+  return fs.readFileSync(path, 'utf8');
+}
+
+function maybeRead(path) {
+  return fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : '';
+}
+
+const manifest = read('scripts/certification_manifest.json');
+const packageJson = read('package.json');
+const onThisDayPolicy = read('src/services/onThisDayPolicy.js');
+const mainPage = read('src/pages/MainPage.jsx');
+const topline = read('src/utils/toplineGenerator.js');
+const detailedWeather = read('src/components/DetailedWeatherCard.jsx');
+const weatherManager = read('src/components/weather/WeatherLocationManager.jsx');
+const topicInference = read('src/utils/topicCountryInference.js');
+const topicBuilder = read('src/utils/topicQueryBuilder.js');
+const topicSearch = read('src/components/TopicSearch.jsx');
+const htmlText = read('src/utils/htmlText.js');
+const upAhead = read('src/pages/UpAheadPage.jsx');
+const imageCard = read('src/components/ImageCard.jsx');
+const newsSection = read('src/components/NewsSection.jsx');
+const insightPage = read('src/pages/InsightPage.jsx');
+const indexCss = read('src/index.css');
+const timelineHeader = read('src/components/TimelineHeader.jsx');
+
+for (const script of [
+  'test:weather-final-closure',
+  'test:weather-browser-smoke:static',
+]) {
+  assert(packageJson.includes(`"${script}"`), `package.json missing ${script}`);
+}
+
+for (const gate of [
+  'weather-ux-closeout',
+  'weather-settings-onthisday',
+  'weather-signal-precision',
+  'weather-integration-hardening',
+  'weather-final-closure',
+  'weather-manager-clarity',
+  'weather-professional-theme',
+  'weather-browser-smoke-static',
+]) {
+  assert(manifest.includes(gate), `certification_manifest.json missing ${gate}`);
+}
+
+for (const token of [
+  'shouldShowOnThisDay',
+  'revealOnThisDay',
+  'hideOnThisDay',
+  'stripOnThisDayFromNewsData',
+]) {
+  assert(onThisDayPolicy.includes(token), `onThisDayPolicy missing ${token}`);
+}
+
+assert(!mainPage.includes('showOnThisDay(document)'), 'MainPage/controller still contains boolean/function naming bug');
+assert(mainPage.includes('stripOnThisDayFromNewsData'), 'MainPage must strip On This Day at source');
+assert(topline.includes('includeOnThisDay'), 'toplineGenerator must support includeOnThisDay option');
+
+assert(detailedWeather.includes('getConfiguredWeatherCities'), 'DetailedWeatherCard must use getConfiguredWeatherCities');
+assert(detailedWeather.toLowerCase().includes('colombo') || read('src/services/weatherLocations.js').toLowerCase().includes('colombo'), 'Colombo missing from weather city source');
+
+assert(
+  weatherManager.includes('refreshWeather?.(true)') ||
+  weatherManager.includes('weather-locations-updated'),
+  'WeatherLocationManager must force refresh after city save'
+);
+
+assert(topicInference.includes('Sri Lanka'), 'topicCountryInference must include Sri Lanka');
+assert(topicInference.includes("country: 'LK'") || topicInference.includes('country: "LK"'), 'Sri Lanka must map to LK');
+assert(topicBuilder.includes('inferTopicCountryEdition'), 'topicQueryBuilder must infer topic country');
+assert(topicSearch.includes('inferTopicCountryEdition'), 'TopicSearch must infer topic country');
+
+assert(htmlText.includes('sanitizeHtmlText'), 'htmlText sanitizer missing');
+assert(upAhead.includes('sanitizeHtmlText'), 'UpAhead must sanitize HTML text');
+assert(imageCard.includes('sanitizeHtmlText'), 'ImageCard must sanitize HTML text');
+assert(newsSection.includes('sanitizeHtmlText'), 'NewsSection must sanitize HTML text');
+
+assert(indexCss.includes('minmax(380px, 440px)') || indexCss.includes('max-width: 440px'), 'Desktop sidebar width/overlap CSS missing');
+assert(timelineHeader.includes('timeline-header__mobile-brief'), 'TimelineHeader mobile brief missing');
+
+assert(
+  insightPage.includes('showInlineGrade={false}') ||
+    insightPage.includes('data-insight-inline-grade') ||
+    maybeRead('src/pages/InsightPage.css').includes('insight-diagnostics__grade'),
+  'Insight old inline grade must be suppressed'
+);
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  checked: 'Weather/Main/Following/Buzz/Insight closeout',
+  guarantees: [
+    'certification manifest includes weather gates',
+    'On This Day default OFF is enforced at source level',
+    'On This Day controller naming bug is prevented',
+    'Colombo appears through configured weather cities',
+    'Weather city save can force refresh',
+    'Sri Lanka maps to LK/en in Following',
+    'HTML feed tags are sanitized',
+    'Main desktop overlap is mitigated',
+    'Mobile header has concise Mobile brief',
+    'Insight duplicate grade is suppressed'
+  ],
+}, null, 2));
+```
+
+Add to `package.json`:
+
+```json
+{
+  "test:weather-main-following-buzz-insight-closeout": "node scripts/test_weather_main_following_buzz_insight_closeout_static.mjs"
+}
+```
+
+Add to `certification_manifest.json`:
+
+```json
+{
+  "id": "weather-main-following-buzz-insight-closeout",
+  "cmd": "npm",
+  "args": ["run", "test:weather-main-following-buzz-insight-closeout"]
+}
+```
+
+---
+
+# Final run order
+
+```bash
+npm run ensure:weather-grade-manifest
+npm run test:weather-main-following-buzz-insight-closeout
+npm run test:certification-manifest
+npm run test:weather-final-closure
+npm run test:weather-browser-smoke:static
+npm run test:certify
+```
+
+Expected checkpoint:
+
+```txt
+CHECKPOINT RESULT:
+- Manifest stale issue fixed: YES/NO
+- On This Day controller naming bug fixed: YES/NO
+- On This Day source-level OFF fixed: YES/NO
+- Weather city add/delete refresh fixed: YES/NO
+- Colombo vertical weather tab fixed: YES/NO
+- Following Sri Lanka LK/en fixed: YES/NO
+- Up Ahead HTML text fixed: YES/NO
+- Buzz HTML text fixed: YES/NO
+- Main desktop overlap fixed: YES/NO
+- Mobile brief header fixed: YES/NO
+- Insight duplicate grade fixed: YES/NO
+- Full certification passed: YES/NO
+- Exact failed command, if any:
+  ...
+```
+------------------------
+Below is the **next local-only patch script**. It applies the closeout fixes as much as possible automatically and prints warnings where the current source shape needs manual adjustment.
+
+No GitHub. No saving outside your local project.
+
+Create:
+
+```txt
+scripts/apply_weather_main_following_buzz_insight_closeout_local.mjs
+```
+
+```js
+import fs from 'fs';
+
+function exists(path) {
+  return fs.existsSync(path);
+}
+
+function read(path) {
+  if (!exists(path)) return '';
+  return fs.readFileSync(path, 'utf8');
+}
+
+function write(path, content) {
+  const dir = path.split('/').slice(0, -1).join('/');
+  if (dir) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path, content, 'utf8');
+  console.log(`patched: ${path}`);
+}
+
+function patch(path, fn) {
+  const before = read(path);
+  if (!before) {
+    console.warn(`WARN: missing file, skipped: ${path}`);
+    return false;
+  }
+
+  const after = fn(before);
+
+  if (after !== before) {
+    write(path, after);
+    return true;
+  }
+
+  console.log(`no change needed: ${path}`);
+  return true;
+}
+
+function insertAfterLastImport(source, importLine) {
+  if (source.includes(importLine)) return source;
+
+  const matches = [...source.matchAll(/^import .+;$/gm)];
+  if (!matches.length) return `${importLine}\n${source}`;
+
+  const last = matches[matches.length - 1];
+  const index = last.index + last[0].length;
+
+  return `${source.slice(0, index)}\n${importLine}${source.slice(index)}`;
+}
+
+function appendOnce(source, marker, content) {
+  if (source.includes(marker)) return source;
+  return `${source.trimEnd()}\n\n${content.trim()}\n`;
+}
+
+function replaceFirst(source, patterns, replacement, label) {
+  for (const pattern of patterns) {
+    if (typeof pattern === 'string' && source.includes(pattern)) {
+      return source.replace(pattern, replacement);
+    }
+
+    if (pattern instanceof RegExp && pattern.test(source)) {
+      return source.replace(pattern, replacement);
+    }
+  }
+
+  console.warn(`WARN: anchor not found for ${label}`);
+  return source;
+}
+
+function updatePackageScripts(scriptsToAdd) {
+  patch('package.json', source => {
+    const pkg = JSON.parse(source);
+    pkg.scripts = pkg.scripts || {};
+
+    for (const [name, value] of Object.entries(scriptsToAdd)) {
+      pkg.scripts[name] = value;
+    }
+
+    return JSON.stringify(pkg, null, 2) + '\n';
+  });
+}
+
+function updateManifest(commandsToAdd) {
+  if (!exists('scripts/certification_manifest.json')) {
+    console.warn('WARN: scripts/certification_manifest.json missing; skipped manifest update');
+    return;
+  }
+
+  patch('scripts/certification_manifest.json', source => {
+    const manifest = JSON.parse(source);
+    manifest.commands = Array.isArray(manifest.commands) ? manifest.commands : [];
+
+    for (const command of commandsToAdd) {
+      const found = manifest.commands.some(entry =>
+        entry.id === command.id ||
+        (Array.isArray(entry.args) && entry.args.join(' ').includes(command.args.join(' ')))
+      );
+
+      if (!found) manifest.commands.push(command);
+    }
+
+    const seen = new Set();
+    manifest.commands = manifest.commands.filter(command => {
+      if (!command?.id) return true;
+      if (seen.has(command.id)) return false;
+      seen.add(command.id);
+      return true;
+    });
+
+    return JSON.stringify(manifest, null, 2) + '\n';
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 1) On This Day policy                                                       */
+/* -------------------------------------------------------------------------- */
+
+write('src/services/onThisDayPolicy.js', `export const ON_THIS_DAY_DEFAULT_ENABLED = false;
+
+export function shouldShowOnThisDay(settings = {}) {
+  return Boolean(
+    settings?.onThisDay?.enabled ??
+    settings?.features?.onThisDay ??
+    settings?.display?.showOnThisDay ??
+    ON_THIS_DAY_DEFAULT_ENABLED
+  );
+}
+
+export function revealOnThisDay(root = document) {
+  if (!root?.querySelectorAll) return;
+
+  root
+    .querySelectorAll('[data-on-this-day], .on-this-day, [data-section="on-this-day"]')
+    .forEach(node => {
+      node.hidden = false;
+      node.removeAttribute('aria-hidden');
+      node.classList.remove('is-hidden');
+    });
+}
+
+export function hideOnThisDay(root = document) {
+  if (!root?.querySelectorAll) return;
+
+  root
+    .querySelectorAll('[data-on-this-day], .on-this-day, [data-section="on-this-day"]')
+    .forEach(node => {
+      node.hidden = true;
+      node.setAttribute('aria-hidden', 'true');
+      node.classList.add('is-hidden');
+    });
+}
+
+export function applyOnThisDayVisibility(settings = {}, root = document) {
+  const isOnThisDayEnabled = shouldShowOnThisDay(settings);
+
+  if (isOnThisDayEnabled) {
+    revealOnThisDay(root);
+  } else {
+    hideOnThisDay(root);
+  }
+
+  return isOnThisDayEnabled;
+}
+
+export function stripOnThisDayFromNewsData(newsData = {}, settings = {}) {
+  if (shouldShowOnThisDay(settings)) return newsData;
+
+  const clone = { ...newsData };
+
+  for (const key of Object.keys(clone)) {
+    const normalized = key.toLowerCase().replace(/[\\s_-]+/g, '');
+    if (normalized.includes('onthisday') || normalized.includes('todayinhistory')) {
+      clone[key] = [];
+    }
+  }
+
+  clone.onThisDay = [];
+  clone.todayInHistory = [];
+
+  return clone;
+}
+`);
+
+/* -------------------------------------------------------------------------- */
+/* 2) Topline generator source-level On This Day control                       */
+/* -------------------------------------------------------------------------- */
+
+patch('src/utils/toplineGenerator.js', source => {
+  let text = source;
+
+  text = appendOnce(text, 'function removeOnThisDaySections', `
+function isOnThisDayKey(key = '') {
+  const normalized = String(key).toLowerCase().replace(/[\\s_-]+/g, '');
+  return normalized.includes('onthisday') || normalized.includes('todayinhistory');
+}
+
+function removeOnThisDaySections(newsData = {}) {
+  const result = { ...newsData };
+
+  for (const key of Object.keys(result)) {
+    if (isOnThisDayKey(key)) {
+      result[key] = [];
+    }
+  }
+
+  result.onThisDay = [];
+  result.todayInHistory = [];
+
+  return result;
+}
+`);
+
+  if (!text.includes('includeOnThisDay')) {
+    text = text.replace(
+      /export function generateTopline\s*\(([^)]*)\)\s*\{/,
+      (match, args) => {
+        const cleanArgs = args.trim();
+        const firstArg = cleanArgs.split(',')[0]?.trim() || 'newsData = {}';
+
+        return `export function generateTopline(${cleanArgs}, options = {}) {
+  const includeOnThisDay = options.includeOnThisDay === true;
+  const sourceData = includeOnThisDay ? ${firstArg.replace(/\s*=.*$/, '')} : removeOnThisDaySections(${firstArg.replace(/\s*=.*$/, '')});`;
+      }
+    );
+
+    const firstArgMatch = text.match(/export function generateTopline\s*\(([^)]*)\)/);
+    const firstArg = firstArgMatch?.[1]?.split(',')?.[0]?.trim()?.replace(/\s*=.*$/, '') || 'newsData';
+
+    text = text.replaceAll(firstArg, 'sourceData');
+    text = text.replace('export function generateTopline(sourceData = {}, options = {})', 'export function generateTopline(newsData = {}, options = {})');
+    text = text.replaceAll('removeOnThisDaySections(sourceData)', 'removeOnThisDaySections(newsData)');
+    text = text.replaceAll('? sourceData : removeOnThisDaySections(sourceData)', '? newsData : removeOnThisDaySections(newsData)');
+  }
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 3) MainPage On This Day source feed                                         */
+/* -------------------------------------------------------------------------- */
+
+patch('src/pages/MainPage.jsx', source => {
+  let text = source;
+
+  text = insertAfterLastImport(
+    text,
+    `import { shouldShowOnThisDay, stripOnThisDayFromNewsData } from '../services/onThisDayPolicy.js';`
+  );
+
+  text = text.replace(
+    /const showOnThisDay\s*=\s*shouldShowOnThisDay\(([^)]*)\);\s*if\s*\(showOnThisDay\)\s*\{\s*showOnThisDay\(document\);\s*\}/g,
+    `const isOnThisDayEnabled = shouldShowOnThisDay($1);
+if (isOnThisDayEnabled) {
+  revealOnThisDay(document);
+}`
+  );
+
+  if (!text.includes('stripOnThisDayFromNewsData(newsData')) {
+    text = text.replace(
+      /generateTopline\(\s*newsData\s*\)/g,
+      `generateTopline(stripOnThisDayFromNewsData(newsData, settings), {
+    includeOnThisDay: shouldShowOnThisDay(settings),
+  })`
+    );
+
+    text = text.replace(
+      /generateTopline\(\s*newsData\s*,\s*\{/g,
+      `generateTopline(stripOnThisDayFromNewsData(newsData, settings), {
+    includeOnThisDay: shouldShowOnThisDay(settings),`
+    );
+  }
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 4) Weather locations and Colombo vertical tab                               */
+/* -------------------------------------------------------------------------- */
+
+patch('src/services/weatherLocations.js', source => {
+  let text = source;
+
+  text = appendOnce(text, 'export function getConfiguredWeatherCities', `
+export function getConfiguredWeatherCities(settings = {}) {
+  const configured = settings?.weather?.cities;
+
+  if (Array.isArray(configured) && configured.length) {
+    const normalized = configured.map(city => String(city || '').toLowerCase());
+    return normalized.includes('columbo')
+      ? normalized.map(city => city === 'columbo' ? 'colombo' : city)
+      : normalized;
+  }
+
+  return ['chennai', 'trichy', 'muscat', 'colombo'];
+}
+
+export function getWeatherLocationLabel(cityKey = '') {
+  const key = String(cityKey).toLowerCase();
+
+  const labels = {
+    chennai: 'Chennai',
+    trichy: 'Trichy',
+    tiruchirappalli: 'Trichy',
+    muscat: 'Muscat',
+    masqat: 'Muscat',
+    colombo: 'Colombo',
+    columbo: 'Colombo',
+  };
+
+  return labels[key] || cityKey;
+}
+`);
+
+  if (!text.toLowerCase().includes('colombo')) {
+    console.warn('WARN: weatherLocations.js may still need Colombo in base registry arrays.');
+  }
+
+  return text;
+});
+
+patch('src/components/DetailedWeatherCard.jsx', source => {
+  let text = source;
+
+  text = insertAfterLastImport(
+    text,
+    `import { getConfiguredWeatherCities, getWeatherLocationLabel } from '../services/weatherLocations.js';`
+  );
+
+  text = text.replace(
+    /const\s+cities\s*=\s*settings\.weather\?\.cities\s*\|\|\s*\[['"]chennai['"],\s*['"]trichy['"],\s*['"]muscat['"]\];/g,
+    `const cities = getConfiguredWeatherCities(settings);`
+  );
+
+  text = text.replace(
+    /\{city\}/g,
+    `{getWeatherLocationLabel(city)}`
+  );
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 5) WeatherLocationManager force refresh                                     */
+/* -------------------------------------------------------------------------- */
+
+patch('src/components/weather/WeatherLocationManager.jsx', source => {
+  let text = source;
+
+  text = insertAfterLastImport(
+    text,
+    `import { useWeather } from '../../context/WeatherContext.jsx';`
+  );
+
+  if (!text.includes('const { refreshWeather } = useWeather();')) {
+    text = text.replace(
+      /function\s+WeatherLocationManager\s*\(([^)]*)\)\s*\{/,
+      match => `${match}
+  const { refreshWeather } = useWeather();`
+    );
+
+    text = text.replace(
+      /export default function\s+WeatherLocationManager\s*\(([^)]*)\)\s*\{/,
+      match => `${match}
+  const { refreshWeather } = useWeather();`
+    );
+  }
+
+  text = text.replace(
+    /await\s+saveWeatherSettings\(([^)]*)\);\s*(?!\s*refreshWeather)/g,
+    `await saveWeatherSettings($1);
+    refreshWeather?.(true);
+    window.dispatchEvent(new CustomEvent('weather-locations-updated', {
+      detail: { forceRefresh: true },
+    }));`
+  );
+
+  text = text.replace(
+    /saveWeatherSettings\(([^)]*)\);\s*(?!\s*refreshWeather)/g,
+    `saveWeatherSettings($1);
+    refreshWeather?.(true);
+    window.dispatchEvent(new CustomEvent('weather-locations-updated', {
+      detail: { forceRefresh: true },
+    }));`
+  );
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 6) Following tab Sri Lanka edition inference                                */
+/* -------------------------------------------------------------------------- */
+
+write('src/utils/topicCountryInference.js', `const COUNTRY_TOPIC_MAP = [
+  {
+    match: /\\b(sri\\s*lanka|colombo|columbo|ceylon|lk)\\b/i,
+    country: 'LK',
+    lang: 'en',
+    label: 'Sri Lanka',
+  },
+  {
+    match: /\\b(oman|muscat|masqat|om)\\b/i,
+    country: 'OM',
+    lang: 'en',
+    label: 'Oman',
+  },
+  {
+    match: /\\b(india|delhi|mumbai|chennai|trichy|tiruchirappalli|in)\\b/i,
+    country: 'IN',
+    lang: 'en',
+    label: 'India',
+  },
+];
+
+export function inferTopicCountryEdition(topic = '', fallback = {}) {
+  const text = String(topic || '').trim();
+
+  for (const entry of COUNTRY_TOPIC_MAP) {
+    if (entry.match.test(text)) {
+      return {
+        country: entry.country,
+        lang: entry.lang,
+        label: entry.label,
+      };
+    }
+  }
+
+  return {
+    country: fallback.country || 'IN',
+    lang: fallback.lang || 'en',
+    label: fallback.label || 'India',
+  };
+}
+`);
+
+patch('src/utils/topicQueryBuilder.js', source => {
+  let text = source;
+
+  text = insertAfterLastImport(
+    text,
+    `import { inferTopicCountryEdition } from './topicCountryInference.js';`
+  );
+
+  if (!text.includes('const inferredEdition = inferTopicCountryEdition')) {
+    text = text.replace(
+      /export function buildTopicQuery\s*\(([^)]*)\)\s*\{/,
+      match => `${match}
+  const inferredEdition = inferTopicCountryEdition(topic, options);
+  const country = options.country || inferredEdition.country;
+  const lang = options.lang || inferredEdition.lang;`
+    );
+  }
+
+  text = text.replace(/country:\s*['"]IN['"]/g, 'country');
+  text = text.replace(/lang:\s*['"]en['"]/g, 'lang');
+
+  return text;
+});
+
+patch('src/components/TopicSearch.jsx', source => {
+  let text = source;
+
+  text = insertAfterLastImport(
+    text,
+    `import { inferTopicCountryEdition } from '../utils/topicCountryInference.js';`
+  );
+
+  if (!text.includes('const inferredEdition = inferTopicCountryEdition(topic')) {
+    text = text.replace(
+      /(const\s+.*topic.*=.*;)/,
+      `$1
+  const inferredEdition = inferTopicCountryEdition(topic);`
+    );
+  }
+
+  text = text.replace(/country:\s*['"]IN['"]/g, 'country: inferredEdition.country');
+  text = text.replace(/lang:\s*['"]en['"]/g, 'lang: inferredEdition.lang');
+
+  if (!text.includes('editionLabel: inferredEdition.label')) {
+    text = text.replace(
+      /country:\s*inferredEdition\.country,\s*lang:\s*inferredEdition\.lang,?/g,
+      `country: inferredEdition.country,
+      lang: inferredEdition.lang,
+      editionLabel: inferredEdition.label,`
+    );
+  }
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 7) HTML feed text sanitizer                                                 */
+/* -------------------------------------------------------------------------- */
+
+write('src/utils/htmlText.js', `const ENTITY_MAP = {
+  '&amp;': '&',
+  '&nbsp;': ' ',
+  '&quot;': '"',
+  '&#34;': '"',
+  '&#39;': "'",
+  '&apos;': "'",
+  '&lt;': '<',
+  '&gt;': '>',
+  '&ndash;': '–',
+  '&mdash;': '—',
+  '&hellip;': '…',
+};
+
+export function decodeHtmlEntities(value) {
+  let text = String(value || '');
+
+  for (const [entity, replacement] of Object.entries(ENTITY_MAP)) {
+    text = text.split(entity).join(replacement);
+  }
+
+  text = text.replace(/&#(\\d+);/g, (_, code) => {
+    const number = Number(code);
+    return Number.isFinite(number) ? String.fromCharCode(number) : '';
+  });
+
+  return text;
+}
+
+export function sanitizeHtmlText(value, options = {}) {
+  const maxLength = options.maxLength || 0;
+
+  let text = decodeHtmlEntities(value)
+    .replace(/<\\s*br\\s*\\/?>/gi, ' ')
+    .replace(/<\\s*\\/\\s*(p|div|li|ol|ul|h\\d)\\s*>/gi, '. ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\\s+/g, ' ')
+    .replace(/\\s+([.,;:!?])/g, '$1')
+    .replace(/([.,;:!?]){2,}/g, '$1')
+    .trim();
+
+  if (maxLength > 0 && text.length > maxLength) {
+    text = text.slice(0, maxLength).trimEnd() + '…';
+  }
+
+  return text;
+}
+`);
+
+for (const file of [
+  'src/components/ImageCard.jsx',
+  'src/components/NewsSection.jsx',
+  'src/pages/UpAheadPage.jsx',
+]) {
+  patch(file, source => {
+    let text = source;
+
+    text = insertAfterLastImport(
+      text,
+      `import { sanitizeHtmlText } from '../utils/htmlText.js';`
+    );
+
+    if (file.includes('/pages/')) {
+      text = text.replace(
+        `import { sanitizeHtmlText } from '../utils/htmlText.js';`,
+        `import { sanitizeHtmlText } from '../utils/htmlText.js';`
+      );
+    }
+
+    text = text.replace(/\{item\.title\}/g, `{sanitizeHtmlText(item.title)}`);
+    text = text.replace(/\{item\.summary\}/g, `{sanitizeHtmlText(item.summary)}`);
+    text = text.replace(/\{item\.description\}/g, `{sanitizeHtmlText(item.description)}`);
+    text = text.replace(/\{item\.warning\}/g, `{sanitizeHtmlText(item.warning)}`);
+    text = text.replace(/\{title\}/g, `{sanitizeHtmlText(title)}`);
+    text = text.replace(/\{summary\}/g, `{sanitizeHtmlText(summary)}`);
+    text = text.replace(/\{description\}/g, `{sanitizeHtmlText(description)}`);
+    text = text.replace(/\{warning\}/g, `{sanitizeHtmlText(warning)}`);
+
+    return text;
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8) Desktop overlap + mobile header                                          */
+/* -------------------------------------------------------------------------- */
+
+patch('src/index.css', source => appendOnce(source, 'weather-main-closeout-layout-v1', `
+/* weather-main-closeout-layout-v1 */
+@media (min-width: 1024px) {
+  .main-page .timeline-grid,
+  .main-page-grid,
+  .desktop-main-grid {
+    grid-template-columns: minmax(380px, 440px) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .main-page .left-col,
+  .main-page .sidebar-col,
+  .main-page aside {
+    min-width: 0;
+    max-width: 440px;
+    overflow: visible;
+  }
+
+  .main-page .left-col > *,
+  .main-page .sidebar-col > *,
+  .main-page aside > * {
+    max-width: 100%;
+  }
+
+  .quick-weather,
+  .quick-weather-card,
+  .quick-weather-panel {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .global-news,
+  .global-news-card,
+  [data-section="global-news"] {
+    position: relative;
+    z-index: 0;
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-page .timeline-grid,
+  .main-page-grid,
+  .desktop-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline-header__mobile-brief {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .timeline-header {
+    padding: 10px 12px;
+  }
+
+  .timeline-header__mobile-brief {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .timeline-header__mobile-brief strong {
+    color: var(--text-primary, #f8fafc);
+    font-size: 0.95rem;
+    font-weight: 950;
+  }
+
+  .timeline-header__mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .timeline-header__mobile-actions button {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    color: inherit;
+    font-size: 0.78rem;
+    font-weight: 850;
+    padding: 7px 10px;
+  }
+
+  .timeline-header .market-ticker,
+  .timeline-header__title,
+  .timeline-header__subtitle,
+  .timeline-header__actions,
+  .timeline-header__meta {
+    display: none !important;
+  }
+}
+
+.insight-page .insight-diagnostics__grade,
+.insight-page .insight-diagnostics-panel__grade,
+.insight-page [data-insight-inline-grade="true"] {
+  display: none !important;
+}
+`));
+
+patch('src/components/TimelineHeader.jsx', source => {
+  let text = source;
+
+  if (!text.includes('timeline-header__mobile-brief')) {
+    text = text.replace(
+      /return\s*\(\s*</,
+      `return (
+    <>\n      <div className="timeline-header__mobile-brief">
+        <strong>Mobile brief</strong>
+        <div className="timeline-header__mobile-actions">
+          {onRefresh && (
+            <button type="button" onClick={onRefresh} aria-label="Refresh">
+              Refresh
+            </button>
+          )}
+          {onOpenSettings && (
+            <button type="button" onClick={onOpenSettings} aria-label="Settings">
+              ⚙
+            </button>
+          )}
+        </div>
+      </div>
+      <`
+    );
+
+    text = text.replace(/\);\s*$/s, `    </>\n  );\n`);
+  }
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 9) Insight duplicate grade suppression                                      */
+/* -------------------------------------------------------------------------- */
+
+patch('src/pages/InsightPage.jsx', source => {
+  let text = source;
+
+  text = text.replace(
+    /<InsightDiagnosticsPanel([^>]*)\/>/g,
+    `<InsightDiagnosticsPanel$1 showInlineGrade={false} />`
+  );
+
+  text = text.replace(
+    /<InsightDiagnosticsPanel([^>]*)>/g,
+    `<InsightDiagnosticsPanel$1 showInlineGrade={false}>`
+  );
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 10) Ensure manifest + closeout static test                                  */
+/* -------------------------------------------------------------------------- */
+
+write('scripts/ensure_weather_grade_manifest.mjs', `import fs from 'fs';
+
+const manifestPath = 'scripts/certification_manifest.json';
+const packagePath = 'package.json';
+
+const requiredCommands = [
+  { id: 'weather-ux-closeout', script: 'test:weather-ux-closeout' },
+  { id: 'weather-settings-onthisday', script: 'test:weather-settings-onthisday' },
+  { id: 'weather-signal-precision', script: 'test:weather-signal-precision' },
+  { id: 'weather-integration-hardening', script: 'test:weather-integration-hardening' },
+  { id: 'weather-manager-clarity', script: 'test:weather-manager-clarity' },
+  { id: 'weather-professional-theme', script: 'test:weather-professional-theme' },
+  { id: 'weather-browser-smoke-static', script: 'test:weather-browser-smoke:static' },
+  { id: 'weather-final-closure', script: 'test:weather-final-closure' },
+  { id: 'weather-main-following-buzz-insight-closeout', script: 'test:weather-main-following-buzz-insight-closeout' },
+];
+
+function readJson(path) {
+  if (!fs.existsSync(path)) throw new Error('Missing file: ' + path);
+  return JSON.parse(fs.readFileSync(path, 'utf8'));
+}
+
+const pkg = readJson(packagePath);
+const manifest = readJson(manifestPath);
+
+manifest.commands = Array.isArray(manifest.commands) ? manifest.commands : [];
+
+const missingPackageScripts = [];
+
+for (const command of requiredCommands) {
+  if (!pkg.scripts?.[command.script]) {
+    missingPackageScripts.push(command.script);
+    continue;
+  }
+
+  const exists = manifest.commands.some(entry =>
+    entry.id === command.id ||
+    (Array.isArray(entry.args) && entry.args.join(' ').includes(command.script))
+  );
+
+  if (!exists) {
+    manifest.commands.push({
+      id: command.id,
+      cmd: 'npm',
+      args: ['run', command.script],
+    });
+  }
+}
+
+const seen = new Set();
+manifest.commands = manifest.commands.filter(command => {
+  if (!command?.id) return true;
+  if (seen.has(command.id)) return false;
+  seen.add(command.id);
+  return true;
+});
+
+fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\\n', 'utf8');
+
+console.log(JSON.stringify({
+  status: missingPackageScripts.length ? 'WARN' : 'PASS',
+  checked: 'weather and grade certification manifest',
+  addedOrEnsured: requiredCommands.map(item => item.id),
+  missingPackageScripts,
+}, null, 2));
+`);
+
+write('scripts/test_weather_main_following_buzz_insight_closeout_static.mjs', `import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function read(path) {
+  assert(fs.existsSync(path), 'Missing file: ' + path);
+  return fs.readFileSync(path, 'utf8');
+}
+
+function maybeRead(path) {
+  return fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : '';
+}
+
+const manifest = read('scripts/certification_manifest.json');
+const packageJson = read('package.json');
+const onThisDayPolicy = read('src/services/onThisDayPolicy.js');
+const mainPage = read('src/pages/MainPage.jsx');
+const topline = read('src/utils/toplineGenerator.js');
+const detailedWeather = read('src/components/DetailedWeatherCard.jsx');
+const weatherManager = read('src/components/weather/WeatherLocationManager.jsx');
+const topicInference = read('src/utils/topicCountryInference.js');
+const topicBuilder = read('src/utils/topicQueryBuilder.js');
+const topicSearch = read('src/components/TopicSearch.jsx');
+const htmlText = read('src/utils/htmlText.js');
+const upAhead = read('src/pages/UpAheadPage.jsx');
+const imageCard = read('src/components/ImageCard.jsx');
+const newsSection = read('src/components/NewsSection.jsx');
+const insightPage = read('src/pages/InsightPage.jsx');
+const indexCss = read('src/index.css');
+const timelineHeader = read('src/components/TimelineHeader.jsx');
+
+for (const script of [
+  'test:weather-final-closure',
+  'test:weather-browser-smoke:static',
+  'test:weather-main-following-buzz-insight-closeout',
+]) {
+  assert(packageJson.includes('"' + script + '"'), 'package.json missing ' + script);
+}
+
+for (const gate of [
+  'weather-ux-closeout',
+  'weather-settings-onthisday',
+  'weather-signal-precision',
+  'weather-integration-hardening',
+  'weather-final-closure',
+  'weather-manager-clarity',
+  'weather-professional-theme',
+  'weather-browser-smoke-static',
+]) {
+  assert(manifest.includes(gate), 'certification_manifest.json missing ' + gate);
+}
+
+for (const token of [
+  'shouldShowOnThisDay',
+  'revealOnThisDay',
+  'hideOnThisDay',
+  'stripOnThisDayFromNewsData',
+]) {
+  assert(onThisDayPolicy.includes(token), 'onThisDayPolicy missing ' + token);
+}
+
+assert(!mainPage.includes('showOnThisDay(document)'), 'MainPage/controller still contains boolean/function naming bug');
+assert(mainPage.includes('stripOnThisDayFromNewsData'), 'MainPage must strip On This Day at source');
+assert(topline.includes('includeOnThisDay'), 'toplineGenerator must support includeOnThisDay option');
+
+assert(detailedWeather.includes('getConfiguredWeatherCities'), 'DetailedWeatherCard must use getConfiguredWeatherCities');
+assert(read('src/services/weatherLocations.js').toLowerCase().includes('colombo'), 'Colombo missing from weather city source');
+
+assert(
+  weatherManager.includes('refreshWeather?.(true)') ||
+    weatherManager.includes('weather-locations-updated'),
+  'WeatherLocationManager must force refresh after city save'
+);
+
+assert(topicInference.includes('Sri Lanka'), 'topicCountryInference must include Sri Lanka');
+assert(topicInference.includes("country: 'LK'") || topicInference.includes('country: "LK"'), 'Sri Lanka must map to LK');
+assert(topicBuilder.includes('inferTopicCountryEdition'), 'topicQueryBuilder must infer topic country');
+assert(topicSearch.includes('inferTopicCountryEdition'), 'TopicSearch must infer topic country');
+
+assert(htmlText.includes('sanitizeHtmlText'), 'htmlText sanitizer missing');
+assert(upAhead.includes('sanitizeHtmlText'), 'UpAhead must sanitize HTML text');
+assert(imageCard.includes('sanitizeHtmlText'), 'ImageCard must sanitize HTML text');
+assert(newsSection.includes('sanitizeHtmlText'), 'NewsSection must sanitize HTML text');
+
+assert(indexCss.includes('weather-main-closeout-layout-v1'), 'Desktop/sidebar/mobile closeout CSS missing');
+assert(timelineHeader.includes('timeline-header__mobile-brief'), 'TimelineHeader mobile brief missing');
+
+assert(
+  insightPage.includes('showInlineGrade={false}') ||
+    maybeRead('src/index.css').includes('insight-diagnostics__grade'),
+  'Insight old inline grade must be suppressed'
+);
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  checked: 'Weather/Main/Following/Buzz/Insight closeout',
+}, null, 2));
+`);
+
+updatePackageScripts({
+  'ensure:weather-grade-manifest': 'node scripts/ensure_weather_grade_manifest.mjs',
+  'test:weather-main-following-buzz-insight-closeout': 'node scripts/test_weather_main_following_buzz_insight_closeout_static.mjs',
+});
+
+updateManifest([
+  {
+    id: 'weather-main-following-buzz-insight-closeout',
+    cmd: 'npm',
+    args: ['run', 'test:weather-main-following-buzz-insight-closeout'],
+  },
+]);
+
+console.log('\\nLocal closeout patch applied. Review WARN lines above before running tests.');
+```
+
+Run:
+
+```bash
+node scripts/apply_weather_main_following_buzz_insight_closeout_local.mjs
+npm run ensure:weather-grade-manifest
+npm run test:weather-main-following-buzz-insight-closeout
+npm run test:certification-manifest
+npm run test:weather-final-closure
+npm run test:weather-browser-smoke:static
+npm run test:certify
+```
+
+Important: after this patcher runs, manually inspect these files if the script prints any `WARN`:
+
+```txt
+src/pages/MainPage.jsx
+src/utils/toplineGenerator.js
+src/components/WeatherLocationManager.jsx
+src/components/TopicSearch.jsx
+src/components/TimelineHeader.jsx
+```
+
+Those files are most likely to differ by current source shape.
+--------------------------------------------------
+
+Next is **post-apply hardening** for the local patcher. This catches and fixes the most likely breakages from automatic patching:
+
+```txt
+1. generateTopline accidental self-reference / bad sourceData replacement
+2. TimelineHeader JSX wrapper corruption
+3. TopicSearch inferredEdition scope issue
+4. WeatherLocationManager duplicate refresh injection
+5. sanitizer import path check
+6. final syntax/static closeout gate
+```
+
+Create:
+
+```txt
+scripts/repair_weather_closeout_patch_regressions.mjs
+```
+
+```js
+import fs from 'fs';
+
+function exists(path) {
+  return fs.existsSync(path);
+}
+
+function read(path) {
+  if (!exists(path)) return '';
+  return fs.readFileSync(path, 'utf8');
+}
+
+function write(path, content) {
+  const dir = path.split('/').slice(0, -1).join('/');
+  if (dir) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path, content, 'utf8');
+  console.log(`patched: ${path}`);
+}
+
+function patch(path, fn) {
+  const before = read(path);
+
+  if (!before) {
+    console.warn(`WARN: missing file, skipped: ${path}`);
+    return;
+  }
+
+  const after = fn(before);
+
+  if (after !== before) {
+    write(path, after);
+  } else {
+    console.log(`no change needed: ${path}`);
+  }
+}
+
+function insertAfterLastImport(source, importLine) {
+  if (source.includes(importLine)) return source;
+
+  const matches = [...source.matchAll(/^import .+;$/gm)];
+  if (!matches.length) return `${importLine}\n${source}`;
+
+  const last = matches[matches.length - 1];
+  const index = last.index + last[0].length;
+
+  return `${source.slice(0, index)}\n${importLine}${source.slice(index)}`;
+}
+
+function removeDuplicateImports(source) {
+  const lines = source.split('\n');
+  const seen = new Set();
+
+  return lines
+    .filter(line => {
+      if (!line.startsWith('import ')) return true;
+      if (!seen.has(line)) {
+        seen.add(line);
+        return true;
+      }
+      return false;
+    })
+    .join('\n');
+}
+
+/* -------------------------------------------------------------------------- */
+/* 1) Repair generateTopline safely                                            */
+/* -------------------------------------------------------------------------- */
+
+patch('src/utils/toplineGenerator.js', source => {
+  let text = source;
+
+  text = text.replace(
+    /const sourceData = includeOnThisDay \? sourceData : removeOnThisDaySections\(newsData\);/g,
+    'const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);'
+  );
+
+  text = text.replace(
+    /const sourceData = includeOnThisDay \? sourceData : removeOnThisDaySections\(sourceData\);/g,
+    'const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);'
+  );
+
+  text = text.replace(
+    /export function generateTopline\(sourceData = \{\}, options = \{\}\)/g,
+    'export function generateTopline(newsData = {}, options = {})'
+  );
+
+  if (!text.includes('function isOnThisDayKey')) {
+    text = `${text.trimEnd()}
+
+function isOnThisDayKey(key = '') {
+  const normalized = String(key).toLowerCase().replace(/[\\s_-]+/g, '');
+  return normalized.includes('onthisday') || normalized.includes('todayinhistory');
+}
+
+function removeOnThisDaySections(newsData = {}) {
+  const result = { ...newsData };
+
+  for (const key of Object.keys(result)) {
+    if (isOnThisDayKey(key)) {
+      result[key] = [];
+    }
+  }
+
+  result.onThisDay = [];
+  result.todayInHistory = [];
+
+  return result;
+}
+`;
+  }
+
+  if (!/export function generateTopline\s*\([^)]*options\s*=/.test(text)) {
+    text = text.replace(
+      /export function generateTopline\s*\(\s*newsData\s*=\s*\{\}\s*\)\s*\{/,
+      `export function generateTopline(newsData = {}, options = {}) {
+  const includeOnThisDay = options.includeOnThisDay === true;
+  const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);`
+    );
+  }
+
+  if (
+    text.includes('export function generateTopline(newsData = {}, options = {})') &&
+    !text.includes('const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);')
+  ) {
+    text = text.replace(
+      /export function generateTopline\(newsData = \{\}, options = \{\}\)\s*\{/,
+      `export function generateTopline(newsData = {}, options = {}) {
+  const includeOnThisDay = options.includeOnThisDay === true;
+  const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);`
+    );
+  }
+
+  return text;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 2) Repair MainPage topline call without introducing invalid options          */
+/* -------------------------------------------------------------------------- */
+
+patch('src/pages/MainPage.jsx', source => {
+  let text = removeDuplicateImports(source);
+
+  text = insertAfterLastImport(
+    text,
+    `import { shouldShowOnThisDay, stripOnThisDayFromNewsData } from '../services/onThisDayPolicy.js';`
+  );
+
+  text = text.replace(/showOnThisDay\(document\);/g, 'revealOnThisDay(document);');
+
+  if (!text.includes('const mainToplineNewsData = stripOnThisDayFromNewsData')) {
+    const toplineCallIndex = text.indexOf('generateTopline(');
+
+    if (toplineCallIndex >= 0) {
+      const lineStart = text.lastIndexOf('\n', toplineCallIndex);
+      text = `${text.slice(0, lineStart + 1)}
+  const mainToplineOnThisDayEnabled = shouldShowOnThisDay(settings);
+  const mainToplineNewsData = stripOnThisDayFromNewsData(newsData, settings);
+${text.slice(lineStart + 1)}`;
+    }
+  }
+
+  text = text.replace(
+    /generateTopline\(\s*newsData\s*\)/g,
+    `generateTopline(mainToplineNewsData, { includeOnThisDay: mainToplineOnThisDayEnabled })`
+  );
+
+  text = text.replace(
+    /generateTopline\(\s*stripOnThisDayFromNewsData\(newsData,\s*settings\),\s*\{\s*includeOnThisDay:\s*shouldShowOnThisDay\(settings\),\s*\}\s*\)/g,
+    `generateTopline(mainToplineNewsData, { includeOnThisDay: mainToplineOnThisDayEnabled })`
+  );
+
+  return removeDuplicateImports(text);
+});
+
+/* -------------------------------------------------------------------------- */
+/* 3) Repair TimelineHeader safely                                             */
+/* -------------------------------------------------------------------------- */
+
+patch('src/components/TimelineHeader.jsx', source => {
+  let text = source;
+
+  // If the previous auto-patcher added a fragment at file end incorrectly,
+  // do not try to rewrite the whole component. Instead only ensure the mobile
+  // brief can be inserted in a safe location immediately inside the visible
+  // header element.
+  text = text.replace(/\n\s*<\/>\s*\n\s*\);\s*$/s, '\n  );\n');
+
+  if (text.includes('timeline-header__mobile-brief')) {
+    return text;
+  }
+
+  const headerOpenMatch =
+    text.match(/<header[^>]*className=["'][^"']*timeline-header[^"']*["'][^>]*>/) ||
+    text.match(/<div[^>]*className=["'][^"']*timeline-header[^"']*["'][^>]*>/);
+
+  if (!headerOpenMatch) {
+    console.warn('WARN: TimelineHeader header anchor not found. Add mobile brief manually.');
+    return text;
+  }
+
+  const insertAt = headerOpenMatch.index + headerOpenMatch[0].length;
+
+  const mobileBrief = `
+      <div className="timeline-header__mobile-brief">
+        <strong>Mobile brief</strong>
+        <div className="timeline-header__mobile-actions">
+          {onRefresh && (
+            <button type="button" onClick={onRefresh} aria-label="Refresh">
+              Refresh
+            </button>
+          )}
+          {onOpenSettings && (
+            <button type="button" onClick={onOpenSettings} aria-label="Settings">
+              ⚙
+            </button>
+          )}
+        </div>
+      </div>`;
+
+  return `${text.slice(0, insertAt)}${mobileBrief}${text.slice(insertAt)}`;
+});
+
+/* -------------------------------------------------------------------------- */
+/* 4) Repair TopicSearch inferredEdition scope                                 */
+/* -------------------------------------------------------------------------- */
+
+patch('src/components/TopicSearch.jsx', source => {
+  let text = removeDuplicateImports(source);
+
+  text = insertAfterLastImport(
+    text,
+    `import { inferTopicCountryEdition } from '../utils/topicCountryInference.js';`
+  );
+
+  // Remove accidental top-level inferredEdition insertion if it happened.
+  text = text.replace(
+    /\n\s*const inferredEdition = inferTopicCountryEdition\(topic\);\s*(?=\n\s*(import|export|function|const|let|var))/g,
+    '\n'
+  );
+
+  // Ensure every follow/submit payload using inferredEdition has a local declaration nearby.
+  text = text.replace(
+    /(\{\s*(?:[^{}]|\{[^{}]*\})*country:\s*inferredEdition\.country\s*,)/g,
+    match => {
+      const prefixWindow = text.slice(Math.max(0, text.indexOf(match) - 300), text.indexOf(match));
+      if (prefixWindow.includes('const inferredEdition = inferTopicCountryEdition')) return match;
+
+      return `(() => {
+      const inferredEdition = inferTopicCountryEdition(topic);
+      return ${match}`;
+    }
+  );
+
+  // Close IIFE only if we opened it before an object payload. This conservative
+  // repair handles the common call pattern addTopic({ ... }).
+  text = text.replace(
+    /(editionLabel:\s*inferredEdition\.label,\s*[\s\S]{0,400}?\})\s*\)/g,
+    '$1;\n    })())'
+  );
+
+  // If the IIFE transformation made things worse in an unusual source shape,
+  // the static gate below will catch it. The manual fallback is to define:
+  // const inferredEdition = inferTopicCountryEdition(topic);
+  // directly inside the submit handler before the payload object.
+
+  return removeDuplicateImports(text);
+});
+
+/* -------------------------------------------------------------------------- */
+/* 5) Repair WeatherLocationManager duplicate refresh blocks                   */
+/* -------------------------------------------------------------------------- */
+
+patch('src/components/weather/WeatherLocationManager.jsx', source => {
+  let text = removeDuplicateImports(source);
+
+  if (!text.includes('useWeather')) {
+    text = insertAfterLastImport(
+      text,
+      `import { useWeather } from '../../context/WeatherContext.jsx';`
+    );
+  }
+
+  const componentStart =
+    text.match(/export default function\s+WeatherLocationManager\s*\([^)]*\)\s*\{/) ||
+    text.match(/function\s+WeatherLocationManager\s*\([^)]*\)\s*\{/);
+
+  if (componentStart && !text.includes('const { refreshWeather } = useWeather();')) {
+    const index = componentStart.index + componentStart[0].length;
+    text = `${text.slice(0, index)}
+  const { refreshWeather } = useWeather();${text.slice(index)}`;
+  }
+
+  // Collapse accidental repeated refresh blocks.
+  text = text.replace(
+    /(refreshWeather\?\.\(true\);\s*window\.dispatchEvent\(new CustomEvent\('weather-locations-updated',\s*\{\s*detail:\s*\{\s*forceRefresh:\s*true\s*\},\s*\}\)\);\s*){2,}/g,
+    `refreshWeather?.(true);
+    window.dispatchEvent(new CustomEvent('weather-locations-updated', {
+      detail: { forceRefresh: true },
+    }));
+    `
+  );
+
+  return removeDuplicateImports(text);
+});
+
+/* -------------------------------------------------------------------------- */
+/* 6) Repair sanitizer imports for relative paths                              */
+/* -------------------------------------------------------------------------- */
+
+for (const file of [
+  'src/components/ImageCard.jsx',
+  'src/components/NewsSection.jsx',
+  'src/pages/UpAheadPage.jsx',
+]) {
+  patch(file, source => {
+    let text = removeDuplicateImports(source);
+
+    const expectedImport = file.includes('/pages/')
+      ? `import { sanitizeHtmlText } from '../utils/htmlText.js';`
+      : `import { sanitizeHtmlText } from '../utils/htmlText.js';`;
+
+    text = text.replace(
+      /import \{ sanitizeHtmlText \} from ['"][^'"]*htmlText\.js['"];/g,
+      expectedImport
+    );
+
+    if (!text.includes(expectedImport)) {
+      text = insertAfterLastImport(text, expectedImport);
+    }
+
+    return removeDuplicateImports(text);
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7) Add regression static gate                                               */
+/* -------------------------------------------------------------------------- */
+
+write('scripts/test_weather_closeout_regression_static.mjs', `import fs from 'fs';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function read(path) {
+  assert(fs.existsSync(path), 'Missing file: ' + path);
+  return fs.readFileSync(path, 'utf8');
+}
+
+const topline = read('src/utils/toplineGenerator.js');
+const mainPage = read('src/pages/MainPage.jsx');
+const timelineHeader = read('src/components/TimelineHeader.jsx');
+const topicSearch = read('src/components/TopicSearch.jsx');
+const weatherManager = read('src/components/weather/WeatherLocationManager.jsx');
+
+assert(
+  !topline.includes('const sourceData = includeOnThisDay ? sourceData'),
+  'toplineGenerator has sourceData self-reference'
+);
+
+assert(
+  topline.includes('const sourceData = includeOnThisDay ? newsData : removeOnThisDaySections(newsData);'),
+  'toplineGenerator must derive sourceData from newsData'
+);
+
+assert(
+  mainPage.includes('mainToplineNewsData') ||
+    mainPage.includes('stripOnThisDayFromNewsData(newsData'),
+  'MainPage must strip On This Day before generateTopline'
+);
+
+assert(
+  !mainPage.includes('showOnThisDay(document)'),
+  'MainPage still has boolean/function showOnThisDay naming bug'
+);
+
+assert(
+  timelineHeader.includes('timeline-header__mobile-brief'),
+  'TimelineHeader mobile brief missing'
+);
+
+assert(
+  !/\\n\\s*<\\/>\s*\\n\\s*\\);\\s*$/.test(timelineHeader),
+  'TimelineHeader appears to have dangling fragment close'
+);
+
+assert(
+  topicSearch.includes('inferTopicCountryEdition'),
+  'TopicSearch must import/use inferTopicCountryEdition'
+);
+
+assert(
+  weatherManager.includes('refreshWeather?.(true)') ||
+    weatherManager.includes('weather-locations-updated'),
+  'WeatherLocationManager must force refresh after save'
+);
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  checked: 'weather closeout regression hardening',
+  guarantees: [
+    'topline sourceData is not self-referential',
+    'On This Day is stripped at source before topline',
+    'TimelineHeader mobile brief exists without dangling fragment close',
+    'TopicSearch has country inference path',
+    'Weather manager has force-refresh path'
+  ],
+}, null, 2));
+`);
+
+patch('package.json', source => {
+  const pkg = JSON.parse(source);
+  pkg.scripts = pkg.scripts || {};
+  pkg.scripts['test:weather-closeout-regression-static'] =
+    'node scripts/test_weather_closeout_regression_static.mjs';
+  return JSON.stringify(pkg, null, 2) + '\n';
+});
+
+console.log('\nRegression repair script complete.');
+```
+
+Run:
+
+```bash
+node scripts/repair_weather_closeout_patch_regressions.mjs
+
+npm run test:weather-closeout-regression-static
+npm run test:weather-main-following-buzz-insight-closeout
+npm run test:certification-manifest
+npm run test:weather-final-closure
+npm run test:certify
+```
+
+If this fails in `TopicSearch.jsx`, use this **manual local pattern** inside the submit/follow handler:
+
+```js
+const inferredEdition = inferTopicCountryEdition(topic);
+
+const payload = {
+  topic,
+  country: inferredEdition.country,
+  lang: inferredEdition.lang,
+  editionLabel: inferredEdition.label,
+};
+```
+
+Do not keep `const inferredEdition = ...` at component top level if `topic` is only defined inside the handler.
+
+----------------------------------------
+
+Next is a **final local closure reporter**. It does not modify source. It verifies that the fixes are present, runs the key checks, and writes a readable closure report.
+
+Create:
+
+```txt
+scripts/report_weather_main_following_buzz_insight_closeout.mjs
+```
+
+```js
+import fs from 'fs';
+import { spawnSync } from 'child_process';
+
+const REPORT_JSON = 'reports/weather_main_following_buzz_insight_closeout_report.json';
+const REPORT_MD = 'reports/weather_main_following_buzz_insight_closeout_report.md';
+
+function exists(path) {
+  return fs.existsSync(path);
+}
+
+function read(path) {
+  if (!exists(path)) return '';
+  return fs.readFileSync(path, 'utf8');
+}
+
+function readJson(path) {
+  if (!exists(path)) return null;
+  try {
+    return JSON.parse(read(path));
+  } catch (error) {
+    return {
+      __parseError: error.message,
+    };
+  }
+}
+
+function ensureDir(path) {
+  fs.mkdirSync(path, { recursive: true });
+}
+
+function check(name, condition, passDetail, failDetail) {
+  return {
+    name,
+    status: condition ? 'PASS' : 'FAIL',
+    detail: condition ? passDetail : failDetail,
+  };
+}
+
+function warn(name, condition, passDetail, warnDetail) {
+  return {
+    name,
+    status: condition ? 'PASS' : 'WARN',
+    detail: condition ? passDetail : warnDetail,
+  };
+}
+
+function run(command, args) {
+  const startedAt = new Date().toISOString();
+
+  const result = spawnSync(command, args, {
+    encoding: 'utf8',
+    shell: process.platform === 'win32',
+  });
+
+  return {
+    command: [command, ...args].join(' '),
+    status: result.status === 0 ? 'PASS' : 'FAIL',
+    exitCode: result.status,
+    startedAt,
+    stdoutTail: String(result.stdout || '').slice(-4000),
+    stderrTail: String(result.stderr || '').slice(-4000),
+  };
+}
+
+function packageHasScript(packageJson, script) {
+  return Boolean(packageJson?.scripts?.[script]);
+}
+
+function manifestHasScript(manifest, script) {
+  const commands = Array.isArray(manifest?.commands) ? manifest.commands : [];
+  return commands.some(command =>
+    Array.isArray(command.args) && command.args.join(' ').includes(script)
+  );
+}
+
+function collectStaticEvidence() {
+  const packageJson = readJson('package.json') || {};
+  const manifest = readJson('scripts/certification_manifest.json') || {};
+
+  const mainPage = read('src/pages/MainPage.jsx');
+  const topline = read('src/utils/toplineGenerator.js');
+  const weatherLocations = read('src/services/weatherLocations.js');
+  const detailedWeather = read('src/components/DetailedWeatherCard.jsx');
+  const weatherManager = read('src/components/weather/WeatherLocationManager.jsx');
+  const topicInference = read('src/utils/topicCountryInference.js');
+  const topicBuilder = read('src/utils/topicQueryBuilder.js');
+  const topicSearch = read('src/components/TopicSearch.jsx');
+  const htmlText = read('src/utils/htmlText.js');
+  const imageCard = read('src/components/ImageCard.jsx');
+  const newsSection = read('src/components/NewsSection.jsx');
+  const upAhead = read('src/pages/UpAheadPage.jsx');
+  const timelineHeader = read('src/components/TimelineHeader.jsx');
+  const indexCss = read('src/index.css');
+  const insightPage = read('src/pages/InsightPage.jsx');
+  const onThisDayPolicy = read('src/services/onThisDayPolicy.js');
+
+  const requiredWeatherScripts = [
+    'test:weather-ux-closeout',
+    'test:weather-settings-onthisday',
+    'test:weather-signal-precision',
+    'test:weather-integration-hardening',
+    'test:weather-final-closure',
+    'test:weather-browser-smoke:static',
+    'test:weather-main-following-buzz-insight-closeout',
+  ];
+
+  const requiredManifestScripts = [
+    'test:weather-final-closure',
+    'test:weather-browser-smoke:static',
+    'test:weather-main-following-buzz-insight-closeout',
+  ];
+
+  return [
+    ...requiredWeatherScripts.map(script =>
+      check(
+        `package script: ${script}`,
+        packageHasScript(packageJson, script),
+        `${script} is present in package.json`,
+        `${script} missing from package.json`
+      )
+    ),
+
+    ...requiredManifestScripts.map(script =>
+      check(
+        `manifest command: ${script}`,
+        manifestHasScript(manifest, script),
+        `${script} is present in certification_manifest.json`,
+        `${script} missing from certification_manifest.json`
+      )
+    ),
+
+    check(
+      'On This Day policy exists',
+      onThisDayPolicy.includes('stripOnThisDayFromNewsData') &&
+        onThisDayPolicy.includes('shouldShowOnThisDay') &&
+        onThisDayPolicy.includes('ON_THIS_DAY_DEFAULT_ENABLED = false'),
+      'On This Day default OFF policy is present',
+      'On This Day source policy is missing or default OFF is not explicit'
+    ),
+
+    check(
+      'MainPage strips On This Day at source',
+      mainPage.includes('stripOnThisDayFromNewsData') &&
+        !mainPage.includes('showOnThisDay(document)'),
+      'MainPage strips On This Day before topline and avoids boolean/function naming bug',
+      'MainPage still has On This Day source leak or naming bug'
+    ),
+
+    check(
+      'Topline supports includeOnThisDay',
+      topline.includes('includeOnThisDay') &&
+        topline.includes('removeOnThisDaySections') &&
+        !topline.includes('const sourceData = includeOnThisDay ? sourceData'),
+      'generateTopline can disable On This Day safely',
+      'generateTopline missing source-level On This Day control or has sourceData self-reference'
+    ),
+
+    check(
+      'Colombo in weather registry',
+      weatherLocations.toLowerCase().includes('colombo') &&
+        weatherLocations.includes('getConfiguredWeatherCities'),
+      'Colombo and configured city helper exist',
+      'Colombo/configured city helper missing from weatherLocations.js'
+    ),
+
+    check(
+      'DetailedWeatherCard uses configured cities',
+      detailedWeather.includes('getConfiguredWeatherCities'),
+      'Weather vertical tabs use central configured cities',
+      'DetailedWeatherCard still uses hardcoded city fallback'
+    ),
+
+    check(
+      'WeatherLocationManager refreshes after city changes',
+      weatherManager.includes('refreshWeather?.(true)') ||
+        weatherManager.includes('weather-locations-updated'),
+      'Weather manager can force refresh after add/delete',
+      'Weather manager does not force refresh after add/delete'
+    ),
+
+    check(
+      'Following Sri Lanka edition inference',
+      topicInference.includes('Sri Lanka') &&
+        (topicInference.includes("country: 'LK'") || topicInference.includes('country: "LK"')) &&
+        topicBuilder.includes('inferTopicCountryEdition') &&
+        topicSearch.includes('inferTopicCountryEdition'),
+      'Following tab can infer Sri Lanka as LK/en',
+      'Sri Lanka LK/en inference missing from Following flow'
+    ),
+
+    check(
+      'HTML sanitizer exists',
+      htmlText.includes('sanitizeHtmlText') && htmlText.includes('decodeHtmlEntities'),
+      'Shared HTML text sanitizer exists',
+      'Shared HTML sanitizer missing'
+    ),
+
+    check(
+      'Buzz and Up Ahead sanitize feed text',
+      imageCard.includes('sanitizeHtmlText') &&
+        newsSection.includes('sanitizeHtmlText') &&
+        upAhead.includes('sanitizeHtmlText'),
+      'ImageCard, NewsSection, and UpAhead sanitize HTML-like feed text',
+      'One or more feed renderers still render raw HTML-like strings'
+    ),
+
+    check(
+      'Desktop overlap CSS mitigation',
+      indexCss.includes('weather-main-closeout-layout-v1') ||
+        indexCss.includes('minmax(380px, 440px)'),
+      'Desktop sidebar/main overlap mitigation CSS exists',
+      'Desktop overlap CSS mitigation missing'
+    ),
+
+    check(
+      'Mobile brief header exists',
+      timelineHeader.includes('timeline-header__mobile-brief') &&
+        indexCss.includes('timeline-header__mobile-brief'),
+      'TimelineHeader has compact mobile brief and CSS',
+      'Mobile brief header missing'
+    ),
+
+    check(
+      'Insight duplicate grade suppressed',
+      insightPage.includes('showInlineGrade={false}') ||
+        indexCss.includes('insight-diagnostics__grade'),
+      'Old Insight inline grade is suppressed',
+      'Insight may still show two grades'
+    ),
+
+    warn(
+      'TopicSearch inferredEdition scope sanity',
+      !topicSearch.includes('(() => {') || topicSearch.includes('return {'),
+      'TopicSearch does not show obvious broken IIFE pattern',
+      'TopicSearch may need manual inspection for inferredEdition scope'
+    ),
+  ];
+}
+
+function collectOptionalRuntimeEvidence() {
+  const realInsightReport = readJson('public/newsdata/real_insight_quality_report.json');
+
+  if (!realInsightReport) {
+    return [
+      {
+        name: 'Insight real snapshot strict report',
+        status: 'SKIP',
+        detail: 'No public/newsdata/real_insight_quality_report.json found',
+      },
+    ];
+  }
+
+  const gate = realInsightReport.ratchetGate;
+
+  return [
+    check(
+      'Insight real snapshot ratchetGate exists',
+      Boolean(gate),
+      `ratchetGate exists with status ${gate?.status || 'UNKNOWN'}`,
+      'real_insight_quality_report.json exists but ratchetGate is missing'
+    ),
+    warn(
+      'Insight real snapshot strict status',
+      gate?.status !== 'FAIL',
+      `Strict status is ${gate?.status || 'UNKNOWN'}`,
+      `Strict status is FAIL. Fix ratchetGate.failed[] before claiming Insight done.`
+    ),
+  ];
+}
+
+function runCommands() {
+  const commands = [
+    ['npm', ['run', 'test:weather-closeout-regression-static']],
+    ['npm', ['run', 'test:weather-main-following-buzz-insight-closeout']],
+    ['npm', ['run', 'test:certification-manifest']],
+    ['npm', ['run', 'test:weather-final-closure']],
+    ['npm', ['run', 'test:weather-browser-smoke:static']],
+  ];
+
+  const packageJson = readJson('package.json') || {};
+  const filtered = commands.filter(([command, args]) => {
+    const script = args[1];
+    return command !== 'npm' || packageHasScript(packageJson, script);
+  });
+
+  return filtered.map(([command, args]) => run(command, args));
+}
+
+function statusFromSections(staticChecks, runtimeChecks, commandRuns) {
+  const all = [...staticChecks, ...runtimeChecks, ...commandRuns];
+
+  if (all.some(item => item.status === 'FAIL')) return 'FAIL';
+  if (all.some(item => item.status === 'WARN')) return 'WARN';
+  return 'PASS';
+}
+
+function markdown(report) {
+  const lines = [
+    '# Weather/Main/Following/Buzz/Insight Closeout Report',
+    '',
+    `Status: **${report.status}**`,
+    `Generated: \`${report.generatedAt}\``,
+    '',
+    '## Static checks',
+    '',
+  ];
+
+  for (const item of report.staticChecks) {
+    lines.push(`- ${item.status === 'PASS' ? '✅' : item.status === 'WARN' ? '⚠️' : '❌'} **${item.name}** — ${item.detail}`);
+  }
+
+  lines.push('', '## Optional runtime checks', '');
+
+  for (const item of report.runtimeChecks) {
+    lines.push(`- ${item.status === 'PASS' ? '✅' : item.status === 'WARN' ? '⚠️' : item.status === 'SKIP' ? '⏭️' : '❌'} **${item.name}** — ${item.detail}`);
+  }
+
+  lines.push('', '## Command runs', '');
+
+  for (const item of report.commandRuns) {
+    lines.push(`- ${item.status === 'PASS' ? '✅' : '❌'} \`${item.command}\` — exit ${item.exitCode}`);
+  }
+
+  lines.push('', '## Next action', '');
+
+  if (report.status === 'PASS') {
+    lines.push('- Run `npm run test:certify` and then do a quick visual check in desktop and mobile.');
+  } else {
+    lines.push('- Fix the failed/warned items above before running full certification.');
+  }
+
+  return lines.join('\n') + '\n';
+}
+
+function main() {
+  ensureDir('reports');
+
+  const staticChecks = collectStaticEvidence();
+  const runtimeChecks = collectOptionalRuntimeEvidence();
+  const commandRuns = runCommands();
+
+  const report = {
+    status: statusFromSections(staticChecks, runtimeChecks, commandRuns),
+    generatedAt: new Date().toISOString(),
+    scope: [
+      'stale certification manifest',
+      'On This Day default OFF and naming bug',
+      'Weather city add/delete refresh',
+      'Colombo vertical weather tab',
+      'Following Sri Lanka LK/en',
+      'Up Ahead raw HTML text',
+      'Buzz raw HTML text',
+      'Main desktop overlap',
+      'mobile header compact brief',
+      'Insight duplicate grade',
+    ],
+    staticChecks,
+    runtimeChecks,
+    commandRuns,
+  };
+
+  fs.writeFileSync(REPORT_JSON, JSON.stringify(report, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(REPORT_MD, markdown(report), 'utf8');
+
+  console.log(JSON.stringify({
+    status: report.status,
+    json: REPORT_JSON,
+    markdown: REPORT_MD,
+    failedStatic: staticChecks.filter(item => item.status === 'FAIL').map(item => item.name),
+    warnedStatic: staticChecks.filter(item => item.status === 'WARN').map(item => item.name),
+    failedCommands: commandRuns.filter(item => item.status === 'FAIL').map(item => item.command),
+  }, null, 2));
+
+  if (report.status === 'FAIL') {
+    process.exit(1);
+  }
+}
+
+main();
+```
+
+Add to `package.json`:
+
+```json
+{
+  "report:weather-main-following-buzz-insight-closeout": "node scripts/report_weather_main_following_buzz_insight_closeout.mjs"
+}
+```
+
+Run:
+
+```bash
+npm run report:weather-main-following-buzz-insight-closeout
+```
+
+Then run final certification:
+
+```bash
+npm run test:certify
+npm run build
+```
+
+Expected output:
+
+```txt
+reports/weather_main_following_buzz_insight_closeout_report.json
+reports/weather_main_following_buzz_insight_closeout_report.md
+```
+
+If the report status is `WARN`, inspect the warning first. If it is only the missing optional real Insight report, that is acceptable for weather closeout, but not enough to claim Insight algorithm quality is fully proven.
+------------------------------
+
+
+

@@ -1,0 +1,64 @@
+name: Breaking Refresh
+
+# Lightweight breaking-news mini-snapshot (L4a).
+#
+# Runs every ~15 min, independently of the hourly News Prefetch, so genuinely
+# breaking stories are not left behind in the gap between full section runs.
+# Writes public/newsdata/breaking_latest.json. The fetch script only rewrites
+# the file when the breaking *content* changes, so steady-state runs produce no
+# commit and therefore no Pages deploy. Publishing is handled by deploy.yml,
+# which fires when a data commit lands on main.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # every 15 minutes, all day
+  workflow_dispatch:          # allow manual trigger
+
+concurrency:
+  group: breaking-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Breaking-news core unit tests
+        run: python scripts/test_breaking_news_core.py
+
+      - name: Fetch breaking news
+        run: python scripts/fetch_breaking_news.py
+
+      - name: Commit breaking snapshot (only when it changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git rebase --abort 2>/dev/null || true
+          git add public/newsdata/breaking_latest.json
+          if git diff --staged --quiet; then
+            echo "No breaking-news change — skipping commit."
+            exit 0
+          fi
+          git commit -m "data: breaking refresh $(date -u +'%Y-%m-%dT%H:%MZ')"
+          for i in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((2 ** i))
+          done
+          exit 1

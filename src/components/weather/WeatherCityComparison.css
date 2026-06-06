@@ -1,0 +1,49 @@
+.wcc-card {
+    margin: 12px 16px;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+}
+
+.wcc-header {
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.wcc-table-wrap {
+    overflow-x: auto;
+}
+
+.wcc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+}
+
+.wcc-table th {
+    padding: 6px 10px;
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.75rem;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.wcc-table td {
+    padding: 7px 10px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.wcc-table tr:last-child td {
+    border-bottom: none;
+}
+
+.wcc-city {
+    font-weight: 500;
+    color: var(--text-primary);
+}

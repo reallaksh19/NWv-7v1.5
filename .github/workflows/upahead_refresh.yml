@@ -1,0 +1,85 @@
+name: UpAhead Refresh
+
+# Runs hourly during IST 6am–10pm (UTC 00:30–16:30) every day.
+# Plus weekly festivals refresh (Sunday IST 3am = Saturday UTC 21:30)
+#
+# IST 6:00am  = UTC 00:30
+# IST 10:00pm = UTC 16:30
+# Sunday IST 3:00am = Saturday UTC 21:30
+
+on:
+  schedule:
+    - cron: '30 0-16 * * *'       # Hourly IST 6am–10:30pm (UTC 00:30–16:30)
+    - cron: '30 21 * * 6'         # Weekly festivals: Saturday UTC 21:30 = Sunday IST 3:00am
+  workflow_dispatch:
+
+concurrency:
+  group: upahead-refresh
+  cancel-in-progress: false
+
+jobs:
+  upahead:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch UpAhead events
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: python scripts/fetch_upahead_events.py
+
+      - name: Fetch Festivals (weekly Saturday UTC run only)
+        if: ${{ github.event.schedule == '30 21 * * 6' || github.event_name == 'workflow_dispatch' }}
+        run: python scripts/fetch_festivals.py
+
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/ public/newsdata/source_health.json
+          if git diff --staged --quiet; then
+            echo "No changes — skipping commit"
+            exit 0
+          fi
+          git commit -m "data: upahead refresh $(date -u +'%Y-%m-%dT%H:%MZ')"
+          for i in 1 2 3 4; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1
+
+      - name: Open issue on workflow failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `upahead_refresh failure: ${new Date().toISOString()}`;
+            const body = [
+              'Automated alert from `upahead_refresh.yml`.',
+              '',
+              `- Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `- Ref: ${context.ref}`,
+              `- Commit: ${context.sha}`
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['automation', 'upahead-failure']
+            });

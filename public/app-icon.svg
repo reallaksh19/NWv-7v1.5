@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0D11"/>
+      <stop offset="100%" style="stop-color:#1a2332"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00D4AA"/>
+      <stop offset="100%" style="stop-color:#0099CC"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg)"/>
+  <!-- Sun/weather arc (top-right) -->
+  <circle cx="68" cy="32" r="12" fill="none" stroke="url(#accent)" stroke-width="3.5" stroke-dasharray="18 8" stroke-linecap="round"/>
+  <circle cx="68" cy="32" r="5" fill="url(#accent)"/>
+  <!-- News lines (newspaper style) -->
+  <rect x="18" y="52" width="38" height="3.5" rx="1.75" fill="url(#accent)"/>
+  <rect x="18" y="60" width="30" height="3" rx="1.5" fill="#4a6070"/>
+  <rect x="18" y="67" width="34" height="3" rx="1.5" fill="#4a6070"/>
+  <rect x="18" y="74" width="26" height="3" rx="1.5" fill="#4a6070"/>
+  <!-- Signal / broadcast waves -->
+  <path d="M62 58 Q72 51 62 44" fill="none" stroke="#00D4AA" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M66 61 Q80 50 66 39" fill="none" stroke="#00D4AA" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M70 64 Q88 50 70 36" fill="none" stroke="#00D4AA" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+</svg>

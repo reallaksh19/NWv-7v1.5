@@ -1,0 +1,1445 @@
+{
+  "schemaVersion": 2,
+  "manifestVersion": "nw-certification-manifest-v2",
+  "description": "Single source of truth for npm run test:certify command order.",
+  "commands": [
+    {
+      "id": "lint",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "lint"
+      ],
+      "tags": [
+        "smoke"
+      ],
+      "requiredFor": [
+        "smoke",
+        "full"
+      ]
+    },
+    {
+      "id": "lint-hotfix",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:lint-hotfix"
+      ],
+      "tags": [
+        "smoke"
+      ],
+      "requiredFor": [
+        "smoke",
+        "full"
+      ]
+    },
+    {
+      "id": "quick-weather-pro",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:quick-weather-pro"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "bottom-nav",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:bottom-nav"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "following",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:following"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "desktop-polish",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:desktop-polish"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-foundation",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-foundation"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-angle-display",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-angle-display"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-ranking-diagnostics",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-ranking-diagnostics"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-behavior-plan",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-behavior-plan"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-tree-tuning",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-tree-tuning"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-duplicate-diagnostics",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-duplicate-diagnostics"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-ranking-reason",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-ranking-reason"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-diversity-tuning",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-diversity-tuning"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-top-story-anchor",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-top-story-anchor"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-useful-variant-rescue",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-useful-variant-rescue"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-angle-classifier-enrichment",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-angle-classifier-enrichment"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-core-recovery",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-core-recovery"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-angle-recovery",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-angle-recovery"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-cluster-cohesion",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-cluster-cohesion"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-cache-contract",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-cache-contract"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-post-tree-selection",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-post-tree-selection"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-runtime-quality-gate",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-runtime-quality-gate"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-snapshot-intake",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-snapshot-intake"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-nlp-enrichment",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-nlp-enrichment"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-e2e-quality",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-e2e-quality"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-collector-json",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-collector-json"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-browser-json-ingestion",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-browser-json-ingestion"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-prefetch-quality-gate",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-prefetch-quality-gate"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "prefetch-commit-optimization",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:prefetch-commit-optimization"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "pages-data-publish",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:pages-data-publish"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "pages-newsdata-verification",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:pages-newsdata-verification"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-source-policy",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-source-policy"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-adaptive-source-health",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-adaptive-source-health"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    },
+    {
+      "id": "sections-source-policy",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:sections-source-policy"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    },
+    {
+      "id": "sections-browser-ingestion",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:sections-browser-ingestion"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "sections-quality-deploy",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:sections-quality-deploy"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "newsdata-runtime-status",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:newsdata-runtime-status"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "news-prefetch-workflow-orchestration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:news-prefetch-workflow-orchestration"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "newsdata-raw-json-fallback",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:newsdata-raw-json-fallback"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "certification-manifest",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:certification-manifest"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-cluster-anchor",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-cluster-anchor"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-24h-concept",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-24h-concept"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-behavior-evidence",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-behavior-evidence"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "upahead-evidence",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:upahead-evidence"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "upahead-briefing",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:upahead-briefing"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-evidence",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-evidence"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-view-model",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-view-model"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-bulk-actions",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-bulk-actions"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "calendar-export-quality",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:calendar-export-quality"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-item-inspector",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-item-inspector"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-agenda-export",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-agenda-export"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-interaction-quality",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-interaction-quality"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "planner-state-hygiene",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-state-hygiene"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "unit",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:unit"
+      ],
+      "tags": [
+        "smoke"
+      ],
+      "requiredFor": [
+        "smoke",
+        "full"
+      ]
+    },
+    {
+      "id": "build",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "build"
+      ],
+      "tags": [
+        "smoke"
+      ],
+      "requiredFor": [
+        "smoke",
+        "full"
+      ]
+    },
+    {
+      "id": "travel-location-priority",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-location-priority"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "travel-news-prefetch",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-news-prefetch"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "travel-location-browser-smoke-static",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-location-browser-smoke:static"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "travel-news-workflow",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-news-workflow"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "travel-local-ui-quality",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-local-ui-quality"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "travel-local-e2e-closure",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:travel-local-e2e-closure"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-rca-metrics",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-rca-metrics"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-angle-diverse-child",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-angle-diverse-child"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-useful-variant-rescue-63c",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-useful-variant-rescue-63c"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-source-diverse-child",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-source-diverse-child"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-post-tree-rerank",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-post-tree-rerank"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-real-snapshot-ratchet",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-real-snapshot-ratchet"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-real-snapshot-workflow",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-real-snapshot-workflow"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "requiredFor": [
+        "workflow",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-quality-dashboard",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-quality-dashboard"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-wave-closure",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-wave-closure"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "insight-source-diversity-guard",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-source-diversity-guard"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    },
+    {
+      "id": "weather-main-following-buzz-insight-closeout",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:weather-main-following-buzz-insight-closeout"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "real-insight-snapshot-quality",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:real-insight-snapshot-quality"
+      ],
+      "tags": [],
+      "requiredFor": [
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-1A",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release1A"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-1B",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release1B"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-1C",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release1C"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-2",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release2"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-3",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release3"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-4",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release4"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5A",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5A"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5B",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5B"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5C",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5C"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5D",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5D"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5E",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5E"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5FA",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5FA"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5FB",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5FB"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5FC",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5FC"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-5G",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release5G"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "hardening-release-6A",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:hardening:release6A"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "envelope-cert",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:envelope"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "data-foundation",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:data-foundation"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "slo-cert",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:slo"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "r4-cert",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:r4-cert"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "slo-release5",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:slo-release5"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "data-state-components",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:data-state-components"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "slo-application",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:slo-application"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "buzz-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:buzz-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "up-ahead-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:up-ahead-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "newspaper-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:newspaper-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "planner-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:planner-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "following-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:following-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "insight-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:insight-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "main-migration",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:main-migration"
+      ],
+      "tags": [
+        "data-platform"
+      ],
+      "requiredFor": [
+        "data-platform",
+        "full"
+      ]
+    },
+    {
+      "id": "editorial-source-dominance",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:editorial:source-dominance"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    },
+    {
+      "id": "editorial-stale-story",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "test:editorial:stale-story"
+      ],
+      "tags": [
+        "editorial"
+      ],
+      "requiredFor": [
+        "editorial",
+        "full"
+      ]
+    }
+  ],
+  "profiles": {
+    "smoke": "Fast gate: lint, unit, build (~2 min)",
+    "data-platform": "Release 2-6A gates + dataset/SLO/migration cert tests",
+    "editorial": "Editorial policy cert tests + source quality tests",
+    "workflow": "Workflow ordering validators + dashboard + prefetch",
+    "full": "All tests (default)"
+  }
+}

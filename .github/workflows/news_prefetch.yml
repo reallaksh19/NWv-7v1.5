@@ -1,0 +1,206 @@
+name: News Prefetch
+
+# Runs hourly during IST 7am–7:30pm (UTC 1:30–14:00), plus 3 overnight runs.
+# All times are IST (UTC+5:30). Cron uses UTC.
+#
+# IST 7:30am  = UTC 02:00
+# IST 8:30am  = UTC 03:00
+# ...
+# IST 7:30pm  = UTC 14:00
+# IST 10:30pm = UTC 17:00
+# IST 1:30am  = UTC 20:00
+# IST 4:30am  = UTC 23:00
+#
+# This workflow only refreshes JSON data and commits it to main.
+# Publishing to GitHub Pages is handled by deploy.yml, which fires
+# automatically when the data commit lands on main.
+#
+# Step ordering (Release 3):
+#   Python fetch/validate → commit decision → Node benchmark (unconditional)
+#   → generate dashboard (after benchmark) → validate dashboard → artifact upload
+#   → commit (conditional on should_commit)
+
+on:
+  schedule:
+    - cron: '30 1-13 * * *'    # every hour IST ~7:30am–7:30pm (UTC 1:30–13:30)
+    - cron: '0 15,17,18,20,23 * * *' # IST ~8:30pm,10:30pm,11:30pm,1:30am,4:30am
+  workflow_dispatch:            # allow manual trigger
+
+concurrency:
+  group: news-prefetch
+  cancel-in-progress: true
+
+jobs:
+  prefetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch Insight stories
+        run: python scripts/fetch_insight_stories.py
+
+      - name: Validate Insight prefetch quality
+        continue-on-error: true        # observability, NOT a deploy gate (INS-1 fix)
+        run: python scripts/validate_insight_prefetch_output.py
+
+      - name: Upload Insight quality report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: insight-quality-report
+          path: |
+            public/newsdata/insight_quality_report.json
+            public/newsdata/insight_quality_summary.md
+          if-no-files-found: warn
+
+      - name: Fetch Sections stories
+        run: python scripts/fetch_sections_stories.py
+
+      - name: Validate Sections prefetch quality
+        continue-on-error: true        # observability, NOT a deploy gate (INS-1 fix)
+        run: python scripts/validate_sections_prefetch_output.py
+
+      - name: Upload Sections quality report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sections-quality-report
+          path: |
+            public/newsdata/sections_quality_report.json
+            public/newsdata/sections_quality_summary.md
+          if-no-files-found: warn
+
+      - name: Decide whether news data commit is needed
+        id: prefetch_commit
+        run: python scripts/prefetch_commit_decision.py
+
+      - name: Upload prefetch commit manifest
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prefetch-commit-manifest
+          path: public/newsdata/prefetch_commit_manifest.json
+          if-no-files-found: warn
+
+      # ── Benchmark + dashboard run unconditionally ─────────────────────────────
+      # Observability data must be produced on every run, not just when content
+      # changes. Only the git commit at the end stays conditional.
+
+      - name: Setup Node for benchmark
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies for benchmark
+        run: npm ci
+
+      - name: Run real Insight snapshot quality benchmark
+        # continue-on-error: benchmarking is observability, not a deployment gate.
+        # Data quality can legitimately vary run-to-run; we always want the fresh
+        # data committed. The quality report is uploaded as an artifact regardless.
+        continue-on-error: true
+        run: npm run test:real-insight-snapshot-quality
+
+      - name: Upload real Insight quality benchmark report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-insight-quality-report
+          path: |
+            public/newsdata/real_insight_quality_report.json
+            public/newsdata/real_insight_quality_summary.md
+          if-no-files-found: warn
+
+      # ── Dashboard runs AFTER benchmark so it can read real_insight_quality_report ──
+
+      - name: Generate quality dashboard
+        if: always()
+        run: node scripts/generate_quality_dashboard.mjs
+
+      - name: Validate quality dashboard
+        if: always()
+        run: node scripts/validate_quality_dashboard.mjs
+
+      - name: Upload quality dashboard
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-dashboard
+          path: |
+            public/newsdata/quality_dashboard.json
+            public/newsdata/quality_dashboard_history.json
+          if-no-files-found: warn
+
+      # ── Commit only when meaningful content changed ───────────────────────────
+
+      - name: Commit data
+        if: steps.prefetch_commit.outputs.should_commit == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Clean up any in-progress rebase left by a previous crashed run
+          git rebase --abort 2>/dev/null || true
+          git add public/newsdata/insight_latest.json public/newsdata/sections_latest.json public/newsdata/source_health.json public/newsdata/prefetch_commit_manifest.json
+          if git diff --staged --quiet; then
+            echo "No meaningful news-data changes — skipping commit"
+            exit 0
+          fi
+          git commit -m "data: news prefetch $(date -u +'%Y-%m-%dT%H:%MZ')"
+          # Benchmark/dashboard steps write quality reports AFTER the commit-decision
+          # step, leaving them unstaged in the working tree. git rebase refuses to run
+          # with a dirty tree ("cannot rebase: You have unstaged changes"), so discard
+          # these leftover diagnostics — they are uploaded as artifacts and are
+          # intentionally never committed. This keeps the rebase/push loop clean.
+          git checkout -- . 2>/dev/null || true
+          git clean -fd public/newsdata/ 2>/dev/null || true
+          for i in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((2 ** i))
+          done
+          exit 1
+
+      - name: Skip commit for diagnostic-only changes
+        if: steps.prefetch_commit.outputs.should_commit != 'true'
+        run: |
+          echo "No meaningful news content changes. Quality reports were uploaded as artifacts only."
+
+      - name: Open issue on workflow failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `news_prefetch failure: ${new Date().toISOString()}`;
+            const body = [
+              'Automated alert from `news_prefetch.yml`.',
+              '',
+              `- Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `- Ref: ${context.ref}`,
+              `- Commit: ${context.sha}`,
+              '',
+              'Please review failed step logs and uploaded quality artifacts (`insight-quality-report`, `sections-quality-report`, `real-insight-quality-report`, `quality-dashboard`).'
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['automation', 'prefetch-failure']
+            });
