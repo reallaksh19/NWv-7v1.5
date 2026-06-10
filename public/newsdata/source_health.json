@@ -1,19 +1,25 @@
 {
-  "lastChecked": 1781110071818,
+  "lastChecked": 1781114204630,
   "sources": {
     "the_hindu": {
       "ok": true,
-      "items": 15,
-      "lastSuccess": 1781110071818
+      "items": 20,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 0,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
+      "feedUrl": "https://www.thehindu.com/sport/feeder/default.rss",
+      "section": "sports",
+      "status": "ok"
     },
     "economic_times": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastZeroItemAt": 1781088127498,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastZeroItemAt": 1781114203005,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://economictimes.indiatimes.com/rssfeeds/1977021501.cms",
       "section": "business",
       "status": "ok"
@@ -21,33 +27,46 @@
     "ndtv": {
       "ok": false,
       "items": 0,
-      "lastCheckedAt": 1781102263379,
-      "zeroItemRuns": 16,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 17,
       "lastNonZeroSuccess": 1780899602666,
       "lastSuccess": 1780899602666,
-      "lastFailure": 1781102263379,
+      "lastFailure": 1781114204630,
       "lastError": "404 Client Error: Not Found for url: https://feeds.feedburner.com/ndtvnews-movies",
       "feedUrl": "https://feeds.feedburner.com/ndtvnews-movies",
       "section": "entertainment",
       "status": "fail"
     },
     "hindustan_times": {
-      "ok": true,
-      "items": 22,
-      "lastSuccess": 1781110071818
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 2,
+      "lastSuccess": 1781110071818,
+      "lastFailure": 1781114204630,
+      "lastError": "401 Client Error: Unauthorized for url: https://www.hindustantimes.com/feeds/rss/entertainment/tamil-cinema/rssfeed.xml",
+      "feedUrl": "https://www.hindustantimes.com/feeds/rss/entertainment/tamil-cinema/rssfeed.xml",
+      "section": "entertainment",
+      "status": "fail"
     },
     "google_news": {
       "ok": true,
-      "items": 15,
-      "lastSuccess": 1781110071818
+      "items": 18,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 0,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
+      "feedUrl": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-IN&gl=IN&ceid=IN:en",
+      "section": "entertainment",
+      "status": "ok"
     },
     "times_of_india": {
       "ok": true,
-      "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "items": 19,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
       "section": "india",
       "status": "ok"
@@ -55,11 +74,11 @@
     "bbc": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
-      "lastFailure": 1781102262216,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
+      "lastFailure": 1781114203005,
       "feedUrl": "https://feeds.bbci.co.uk/sport/rss.xml",
       "section": "sports",
       "status": "ok"
@@ -67,32 +86,32 @@
     "reuters": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102262216,
+      "lastCheckedAt": 1781114203005,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102262216,
-      "lastSuccess": 1781102262216,
+      "lastNonZeroSuccess": 1781114203005,
+      "lastSuccess": 1781114203005,
       "feedUrl": "https://news.google.com/rss/search?q=site:reuters.com+India&hl=en-IN&gl=IN&ceid=IN:en",
       "status": "ok"
     },
     "moneycontrol": {
       "ok": true,
-      "items": 15,
-      "lastCheckedAt": 1781102263379,
-      "zeroItemRuns": 0,
-      "lastZeroItemAt": 1781071257088,
+      "items": 0,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 2,
+      "lastZeroItemAt": 1781114204630,
       "lastNonZeroSuccess": 1781102263379,
       "lastSuccess": 1781102263379,
       "feedUrl": "https://www.moneycontrol.com/rss/latestnews.xml",
       "section": "business",
-      "status": "ok"
+      "status": "warn"
     },
     "business_line": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://www.thehindubusinessline.com/news/feeder/default.rss",
       "section": "business",
       "status": "ok"
@@ -100,26 +119,33 @@
     "financial_express": {
       "ok": false,
       "items": 0,
-      "lastCheckedAt": 1781102263379,
-      "zeroItemRuns": 62,
-      "lastFailure": 1781102263379,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 63,
+      "lastFailure": 1781114204630,
       "lastError": "403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/",
       "feedUrl": "https://www.financialexpress.com/feed/",
       "section": "business",
       "status": "fail"
     },
     "dtnext": {
-      "ok": true,
-      "items": 15,
-      "lastSuccess": 1781110071818
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 1,
+      "lastSuccess": 1781110071818,
+      "lastFailure": 1781114204630,
+      "lastError": "404 Client Error: Not Found for url: https://www.dtnext.in/rss",
+      "feedUrl": "https://www.dtnext.in/rss",
+      "section": "trichy",
+      "status": "fail"
     },
     "gadgets360": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://feeds.feedburner.com/gadgets360-latest",
       "section": "technology",
       "status": "ok"
@@ -127,12 +153,24 @@
     "oman_observer": {
       "ok": true,
       "items": 0,
-      "lastSuccess": 1781110071818
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 1,
+      "lastZeroItemAt": 1781114204630,
+      "lastSuccess": 1781110071818,
+      "feedUrl": "https://www.omanobserver.om/rss",
+      "section": "muscat",
+      "status": "warn"
     },
     "times_of_oman": {
       "ok": true,
-      "items": 0,
-      "lastSuccess": 1781110071818
+      "items": 20,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 0,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
+      "feedUrl": "https://timesofoman.com/feed",
+      "section": "muscat",
+      "status": "ok"
     },
     "timeanddate": {
       "ok": true,
@@ -142,10 +180,10 @@
     "espn": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781088127498,
+      "lastCheckedAt": 1781114203005,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781088127498,
-      "lastSuccess": 1781088127498,
+      "lastNonZeroSuccess": 1781114203005,
+      "lastSuccess": 1781114203005,
       "feedUrl": "https://www.espncricinfo.com/rss/content/story/feeds/0.xml",
       "status": "ok"
     },
@@ -157,33 +195,33 @@
     "google_news_alt": {
       "ok": true,
       "items": 19,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://news.google.com/rss/search?q=Trichy+Tamil+Nadu+today&hl=en-IN&gl=IN&ceid=IN:en",
       "section": "trichy",
       "status": "ok"
     },
     "muscat_daily": {
-      "ok": true,
+      "ok": false,
       "items": 0,
-      "lastCheckedAt": 1781102263379,
-      "zeroItemRuns": 56,
+      "lastCheckedAt": 1781114204630,
+      "zeroItemRuns": 57,
       "lastZeroItemAt": 1781102263379,
-      "lastFailure": 1781050178342,
+      "lastFailure": 1781114204630,
       "lastError": "415 Client Error: Unsupported Media Type for url: https://www.muscatdaily.com/feed",
       "feedUrl": "https://www.muscatdaily.com/feed",
       "section": "muscat",
-      "status": "warn"
+      "status": "fail"
     },
     "google_news_oman": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1781102263379,
+      "lastCheckedAt": 1781114204630,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1781102263379,
-      "lastSuccess": 1781102263379,
+      "lastNonZeroSuccess": 1781114204630,
+      "lastSuccess": 1781114204630,
       "feedUrl": "https://news.google.com/rss/search?q=Oman+news&hl=en-IN&gl=IN&ceid=IN:en",
       "section": "muscat",
       "status": "ok"
