@@ -1,471 +1,471 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-06-12T15:37:37.349438Z",
-  "fetchedAt": 1781278657349,
+  "generatedAt": "2026-06-12T18:19:31.269096Z",
+  "fetchedAt": 1781288371269,
   "sourceMode": "snapshot-worker-open-meteo",
-  "trichy": {
-    "name": "Trichy",
+  "muscat": {
+    "name": "Muscat",
     "sourceMode": "snapshot",
     "sourceProvider": "open-meteo",
-    "fetchedAt": 1781278658008,
-    "generatedAt": "2026-06-12T15:37:38.008741Z",
-    "timezone": "Asia/Kolkata",
+    "fetchedAt": 1781288372021,
+    "generatedAt": "2026-06-12T18:19:32.021586Z",
+    "timezone": "Asia/Muscat",
     "current": {
-      "temp": 31,
-      "feelsLike": 32,
-      "condition": "Overcast",
-      "icon": "cloudy",
-      "iconId": "cloudy",
-      "humidity": 46.0,
-      "windSpeed": 15.0,
-      "windDirection": 280.0
+      "temp": 32,
+      "feelsLike": 41,
+      "condition": "Thunderstorm",
+      "icon": "storm",
+      "iconId": "storm",
+      "humidity": 75.0,
+      "windSpeed": 1.0,
+      "windDirection": 346.0
     },
     "morning": {
-      "temp": 31.0,
-      "feelsLike": 33.0,
-      "icon": "cloudy",
-      "iconId": "cloudy",
+      "temp": 36.0,
+      "feelsLike": 40.0,
+      "icon": "sunny",
+      "iconId": "sunny",
       "rainMm": "-",
       "rainProb": {
-        "avg": 24.0,
-        "min": 12.0,
-        "max": 39.0,
-        "displayString": "~24.0%",
+        "avg": 0,
+        "min": 0,
+        "max": 0,
+        "displayString": "~0%",
         "isWideRange": false
       },
-      "humidity": 55.0,
-      "windSpeed": 21.0,
+      "humidity": 42.0,
+      "windSpeed": 6.0,
       "hourly": [
         {
           "label": "6 AM",
           "time": "6 AM",
-          "temp": 28,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 12,
-          "precip": 0,
-          "condition": "Overcast"
-        },
-        {
-          "label": "7 AM",
-          "time": "7 AM",
-          "temp": 28,
-          "icon": "rain",
-          "iconId": "rain",
-          "prob": 29,
-          "precip": 0.1,
-          "condition": "Light Drizzle"
-        },
-        {
-          "label": "8 AM",
-          "time": "8 AM",
-          "temp": 30,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 39,
-          "precip": 0,
-          "condition": "Overcast"
-        },
-        {
-          "label": "9 AM",
-          "time": "9 AM",
-          "temp": 31,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 32,
-          "precip": 0,
-          "condition": "Partly Cloudy"
-        },
-        {
-          "label": "10 AM",
-          "time": "10 AM",
-          "temp": 34,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 18,
-          "precip": 0,
-          "condition": "Partly Cloudy"
-        },
-        {
-          "label": "11 AM",
-          "time": "11 AM",
-          "temp": 35,
+          "temp": 32,
           "icon": "sunny",
           "iconId": "sunny",
-          "prob": 12,
-          "precip": 0,
-          "condition": "Mainly Clear"
-        }
-      ]
-    },
-    "noon": {
-      "temp": 36.0,
-      "feelsLike": 36.0,
-      "icon": "cloudy",
-      "iconId": "cloudy",
-      "rainMm": "-",
-      "rainProb": {
-        "avg": 45.0,
-        "min": 22.0,
-        "max": 55.0,
-        "displayString": "~45.0%",
-        "isWideRange": false
-      },
-      "humidity": 39.0,
-      "windSpeed": 24.0,
-      "hourly": [
-        {
-          "label": "12 PM",
-          "time": "12 PM",
-          "temp": 36,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 22,
+          "prob": 0,
           "precip": 0,
           "condition": "Clear"
         },
         {
+          "label": "7 AM",
+          "time": "7 AM",
+          "temp": 35,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Clear"
+        },
+        {
+          "label": "8 AM",
+          "time": "8 AM",
+          "temp": 36,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Clear"
+        },
+        {
+          "label": "9 AM",
+          "time": "9 AM",
+          "temp": 37,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Clear"
+        },
+        {
+          "label": "10 AM",
+          "time": "10 AM",
+          "temp": 38,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Thunderstorm"
+        },
+        {
+          "label": "11 AM",
+          "time": "11 AM",
+          "temp": 38,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Thunderstorm"
+        }
+      ]
+    },
+    "noon": {
+      "temp": 38.0,
+      "feelsLike": 45.0,
+      "icon": "storm",
+      "iconId": "storm",
+      "rainMm": "-",
+      "rainProb": {
+        "avg": 0,
+        "min": 0,
+        "max": 0,
+        "displayString": "~0%",
+        "isWideRange": false
+      },
+      "humidity": 49.0,
+      "windSpeed": 12.0,
+      "hourly": [
+        {
+          "label": "12 PM",
+          "time": "12 PM",
+          "temp": 39,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
+          "precip": 0,
+          "condition": "Thunderstorm"
+        },
+        {
           "label": "1 PM",
           "time": "1 PM",
-          "temp": 36,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 40,
+          "temp": 39,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 0,
           "precip": 0,
-          "condition": "Partly Cloudy"
+          "condition": "Clear"
         },
         {
           "label": "2 PM",
           "time": "2 PM",
-          "temp": 36,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 53,
+          "temp": 38,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "3 PM",
           "time": "3 PM",
-          "temp": 35,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 55,
+          "temp": 38,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Partly Cloudy"
+          "condition": "Thunderstorm"
         },
         {
           "label": "4 PM",
           "time": "4 PM",
-          "temp": 35,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 53,
+          "temp": 38,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         }
       ]
     },
     "evening": {
-      "temp": 32.0,
-      "feelsLike": 33.0,
-      "icon": "cloudy",
-      "iconId": "cloudy",
+      "temp": 35.0,
+      "feelsLike": 41.0,
+      "icon": "storm",
+      "iconId": "storm",
       "rainMm": "-",
       "rainProb": {
-        "avg": 36.0,
-        "min": 24.0,
-        "max": 49.0,
-        "displayString": "~36.0%",
+        "avg": 0,
+        "min": 0,
+        "max": 0,
+        "displayString": "~0%",
         "isWideRange": false
       },
-      "humidity": 45.0,
-      "windSpeed": 17.0,
+      "humidity": 59.0,
+      "windSpeed": 6.0,
       "hourly": [
         {
           "label": "5 PM",
           "time": "5 PM",
-          "temp": 34,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 49,
+          "temp": 37,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "6 PM",
           "time": "6 PM",
-          "temp": 32,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 44,
+          "temp": 37,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "7 PM",
           "time": "7 PM",
-          "temp": 32,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 39,
+          "temp": 35,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "8 PM",
           "time": "8 PM",
-          "temp": 32,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 33,
+          "temp": 34,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "9 PM",
           "time": "9 PM",
-          "temp": 31,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 28,
+          "temp": 33,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         },
         {
           "label": "10 PM",
           "time": "10 PM",
-          "temp": 30,
-          "icon": "cloudy",
-          "iconId": "cloudy",
-          "prob": 24,
+          "temp": 32,
+          "icon": "storm",
+          "iconId": "storm",
+          "prob": 0,
           "precip": 0,
-          "condition": "Overcast"
+          "condition": "Thunderstorm"
         }
       ]
     },
     "tomorrow": {
       "morning": {
-        "temp": 31.0,
-        "feelsLike": 33.0,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 34.0,
+        "feelsLike": 41.0,
+        "icon": "storm",
+        "iconId": "storm",
         "rainMm": "-",
         "rainProb": {
-          "avg": 1.0,
+          "avg": 0,
           "min": 0,
-          "max": 4.0,
-          "displayString": "~1.0%",
+          "max": 0,
+          "displayString": "~0%",
           "isWideRange": false
         },
-        "humidity": 53.0,
-        "windSpeed": 17.0,
+        "humidity": 64.0,
+        "windSpeed": 6.0,
         "hourly": [
           {
             "label": "6 AM",
             "time": "6 AM",
-            "temp": 28,
-            "icon": "cloudy",
-            "iconId": "cloudy",
+            "temp": 30,
+            "icon": "storm",
+            "iconId": "storm",
             "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "7 AM",
             "time": "7 AM",
-            "temp": 29,
-            "icon": "cloudy",
-            "iconId": "cloudy",
+            "temp": 32,
+            "icon": "storm",
+            "iconId": "storm",
             "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "8 AM",
             "time": "8 AM",
-            "temp": 30,
-            "icon": "cloudy",
-            "iconId": "cloudy",
+            "temp": 34,
+            "icon": "storm",
+            "iconId": "storm",
             "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "9 AM",
             "time": "9 AM",
-            "temp": 32,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 1,
+            "temp": 36,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "10 AM",
             "time": "10 AM",
-            "temp": 32,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 1,
+            "temp": 37,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "11 AM",
             "time": "11 AM",
-            "temp": 34,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 4,
+            "temp": 37,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           }
         ]
       },
       "noon": {
-        "temp": 35.0,
-        "feelsLike": 38.0,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 37.0,
+        "feelsLike": 44.0,
+        "icon": "storm",
+        "iconId": "storm",
         "rainMm": "-",
         "rainProb": {
-          "avg": 26.0,
-          "min": 8.0,
-          "max": 51.0,
-          "displayString": "~26.0%",
+          "avg": 0,
+          "min": 0,
+          "max": 0,
+          "displayString": "~0%",
           "isWideRange": false
         },
-        "humidity": 42.0,
-        "windSpeed": 15.0,
+        "humidity": 51.0,
+        "windSpeed": 12.0,
         "hourly": [
           {
             "label": "12 PM",
             "time": "12 PM",
-            "temp": 35,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 8,
+            "temp": 37,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "1 PM",
             "time": "1 PM",
-            "temp": 36,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 14,
+            "temp": 38,
+            "icon": "sunny",
+            "iconId": "sunny",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Clear"
           },
           {
             "label": "2 PM",
             "time": "2 PM",
-            "temp": 36,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 22,
+            "temp": 37,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "3 PM",
             "time": "3 PM",
             "temp": 37,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 35,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "4 PM",
             "time": "4 PM",
-            "temp": 34,
-            "icon": "rain",
-            "iconId": "rain",
-            "prob": 51,
-            "precip": 0.8,
-            "condition": "Moderate Drizzle"
+            "temp": 36,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Thunderstorm"
           }
         ]
       },
       "evening": {
-        "temp": 29.0,
-        "feelsLike": 33.0,
-        "icon": "rain",
-        "iconId": "rain",
-        "rainMm": "2.6mm",
+        "temp": 34.0,
+        "feelsLike": 40.0,
+        "icon": "storm",
+        "iconId": "storm",
+        "rainMm": "-",
         "rainProb": {
-          "avg": 46.0,
-          "min": 16.0,
-          "max": 61.0,
-          "displayString": "~46.0%",
+          "avg": 0,
+          "min": 0,
+          "max": 0,
+          "displayString": "~0%",
           "isWideRange": false
         },
-        "humidity": 77.0,
-        "windSpeed": 7.0,
+        "humidity": 62.0,
+        "windSpeed": 6.0,
         "hourly": [
           {
             "label": "5 PM",
             "time": "5 PM",
-            "temp": 33,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 61,
+            "temp": 35,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "6 PM",
             "time": "6 PM",
-            "temp": 30,
-            "icon": "rain",
-            "iconId": "rain",
-            "prob": 61,
-            "precip": 0.3,
-            "condition": "Light Drizzle"
+            "temp": 34,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Thunderstorm"
           },
           {
             "label": "7 PM",
             "time": "7 PM",
-            "temp": 28,
+            "temp": 34,
             "icon": "storm",
             "iconId": "storm",
-            "prob": 56,
-            "precip": 1.4,
-            "condition": "Light Rain Showers"
+            "prob": 0,
+            "precip": 0,
+            "condition": "Thunderstorm"
           },
           {
             "label": "8 PM",
             "time": "8 PM",
-            "temp": 26,
-            "icon": "rain",
-            "iconId": "rain",
-            "prob": 47,
-            "precip": 0.9,
-            "condition": "Moderate Drizzle"
+            "temp": 34,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Thunderstorm"
           },
           {
             "label": "9 PM",
             "time": "9 PM",
-            "temp": 27,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 33,
+            "temp": 33,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           },
           {
             "label": "10 PM",
             "time": "10 PM",
-            "temp": 28,
-            "icon": "cloudy",
-            "iconId": "cloudy",
-            "prob": 16,
+            "temp": 33,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 0,
             "precip": 0,
-            "condition": "Overcast"
+            "condition": "Thunderstorm"
           }
         ]
       }
@@ -474,324 +474,324 @@
       {
         "label": "Now",
         "time": "Now",
-        "temp": 31,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 28,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 24,
-        "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "11 PM",
         "time": "11 PM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 20,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "12 AM",
         "time": "12 AM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 15,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "1 AM",
         "time": "1 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 10,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "2 AM",
         "time": "2 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 6,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "3 AM",
         "time": "3 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 3,
+        "temp": 31,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "4 AM",
         "time": "4 AM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 1,
+        "temp": 30,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "5 AM",
         "time": "5 AM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 30,
+        "icon": "storm",
+        "iconId": "storm",
         "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "6 AM",
         "time": "6 AM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 30,
+        "icon": "storm",
+        "iconId": "storm",
         "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "7 AM",
         "time": "7 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
         "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "8 AM",
         "time": "8 AM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
+        "temp": 34,
+        "icon": "storm",
+        "iconId": "storm",
         "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "9 AM",
         "time": "9 AM",
-        "temp": 32,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 1,
+        "temp": 36,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "10 AM",
         "time": "10 AM",
-        "temp": 32,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 1,
+        "temp": 37,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "11 AM",
         "time": "11 AM",
-        "temp": 34,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 4,
+        "temp": 37,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "12 PM",
         "time": "12 PM",
-        "temp": 35,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 8,
+        "temp": 37,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "1 PM",
         "time": "1 PM",
-        "temp": 36,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 14,
+        "temp": 38,
+        "icon": "sunny",
+        "iconId": "sunny",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Clear"
       },
       {
         "label": "2 PM",
         "time": "2 PM",
-        "temp": 36,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 22,
+        "temp": 37,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "3 PM",
         "time": "3 PM",
         "temp": 37,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 35,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "4 PM",
         "time": "4 PM",
-        "temp": 34,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 51,
-        "precip": 0.8,
-        "condition": "Moderate Drizzle"
+        "temp": 36,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
       },
       {
         "label": "5 PM",
         "time": "5 PM",
-        "temp": 33,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 61,
+        "temp": 35,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "6 PM",
         "time": "6 PM",
-        "temp": 30,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 61,
-        "precip": 0.3,
-        "condition": "Light Drizzle"
+        "temp": 34,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
       },
       {
         "label": "7 PM",
         "time": "7 PM",
-        "temp": 28,
+        "temp": 34,
         "icon": "storm",
         "iconId": "storm",
-        "prob": 56,
-        "precip": 1.4,
-        "condition": "Light Rain Showers"
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
       },
       {
         "label": "8 PM",
         "time": "8 PM",
-        "temp": 26,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 47,
-        "precip": 0.9,
-        "condition": "Moderate Drizzle"
+        "temp": 34,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
+      },
+      {
+        "label": "9 PM",
+        "time": "9 PM",
+        "temp": 33,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
       }
     ],
     "next8Hours": [
       {
         "label": "Now",
         "time": "Now",
-        "temp": 31,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 28,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 24,
-        "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "11 PM",
         "time": "11 PM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 20,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "12 AM",
         "time": "12 AM",
-        "temp": 30,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 15,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "1 AM",
         "time": "1 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 10,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "2 AM",
         "time": "2 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 6,
+        "temp": 32,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "3 AM",
         "time": "3 AM",
-        "temp": 29,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 3,
+        "temp": 31,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
       },
       {
         "label": "4 AM",
         "time": "4 AM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 1,
+        "temp": 30,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
         "precip": 0,
-        "condition": "Overcast"
+        "condition": "Thunderstorm"
+      },
+      {
+        "label": "5 AM",
+        "time": "5 AM",
+        "temp": 30,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Thunderstorm"
       }
     ],
     "weeklyForecast": [
@@ -799,148 +799,148 @@
         "dayLabel": "Today",
         "label": "Today",
         "date": "2026-06-12",
-        "tempMax": 36.0,
-        "tempMin": 28.0,
-        "high": 36.0,
-        "low": 28.0,
-        "precipProb": 55.0,
-        "rainProb": 55.0,
-        "precipSum": 0.1,
-        "rainMm": 0.1,
-        "realFeelDay": 38.0,
-        "humidityDay": 50.0,
-        "uvIndex": 6.0,
-        "windMax": 26.0,
-        "weatherCode": 51,
-        "icon": "rain",
-        "iconId": "rain",
-        "condition": "Light Drizzle"
+        "tempMax": 39.0,
+        "tempMin": 32.0,
+        "high": 39.0,
+        "low": 32.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 47.0,
+        "humidityDay": 47.0,
+        "uvIndex": 9.0,
+        "windMax": 13.0,
+        "weatherCode": 95,
+        "icon": "storm",
+        "iconId": "storm",
+        "condition": "Thunderstorm"
       },
       {
         "dayLabel": "Tomorrow",
         "label": "Tomorrow",
         "date": "2026-06-13",
-        "tempMax": 37.0,
-        "tempMin": 26.0,
-        "high": 37.0,
-        "low": 26.0,
-        "precipProb": 61.0,
-        "rainProb": 61.0,
-        "precipSum": 3.4,
-        "rainMm": 3.4,
-        "realFeelDay": 40.0,
-        "humidityDay": 58.0,
+        "tempMax": 38.0,
+        "tempMin": 30.0,
+        "high": 38.0,
+        "low": 30.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 45.0,
+        "humidityDay": 67.0,
         "uvIndex": 9.0,
-        "windMax": 20.0,
-        "weatherCode": 80,
+        "windMax": 13.0,
+        "weatherCode": 95,
         "icon": "storm",
         "iconId": "storm",
-        "condition": "Light Rain Showers"
+        "condition": "Thunderstorm"
       },
       {
         "dayLabel": "Sun",
         "label": "Sun",
         "date": "2026-06-14",
-        "tempMax": 36.0,
-        "tempMin": 26.0,
-        "high": 36.0,
-        "low": 26.0,
-        "precipProb": 76.0,
-        "rainProb": 76.0,
-        "precipSum": 9.6,
-        "rainMm": 9.6,
-        "realFeelDay": 40.0,
-        "humidityDay": 65.0,
-        "uvIndex": 8.0,
-        "windMax": 21.0,
-        "weatherCode": 81,
+        "tempMax": 39.0,
+        "tempMin": 30.0,
+        "high": 39.0,
+        "low": 30.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 45.0,
+        "humidityDay": 59.0,
+        "uvIndex": 9.0,
+        "windMax": 18.0,
+        "weatherCode": 95,
         "icon": "storm",
         "iconId": "storm",
-        "condition": "Rain Showers"
+        "condition": "Thunderstorm"
       },
       {
         "dayLabel": "Mon",
         "label": "Mon",
         "date": "2026-06-15",
-        "tempMax": 36.0,
-        "tempMin": 26.0,
-        "high": 36.0,
-        "low": 26.0,
-        "precipProb": 68.0,
-        "rainProb": 68.0,
-        "precipSum": 11.4,
-        "rainMm": 11.4,
-        "realFeelDay": 40.0,
-        "humidityDay": 73.0,
-        "uvIndex": 4.0,
-        "windMax": 25.0,
-        "weatherCode": 81,
-        "icon": "storm",
-        "iconId": "storm",
-        "condition": "Rain Showers"
+        "tempMax": 43.0,
+        "tempMin": 32.0,
+        "high": 43.0,
+        "low": 32.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 44.0,
+        "humidityDay": 26.0,
+        "uvIndex": 9.0,
+        "windMax": 21.0,
+        "weatherCode": 0,
+        "icon": "sunny",
+        "iconId": "sunny",
+        "condition": "Clear"
       },
       {
         "dayLabel": "Tue",
         "label": "Tue",
         "date": "2026-06-16",
-        "tempMax": 36.0,
-        "tempMin": 26.0,
-        "high": 36.0,
-        "low": 26.0,
-        "precipProb": 53.0,
-        "rainProb": 53.0,
-        "precipSum": 1.8,
-        "rainMm": 1.8,
-        "realFeelDay": 40.0,
-        "humidityDay": 71.0,
+        "tempMax": 45.0,
+        "tempMin": 33.0,
+        "high": 45.0,
+        "low": 33.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 43.0,
+        "humidityDay": 25.0,
         "uvIndex": 9.0,
-        "windMax": 18.0,
-        "weatherCode": 53,
-        "icon": "rain",
-        "iconId": "rain",
-        "condition": "Moderate Drizzle"
+        "windMax": 25.0,
+        "weatherCode": 95,
+        "icon": "storm",
+        "iconId": "storm",
+        "condition": "Thunderstorm"
       },
       {
         "dayLabel": "Wed",
         "label": "Wed",
         "date": "2026-06-17",
-        "tempMax": 36.0,
-        "tempMin": 27.0,
-        "high": 36.0,
-        "low": 27.0,
-        "precipProb": 57.0,
-        "rainProb": 57.0,
-        "precipSum": 1.2,
-        "rainMm": 1.2,
-        "realFeelDay": 40.0,
-        "humidityDay": 65.0,
-        "uvIndex": 4.0,
-        "windMax": 18.0,
-        "weatherCode": 51,
-        "icon": "rain",
-        "iconId": "rain",
-        "condition": "Light Drizzle"
+        "tempMax": 38.0,
+        "tempMin": 33.0,
+        "high": 38.0,
+        "low": 33.0,
+        "precipProb": 0,
+        "rainProb": 0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 42.0,
+        "humidityDay": 34.0,
+        "uvIndex": 9.0,
+        "windMax": 19.0,
+        "weatherCode": 0,
+        "icon": "sunny",
+        "iconId": "sunny",
+        "condition": "Clear"
       },
       {
         "dayLabel": "Thu",
         "label": "Thu",
         "date": "2026-06-18",
-        "tempMax": 35.0,
-        "tempMin": 27.0,
-        "high": 35.0,
-        "low": 27.0,
-        "precipProb": 27.0,
-        "rainProb": 27.0,
+        "tempMax": 41.0,
+        "tempMin": 31.0,
+        "high": 41.0,
+        "low": 31.0,
+        "precipProb": 0,
+        "rainProb": 0,
         "precipSum": 0,
         "rainMm": 0,
-        "realFeelDay": 40.0,
-        "humidityDay": 61.0,
-        "uvIndex": 1.0,
-        "windMax": 17.0,
-        "weatherCode": 3,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "condition": "Overcast"
+        "realFeelDay": 42.0,
+        "humidityDay": 28.0,
+        "uvIndex": 9.0,
+        "windMax": 16.0,
+        "weatherCode": 0,
+        "icon": "sunny",
+        "iconId": "sunny",
+        "condition": "Clear"
       }
     ],
     "models": {
@@ -955,18 +955,18 @@
     "name": "Colombo",
     "sourceMode": "snapshot",
     "sourceProvider": "open-meteo",
-    "fetchedAt": 1781278658010,
-    "generatedAt": "2026-06-12T15:37:38.011102Z",
+    "fetchedAt": 1781288372027,
+    "generatedAt": "2026-06-12T18:19:32.027402Z",
     "timezone": "Asia/Colombo",
     "current": {
       "temp": 26,
-      "feelsLike": 30,
-      "condition": "Light Rain Showers",
-      "icon": "storm",
-      "iconId": "storm",
-      "humidity": 92.0,
-      "windSpeed": 13.0,
-      "windDirection": 239.0
+      "feelsLike": 31,
+      "condition": "Dense Drizzle",
+      "icon": "rain",
+      "iconId": "rain",
+      "humidity": 93.0,
+      "windSpeed": 7.0,
+      "windDirection": 203.0
     },
     "morning": {
       "temp": 27.0,
@@ -1423,26 +1423,6 @@
         "label": "Now",
         "time": "Now",
         "temp": 26,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 79,
-        "precip": 1.4,
-        "condition": "Light Rain Showers"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 26,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 77,
-        "precip": 0.2,
-        "condition": "Light Drizzle"
-      },
-      {
-        "label": "11 PM",
-        "time": "11 PM",
-        "temp": 26,
         "icon": "cloudy",
         "iconId": "cloudy",
         "prob": 78,
@@ -1658,18 +1638,16 @@
         "prob": 71,
         "precip": 0.1,
         "condition": "Light Drizzle"
-      }
-    ],
-    "next8Hours": [
+      },
       {
-        "label": "Now",
-        "time": "Now",
-        "temp": 26,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 79,
-        "precip": 1.4,
-        "condition": "Light Rain Showers"
+        "label": "9 PM",
+        "time": "9 PM",
+        "temp": 27,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 71,
+        "precip": 0.3,
+        "condition": "Light Drizzle"
       },
       {
         "label": "10 PM",
@@ -1677,13 +1655,15 @@
         "temp": 26,
         "icon": "rain",
         "iconId": "rain",
-        "prob": 77,
+        "prob": 74,
         "precip": 0.2,
         "condition": "Light Drizzle"
-      },
+      }
+    ],
+    "next8Hours": [
       {
-        "label": "11 PM",
-        "time": "11 PM",
+        "label": "Now",
+        "time": "Now",
         "temp": 26,
         "icon": "cloudy",
         "iconId": "cloudy",
@@ -1739,6 +1719,26 @@
         "iconId": "rain",
         "prob": 94,
         "precip": 0.9,
+        "condition": "Moderate Drizzle"
+      },
+      {
+        "label": "5 AM",
+        "time": "5 AM",
+        "temp": 26,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 94,
+        "precip": 0.7,
+        "condition": "Moderate Drizzle"
+      },
+      {
+        "label": "6 AM",
+        "time": "6 AM",
+        "temp": 26,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 95,
+        "precip": 0.6,
         "condition": "Moderate Drizzle"
       }
     ],
@@ -1799,7 +1799,7 @@
         "rainMm": 5.8,
         "realFeelDay": 34.0,
         "humidityDay": 83.0,
-        "uvIndex": 8.0,
+        "uvIndex": 7.0,
         "windMax": 18.0,
         "weatherCode": 53,
         "icon": "rain",
@@ -1820,7 +1820,7 @@
         "rainMm": 8.9,
         "realFeelDay": 33.0,
         "humidityDay": 85.0,
-        "uvIndex": 5.0,
+        "uvIndex": 6.0,
         "windMax": 16.0,
         "weatherCode": 95,
         "icon": "storm",
@@ -1841,7 +1841,7 @@
         "rainMm": 30.7,
         "realFeelDay": 32.0,
         "humidityDay": 90.0,
-        "uvIndex": 8.0,
+        "uvIndex": 7.0,
         "windMax": 18.0,
         "weatherCode": 80,
         "icon": "storm",
@@ -1883,7 +1883,7 @@
         "rainMm": 15.0,
         "realFeelDay": 34.0,
         "humidityDay": 86.0,
-        "uvIndex": 5.0,
+        "uvIndex": 6.0,
         "windMax": 17.0,
         "weatherCode": 80,
         "icon": "storm",
@@ -1899,22 +1899,970 @@
       "names": "Open-Meteo"
     }
   },
+  "trichy": {
+    "name": "Trichy",
+    "sourceMode": "snapshot",
+    "sourceProvider": "open-meteo",
+    "fetchedAt": 1781288372029,
+    "generatedAt": "2026-06-12T18:19:32.029682Z",
+    "timezone": "Asia/Kolkata",
+    "current": {
+      "temp": 30,
+      "feelsLike": 32,
+      "condition": "Overcast",
+      "icon": "cloudy",
+      "iconId": "cloudy",
+      "humidity": 53.0,
+      "windSpeed": 12.0,
+      "windDirection": 272.0
+    },
+    "morning": {
+      "temp": 31.0,
+      "feelsLike": 33.0,
+      "icon": "cloudy",
+      "iconId": "cloudy",
+      "rainMm": "-",
+      "rainProb": {
+        "avg": 24.0,
+        "min": 12.0,
+        "max": 39.0,
+        "displayString": "~24.0%",
+        "isWideRange": false
+      },
+      "humidity": 55.0,
+      "windSpeed": 21.0,
+      "hourly": [
+        {
+          "label": "6 AM",
+          "time": "6 AM",
+          "temp": 28,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 12,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "7 AM",
+          "time": "7 AM",
+          "temp": 28,
+          "icon": "rain",
+          "iconId": "rain",
+          "prob": 29,
+          "precip": 0.1,
+          "condition": "Light Drizzle"
+        },
+        {
+          "label": "8 AM",
+          "time": "8 AM",
+          "temp": 30,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 39,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "9 AM",
+          "time": "9 AM",
+          "temp": 31,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 32,
+          "precip": 0,
+          "condition": "Partly Cloudy"
+        },
+        {
+          "label": "10 AM",
+          "time": "10 AM",
+          "temp": 34,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 18,
+          "precip": 0,
+          "condition": "Partly Cloudy"
+        },
+        {
+          "label": "11 AM",
+          "time": "11 AM",
+          "temp": 35,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 12,
+          "precip": 0,
+          "condition": "Mainly Clear"
+        }
+      ]
+    },
+    "noon": {
+      "temp": 36.0,
+      "feelsLike": 36.0,
+      "icon": "cloudy",
+      "iconId": "cloudy",
+      "rainMm": "-",
+      "rainProb": {
+        "avg": 45.0,
+        "min": 22.0,
+        "max": 55.0,
+        "displayString": "~45.0%",
+        "isWideRange": false
+      },
+      "humidity": 39.0,
+      "windSpeed": 24.0,
+      "hourly": [
+        {
+          "label": "12 PM",
+          "time": "12 PM",
+          "temp": 36,
+          "icon": "sunny",
+          "iconId": "sunny",
+          "prob": 22,
+          "precip": 0,
+          "condition": "Clear"
+        },
+        {
+          "label": "1 PM",
+          "time": "1 PM",
+          "temp": 36,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 40,
+          "precip": 0,
+          "condition": "Partly Cloudy"
+        },
+        {
+          "label": "2 PM",
+          "time": "2 PM",
+          "temp": 36,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 53,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "3 PM",
+          "time": "3 PM",
+          "temp": 35,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 55,
+          "precip": 0,
+          "condition": "Partly Cloudy"
+        },
+        {
+          "label": "4 PM",
+          "time": "4 PM",
+          "temp": 35,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 53,
+          "precip": 0,
+          "condition": "Overcast"
+        }
+      ]
+    },
+    "evening": {
+      "temp": 32.0,
+      "feelsLike": 33.0,
+      "icon": "cloudy",
+      "iconId": "cloudy",
+      "rainMm": "-",
+      "rainProb": {
+        "avg": 36.0,
+        "min": 24.0,
+        "max": 49.0,
+        "displayString": "~36.0%",
+        "isWideRange": false
+      },
+      "humidity": 45.0,
+      "windSpeed": 17.0,
+      "hourly": [
+        {
+          "label": "5 PM",
+          "time": "5 PM",
+          "temp": 34,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 49,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "6 PM",
+          "time": "6 PM",
+          "temp": 32,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 44,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "7 PM",
+          "time": "7 PM",
+          "temp": 32,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 39,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "8 PM",
+          "time": "8 PM",
+          "temp": 32,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 33,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "9 PM",
+          "time": "9 PM",
+          "temp": 31,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 28,
+          "precip": 0,
+          "condition": "Overcast"
+        },
+        {
+          "label": "10 PM",
+          "time": "10 PM",
+          "temp": 30,
+          "icon": "cloudy",
+          "iconId": "cloudy",
+          "prob": 24,
+          "precip": 0,
+          "condition": "Overcast"
+        }
+      ]
+    },
+    "tomorrow": {
+      "morning": {
+        "temp": 31.0,
+        "feelsLike": 33.0,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "rainMm": "-",
+        "rainProb": {
+          "avg": 1.0,
+          "min": 0,
+          "max": 4.0,
+          "displayString": "~1.0%",
+          "isWideRange": false
+        },
+        "humidity": 53.0,
+        "windSpeed": 17.0,
+        "hourly": [
+          {
+            "label": "6 AM",
+            "time": "6 AM",
+            "temp": 28,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "7 AM",
+            "time": "7 AM",
+            "temp": 29,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "8 AM",
+            "time": "8 AM",
+            "temp": 30,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 0,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "9 AM",
+            "time": "9 AM",
+            "temp": 32,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 1,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "10 AM",
+            "time": "10 AM",
+            "temp": 32,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 1,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "11 AM",
+            "time": "11 AM",
+            "temp": 34,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 4,
+            "precip": 0,
+            "condition": "Overcast"
+          }
+        ]
+      },
+      "noon": {
+        "temp": 35.0,
+        "feelsLike": 38.0,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "rainMm": "-",
+        "rainProb": {
+          "avg": 26.0,
+          "min": 8.0,
+          "max": 51.0,
+          "displayString": "~26.0%",
+          "isWideRange": false
+        },
+        "humidity": 42.0,
+        "windSpeed": 15.0,
+        "hourly": [
+          {
+            "label": "12 PM",
+            "time": "12 PM",
+            "temp": 35,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 8,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "1 PM",
+            "time": "1 PM",
+            "temp": 36,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 14,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "2 PM",
+            "time": "2 PM",
+            "temp": 36,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 22,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "3 PM",
+            "time": "3 PM",
+            "temp": 37,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 35,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "4 PM",
+            "time": "4 PM",
+            "temp": 34,
+            "icon": "rain",
+            "iconId": "rain",
+            "prob": 51,
+            "precip": 0.8,
+            "condition": "Moderate Drizzle"
+          }
+        ]
+      },
+      "evening": {
+        "temp": 29.0,
+        "feelsLike": 33.0,
+        "icon": "rain",
+        "iconId": "rain",
+        "rainMm": "2.6mm",
+        "rainProb": {
+          "avg": 46.0,
+          "min": 16.0,
+          "max": 61.0,
+          "displayString": "~46.0%",
+          "isWideRange": false
+        },
+        "humidity": 77.0,
+        "windSpeed": 7.0,
+        "hourly": [
+          {
+            "label": "5 PM",
+            "time": "5 PM",
+            "temp": 33,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 61,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "6 PM",
+            "time": "6 PM",
+            "temp": 30,
+            "icon": "rain",
+            "iconId": "rain",
+            "prob": 61,
+            "precip": 0.3,
+            "condition": "Light Drizzle"
+          },
+          {
+            "label": "7 PM",
+            "time": "7 PM",
+            "temp": 28,
+            "icon": "storm",
+            "iconId": "storm",
+            "prob": 56,
+            "precip": 1.4,
+            "condition": "Light Rain Showers"
+          },
+          {
+            "label": "8 PM",
+            "time": "8 PM",
+            "temp": 26,
+            "icon": "rain",
+            "iconId": "rain",
+            "prob": 47,
+            "precip": 0.9,
+            "condition": "Moderate Drizzle"
+          },
+          {
+            "label": "9 PM",
+            "time": "9 PM",
+            "temp": 27,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 33,
+            "precip": 0,
+            "condition": "Overcast"
+          },
+          {
+            "label": "10 PM",
+            "time": "10 PM",
+            "temp": 28,
+            "icon": "cloudy",
+            "iconId": "cloudy",
+            "prob": 16,
+            "precip": 0,
+            "condition": "Overcast"
+          }
+        ]
+      }
+    },
+    "hourly24": [
+      {
+        "label": "Now",
+        "time": "Now",
+        "temp": 30,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 20,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "12 AM",
+        "time": "12 AM",
+        "temp": 30,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 15,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "1 AM",
+        "time": "1 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 10,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "2 AM",
+        "time": "2 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 6,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "3 AM",
+        "time": "3 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 3,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "4 AM",
+        "time": "4 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 1,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "5 AM",
+        "time": "5 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "6 AM",
+        "time": "6 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "7 AM",
+        "time": "7 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "8 AM",
+        "time": "8 AM",
+        "temp": 30,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "9 AM",
+        "time": "9 AM",
+        "temp": 32,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 1,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "10 AM",
+        "time": "10 AM",
+        "temp": 32,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 1,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "11 AM",
+        "time": "11 AM",
+        "temp": 34,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 4,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "12 PM",
+        "time": "12 PM",
+        "temp": 35,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 8,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "1 PM",
+        "time": "1 PM",
+        "temp": 36,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 14,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "2 PM",
+        "time": "2 PM",
+        "temp": 36,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 22,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "3 PM",
+        "time": "3 PM",
+        "temp": 37,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 35,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "4 PM",
+        "time": "4 PM",
+        "temp": 34,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 51,
+        "precip": 0.8,
+        "condition": "Moderate Drizzle"
+      },
+      {
+        "label": "5 PM",
+        "time": "5 PM",
+        "temp": 33,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 61,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "6 PM",
+        "time": "6 PM",
+        "temp": 30,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 61,
+        "precip": 0.3,
+        "condition": "Light Drizzle"
+      },
+      {
+        "label": "7 PM",
+        "time": "7 PM",
+        "temp": 28,
+        "icon": "storm",
+        "iconId": "storm",
+        "prob": 56,
+        "precip": 1.4,
+        "condition": "Light Rain Showers"
+      },
+      {
+        "label": "8 PM",
+        "time": "8 PM",
+        "temp": 26,
+        "icon": "rain",
+        "iconId": "rain",
+        "prob": 47,
+        "precip": 0.9,
+        "condition": "Moderate Drizzle"
+      },
+      {
+        "label": "9 PM",
+        "time": "9 PM",
+        "temp": 27,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 33,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "10 PM",
+        "time": "10 PM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 16,
+        "precip": 0,
+        "condition": "Overcast"
+      }
+    ],
+    "next8Hours": [
+      {
+        "label": "Now",
+        "time": "Now",
+        "temp": 30,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 20,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "12 AM",
+        "time": "12 AM",
+        "temp": 30,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 15,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "1 AM",
+        "time": "1 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 10,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "2 AM",
+        "time": "2 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 6,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "3 AM",
+        "time": "3 AM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 3,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "4 AM",
+        "time": "4 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 1,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "5 AM",
+        "time": "5 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "6 AM",
+        "time": "6 AM",
+        "temp": 28,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 0,
+        "precip": 0,
+        "condition": "Overcast"
+      }
+    ],
+    "weeklyForecast": [
+      {
+        "dayLabel": "Today",
+        "label": "Today",
+        "date": "2026-06-12",
+        "tempMax": 36.0,
+        "tempMin": 28.0,
+        "high": 36.0,
+        "low": 28.0,
+        "precipProb": 55.0,
+        "rainProb": 55.0,
+        "precipSum": 0.1,
+        "rainMm": 0.1,
+        "realFeelDay": 38.0,
+        "humidityDay": 50.0,
+        "uvIndex": 6.0,
+        "windMax": 26.0,
+        "weatherCode": 51,
+        "icon": "rain",
+        "iconId": "rain",
+        "condition": "Light Drizzle"
+      },
+      {
+        "dayLabel": "Tomorrow",
+        "label": "Tomorrow",
+        "date": "2026-06-13",
+        "tempMax": 37.0,
+        "tempMin": 26.0,
+        "high": 37.0,
+        "low": 26.0,
+        "precipProb": 61.0,
+        "rainProb": 61.0,
+        "precipSum": 3.4,
+        "rainMm": 3.4,
+        "realFeelDay": 40.0,
+        "humidityDay": 58.0,
+        "uvIndex": 8.0,
+        "windMax": 20.0,
+        "weatherCode": 80,
+        "icon": "storm",
+        "iconId": "storm",
+        "condition": "Light Rain Showers"
+      },
+      {
+        "dayLabel": "Sun",
+        "label": "Sun",
+        "date": "2026-06-14",
+        "tempMax": 36.0,
+        "tempMin": 26.0,
+        "high": 36.0,
+        "low": 26.0,
+        "precipProb": 76.0,
+        "rainProb": 76.0,
+        "precipSum": 9.6,
+        "rainMm": 9.6,
+        "realFeelDay": 40.0,
+        "humidityDay": 65.0,
+        "uvIndex": 8.0,
+        "windMax": 21.0,
+        "weatherCode": 81,
+        "icon": "storm",
+        "iconId": "storm",
+        "condition": "Rain Showers"
+      },
+      {
+        "dayLabel": "Mon",
+        "label": "Mon",
+        "date": "2026-06-15",
+        "tempMax": 36.0,
+        "tempMin": 26.0,
+        "high": 36.0,
+        "low": 26.0,
+        "precipProb": 68.0,
+        "rainProb": 68.0,
+        "precipSum": 11.4,
+        "rainMm": 11.4,
+        "realFeelDay": 40.0,
+        "humidityDay": 73.0,
+        "uvIndex": 6.0,
+        "windMax": 25.0,
+        "weatherCode": 81,
+        "icon": "storm",
+        "iconId": "storm",
+        "condition": "Rain Showers"
+      },
+      {
+        "dayLabel": "Tue",
+        "label": "Tue",
+        "date": "2026-06-16",
+        "tempMax": 36.0,
+        "tempMin": 26.0,
+        "high": 36.0,
+        "low": 26.0,
+        "precipProb": 53.0,
+        "rainProb": 53.0,
+        "precipSum": 1.8,
+        "rainMm": 1.8,
+        "realFeelDay": 40.0,
+        "humidityDay": 71.0,
+        "uvIndex": 6.0,
+        "windMax": 18.0,
+        "weatherCode": 53,
+        "icon": "rain",
+        "iconId": "rain",
+        "condition": "Moderate Drizzle"
+      },
+      {
+        "dayLabel": "Wed",
+        "label": "Wed",
+        "date": "2026-06-17",
+        "tempMax": 36.0,
+        "tempMin": 27.0,
+        "high": 36.0,
+        "low": 27.0,
+        "precipProb": 57.0,
+        "rainProb": 57.0,
+        "precipSum": 1.2,
+        "rainMm": 1.2,
+        "realFeelDay": 40.0,
+        "humidityDay": 65.0,
+        "uvIndex": 8.0,
+        "windMax": 18.0,
+        "weatherCode": 51,
+        "icon": "rain",
+        "iconId": "rain",
+        "condition": "Light Drizzle"
+      },
+      {
+        "dayLabel": "Thu",
+        "label": "Thu",
+        "date": "2026-06-18",
+        "tempMax": 35.0,
+        "tempMin": 27.0,
+        "high": 35.0,
+        "low": 27.0,
+        "precipProb": 27.0,
+        "rainProb": 27.0,
+        "precipSum": 0,
+        "rainMm": 0,
+        "realFeelDay": 40.0,
+        "humidityDay": 61.0,
+        "uvIndex": 3.0,
+        "windMax": 17.0,
+        "weatherCode": 3,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "condition": "Overcast"
+      }
+    ],
+    "models": {
+      "successful": [
+        "open-meteo"
+      ],
+      "count": 1,
+      "names": "Open-Meteo"
+    }
+  },
   "chennai": {
     "name": "Chennai",
     "sourceMode": "snapshot",
     "sourceProvider": "open-meteo",
-    "fetchedAt": 1781278658021,
-    "generatedAt": "2026-06-12T15:37:38.021471Z",
+    "fetchedAt": 1781288372037,
+    "generatedAt": "2026-06-12T18:19:32.038033Z",
     "timezone": "Asia/Kolkata",
     "current": {
-      "temp": 29,
-      "feelsLike": 34,
-      "condition": "Light Drizzle",
-      "icon": "rain",
-      "iconId": "rain",
-      "humidity": 77.0,
+      "temp": 28,
+      "feelsLike": 32,
+      "condition": "Overcast",
+      "icon": "cloudy",
+      "iconId": "cloudy",
+      "humidity": 79.0,
       "windSpeed": 12.0,
-      "windDirection": 197.0
+      "windDirection": 217.0
     },
     "morning": {
       "temp": 32.0,
@@ -2370,26 +3318,6 @@
       {
         "label": "Now",
         "time": "Now",
-        "temp": 29,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 29,
-        "precip": 0.3,
-        "condition": "Light Drizzle"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 27,
-        "precip": 0,
-        "condition": "Overcast"
-      },
-      {
-        "label": "11 PM",
-        "time": "11 PM",
         "temp": 28,
         "icon": "cloudy",
         "iconId": "cloudy",
@@ -2606,32 +3534,32 @@
         "prob": 25,
         "precip": 0,
         "condition": "Overcast"
+      },
+      {
+        "label": "9 PM",
+        "time": "9 PM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 18,
+        "precip": 0,
+        "condition": "Partly Cloudy"
+      },
+      {
+        "label": "10 PM",
+        "time": "10 PM",
+        "temp": 29,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 13,
+        "precip": 0,
+        "condition": "Overcast"
       }
     ],
     "next8Hours": [
       {
         "label": "Now",
         "time": "Now",
-        "temp": 29,
-        "icon": "rain",
-        "iconId": "rain",
-        "prob": 29,
-        "precip": 0.3,
-        "condition": "Light Drizzle"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 28,
-        "icon": "cloudy",
-        "iconId": "cloudy",
-        "prob": 27,
-        "precip": 0,
-        "condition": "Overcast"
-      },
-      {
-        "label": "11 PM",
-        "time": "11 PM",
         "temp": 28,
         "icon": "cloudy",
         "iconId": "cloudy",
@@ -2688,6 +3616,26 @@
         "prob": 11,
         "precip": 0,
         "condition": "Overcast"
+      },
+      {
+        "label": "5 AM",
+        "time": "5 AM",
+        "temp": 27,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 14,
+        "precip": 0,
+        "condition": "Overcast"
+      },
+      {
+        "label": "6 AM",
+        "time": "6 AM",
+        "temp": 27,
+        "icon": "cloudy",
+        "iconId": "cloudy",
+        "prob": 16,
+        "precip": 0,
+        "condition": "Overcast"
       }
     ],
     "weeklyForecast": [
@@ -2726,7 +3674,7 @@
         "rainMm": 1.0,
         "realFeelDay": 41.0,
         "humidityDay": 69.0,
-        "uvIndex": 7.0,
+        "uvIndex": 5.0,
         "windMax": 14.0,
         "weatherCode": 95,
         "icon": "storm",
@@ -2747,7 +3695,7 @@
         "rainMm": 7.2,
         "realFeelDay": 44.0,
         "humidityDay": 68.0,
-        "uvIndex": 7.0,
+        "uvIndex": 8.0,
         "windMax": 22.0,
         "weatherCode": 95,
         "icon": "storm",
@@ -2768,7 +3716,7 @@
         "rainMm": 3.5,
         "realFeelDay": 44.0,
         "humidityDay": 72.0,
-        "uvIndex": 8.0,
+        "uvIndex": 7.0,
         "windMax": 16.0,
         "weatherCode": 95,
         "icon": "storm",
@@ -2810,7 +3758,7 @@
         "rainMm": 1.8,
         "realFeelDay": 43.0,
         "humidityDay": 66.0,
-        "uvIndex": 7.0,
+        "uvIndex": 8.0,
         "windMax": 18.0,
         "weatherCode": 95,
         "icon": "storm",
@@ -2831,960 +3779,12 @@
         "rainMm": 0,
         "realFeelDay": 42.0,
         "humidityDay": 65.0,
-        "uvIndex": 4.0,
+        "uvIndex": 2.0,
         "windMax": 16.0,
         "weatherCode": 95,
         "icon": "storm",
         "iconId": "storm",
         "condition": "Thunderstorm"
-      }
-    ],
-    "models": {
-      "successful": [
-        "open-meteo"
-      ],
-      "count": 1,
-      "names": "Open-Meteo"
-    }
-  },
-  "muscat": {
-    "name": "Muscat",
-    "sourceMode": "snapshot",
-    "sourceProvider": "open-meteo",
-    "fetchedAt": 1781278658023,
-    "generatedAt": "2026-06-12T15:37:38.024088Z",
-    "timezone": "Asia/Muscat",
-    "current": {
-      "temp": 35,
-      "feelsLike": 41,
-      "condition": "Thunderstorm",
-      "icon": "storm",
-      "iconId": "storm",
-      "humidity": 59.0,
-      "windSpeed": 5.0,
-      "windDirection": 26.0
-    },
-    "morning": {
-      "temp": 36.0,
-      "feelsLike": 40.0,
-      "icon": "sunny",
-      "iconId": "sunny",
-      "rainMm": "-",
-      "rainProb": {
-        "avg": 0,
-        "min": 0,
-        "max": 0,
-        "displayString": "~0%",
-        "isWideRange": false
-      },
-      "humidity": 42.0,
-      "windSpeed": 6.0,
-      "hourly": [
-        {
-          "label": "6 AM",
-          "time": "6 AM",
-          "temp": 32,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Clear"
-        },
-        {
-          "label": "7 AM",
-          "time": "7 AM",
-          "temp": 35,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Clear"
-        },
-        {
-          "label": "8 AM",
-          "time": "8 AM",
-          "temp": 36,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Clear"
-        },
-        {
-          "label": "9 AM",
-          "time": "9 AM",
-          "temp": 37,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Clear"
-        },
-        {
-          "label": "10 AM",
-          "time": "10 AM",
-          "temp": 38,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "11 AM",
-          "time": "11 AM",
-          "temp": 38,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        }
-      ]
-    },
-    "noon": {
-      "temp": 38.0,
-      "feelsLike": 45.0,
-      "icon": "storm",
-      "iconId": "storm",
-      "rainMm": "-",
-      "rainProb": {
-        "avg": 0,
-        "min": 0,
-        "max": 0,
-        "displayString": "~0%",
-        "isWideRange": false
-      },
-      "humidity": 49.0,
-      "windSpeed": 12.0,
-      "hourly": [
-        {
-          "label": "12 PM",
-          "time": "12 PM",
-          "temp": 39,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "1 PM",
-          "time": "1 PM",
-          "temp": 39,
-          "icon": "sunny",
-          "iconId": "sunny",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Clear"
-        },
-        {
-          "label": "2 PM",
-          "time": "2 PM",
-          "temp": 38,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "3 PM",
-          "time": "3 PM",
-          "temp": 38,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "4 PM",
-          "time": "4 PM",
-          "temp": 38,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        }
-      ]
-    },
-    "evening": {
-      "temp": 35.0,
-      "feelsLike": 41.0,
-      "icon": "storm",
-      "iconId": "storm",
-      "rainMm": "-",
-      "rainProb": {
-        "avg": 0,
-        "min": 0,
-        "max": 0,
-        "displayString": "~0%",
-        "isWideRange": false
-      },
-      "humidity": 59.0,
-      "windSpeed": 6.0,
-      "hourly": [
-        {
-          "label": "5 PM",
-          "time": "5 PM",
-          "temp": 37,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "6 PM",
-          "time": "6 PM",
-          "temp": 37,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "7 PM",
-          "time": "7 PM",
-          "temp": 35,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "8 PM",
-          "time": "8 PM",
-          "temp": 34,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "9 PM",
-          "time": "9 PM",
-          "temp": 33,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        },
-        {
-          "label": "10 PM",
-          "time": "10 PM",
-          "temp": 32,
-          "icon": "storm",
-          "iconId": "storm",
-          "prob": 0,
-          "precip": 0,
-          "condition": "Thunderstorm"
-        }
-      ]
-    },
-    "tomorrow": {
-      "morning": {
-        "temp": 34.0,
-        "feelsLike": 41.0,
-        "icon": "storm",
-        "iconId": "storm",
-        "rainMm": "-",
-        "rainProb": {
-          "avg": 0,
-          "min": 0,
-          "max": 0,
-          "displayString": "~0%",
-          "isWideRange": false
-        },
-        "humidity": 64.0,
-        "windSpeed": 6.0,
-        "hourly": [
-          {
-            "label": "6 AM",
-            "time": "6 AM",
-            "temp": 30,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "7 AM",
-            "time": "7 AM",
-            "temp": 32,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "8 AM",
-            "time": "8 AM",
-            "temp": 34,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "9 AM",
-            "time": "9 AM",
-            "temp": 36,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "10 AM",
-            "time": "10 AM",
-            "temp": 37,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "11 AM",
-            "time": "11 AM",
-            "temp": 37,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          }
-        ]
-      },
-      "noon": {
-        "temp": 37.0,
-        "feelsLike": 44.0,
-        "icon": "storm",
-        "iconId": "storm",
-        "rainMm": "-",
-        "rainProb": {
-          "avg": 0,
-          "min": 0,
-          "max": 0,
-          "displayString": "~0%",
-          "isWideRange": false
-        },
-        "humidity": 51.0,
-        "windSpeed": 12.0,
-        "hourly": [
-          {
-            "label": "12 PM",
-            "time": "12 PM",
-            "temp": 37,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "1 PM",
-            "time": "1 PM",
-            "temp": 38,
-            "icon": "sunny",
-            "iconId": "sunny",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Clear"
-          },
-          {
-            "label": "2 PM",
-            "time": "2 PM",
-            "temp": 37,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "3 PM",
-            "time": "3 PM",
-            "temp": 37,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "4 PM",
-            "time": "4 PM",
-            "temp": 36,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          }
-        ]
-      },
-      "evening": {
-        "temp": 34.0,
-        "feelsLike": 40.0,
-        "icon": "storm",
-        "iconId": "storm",
-        "rainMm": "-",
-        "rainProb": {
-          "avg": 0,
-          "min": 0,
-          "max": 0,
-          "displayString": "~0%",
-          "isWideRange": false
-        },
-        "humidity": 62.0,
-        "windSpeed": 6.0,
-        "hourly": [
-          {
-            "label": "5 PM",
-            "time": "5 PM",
-            "temp": 35,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "6 PM",
-            "time": "6 PM",
-            "temp": 34,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "7 PM",
-            "time": "7 PM",
-            "temp": 34,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "8 PM",
-            "time": "8 PM",
-            "temp": 34,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "9 PM",
-            "time": "9 PM",
-            "temp": 33,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          },
-          {
-            "label": "10 PM",
-            "time": "10 PM",
-            "temp": 33,
-            "icon": "storm",
-            "iconId": "storm",
-            "prob": 0,
-            "precip": 0,
-            "condition": "Thunderstorm"
-          }
-        ]
-      }
-    },
-    "hourly24": [
-      {
-        "label": "Now",
-        "time": "Now",
-        "temp": 35,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "8 PM",
-        "time": "8 PM",
-        "temp": 34,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "9 PM",
-        "time": "9 PM",
-        "temp": 33,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "11 PM",
-        "time": "11 PM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "12 AM",
-        "time": "12 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "1 AM",
-        "time": "1 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "2 AM",
-        "time": "2 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "3 AM",
-        "time": "3 AM",
-        "temp": 31,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "4 AM",
-        "time": "4 AM",
-        "temp": 30,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "5 AM",
-        "time": "5 AM",
-        "temp": 30,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "6 AM",
-        "time": "6 AM",
-        "temp": 30,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "7 AM",
-        "time": "7 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "8 AM",
-        "time": "8 AM",
-        "temp": 34,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "9 AM",
-        "time": "9 AM",
-        "temp": 36,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "10 AM",
-        "time": "10 AM",
-        "temp": 37,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "11 AM",
-        "time": "11 AM",
-        "temp": 37,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "12 PM",
-        "time": "12 PM",
-        "temp": 37,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "1 PM",
-        "time": "1 PM",
-        "temp": 38,
-        "icon": "sunny",
-        "iconId": "sunny",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Clear"
-      },
-      {
-        "label": "2 PM",
-        "time": "2 PM",
-        "temp": 37,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "3 PM",
-        "time": "3 PM",
-        "temp": 37,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "4 PM",
-        "time": "4 PM",
-        "temp": 36,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "5 PM",
-        "time": "5 PM",
-        "temp": 35,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "6 PM",
-        "time": "6 PM",
-        "temp": 34,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      }
-    ],
-    "next8Hours": [
-      {
-        "label": "Now",
-        "time": "Now",
-        "temp": 35,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "8 PM",
-        "time": "8 PM",
-        "temp": 34,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "9 PM",
-        "time": "9 PM",
-        "temp": 33,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "10 PM",
-        "time": "10 PM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "11 PM",
-        "time": "11 PM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "12 AM",
-        "time": "12 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "1 AM",
-        "time": "1 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      },
-      {
-        "label": "2 AM",
-        "time": "2 AM",
-        "temp": 32,
-        "icon": "storm",
-        "iconId": "storm",
-        "prob": 0,
-        "precip": 0,
-        "condition": "Thunderstorm"
-      }
-    ],
-    "weeklyForecast": [
-      {
-        "dayLabel": "Today",
-        "label": "Today",
-        "date": "2026-06-12",
-        "tempMax": 39.0,
-        "tempMin": 32.0,
-        "high": 39.0,
-        "low": 32.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 47.0,
-        "humidityDay": 47.0,
-        "uvIndex": 9.0,
-        "windMax": 13.0,
-        "weatherCode": 95,
-        "icon": "storm",
-        "iconId": "storm",
-        "condition": "Thunderstorm"
-      },
-      {
-        "dayLabel": "Tomorrow",
-        "label": "Tomorrow",
-        "date": "2026-06-13",
-        "tempMax": 38.0,
-        "tempMin": 30.0,
-        "high": 38.0,
-        "low": 30.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 45.0,
-        "humidityDay": 67.0,
-        "uvIndex": 9.0,
-        "windMax": 13.0,
-        "weatherCode": 95,
-        "icon": "storm",
-        "iconId": "storm",
-        "condition": "Thunderstorm"
-      },
-      {
-        "dayLabel": "Sun",
-        "label": "Sun",
-        "date": "2026-06-14",
-        "tempMax": 39.0,
-        "tempMin": 30.0,
-        "high": 39.0,
-        "low": 30.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 45.0,
-        "humidityDay": 59.0,
-        "uvIndex": 9.0,
-        "windMax": 18.0,
-        "weatherCode": 95,
-        "icon": "storm",
-        "iconId": "storm",
-        "condition": "Thunderstorm"
-      },
-      {
-        "dayLabel": "Mon",
-        "label": "Mon",
-        "date": "2026-06-15",
-        "tempMax": 43.0,
-        "tempMin": 32.0,
-        "high": 43.0,
-        "low": 32.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 44.0,
-        "humidityDay": 26.0,
-        "uvIndex": 9.0,
-        "windMax": 21.0,
-        "weatherCode": 0,
-        "icon": "sunny",
-        "iconId": "sunny",
-        "condition": "Clear"
-      },
-      {
-        "dayLabel": "Tue",
-        "label": "Tue",
-        "date": "2026-06-16",
-        "tempMax": 45.0,
-        "tempMin": 33.0,
-        "high": 45.0,
-        "low": 33.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 43.0,
-        "humidityDay": 25.0,
-        "uvIndex": 9.0,
-        "windMax": 25.0,
-        "weatherCode": 95,
-        "icon": "storm",
-        "iconId": "storm",
-        "condition": "Thunderstorm"
-      },
-      {
-        "dayLabel": "Wed",
-        "label": "Wed",
-        "date": "2026-06-17",
-        "tempMax": 38.0,
-        "tempMin": 33.0,
-        "high": 38.0,
-        "low": 33.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 42.0,
-        "humidityDay": 34.0,
-        "uvIndex": 9.0,
-        "windMax": 19.0,
-        "weatherCode": 0,
-        "icon": "sunny",
-        "iconId": "sunny",
-        "condition": "Clear"
-      },
-      {
-        "dayLabel": "Thu",
-        "label": "Thu",
-        "date": "2026-06-18",
-        "tempMax": 41.0,
-        "tempMin": 31.0,
-        "high": 41.0,
-        "low": 31.0,
-        "precipProb": 0,
-        "rainProb": 0,
-        "precipSum": 0,
-        "rainMm": 0,
-        "realFeelDay": 42.0,
-        "humidityDay": 28.0,
-        "uvIndex": 9.0,
-        "windMax": 16.0,
-        "weatherCode": 0,
-        "icon": "sunny",
-        "iconId": "sunny",
-        "condition": "Clear"
       }
     ],
     "models": {
