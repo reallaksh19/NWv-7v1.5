@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-06-13T17:27:57.825519Z",
+  "generatedAt": "2026-06-13T21:21:40.985068Z",
   "sections": {
     "indices": {
       "status": "ok",
@@ -85,16 +85,16 @@
       "notes": []
     },
     "mutualFunds": {
-      "status": "failed",
+      "status": "ok",
       "freshnessMs": 0,
-      "winner": "none",
+      "winner": "amfi_navall",
       "providersTried": [
         {
           "provider": "amfi_navall",
-          "status": "failed",
+          "status": "ok",
           "latencyMs": null,
-          "count": 0,
-          "message": "HTTPSConnectionPool(host='www.amfiindia.com', port=443): Read timed out. (read timeout=14)"
+          "count": 14212,
+          "message": "14212 AMFI NAV rows parsed; 300 selected"
         }
       ],
       "notes": []
