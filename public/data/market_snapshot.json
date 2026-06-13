@@ -1,8 +1,8 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-06-13T14:07:12.354722Z",
-  "generated_at": "2026-06-13T14:07:12.354728Z",
-  "fetchedAt": 1781359632354,
+  "generatedAt": "2026-06-13T17:27:57.825529Z",
+  "generated_at": "2026-06-13T17:27:57.825533Z",
+  "fetchedAt": 1781371677825,
   "sourceMode": "snapshot-worker-v2",
   "indices": [
     {
@@ -68,6 +68,15 @@
   ],
   "globalIndices": [
     {
+      "name": "S&P 500",
+      "symbol": "^GSPC",
+      "value": "7,431.46",
+      "change": "37.16",
+      "changePercent": "0.50",
+      "direction": "up",
+      "sourceMode": "yahoo-yfinance"
+    },
+    {
       "name": "DOW JONES",
       "symbol": "^DJI",
       "value": "51,202.26",
@@ -100,15 +109,6 @@
       "value": "66,020.04",
       "change": "1802.77",
       "changePercent": "2.81",
-      "direction": "up",
-      "sourceMode": "yahoo-yfinance"
-    },
-    {
-      "name": "S&P 500",
-      "symbol": "^GSPC",
-      "value": "7,431.46",
-      "change": "37.16",
-      "changePercent": "0.50",
       "direction": "up",
       "sourceMode": "yahoo-yfinance"
     }
@@ -203,16 +203,6 @@
   ],
   "commodities": [
     {
-      "name": "Silver",
-      "symbol": "SI=F",
-      "value": "$67.86",
-      "unit": "$/oz",
-      "change": "3.97",
-      "changePercent": "6.22",
-      "direction": "up",
-      "source": "yahoo-yfinance"
-    },
-    {
       "name": "Gold",
       "symbol": "GC=F",
       "value": "$4215.00",
@@ -231,35 +221,19 @@
       "changePercent": "-3.23",
       "direction": "down",
       "source": "yahoo-yfinance"
+    },
+    {
+      "name": "Silver",
+      "symbol": "SI=F",
+      "value": "$67.86",
+      "unit": "$/oz",
+      "change": "3.97",
+      "changePercent": "6.22",
+      "direction": "up",
+      "source": "yahoo-yfinance"
     }
   ],
   "currencies": [
-    {
-      "name": "OMR/INR",
-      "pair": "OMRINR",
-      "symbol": "OMRINR=X",
-      "value": "₹246.5800",
-      "rate": 246.5800018310547,
-      "change": "0.0000",
-      "changePercent": "0.00",
-      "direction": "up",
-      "source": "yahoo-yfinance",
-      "mode": "fallback-intraday",
-      "asOf": "2026-06-13T14:05:30.280487Z"
-    },
-    {
-      "name": "USD/INR",
-      "pair": "USDINR",
-      "symbol": "USDINR=X",
-      "value": "₹95.1000",
-      "rate": 95.0999984741211,
-      "change": "-0.5445",
-      "changePercent": "-0.57",
-      "direction": "down",
-      "source": "yahoo-yfinance",
-      "mode": "fallback-intraday",
-      "asOf": "2026-06-13T14:05:30.293546Z"
-    },
     {
       "name": "JPY/INR",
       "pair": "JPYINR",
@@ -271,7 +245,7 @@
       "direction": "up",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-13T14:05:30.300174Z"
+      "asOf": "2026-06-13T17:26:16.327683Z"
     },
     {
       "name": "EUR/INR",
@@ -284,7 +258,20 @@
       "direction": "up",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-13T14:05:30.313011Z"
+      "asOf": "2026-06-13T17:26:16.351057Z"
+    },
+    {
+      "name": "USD/INR",
+      "pair": "USDINR",
+      "symbol": "USDINR=X",
+      "value": "₹95.1000",
+      "rate": 95.0999984741211,
+      "change": "-0.5445",
+      "changePercent": "-0.57",
+      "direction": "down",
+      "source": "yahoo-yfinance",
+      "mode": "fallback-intraday",
+      "asOf": "2026-06-13T17:26:16.364592Z"
     },
     {
       "name": "GBP/INR",
@@ -297,7 +284,20 @@
       "direction": "down",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-13T14:05:30.316098Z"
+      "asOf": "2026-06-13T17:26:16.424024Z"
+    },
+    {
+      "name": "OMR/INR",
+      "pair": "OMRINR",
+      "symbol": "OMRINR=X",
+      "value": "₹246.5800",
+      "rate": 246.5800018310547,
+      "change": "0.0000",
+      "changePercent": "0.00",
+      "direction": "up",
+      "source": "yahoo-yfinance",
+      "mode": "fallback-intraday",
+      "asOf": "2026-06-13T17:26:16.439085Z"
     }
   ],
   "mutualFunds": [
@@ -1208,7 +1208,7 @@
     "recent": []
   },
   "nfo": [],
-  "ipoLastCheckedAt": "2026-06-13T14:05:34.857458+00:00",
+  "ipoLastCheckedAt": "2026-06-13T17:26:38.776382+00:00",
   "marketNews": [],
   "stockCategories": {
     "highs": [],
@@ -1252,10 +1252,10 @@
       "message": "RBI reference scrape failed: unknown; 5 FX pairs fetched from Yahoo fallback"
     },
     "mutualFunds": {
-      "status": "ok",
-      "provider": "amfi_navall",
-      "mode": "ok",
-      "message": "14212 AMFI NAV rows parsed; 300 selected"
+      "status": "stale",
+      "provider": "previous-snapshot",
+      "mode": "stale",
+      "message": "mutualFunds carried forward from previous snapshot because new worker run had no data."
     },
     "eodBhavcopy": {
       "status": "failed",
