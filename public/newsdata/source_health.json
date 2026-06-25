@@ -1,19 +1,25 @@
 {
-  "lastChecked": 1782401019267,
+  "lastChecked": 1782403430591,
   "sources": {
     "the_hindu": {
       "ok": true,
-      "items": 15,
-      "lastSuccess": 1782401019267
+      "items": 19,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 0,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
+      "feedUrl": "https://www.thehindu.com/sport/feeder/default.rss",
+      "section": "sports",
+      "status": "ok"
     },
     "economic_times": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1782391097945,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
-      "lastZeroItemAt": 1782381202625,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
+      "lastZeroItemAt": 1782403429664,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
       "feedUrl": "https://economictimes.indiatimes.com/rssfeeds/1977021501.cms",
       "section": "business",
       "status": "ok"
@@ -21,33 +27,47 @@
     "ndtv": {
       "ok": false,
       "items": 0,
-      "lastCheckedAt": 1782391097945,
-      "zeroItemRuns": 24,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 25,
       "lastNonZeroSuccess": 1782133948494,
       "lastSuccess": 1782133948494,
-      "lastFailure": 1782391097945,
+      "lastFailure": 1782403430591,
       "lastError": "404 Client Error: Not Found for url: https://feeds.feedburner.com/ndtvnews-movies",
       "feedUrl": "https://feeds.feedburner.com/ndtvnews-movies",
       "section": "entertainment",
       "status": "fail"
     },
     "hindustan_times": {
-      "ok": true,
-      "items": 21,
-      "lastSuccess": 1782401019267
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 2,
+      "lastSuccess": 1782401019267,
+      "lastFailure": 1782403430591,
+      "lastError": "401 Client Error: Unauthorized for url: https://www.hindustantimes.com/feeds/rss/entertainment/tamil-cinema/rssfeed.xml",
+      "feedUrl": "https://www.hindustantimes.com/feeds/rss/entertainment/tamil-cinema/rssfeed.xml",
+      "section": "entertainment",
+      "status": "fail"
     },
     "google_news": {
-      "ok": true,
-      "items": 15,
-      "lastSuccess": 1782401019267
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 2,
+      "lastSuccess": 1782401019267,
+      "lastFailure": 1782403430591,
+      "lastError": "503 Server Error: Service Unavailable for url: https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-IN&gl=IN&ceid=IN:en",
+      "feedUrl": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-IN&gl=IN&ceid=IN:en",
+      "section": "entertainment",
+      "status": "fail"
     },
     "times_of_india": {
       "ok": true,
-      "items": 19,
-      "lastCheckedAt": 1782391097945,
+      "items": 20,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
       "feedUrl": "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
       "section": "india",
       "status": "ok"
@@ -55,33 +75,35 @@
     "bbc": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1782391097945,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
-      "lastFailure": 1782381202625,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
+      "lastFailure": 1782403429664,
       "feedUrl": "https://feeds.bbci.co.uk/sport/rss.xml",
       "section": "sports",
       "status": "ok"
     },
     "reuters": {
-      "ok": true,
-      "items": 20,
-      "lastCheckedAt": 1782381202625,
-      "zeroItemRuns": 0,
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403429664,
+      "zeroItemRuns": 1,
       "lastNonZeroSuccess": 1782381202625,
       "lastSuccess": 1782381202625,
+      "lastFailure": 1782403429664,
+      "lastError": "503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site:reuters.com+India&hl=en-IN&gl=IN&ceid=IN:en",
       "feedUrl": "https://news.google.com/rss/search?q=site:reuters.com+India&hl=en-IN&gl=IN&ceid=IN:en",
-      "status": "ok"
+      "status": "fail"
     },
     "moneycontrol": {
       "ok": true,
       "items": 15,
-      "lastCheckedAt": 1782391097945,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
       "lastZeroItemAt": 1782346046096,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
       "feedUrl": "https://www.moneycontrol.com/rss/latestnews.xml",
       "section": "business",
       "status": "ok"
@@ -89,10 +111,10 @@
     "business_line": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1782391097945,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
       "feedUrl": "https://www.thehindubusinessline.com/news/feeder/default.rss",
       "section": "business",
       "status": "ok"
@@ -100,26 +122,33 @@
     "financial_express": {
       "ok": false,
       "items": 0,
-      "lastCheckedAt": 1782391097945,
-      "zeroItemRuns": 175,
-      "lastFailure": 1782391097945,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 176,
+      "lastFailure": 1782403430591,
       "lastError": "403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/",
       "feedUrl": "https://www.financialexpress.com/feed/",
       "section": "business",
       "status": "fail"
     },
     "dtnext": {
-      "ok": true,
-      "items": 15,
-      "lastSuccess": 1782401019267
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 1,
+      "lastSuccess": 1782401019267,
+      "lastFailure": 1782403430591,
+      "lastError": "404 Client Error: Not Found for url: https://www.dtnext.in/rss",
+      "feedUrl": "https://www.dtnext.in/rss",
+      "section": "trichy",
+      "status": "fail"
     },
     "gadgets360": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1782391097945,
+      "lastCheckedAt": 1782403430591,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1782391097945,
-      "lastSuccess": 1782391097945,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
       "feedUrl": "https://feeds.feedburner.com/gadgets360-latest",
       "section": "technology",
       "status": "ok"
@@ -127,12 +156,24 @@
     "oman_observer": {
       "ok": true,
       "items": 0,
-      "lastSuccess": 1782401019267
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 1,
+      "lastZeroItemAt": 1782403430591,
+      "lastSuccess": 1782401019267,
+      "feedUrl": "https://www.omanobserver.om/rss",
+      "section": "muscat",
+      "status": "warn"
     },
     "times_of_oman": {
       "ok": true,
-      "items": 0,
-      "lastSuccess": 1782401019267
+      "items": 20,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 0,
+      "lastNonZeroSuccess": 1782403430591,
+      "lastSuccess": 1782403430591,
+      "feedUrl": "https://timesofoman.com/feed",
+      "section": "muscat",
+      "status": "ok"
     },
     "timeanddate": {
       "ok": true,
@@ -142,10 +183,10 @@
     "espn": {
       "ok": true,
       "items": 20,
-      "lastCheckedAt": 1782381202625,
+      "lastCheckedAt": 1782403429664,
       "zeroItemRuns": 0,
-      "lastNonZeroSuccess": 1782381202625,
-      "lastSuccess": 1782381202625,
+      "lastNonZeroSuccess": 1782403429664,
+      "lastSuccess": 1782403429664,
       "feedUrl": "https://www.espncricinfo.com/rss/content/story/feeds/0.xml",
       "status": "ok"
     },
@@ -155,40 +196,44 @@
       "lastSuccess": 1782401019267
     },
     "google_news_alt": {
-      "ok": true,
-      "items": 20,
-      "lastCheckedAt": 1782391097945,
-      "zeroItemRuns": 0,
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 1,
       "lastZeroItemAt": 1781949015531,
       "lastNonZeroSuccess": 1782391097945,
       "lastSuccess": 1782391097945,
+      "lastFailure": 1782403430591,
+      "lastError": "503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=Trichy+Tamil+Nadu+today&hl=en-IN&gl=IN&ceid=IN:en",
       "feedUrl": "https://news.google.com/rss/search?q=Trichy+Tamil+Nadu+today&hl=en-IN&gl=IN&ceid=IN:en",
       "section": "trichy",
-      "status": "ok"
+      "status": "fail"
     },
     "muscat_daily": {
-      "ok": true,
+      "ok": false,
       "items": 0,
-      "lastCheckedAt": 1782391097945,
-      "zeroItemRuns": 158,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 159,
       "lastZeroItemAt": 1782391097945,
-      "lastFailure": 1782251030283,
+      "lastFailure": 1782403430591,
       "lastError": "415 Client Error: Unsupported Media Type for url: https://www.muscatdaily.com/feed",
       "feedUrl": "https://www.muscatdaily.com/feed",
       "section": "muscat",
-      "status": "warn"
+      "status": "fail"
     },
     "google_news_oman": {
-      "ok": true,
-      "items": 20,
-      "lastCheckedAt": 1782391097945,
-      "zeroItemRuns": 0,
+      "ok": false,
+      "items": 0,
+      "lastCheckedAt": 1782403430591,
+      "zeroItemRuns": 1,
       "lastZeroItemAt": 1781889410650,
       "lastNonZeroSuccess": 1782391097945,
       "lastSuccess": 1782391097945,
+      "lastFailure": 1782403430591,
+      "lastError": "503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=Oman+news&hl=en-IN&gl=IN&ceid=IN:en",
       "feedUrl": "https://news.google.com/rss/search?q=Oman+news&hl=en-IN&gl=IN&ceid=IN:en",
       "section": "muscat",
-      "status": "ok"
+      "status": "fail"
     }
   }
 }
