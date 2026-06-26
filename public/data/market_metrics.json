@@ -1,10 +1,10 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-06-25T12:40:29.498172Z",
+  "generatedAt": "2026-06-26T07:01:40.257259Z",
   "asOf": {
-    "equities": "2026-06-25T12:40:29.498176Z",
-    "mutualFunds": "24-Jun-2026",
-    "fx": "2026-06-25T12:40:29.498179Z"
+    "equities": "2026-06-26T07:01:40.257265Z",
+    "mutualFunds": "25-Jun-2026",
+    "fx": "2026-06-26T07:01:40.257272Z"
   },
   "equities": {
     "indices": [
@@ -52,8 +52,8 @@
         "name": "NIFTY AUTO",
         "symbol": "^CNXAUTO",
         "value": "26,977.75",
-        "change": "394.40",
-        "changePercent": "1.48",
+        "change": "0.00",
+        "changePercent": "0.00",
         "direction": "up",
         "currency": "₹",
         "sourceMode": "yahoo-yfinance"
@@ -71,47 +71,47 @@
     ],
     "globalIndices": [
       {
-        "name": "NIKKEI 225",
-        "symbol": "^N225",
-        "value": "72,366.34",
-        "change": "3191.38",
-        "changePercent": "4.61",
-        "direction": "up",
-        "sourceMode": "yahoo-yfinance"
-      },
-      {
-        "name": "DOW JONES",
-        "symbol": "^DJI",
-        "value": "51,848.90",
-        "change": "182.06",
-        "changePercent": "0.35",
-        "direction": "up",
-        "sourceMode": "yahoo-yfinance"
-      },
-      {
         "name": "NASDAQ",
         "symbol": "^IXIC",
-        "value": "25,476.64",
-        "change": "-110.40",
-        "changePercent": "-0.43",
+        "value": "25,358.60",
+        "change": "-118.04",
+        "changePercent": "-0.46",
         "direction": "down",
         "sourceMode": "yahoo-yfinance"
       },
       {
         "name": "S&P 500",
         "symbol": "^GSPC",
-        "value": "7,358.22",
-        "change": "-7.24",
-        "changePercent": "-0.10",
+        "value": "7,357.49",
+        "change": "-0.73",
+        "changePercent": "-0.01",
         "direction": "down",
+        "sourceMode": "yahoo-yfinance"
+      },
+      {
+        "name": "NIKKEI 225",
+        "symbol": "^N225",
+        "value": "69,360.88",
+        "change": "-3005.46",
+        "changePercent": "-4.15",
+        "direction": "down",
+        "sourceMode": "yahoo-yfinance"
+      },
+      {
+        "name": "DOW JONES",
+        "symbol": "^DJI",
+        "value": "51,920.62",
+        "change": "71.72",
+        "changePercent": "0.14",
+        "direction": "up",
         "sourceMode": "yahoo-yfinance"
       },
       {
         "name": "HANG SENG",
         "symbol": "^HSI",
-        "value": "23,076.91",
-        "change": "-335.27",
-        "changePercent": "-1.43",
+        "value": "22,679.38",
+        "change": "-397.53",
+        "changePercent": "-1.72",
         "direction": "down",
         "sourceMode": "yahoo-yfinance"
       }
@@ -205,7 +205,7 @@
     },
     "eodBhavcopy": {
       "schemaVersion": "2.0.0",
-      "generatedAt": "2026-06-25T12:40:29.497398Z",
+      "generatedAt": "2026-06-26T07:01:40.256507Z",
       "nseRows": 0,
       "bseRows": 0,
       "sampleNse": [],
@@ -219,12 +219,12 @@
       "isinGrowth": "INF205K01LE4",
       "isinDividendReinvestment": "-",
       "name": "Invesco India Contra Fund - Direct Plan - Growth",
-      "nav": 157.43,
-      "navDate": "24-Jun-2026",
+      "nav": 157.4,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114418Z"
+        "fetchedAt": "2026-06-26T06:59:58.757752Z"
       },
       "extras": {},
       "fundType": "value",
@@ -237,12 +237,12 @@
       "isinGrowth": "INF174K01KZ9",
       "isinDividendReinvestment": "-",
       "name": "Kotak Contra Fund - Direct Plan - Growth",
-      "nav": 181.205,
-      "navDate": "24-Jun-2026",
+      "nav": 181.094,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114436Z"
+        "fetchedAt": "2026-06-26T06:59:58.757776Z"
       },
       "extras": {},
       "fundType": "value",
@@ -255,12 +255,12 @@
       "isinGrowth": "INF247L01GW6",
       "isinDividendReinvestment": "-",
       "name": "Motilal Oswal Contra Fund - Direct â Growth",
-      "nav": 10.3449,
-      "navDate": "24-Jun-2026",
+      "nav": 10.3027,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114457Z"
+        "fetchedAt": "2026-06-26T06:59:58.757797Z"
       },
       "extras": {},
       "fundType": "value",
@@ -273,12 +273,12 @@
       "isinGrowth": "INF200K01RA0",
       "isinDividendReinvestment": "-",
       "name": "SBI CONTRA FUND - DIRECT PLAN - GROWTH",
-      "nav": 411.1982,
-      "navDate": "24-Jun-2026",
+      "nav": 410.2228,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114479Z"
+        "fetchedAt": "2026-06-26T06:59:58.757816Z"
       },
       "extras": {},
       "fundType": "value",
@@ -291,12 +291,12 @@
       "isinGrowth": "INF579M01AN2",
       "isinDividendReinvestment": "-",
       "name": "360 ONE ELSS Tax Saver Nifty 50 Index Fund - Direct Plan - Growth",
-      "nav": 13.6321,
-      "navDate": "24-Jun-2026",
+      "nav": 13.6516,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114726Z"
+        "fetchedAt": "2026-06-26T06:59:58.758070Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -309,12 +309,12 @@
       "isinGrowth": "INF209K01UN8",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life ELSS Tax Saver Fund - Growth - Direct Plan",
-      "nav": 68.93,
-      "navDate": "24-Jun-2026",
+      "nav": 68.79,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114746Z"
+        "fetchedAt": "2026-06-26T06:59:58.758091Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -327,12 +327,12 @@
       "isinGrowth": "INF846K01EW2",
       "isinDividendReinvestment": "-",
       "name": "Axis ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 108.2944,
-      "navDate": "24-Jun-2026",
+      "nav": 108.3758,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114766Z"
+        "fetchedAt": "2026-06-26T06:59:58.758109Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -345,12 +345,12 @@
       "isinGrowth": "INF0QA701AK0",
       "isinDividendReinvestment": "-",
       "name": "BAJAJ FINSERV ELSS TAX SAVER FUND - DIRECT - GROWTH",
-      "nav": 11.84,
-      "navDate": "24-Jun-2026",
+      "nav": 11.774,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114785Z"
+        "fetchedAt": "2026-06-26T06:59:58.758130Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -363,12 +363,12 @@
       "isinGrowth": "INF194K01Y29",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN ELSS Tax Saver Fund - Direct Plan - Growth",
-      "nav": 178.403,
-      "navDate": "24-Jun-2026",
+      "nav": 179.048,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114803Z"
+        "fetchedAt": "2026-06-26T06:59:58.758148Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -381,12 +381,12 @@
       "isinGrowth": "INF761K01884",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA ELSS Tax Saver -Direct Plan- Growth",
-      "nav": 194.5,
-      "navDate": "24-Jun-2026",
+      "nav": 193.82,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114821Z"
+        "fetchedAt": "2026-06-26T06:59:58.758171Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -399,12 +399,12 @@
       "isinGrowth": "INF251K01HF3",
       "isinDividendReinvestment": "-",
       "name": "BARODA BNP PARIBAS ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 111.824,
-      "navDate": "24-Jun-2026",
+      "nav": 111.7956,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114851Z"
+        "fetchedAt": "2026-06-26T06:59:58.758198Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -417,12 +417,12 @@
       "isinGrowth": "INF760K01EL8",
       "isinDividendReinvestment": "-",
       "name": "CANARA ROBECO ELSS TAX SAVER - DIRECT PLAN - GROWTH OPTION",
-      "nav": 200.1,
-      "navDate": "24-Jun-2026",
+      "nav": 200.34,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114869Z"
+        "fetchedAt": "2026-06-26T06:59:58.758218Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -436,11 +436,11 @@
       "isinDividendReinvestment": "-",
       "name": "DSP ELSS Tax Saver Fund - Direct Plan - Growth",
       "nav": 156.051,
-      "navDate": "24-Jun-2026",
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114888Z"
+        "fetchedAt": "2026-06-26T06:59:58.758238Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -453,12 +453,12 @@
       "isinGrowth": "INF754K01CA8",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss ELSS Tax Saver Fund - Direct Plan-Growth Option",
-      "nav": 136.2,
-      "navDate": "24-Jun-2026",
+      "nav": 135.91,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114914Z"
+        "fetchedAt": "2026-06-26T06:59:58.758260Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -471,12 +471,12 @@
       "isinGrowth": "INF090I01JS8",
       "isinDividendReinvestment": "-",
       "name": "Franklin India ELSS Tax Saver Fund - Direct - Growth",
-      "nav": 1604.0895,
-      "navDate": "24-Jun-2026",
+      "nav": 1602.7807,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114930Z"
+        "fetchedAt": "2026-06-26T06:59:58.758277Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -489,12 +489,12 @@
       "isinGrowth": "INF666M01DK7",
       "isinDividendReinvestment": "-",
       "name": "Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)- Direct Plan- Growth Option",
-      "nav": 21.67,
-      "navDate": "24-Jun-2026",
+      "nav": 21.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114954Z"
+        "fetchedAt": "2026-06-26T06:59:58.758300Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -507,12 +507,12 @@
       "isinGrowth": "INF179K01YS4",
       "isinDividendReinvestment": "-",
       "name": "HDFC ELSS Tax saver - Growth Option - Direct Plan",
-      "nav": 1475.458,
-      "navDate": "24-Jun-2026",
+      "nav": 1478.912,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.114968Z"
+        "fetchedAt": "2026-06-26T06:59:58.758318Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -525,12 +525,12 @@
       "isinGrowth": "INF917K01GP0",
       "isinDividendReinvestment": "-",
       "name": "HSBC ELSS Tax saver Fund - Direct Growth",
-      "nav": 153.1885,
-      "navDate": "24-Jun-2026",
+      "nav": 152.917,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115017Z"
+        "fetchedAt": "2026-06-26T06:59:58.758371Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -543,12 +543,12 @@
       "isinGrowth": "INF109K01Y31",
       "isinDividendReinvestment": "-",
       "name": "ICICI Prudential ELSS Tax Saver Fund - Direct Plan - Growth",
-      "nav": 1037.1,
-      "navDate": "24-Jun-2026",
+      "nav": 1040.57,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115038Z"
+        "fetchedAt": "2026-06-26T06:59:58.758392Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -561,12 +561,12 @@
       "isinGrowth": "INF205K01NT8",
       "isinDividendReinvestment": "-",
       "name": "Invesco India ELSS Tax Saver Fund - Direct Plan - Growth",
-      "nav": 146.07,
-      "navDate": "24-Jun-2026",
+      "nav": 145.79,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115057Z"
+        "fetchedAt": "2026-06-26T06:59:58.758410Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -579,12 +579,12 @@
       "isinGrowth": "INF00XX01390",
       "isinDividendReinvestment": "-",
       "name": "ITI ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 28.472,
-      "navDate": "24-Jun-2026",
+      "nav": 28.3365,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115074Z"
+        "fetchedAt": "2026-06-26T06:59:58.758430Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -597,12 +597,12 @@
       "isinGrowth": "INF192K01CE3",
       "isinDividendReinvestment": "-",
       "name": "JM ELSS Tax Saver Fund (Direct) - Growth Option",
-      "nav": 57.6339,
-      "navDate": "24-Jun-2026",
+      "nav": 57.7304,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115093Z"
+        "fetchedAt": "2026-06-26T06:59:58.758447Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -615,12 +615,12 @@
       "isinGrowth": "INF174K01LI3",
       "isinDividendReinvestment": "-",
       "name": "Kotak ELSS Tax Saver Fund-Growth - Direct",
-      "nav": 136.343,
-      "navDate": "24-Jun-2026",
+      "nav": 136.064,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115116Z"
+        "fetchedAt": "2026-06-26T06:59:58.758473Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -633,12 +633,12 @@
       "isinGrowth": "INF767K01EM1",
       "isinDividendReinvestment": "-",
       "name": "LIC MF ELSS Tax Saver-Direct Plan-Growth",
-      "nav": 169.5993,
-      "navDate": "24-Jun-2026",
+      "nav": 169.7837,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115133Z"
+        "fetchedAt": "2026-06-26T06:59:58.758490Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -651,12 +651,12 @@
       "isinGrowth": "INF174V01093",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife ELSS Tax Saver Fund - Direct Plan -Growth",
-      "nav": 32.3732,
-      "navDate": "24-Jun-2026",
+      "nav": 32.4052,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115321Z"
+        "fetchedAt": "2026-06-26T06:59:58.758683Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -669,12 +669,12 @@
       "isinGrowth": "INF769K01DM9",
       "isinDividendReinvestment": "-",
       "name": "Mirae Asset ELSS Tax Saver Fund - Direct Plan - Growth",
-      "nav": 57.206,
-      "navDate": "24-Jun-2026",
+      "nav": 57.014,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115342Z"
+        "fetchedAt": "2026-06-26T06:59:58.758704Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -687,12 +687,12 @@
       "isinGrowth": "INF247L01569",
       "isinDividendReinvestment": "-",
       "name": "Motilal Oswal ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 64.169,
-      "navDate": "24-Jun-2026",
+      "nav": 63.7207,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115363Z"
+        "fetchedAt": "2026-06-26T06:59:58.758722Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -710,7 +710,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115390Z"
+        "fetchedAt": "2026-06-26T06:59:58.758752Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -723,12 +723,12 @@
       "isinGrowth": "INF959L01GR6",
       "isinDividendReinvestment": "-",
       "name": "NAVI ELSS TAX SAVER NIFTY 50 INDEX FUND - DIRECT PLAN GROWTH",
-      "nav": 14.5805,
-      "navDate": "24-Jun-2026",
+      "nav": 14.6011,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115398Z"
+        "fetchedAt": "2026-06-26T06:59:58.758762Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -741,12 +741,12 @@
       "isinGrowth": "INF204K01L55",
       "isinDividendReinvestment": "-",
       "name": "Nippon India ELSS Tax Saver Fund - Direct Plan Growth Plan - Growth Option",
-      "nav": 144.9825,
-      "navDate": "24-Jun-2026",
+      "nav": 144.9663,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115433Z"
+        "fetchedAt": "2026-06-26T06:59:58.758794Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -759,12 +759,12 @@
       "isinGrowth": "INF0J8L01115",
       "isinDividendReinvestment": "-",
       "name": "NJ ELSS Tax Saver Scheme Direct Growth",
-      "nav": 14.54,
-      "navDate": "24-Jun-2026",
+      "nav": 14.52,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115463Z"
+        "fetchedAt": "2026-06-26T06:59:58.758808Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -777,12 +777,12 @@
       "isinGrowth": "INF663L01FN5",
       "isinDividendReinvestment": "-",
       "name": "PGIM India ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 39.53,
-      "navDate": "24-Jun-2026",
+      "nav": 39.49,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115485Z"
+        "fetchedAt": "2026-06-26T06:59:58.758831Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -795,12 +795,12 @@
       "isinGrowth": "INF879O01100",
       "isinDividendReinvestment": "-",
       "name": "Parag Parikh ELSS Tax Saver Fund- Direct Growth",
-      "nav": 31.8442,
-      "navDate": "24-Jun-2026",
+      "nav": 31.8062,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115500Z"
+        "fetchedAt": "2026-06-26T06:59:58.758846Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -813,12 +813,12 @@
       "isinGrowth": "INF966L01986",
       "isinDividendReinvestment": "-",
       "name": "quant ELSS Tax Saver Fund - Growth Option - Direct Plan",
-      "nav": 454.4441,
-      "navDate": "24-Jun-2026",
+      "nav": 456.482,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115509Z"
+        "fetchedAt": "2026-06-26T06:59:58.758856Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -831,12 +831,12 @@
       "isinGrowth": "INF082J01069",
       "isinDividendReinvestment": "-",
       "name": "Quantum ELSS Tax Saver Fund - Direct Plan Growth Option",
-      "nav": 125.12,
-      "navDate": "24-Jun-2026",
+      "nav": 124.63,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115529Z"
+        "fetchedAt": "2026-06-26T06:59:58.758890Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -849,12 +849,12 @@
       "isinGrowth": "INF0K1H01065",
       "isinDividendReinvestment": "-",
       "name": "Samco ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 13.4,
-      "navDate": "24-Jun-2026",
+      "nav": 13.23,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115548Z"
+        "fetchedAt": "2026-06-26T06:59:58.758911Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -867,12 +867,12 @@
       "isinGrowth": "INF200K01UM9",
       "isinDividendReinvestment": "-",
       "name": "SBI ELSS Tax Saver FUND - DIRECT PLAN -GROWTH",
-      "nav": 475.405,
-      "navDate": "24-Jun-2026",
+      "nav": 474.7315,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115561Z"
+        "fetchedAt": "2026-06-26T06:59:58.758927Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -885,12 +885,12 @@
       "isinGrowth": "INF680P01158",
       "isinDividendReinvestment": "-",
       "name": "Shriram ELSS Tax Saver Fund - Direct Growth",
-      "nav": 23.729,
-      "navDate": "24-Jun-2026",
+      "nav": 23.6524,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115575Z"
+        "fetchedAt": "2026-06-26T06:59:58.758941Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -903,12 +903,12 @@
       "isinGrowth": "INF173K01HZ7",
       "isinDividendReinvestment": "-",
       "name": "Sundaram ELSS Tax Saver Fund Direct Plan Growth",
-      "nav": 533.9759,
-      "navDate": "24-Jun-2026",
+      "nav": 533.9545,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115605Z"
+        "fetchedAt": "2026-06-26T06:59:58.758967Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -921,12 +921,12 @@
       "isinGrowth": "INF277K01I86",
       "isinDividendReinvestment": "-",
       "name": "Tata ELSS Fund-Growth-Direct Plan",
-      "nav": 53.3006,
-      "navDate": "24-Jun-2026",
+      "nav": 53.2171,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115629Z"
+        "fetchedAt": "2026-06-26T06:59:58.758989Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -939,12 +939,12 @@
       "isinGrowth": "INF044D01CG6",
       "isinDividendReinvestment": "INF044D01AA3",
       "name": "Taurus ELSS Tax Saver Fund - Direct Plan - Growth",
-      "nav": 194.7,
-      "navDate": "24-Jun-2026",
+      "nav": 193.45,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115638Z"
+        "fetchedAt": "2026-06-26T06:59:58.758998Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -957,12 +957,12 @@
       "isinGrowth": "INF582M01765",
       "isinDividendReinvestment": "-",
       "name": "Union ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 70.93,
-      "navDate": "24-Jun-2026",
+      "nav": 70.89,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115658Z"
+        "fetchedAt": "2026-06-26T06:59:58.759019Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -975,12 +975,12 @@
       "isinGrowth": "INF789F01TF7",
       "isinDividendReinvestment": "-",
       "name": "UTI ELSS Tax Saver Fund - Direct Plan - Growth Option",
-      "nav": 227.3896,
-      "navDate": "24-Jun-2026",
+      "nav": 226.7299,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115675Z"
+        "fetchedAt": "2026-06-26T06:59:58.759041Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -993,12 +993,12 @@
       "isinGrowth": "INF03VN01621",
       "isinDividendReinvestment": "-",
       "name": "WhiteOak Capital ELSS Tax Saver Fund Direct Plan Growth",
-      "nav": 18.543,
-      "navDate": "24-Jun-2026",
+      "nav": 18.509,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115694Z"
+        "fetchedAt": "2026-06-26T06:59:58.759063Z"
       },
       "extras": {},
       "fundType": "elss",
@@ -1011,12 +1011,12 @@
       "isinGrowth": "INF2JJD01136",
       "isinDividendReinvestment": "-",
       "name": "Abakkus Flexi Cap Fund - Direct - Growth",
-      "nav": 10.942,
-      "navDate": "24-Jun-2026",
+      "nav": 10.915,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115733Z"
+        "fetchedAt": "2026-06-26T06:59:58.759100Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1029,12 +1029,12 @@
       "isinGrowth": "INF209K01XX1",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Flexi Cap Fund - Growth - Direct Plan",
-      "nav": 2129.23,
-      "navDate": "24-Jun-2026",
+      "nav": 2127.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115753Z"
+        "fetchedAt": "2026-06-26T06:59:58.759122Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1047,12 +1047,12 @@
       "isinGrowth": "INF846K01B28",
       "isinDividendReinvestment": "-",
       "name": "Axis Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 30.4,
-      "navDate": "24-Jun-2026",
+      "nav": 30.41,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115770Z"
+        "fetchedAt": "2026-06-26T06:59:58.759141Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1065,12 +1065,12 @@
       "isinGrowth": "INF0QA701342",
       "isinDividendReinvestment": "-",
       "name": "Bajaj Finserv Flexi Cap Fund-Direct Plan-Growth",
-      "nav": 15.941,
-      "navDate": "24-Jun-2026",
+      "nav": 15.924,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115797Z"
+        "fetchedAt": "2026-06-26T06:59:58.759166Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1083,12 +1083,12 @@
       "isinGrowth": "INF194K01W62",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN Flexi Cap Fund-Direct Plan-Growth",
-      "nav": 230.186,
-      "navDate": "24-Jun-2026",
+      "nav": 229.948,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115821Z"
+        "fetchedAt": "2026-06-26T06:59:58.759187Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1101,12 +1101,12 @@
       "isinGrowth": "INF761K01FF5",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA Flexi Cap Fund Direct Plan -Growth",
-      "nav": 40.71,
-      "navDate": "24-Jun-2026",
+      "nav": 40.67,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115830Z"
+        "fetchedAt": "2026-06-26T06:59:58.759198Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1119,12 +1119,12 @@
       "isinGrowth": "INF251K01QZ2",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 16.5517,
-      "navDate": "24-Jun-2026",
+      "nav": 16.5035,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115849Z"
+        "fetchedAt": "2026-06-26T06:59:58.759216Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1137,12 +1137,12 @@
       "isinGrowth": "INF226401018",
       "isinDividendReinvestment": "-",
       "name": "CAPITALMIND FLEXI CAP FUND DIRECT GROWTH",
-      "nav": 9.9558,
-      "navDate": "24-Jun-2026",
+      "nav": 9.9441,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115888Z"
+        "fetchedAt": "2026-06-26T06:59:58.759259Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1155,12 +1155,12 @@
       "isinGrowth": "INF740K01PI2",
       "isinDividendReinvestment": "-",
       "name": "DSP Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 115.778,
-      "navDate": "24-Jun-2026",
+      "nav": 115.698,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115897Z"
+        "fetchedAt": "2026-06-26T06:59:58.759268Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1173,12 +1173,12 @@
       "isinGrowth": "INF843K01KK1",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 44.977,
-      "navDate": "24-Jun-2026",
+      "nav": 44.96,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115916Z"
+        "fetchedAt": "2026-06-26T06:59:58.759286Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1191,12 +1191,12 @@
       "isinGrowth": "INF090I01FK3",
       "isinDividendReinvestment": "-",
       "name": "Franklin India Flexi Cap Fund - Direct - Growth",
-      "nav": 1797.828,
-      "navDate": "24-Jun-2026",
+      "nav": 1796.1107,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115935Z"
+        "fetchedAt": "2026-06-26T06:59:58.759305Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1209,12 +1209,12 @@
       "isinGrowth": "INF179K01UT0",
       "isinDividendReinvestment": "-",
       "name": "HDFC Flexi Cap Fund - Growth Option - Direct Plan",
-      "nav": 2211.112,
-      "navDate": "24-Jun-2026",
+      "nav": 2215.087,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115952Z"
+        "fetchedAt": "2026-06-26T06:59:58.759337Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1227,12 +1227,12 @@
       "isinGrowth": "INF0R8701046",
       "isinDividendReinvestment": "-",
       "name": "Helios Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 15.78,
-      "navDate": "24-Jun-2026",
+      "nav": 15.75,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115969Z"
+        "fetchedAt": "2026-06-26T06:59:58.759360Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1245,12 +1245,12 @@
       "isinGrowth": "INF336L01DH5",
       "isinDividendReinvestment": "-",
       "name": "HSBC Flexi Cap Fund - Direct Growth",
-      "nav": 254.1896,
-      "navDate": "24-Jun-2026",
+      "nav": 254.2329,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.115989Z"
+        "fetchedAt": "2026-06-26T06:59:58.759379Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1263,12 +1263,12 @@
       "isinGrowth": "INF205KA1494",
       "isinDividendReinvestment": "-",
       "name": "Invesco India Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 20.31,
-      "navDate": "24-Jun-2026",
+      "nav": 20.35,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116042Z"
+        "fetchedAt": "2026-06-26T06:59:58.759416Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1281,12 +1281,12 @@
       "isinGrowth": "INF00XX01CO7",
       "isinDividendReinvestment": "-",
       "name": "ITI Flexi Cap Fund- Direct Plan- Growth",
-      "nav": 20.3577,
-      "navDate": "24-Jun-2026",
+      "nav": 20.3034,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116059Z"
+        "fetchedAt": "2026-06-26T06:59:58.759433Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1299,12 +1299,12 @@
       "isinGrowth": "INF22M001093",
       "isinDividendReinvestment": "-",
       "name": "JioBlackRock Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 9.895,
-      "navDate": "24-Jun-2026",
+      "nav": 9.8894,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116076Z"
+        "fetchedAt": "2026-06-26T06:59:58.759454Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1317,12 +1317,12 @@
       "isinGrowth": "INF767K01EG3",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Flexi Cap Fund-Direct Plan-Growth",
-      "nav": 113.499,
-      "navDate": "24-Jun-2026",
+      "nav": 113.6388,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116119Z"
+        "fetchedAt": "2026-06-26T06:59:58.759499Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1335,12 +1335,12 @@
       "isinGrowth": "INF174V01AS2",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Flexi Cap Fund - Direct Plan -Growth",
-      "nav": 17.2258,
-      "navDate": "24-Jun-2026",
+      "nav": 17.1836,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116138Z"
+        "fetchedAt": "2026-06-26T06:59:58.759516Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1353,12 +1353,12 @@
       "isinGrowth": "INF769K01JJ2",
       "isinDividendReinvestment": "-",
       "name": "Mirae Asset Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 16.77,
-      "navDate": "24-Jun-2026",
+      "nav": 16.783,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116161Z"
+        "fetchedAt": "2026-06-26T06:59:58.759546Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1371,12 +1371,12 @@
       "isinGrowth": "INF247L01502",
       "isinDividendReinvestment": "-",
       "name": "Motilal Oswal Flexi cap Fund Direct Plan-Growth Option",
-      "nav": 64.5823,
-      "navDate": "24-Jun-2026",
+      "nav": 64.7797,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116182Z"
+        "fetchedAt": "2026-06-26T06:59:58.759565Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1389,12 +1389,12 @@
       "isinGrowth": "INF959L01DT9",
       "isinDividendReinvestment": "-",
       "name": "Navi Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 28.7101,
-      "navDate": "24-Jun-2026",
+      "nav": 28.7855,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116202Z"
+        "fetchedAt": "2026-06-26T06:59:58.759579Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1407,12 +1407,12 @@
       "isinGrowth": "INF204KC1121",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Flexi Cap Fund - Direct Plan - Growth Plan - Growth Option",
-      "nav": 17.8053,
-      "navDate": "24-Jun-2026",
+      "nav": 17.786,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116254Z"
+        "fetchedAt": "2026-06-26T06:59:58.759633Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1425,12 +1425,12 @@
       "isinGrowth": "INF0J8L01156",
       "isinDividendReinvestment": "-",
       "name": "NJ Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 13.35,
-      "navDate": "24-Jun-2026",
+      "nav": 13.37,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116273Z"
+        "fetchedAt": "2026-06-26T06:59:58.759657Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1443,12 +1443,12 @@
       "isinGrowth": "INF0S5R01133",
       "isinDividendReinvestment": "-",
       "name": "Old Bridge Flexi Cap Fund Direct Growth",
-      "nav": 11.08,
-      "navDate": "24-Jun-2026",
+      "nav": 11.06,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116293Z"
+        "fetchedAt": "2026-06-26T06:59:58.759674Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1461,12 +1461,12 @@
       "isinGrowth": "INF663L01FF1",
       "isinDividendReinvestment": "-",
       "name": "PGIM India Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 42.73,
-      "navDate": "24-Jun-2026",
+      "nav": 42.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116316Z"
+        "fetchedAt": "2026-06-26T06:59:58.759699Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1479,12 +1479,12 @@
       "isinGrowth": "INF879O01027",
       "isinDividendReinvestment": "-",
       "name": "Parag Parikh Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 89.933,
-      "navDate": "24-Jun-2026",
+      "nav": 89.7127,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116329Z"
+        "fetchedAt": "2026-06-26T06:59:58.759713Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1497,12 +1497,12 @@
       "isinGrowth": "INF966L01911",
       "isinDividendReinvestment": "-",
       "name": "quant Flexi Cap Fund - Growth Option-Direct Plan",
-      "nav": 122.6726,
-      "navDate": "24-Jun-2026",
+      "nav": 122.7425,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116352Z"
+        "fetchedAt": "2026-06-26T06:59:58.759738Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1515,12 +1515,12 @@
       "isinGrowth": "INF0K1H01024",
       "isinDividendReinvestment": "-",
       "name": "Samco Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 10.56,
-      "navDate": "24-Jun-2026",
+      "nav": 10.47,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116367Z"
+        "fetchedAt": "2026-06-26T06:59:58.759753Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1533,12 +1533,12 @@
       "isinGrowth": "INF680P01109",
       "isinDividendReinvestment": "-",
       "name": "Shriram Flexi Cap Fund - Direct Growth",
-      "nav": 22.7511,
-      "navDate": "24-Jun-2026",
+      "nav": 22.677,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116398Z"
+        "fetchedAt": "2026-06-26T06:59:58.759783Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1551,12 +1551,12 @@
       "isinGrowth": "INF277K015K0",
       "isinDividendReinvestment": "-",
       "name": "Tata Flexi Cap Fund-Direct Plan-Growth",
-      "nav": 26.4579,
-      "navDate": "24-Jun-2026",
+      "nav": 26.433,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116467Z"
+        "fetchedAt": "2026-06-26T06:59:58.759858Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1569,12 +1569,12 @@
       "isinGrowth": "INF044D01BU9",
       "isinDividendReinvestment": "-",
       "name": "Taurus Flexi Cap Fund - Direct Plan - Growth",
-      "nav": 234.11,
-      "navDate": "24-Jun-2026",
+      "nav": 233.0,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116479Z"
+        "fetchedAt": "2026-06-26T06:59:58.759869Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1587,12 +1587,12 @@
       "isinGrowth": "INF2F0001040",
       "isinDividendReinvestment": "-",
       "name": "THE WEALTH COMPANY FLEXI CAP FUND - DIRECT GROWTH",
-      "nav": 10.0272,
-      "navDate": "24-Jun-2026",
+      "nav": 10.036,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116496Z"
+        "fetchedAt": "2026-06-26T06:59:58.759883Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1605,12 +1605,12 @@
       "isinGrowth": "INF0GCD01743",
       "isinDividendReinvestment": "-",
       "name": "TRUSTMF Flexi Cap Fund-Direct Plan- Growth",
-      "nav": 12.08,
-      "navDate": "24-Jun-2026",
+      "nav": 12.05,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116515Z"
+        "fetchedAt": "2026-06-26T06:59:58.759903Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1623,12 +1623,12 @@
       "isinGrowth": "INF1MIY01031",
       "isinDividendReinvestment": "-",
       "name": "Unifi Flexi Cap Fund - Direct Growth",
-      "nav": 10.5566,
-      "navDate": "24-Jun-2026",
+      "nav": 10.5377,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116532Z"
+        "fetchedAt": "2026-06-26T06:59:58.759920Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1641,12 +1641,12 @@
       "isinGrowth": "INF582M01633",
       "isinDividendReinvestment": "-",
       "name": "Union Flexi Cap Fund - Direct Plan - Growth Option",
-      "nav": 57.78,
-      "navDate": "24-Jun-2026",
+      "nav": 57.73,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116540Z"
+        "fetchedAt": "2026-06-26T06:59:58.759931Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1659,12 +1659,12 @@
       "isinGrowth": "INF789F01TC4",
       "isinDividendReinvestment": "-",
       "name": "UTI - Flexi Cap Fund-Growth Option - Direct",
-      "nav": 333.7342,
-      "navDate": "24-Jun-2026",
+      "nav": 332.9115,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116565Z"
+        "fetchedAt": "2026-06-26T06:59:58.759955Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1677,12 +1677,12 @@
       "isinGrowth": "INF03VN01530",
       "isinDividendReinvestment": "-",
       "name": "WhiteOak Capital Flexi Cap Fund Direct Plan-Growth",
-      "nav": 18.539,
-      "navDate": "24-Jun-2026",
+      "nav": 18.515,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.116582Z"
+        "fetchedAt": "2026-06-26T06:59:58.759973Z"
       },
       "extras": {},
       "fundType": "flexi-cap",
@@ -1695,12 +1695,12 @@
       "isinGrowth": "INF209K01VH8",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Large & Mid Cap Fund - Growth - Direct Plan",
-      "nav": 1043.78,
-      "navDate": "24-Jun-2026",
+      "nav": 1039.44,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117175Z"
+        "fetchedAt": "2026-06-26T06:59:58.760613Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1713,12 +1713,12 @@
       "isinGrowth": "INF846K01J46",
       "isinDividendReinvestment": "-",
       "name": "Axis Large & Mid Cap Fund - Direct Plan - Growth",
-      "nav": 38.01,
-      "navDate": "24-Jun-2026",
+      "nav": 37.96,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117194Z"
+        "fetchedAt": "2026-06-26T06:59:58.760633Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1731,12 +1731,12 @@
       "isinGrowth": "INF0QA701763",
       "isinDividendReinvestment": "-",
       "name": "Bajaj Finserv Large and Mid Cap Fund- Direct Plan- Growth",
-      "nav": 12.671,
-      "navDate": "24-Jun-2026",
+      "nav": 12.634,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117212Z"
+        "fetchedAt": "2026-06-26T06:59:58.760654Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1749,12 +1749,12 @@
       "isinGrowth": "INF194K01V89",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Large & Mid Cap Fund - Direct Plan - Growth",
-      "nav": 163.934,
-      "navDate": "24-Jun-2026",
+      "nav": 163.785,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117231Z"
+        "fetchedAt": "2026-06-26T06:59:58.760676Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1767,12 +1767,12 @@
       "isinGrowth": "INF761K01652",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA Large & Mid Cap Fund Direct Plan-Growth",
-      "nav": 107.22,
-      "navDate": "24-Jun-2026",
+      "nav": 107.11,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117262Z"
+        "fetchedAt": "2026-06-26T06:59:58.760702Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1785,12 +1785,12 @@
       "isinGrowth": "INF955L01JU2",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Large and Mid Cap Fund- Direct Plan -Growth Option",
-      "nav": 29.4493,
-      "navDate": "24-Jun-2026",
+      "nav": 29.3896,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117305Z"
+        "fetchedAt": "2026-06-26T06:59:58.760749Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1803,12 +1803,12 @@
       "isinGrowth": "INF760K01EI4",
       "isinDividendReinvestment": "-",
       "name": "CANARA ROBECO LARGE AND MID CAP FUND - DIRECT PLAN - GROWTH OPTION",
-      "nav": 289.96,
-      "navDate": "24-Jun-2026",
+      "nav": 290.05,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117323Z"
+        "fetchedAt": "2026-06-26T06:59:58.760769Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1821,12 +1821,12 @@
       "isinGrowth": "INF740K01PL6",
       "isinDividendReinvestment": "-",
       "name": "DSP Large & Mid Cap Fund - Direct Plan - Growth",
-      "nav": 702.032,
-      "navDate": "24-Jun-2026",
+      "nav": 701.44,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117349Z"
+        "fetchedAt": "2026-06-26T06:59:58.760789Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1839,12 +1839,12 @@
       "isinGrowth": "INF843K01AL0",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss Large & Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 105.937,
-      "navDate": "24-Jun-2026",
+      "nav": 105.936,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117368Z"
+        "fetchedAt": "2026-06-26T06:59:58.760807Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1857,12 +1857,12 @@
       "isinGrowth": "INF090I01IN1",
       "isinDividendReinvestment": "-",
       "name": "Franklin India Large & Mid Cap Fund - Direct - Growth",
-      "nav": 207.0566,
-      "navDate": "24-Jun-2026",
+      "nav": 206.8759,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117390Z"
+        "fetchedAt": "2026-06-26T06:59:58.760829Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1875,12 +1875,12 @@
       "isinGrowth": "INF179KA1RQ7",
       "isinDividendReinvestment": "-",
       "name": "HDFC Large and Mid Cap Fund - Growth Option - Direct Plan",
-      "nav": 363.354,
-      "navDate": "24-Jun-2026",
+      "nav": 362.806,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117411Z"
+        "fetchedAt": "2026-06-26T06:59:58.760854Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1893,12 +1893,12 @@
       "isinGrowth": "INF0R8701269",
       "isinDividendReinvestment": "-",
       "name": "Helios Large & Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 11.47,
-      "navDate": "24-Jun-2026",
+      "nav": 11.45,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117424Z"
+        "fetchedAt": "2026-06-26T06:59:58.760869Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1911,12 +1911,12 @@
       "isinGrowth": "INF336L01NV5",
       "isinDividendReinvestment": "-",
       "name": "HSBC Large & Mid Cap Fund - Direct Growth",
-      "nav": 32.35,
-      "navDate": "24-Jun-2026",
+      "nav": 32.253,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117450Z"
+        "fetchedAt": "2026-06-26T06:59:58.760886Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1929,12 +1929,12 @@
       "isinGrowth": "INF109K011O5",
       "isinDividendReinvestment": "-",
       "name": "ICICI Prudential Large & Mid Cap Fund - Direct Plan - Growth",
-      "nav": 1144.28,
-      "navDate": "24-Jun-2026",
+      "nav": 1142.88,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117467Z"
+        "fetchedAt": "2026-06-26T06:59:58.760904Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1947,12 +1947,12 @@
       "isinGrowth": "INF205K01MA0",
       "isinDividendReinvestment": "-",
       "name": "Invesco India Large & Mid Cap Fund - Direct Plan - Growth",
-      "nav": 128.35,
-      "navDate": "24-Jun-2026",
+      "nav": 128.63,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117486Z"
+        "fetchedAt": "2026-06-26T06:59:58.760925Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1965,12 +1965,12 @@
       "isinGrowth": "INF192K01NK7",
       "isinDividendReinvestment": "-",
       "name": "JM Large & Mid Cap Fund (Direct) - Growth Option",
-      "nav": 10.4717,
-      "navDate": "24-Jun-2026",
+      "nav": 10.4749,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117522Z"
+        "fetchedAt": "2026-06-26T06:59:58.760968Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -1983,12 +1983,12 @@
       "isinGrowth": "INF767K01NE9",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Large & Mid Cap Fund-Direct Plan-Growth",
-      "nav": 45.1349,
-      "navDate": "24-Jun-2026",
+      "nav": 44.9153,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117560Z"
+        "fetchedAt": "2026-06-26T06:59:58.761002Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2001,12 +2001,12 @@
       "isinGrowth": "INF174V01945",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Large & Mid Cap Fund - Direct Plan -Growth",
-      "nav": 30.1518,
-      "navDate": "24-Jun-2026",
+      "nav": 30.0576,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117583Z"
+        "fetchedAt": "2026-06-26T06:59:58.761028Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2019,12 +2019,12 @@
       "isinGrowth": "INF204K01E96",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Vision Large & Mid Cap Fund - Direct Plan Growth Plan - Bonus Option",
-      "nav": 272.2068,
-      "navDate": "24-Jun-2026",
+      "nav": 272.4688,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117681Z"
+        "fetchedAt": "2026-06-26T06:59:58.761128Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2037,12 +2037,12 @@
       "isinGrowth": "INF204K01F20",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Vision Large & Mid Cap Fund - Direct Plan Growth Plan - Growth Option",
-      "nav": 1605.544,
-      "navDate": "24-Jun-2026",
+      "nav": 1607.0893,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117687Z"
+        "fetchedAt": "2026-06-26T06:59:58.761134Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2055,12 +2055,12 @@
       "isinGrowth": "INF966L01648",
       "isinDividendReinvestment": "-",
       "name": "quant Large & Mid Cap Fund - Growth Option-Direct Plan",
-      "nav": 137.2415,
-      "navDate": "24-Jun-2026",
+      "nav": 137.3529,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117736Z"
+        "fetchedAt": "2026-06-26T06:59:58.761181Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2073,12 +2073,12 @@
       "isinGrowth": "INF0K1H01271",
       "isinDividendReinvestment": "-",
       "name": "Samco Large & Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 9.13,
-      "navDate": "24-Jun-2026",
+      "nav": 9.09,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117766Z"
+        "fetchedAt": "2026-06-26T06:59:58.761197Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2091,12 +2091,12 @@
       "isinGrowth": "INF277K01MK8",
       "isinDividendReinvestment": "-",
       "name": "Tata Large & MId Cap Fund -Direct Plan- Growth Option",
-      "nav": 573.9883,
-      "navDate": "24-Jun-2026",
+      "nav": 574.8588,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117815Z"
+        "fetchedAt": "2026-06-26T06:59:58.761251Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2109,12 +2109,12 @@
       "isinGrowth": "INF2F0001594",
       "isinDividendReinvestment": "-",
       "name": "The Wealth Company Large & Mid Cap Fund Direct Growth",
-      "nav": 10.1581,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1414,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117836Z"
+        "fetchedAt": "2026-06-26T06:59:58.761289Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2127,12 +2127,12 @@
       "isinGrowth": "INF789F01UG3",
       "isinDividendReinvestment": "-",
       "name": "UTI Large & Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 198.5379,
-      "navDate": "24-Jun-2026",
+      "nav": 198.0153,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117874Z"
+        "fetchedAt": "2026-06-26T06:59:58.761342Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2145,12 +2145,12 @@
       "isinGrowth": "INF03VN01845",
       "isinDividendReinvestment": "-",
       "name": "Whiteoak Capital Large & Mid Cap Fund Direct Plan Growth",
-      "nav": 14.048,
-      "navDate": "24-Jun-2026",
+      "nav": 14.013,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117891Z"
+        "fetchedAt": "2026-06-26T06:59:58.761362Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2163,12 +2163,12 @@
       "isinGrowth": "INF209K01YY7",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Large Cap Fund - Growth - Direct Plan",
-      "nav": 569.05,
-      "navDate": "24-Jun-2026",
+      "nav": 569.26,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117902Z"
+        "fetchedAt": "2026-06-26T06:59:58.761373Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2181,12 +2181,12 @@
       "isinGrowth": "INF846K01DP8",
       "isinDividendReinvestment": "-",
       "name": "Axis Large Cap Fund - Direct Plan - Growth",
-      "nav": 68.47,
-      "navDate": "24-Jun-2026",
+      "nav": 68.79,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117924Z"
+        "fetchedAt": "2026-06-26T06:59:58.761393Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2199,12 +2199,12 @@
       "isinGrowth": "INF0QA701896",
       "isinDividendReinvestment": "-",
       "name": "BAJAJ FINSERV LARGE CAP FUND - DIRECT PLAN - GROWTH",
-      "nav": 10.192,
-      "navDate": "24-Jun-2026",
+      "nav": 10.22,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117941Z"
+        "fetchedAt": "2026-06-26T06:59:58.761412Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2217,12 +2217,12 @@
       "isinGrowth": "INF194K01Z44",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN Large Cap Fund-Direct Plan-Growth",
-      "nav": 89.243,
-      "navDate": "24-Jun-2026",
+      "nav": 89.276,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117970Z"
+        "fetchedAt": "2026-06-26T06:59:58.761442Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2235,12 +2235,12 @@
       "isinGrowth": "INF761K01FL3",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA Large Cap Fund Direct Plan Growth",
-      "nav": 17.77,
-      "navDate": "24-Jun-2026",
+      "nav": 17.75,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117979Z"
+        "fetchedAt": "2026-06-26T06:59:58.761451Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2253,12 +2253,12 @@
       "isinGrowth": "INF251K01HN7",
       "isinDividendReinvestment": "-",
       "name": "BARODA BNP PARIBAS LARGE CAP Fund - Direct Plan - Growth Option",
-      "nav": 253.9611,
-      "navDate": "24-Jun-2026",
+      "nav": 253.7266,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.117996Z"
+        "fetchedAt": "2026-06-26T06:59:58.761471Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2271,12 +2271,12 @@
       "isinGrowth": "INF760K01FR2",
       "isinDividendReinvestment": "-",
       "name": "CANARA ROBECO LARGE CAP FUND - DIRECT PLAN - GROWTH OPTION",
-      "nav": 71.16,
-      "navDate": "24-Jun-2026",
+      "nav": 71.41,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118034Z"
+        "fetchedAt": "2026-06-26T06:59:58.761490Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2289,12 +2289,12 @@
       "isinGrowth": "INF740K01PR3",
       "isinDividendReinvestment": "-",
       "name": "DSP Large Cap Fund - Direct Plan - Growth",
-      "nav": 505.599,
-      "navDate": "24-Jun-2026",
+      "nav": 506.43,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118052Z"
+        "fetchedAt": "2026-06-26T06:59:58.761508Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2307,12 +2307,12 @@
       "isinGrowth": "INF754K01BW4",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss Large Cap Fund - Direct Plan-Growth option",
-      "nav": 95.57,
-      "navDate": "24-Jun-2026",
+      "nav": 95.54,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118074Z"
+        "fetchedAt": "2026-06-26T06:59:58.761534Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2325,12 +2325,12 @@
       "isinGrowth": "INF090I01FN7",
       "isinDividendReinvestment": "-",
       "name": "Franklin India Large Cap Fund- Direct - Growth",
-      "nav": 1112.3003,
-      "navDate": "24-Jun-2026",
+      "nav": 1116.4448,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118117Z"
+        "fetchedAt": "2026-06-26T06:59:58.761578Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2343,12 +2343,12 @@
       "isinGrowth": "INF179K01YV8",
       "isinDividendReinvestment": "-",
       "name": "HDFC Large Cap Fund - Growth Option - Direct Plan",
-      "nav": 1213.711,
-      "navDate": "24-Jun-2026",
+      "nav": 1217.44,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118183Z"
+        "fetchedAt": "2026-06-26T06:59:58.761638Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2361,12 +2361,12 @@
       "isinGrowth": "INF336L01CM7",
       "isinDividendReinvestment": "-",
       "name": "HSBC Large Cap Fund - Direct Growth",
-      "nav": 526.2402,
-      "navDate": "24-Jun-2026",
+      "nav": 528.2746,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118200Z"
+        "fetchedAt": "2026-06-26T06:59:58.761663Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2379,12 +2379,12 @@
       "isinGrowth": "INF109K016L0",
       "isinDividendReinvestment": "-",
       "name": "ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth",
-      "nav": 119.42,
-      "navDate": "24-Jun-2026",
+      "nav": 119.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118237Z"
+        "fetchedAt": "2026-06-26T06:59:58.761702Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2397,12 +2397,12 @@
       "isinGrowth": "INF00XX01804",
       "isinDividendReinvestment": "-",
       "name": "ITI Large Cap Fund - Direct Plan - Growth Option",
-      "nav": 19.1892,
-      "navDate": "24-Jun-2026",
+      "nav": 19.1942,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118261Z"
+        "fetchedAt": "2026-06-26T06:59:58.761727Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2415,12 +2415,12 @@
       "isinGrowth": "INF22M001176",
       "isinDividendReinvestment": "-",
       "name": "JioBlackRock Large Cap Fund - Direct Plan - Growth Option",
-      "nav": 9.8946,
-      "navDate": "24-Jun-2026",
+      "nav": 9.9104,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118281Z"
+        "fetchedAt": "2026-06-26T06:59:58.761748Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2433,12 +2433,12 @@
       "isinGrowth": "INF192K01BZ0",
       "isinDividendReinvestment": "-",
       "name": "JM Large Cap Fund (Direct) - Growth Option",
-      "nav": 174.9492,
-      "navDate": "24-Jun-2026",
+      "nav": 175.3553,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118290Z"
+        "fetchedAt": "2026-06-26T06:59:58.761757Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2451,12 +2451,12 @@
       "isinGrowth": "INF174K01KW6",
       "isinDividendReinvestment": "-",
       "name": "Kotak Large Cap  Fund - Growth - Direct",
-      "nav": 651.85,
-      "navDate": "24-Jun-2026",
+      "nav": 653.534,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118342Z"
+        "fetchedAt": "2026-06-26T06:59:58.761808Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2469,12 +2469,12 @@
       "isinGrowth": "INF767K01EJ7",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Large Cap Fund-Direct Plan-Growth",
-      "nav": 61.0399,
-      "navDate": "24-Jun-2026",
+      "nav": 61.1626,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118362Z"
+        "fetchedAt": "2026-06-26T06:59:58.761828Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2487,12 +2487,12 @@
       "isinGrowth": "INF174V01721",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Large Cap Fund - Direct Plan -Growth",
-      "nav": 25.0585,
-      "navDate": "24-Jun-2026",
+      "nav": 25.1147,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118385Z"
+        "fetchedAt": "2026-06-26T06:59:58.761855Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2505,12 +2505,12 @@
       "isinGrowth": "INF769K01AX2",
       "isinDividendReinvestment": "-",
       "name": "Mirae Asset Large Cap Fund - Direct Plan - Growth",
-      "nav": 126.401,
-      "navDate": "24-Jun-2026",
+      "nav": 126.522,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118403Z"
+        "fetchedAt": "2026-06-26T06:59:58.761871Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2523,12 +2523,12 @@
       "isinGrowth": "INF247L01CE3",
       "isinDividendReinvestment": "-",
       "name": "Motilal Oswal Large Cap Direct Plan Growth",
-      "nav": 13.9566,
-      "navDate": "24-Jun-2026",
+      "nav": 13.9779,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118420Z"
+        "fetchedAt": "2026-06-26T06:59:58.761888Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2541,12 +2541,12 @@
       "isinGrowth": "INF204K01D30",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Large Cap Fund - Direct Plan Growth Plan - Bonus Option",
-      "nav": 101.0387,
-      "navDate": "24-Jun-2026",
+      "nav": 101.1917,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118447Z"
+        "fetchedAt": "2026-06-26T06:59:58.761916Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2559,12 +2559,12 @@
       "isinGrowth": "INF204K01XI3",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Large Cap Fund - Direct Plan Growth Plan - Growth Option",
-      "nav": 101.0387,
-      "navDate": "24-Jun-2026",
+      "nav": 101.1917,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118451Z"
+        "fetchedAt": "2026-06-26T06:59:58.761920Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2577,12 +2577,12 @@
       "isinGrowth": "INF663L01GR4",
       "isinDividendReinvestment": "-",
       "name": "PGIM India Large Cap Fund - Direct Plan - Growth",
-      "nav": 395.24,
-      "navDate": "24-Jun-2026",
+      "nav": 396.28,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118480Z"
+        "fetchedAt": "2026-06-26T06:59:58.761954Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2595,12 +2595,12 @@
       "isinGrowth": "INF879O01332",
       "isinDividendReinvestment": "-",
       "name": "Parag Parikh Large Cap Fund - Direct Plan - Growth",
-      "nav": 9.5792,
-      "navDate": "24-Jun-2026",
+      "nav": 9.5918,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118507Z"
+        "fetchedAt": "2026-06-26T06:59:58.761979Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2613,12 +2613,12 @@
       "isinGrowth": "INF966L01AT0",
       "isinDividendReinvestment": "-",
       "name": "quant Large Cap Fund - Growth Option - Direct Plan",
-      "nav": 16.6464,
-      "navDate": "24-Jun-2026",
+      "nav": 16.683,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118524Z"
+        "fetchedAt": "2026-06-26T06:59:58.761998Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2631,12 +2631,12 @@
       "isinGrowth": "INF0K1H01255",
       "isinDividendReinvestment": "-",
       "name": "Samco Large Cap Fund - Direct Plan - Growth Option",
-      "nav": 9.15,
-      "navDate": "24-Jun-2026",
+      "nav": 9.14,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118546Z"
+        "fetchedAt": "2026-06-26T06:59:58.762018Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2649,12 +2649,12 @@
       "isinGrowth": "INF200K01QX4",
       "isinDividendReinvestment": "-",
       "name": "SBI Large Cap FUND-DIRECT PLAN -GROWTH",
-      "nav": 104.9902,
-      "navDate": "24-Jun-2026",
+      "nav": 105.2202,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118564Z"
+        "fetchedAt": "2026-06-26T06:59:58.762036Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2667,12 +2667,12 @@
       "isinGrowth": "INF903JA1JC0",
       "isinDividendReinvestment": "-",
       "name": "Sundaram Large Cap Fund (Formerly Known as Sundaram Blue Chip Fund)Direct Plan - Growth",
-      "nav": 22.5582,
-      "navDate": "24-Jun-2026",
+      "nav": 22.5532,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118596Z"
+        "fetchedAt": "2026-06-26T06:59:58.762067Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2685,12 +2685,12 @@
       "isinGrowth": "INF277K01QZ7",
       "isinDividendReinvestment": "-",
       "name": "Tata Large Cap Fund -Direct Plan Growth Option",
-      "nav": 584.6415,
-      "navDate": "24-Jun-2026",
+      "nav": 585.4975,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118605Z"
+        "fetchedAt": "2026-06-26T06:59:58.762077Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2703,12 +2703,12 @@
       "isinGrowth": "INF044D01BX3",
       "isinDividendReinvestment": "-",
       "name": "Taurus Large Cap Fund - Direct Plan - Growth",
-      "nav": 164.9,
-      "navDate": "24-Jun-2026",
+      "nav": 164.88,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118623Z"
+        "fetchedAt": "2026-06-26T06:59:58.762094Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2721,12 +2721,12 @@
       "isinGrowth": "INF789F01US8",
       "isinDividendReinvestment": "-",
       "name": "UTI Large Cap Fund - Direct Plan - Growth Option",
-      "nav": 288.7505,
-      "navDate": "24-Jun-2026",
+      "nav": 288.6361,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118659Z"
+        "fetchedAt": "2026-06-26T06:59:58.762137Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2739,12 +2739,12 @@
       "isinGrowth": "INF03VN01696",
       "isinDividendReinvestment": "-",
       "name": "WhiteOak Capital Large Cap Fund Direct Plan Growth",
-      "nav": 15.514,
-      "navDate": "24-Jun-2026",
+      "nav": 15.539,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118678Z"
+        "fetchedAt": "2026-06-26T06:59:58.762158Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -2757,12 +2757,12 @@
       "isinGrowth": "INF761K01GY4",
       "isinDividendReinvestment": "-",
       "name": "Bank of India Mid Cap Fund - Direct Plan Growth",
-      "nav": 10.38,
-      "navDate": "24-Jun-2026",
+      "nav": 10.33,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118758Z"
+        "fetchedAt": "2026-06-26T06:59:58.762233Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2775,12 +2775,12 @@
       "isinGrowth": "INF251K01HQ0",
       "isinDividendReinvestment": "-",
       "name": "BARODA BNP PARIBAS Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 133.4547,
-      "navDate": "24-Jun-2026",
+      "nav": 133.0288,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118777Z"
+        "fetchedAt": "2026-06-26T06:59:58.762258Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2793,12 +2793,12 @@
       "isinGrowth": "INF760K01KI1",
       "isinDividendReinvestment": "-",
       "name": "Canara Robeco Mid Cap Fund- Direct Plan- Growth Option",
-      "nav": 18.98,
-      "navDate": "24-Jun-2026",
+      "nav": 18.91,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118796Z"
+        "fetchedAt": "2026-06-26T06:59:58.762276Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2811,12 +2811,12 @@
       "isinGrowth": "INF843K01AO4",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 126.409,
-      "navDate": "24-Jun-2026",
+      "nav": 125.863,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118832Z"
+        "fetchedAt": "2026-06-26T06:59:58.762317Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2829,12 +2829,12 @@
       "isinGrowth": "INF090I01FH9",
       "isinDividendReinvestment": "-",
       "name": "Franklin India Mid Cap Fund - Direct - Growth",
-      "nav": 3127.4085,
-      "navDate": "24-Jun-2026",
+      "nav": 3118.6213,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118853Z"
+        "fetchedAt": "2026-06-26T06:59:58.762347Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2847,12 +2847,12 @@
       "isinGrowth": "INF179K01XQ0",
       "isinDividendReinvestment": "-",
       "name": "HDFC Mid Cap Fund - Growth Option - Direct Plan",
-      "nav": 227.898,
-      "navDate": "24-Jun-2026",
+      "nav": 226.915,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118872Z"
+        "fetchedAt": "2026-06-26T06:59:58.762367Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2865,12 +2865,12 @@
       "isinGrowth": "INF0R8701327",
       "isinDividendReinvestment": "-",
       "name": "Helios Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 13.75,
-      "navDate": "24-Jun-2026",
+      "nav": 13.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118908Z"
+        "fetchedAt": "2026-06-26T06:59:58.762386Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2883,12 +2883,12 @@
       "isinGrowth": "INF00XX01929",
       "isinDividendReinvestment": "-",
       "name": "ITI Mid Cap Fund - Direct Plan - Growth Option",
-      "nav": 25.1491,
-      "navDate": "24-Jun-2026",
+      "nav": 25.0914,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.118988Z"
+        "fetchedAt": "2026-06-26T06:59:58.762483Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2901,12 +2901,12 @@
       "isinGrowth": "INF397L01JK8",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Mid Cap Fund-Direct Plan-Growth",
-      "nav": 34.2677,
-      "navDate": "24-Jun-2026",
+      "nav": 34.156,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119058Z"
+        "fetchedAt": "2026-06-26T06:59:58.762542Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2919,12 +2919,12 @@
       "isinGrowth": "INF174V01507",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Mid Cap Fund - Direct Plan -Growth",
-      "nav": 41.889,
-      "navDate": "24-Jun-2026",
+      "nav": 41.5993,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119081Z"
+        "fetchedAt": "2026-06-26T06:59:58.762564Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2937,12 +2937,12 @@
       "isinGrowth": "INF204K01E39",
       "isinDividendReinvestment": "INF204K01E47",
       "name": "NIPPON INDIA GROWTH MID CAP FUND - DIRECT Plan - IDCW Option",
-      "nav": 192.0449,
-      "navDate": "24-Jun-2026",
+      "nav": 191.3951,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119133Z"
+        "fetchedAt": "2026-06-26T06:59:58.762633Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2955,12 +2955,12 @@
       "isinGrowth": "INF204K01E21",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Growth Mid Cap Fund - Direct Plan Growth Plan - Bonus Option",
-      "nav": 822.5602,
-      "navDate": "24-Jun-2026",
+      "nav": 819.7771,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119139Z"
+        "fetchedAt": "2026-06-26T06:59:58.762640Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2973,12 +2973,12 @@
       "isinGrowth": "INF204K01E54",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Growth Mid Cap Fund - Direct Plan Growth Plan - Growth Option",
-      "nav": 4951.1109,
-      "navDate": "24-Jun-2026",
+      "nav": 4934.3587,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119144Z"
+        "fetchedAt": "2026-06-26T06:59:58.762644Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -2991,12 +2991,12 @@
       "isinGrowth": "INF966L01887",
       "isinDividendReinvestment": "-",
       "name": "quant Mid Cap Fund - Growth Option - Direct Plan",
-      "nav": 249.8412,
-      "navDate": "24-Jun-2026",
+      "nav": 249.312,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119189Z"
+        "fetchedAt": "2026-06-26T06:59:58.762686Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3009,12 +3009,12 @@
       "isinGrowth": "INF903J01MJ3",
       "isinDividendReinvestment": "-",
       "name": "Sundaram Mid Cap Fund Direct Plan - Growth",
-      "nav": 1618.4926,
-      "navDate": "24-Jun-2026",
+      "nav": 1613.2213,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119234Z"
+        "fetchedAt": "2026-06-26T06:59:58.762735Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3027,12 +3027,12 @@
       "isinGrowth": "INF277K01PY2",
       "isinDividendReinvestment": "-",
       "name": "Tata Mid Cap Fund - Direct Plan- Growth Option",
-      "nav": 523.118,
-      "navDate": "24-Jun-2026",
+      "nav": 521.4374,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119252Z"
+        "fetchedAt": "2026-06-26T06:59:58.762755Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3045,12 +3045,12 @@
       "isinGrowth": "INF044D01CA9",
       "isinDividendReinvestment": "-",
       "name": "Taurus Mid Cap Fund - Direct Plan - Growth",
-      "nav": 126.36,
-      "navDate": "24-Jun-2026",
+      "nav": 125.04,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119271Z"
+        "fetchedAt": "2026-06-26T06:59:58.762777Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3063,12 +3063,12 @@
       "isinGrowth": "INF0GCD01875",
       "isinDividendReinvestment": "-",
       "name": "TRUSTMF MID CAP FUND -DIRECT -GROWTH",
-      "nav": 11.65,
-      "navDate": "24-Jun-2026",
+      "nav": 11.57,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119291Z"
+        "fetchedAt": "2026-06-26T06:59:58.762797Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3081,12 +3081,12 @@
       "isinGrowth": "INF789F01UA6",
       "isinDividendReinvestment": "-",
       "name": "UTI Mid Cap Fund-Growth Option- Direct",
-      "nav": 346.578,
-      "navDate": "24-Jun-2026",
+      "nav": 344.0529,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119336Z"
+        "fetchedAt": "2026-06-26T06:59:58.762840Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3099,12 +3099,12 @@
       "isinGrowth": "INF03VN01597",
       "isinDividendReinvestment": "-",
       "name": "WhiteOak Capital Mid Cap Fund Direct Plan Growth",
-      "nav": 22.464,
-      "navDate": "24-Jun-2026",
+      "nav": 22.322,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.119341Z"
+        "fetchedAt": "2026-06-26T06:59:58.762845Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3117,12 +3117,12 @@
       "isinGrowth": "INF2JJD01177",
       "isinDividendReinvestment": "-",
       "name": "Abakkus Small Cap Fund - Direct Plan - Growth",
-      "nav": 12.112,
-      "navDate": "24-Jun-2026",
+      "nav": 12.031,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125078Z"
+        "fetchedAt": "2026-06-26T06:59:58.768598Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3135,12 +3135,12 @@
       "isinGrowth": "INF209K01WN4",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Small Cap Fund - Growth - Direct Plan",
-      "nav": 108.6854,
-      "navDate": "24-Jun-2026",
+      "nav": 108.0401,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125094Z"
+        "fetchedAt": "2026-06-26T06:59:58.768614Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3153,12 +3153,12 @@
       "isinGrowth": "INF846K01K35",
       "isinDividendReinvestment": "-",
       "name": "Axis Small Cap Fund - Direct Plan - Growth",
-      "nav": 130.81,
-      "navDate": "24-Jun-2026",
+      "nav": 130.06,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125108Z"
+        "fetchedAt": "2026-06-26T06:59:58.768627Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3171,12 +3171,12 @@
       "isinGrowth": "INF0QA701BN2",
       "isinDividendReinvestment": "-",
       "name": "BAJAJ FINSERV SMALL CAP FUND - DIRECT - GROWTH",
-      "nav": 10.864,
-      "navDate": "24-Jun-2026",
+      "nav": 10.78,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125125Z"
+        "fetchedAt": "2026-06-26T06:59:58.768646Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3189,12 +3189,12 @@
       "isinGrowth": "INF194KB1AL4",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN SMALL CAP FUND - DIRECT PLAN GROWTH",
-      "nav": 54.847,
-      "navDate": "24-Jun-2026",
+      "nav": 54.567,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125142Z"
+        "fetchedAt": "2026-06-26T06:59:58.768666Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3207,12 +3207,12 @@
       "isinGrowth": "INF761K01EP7",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA Small Cap Fund Direct Plan Growth",
-      "nav": 60.85,
-      "navDate": "24-Jun-2026",
+      "nav": 60.62,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125166Z"
+        "fetchedAt": "2026-06-26T06:59:58.768685Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3225,12 +3225,12 @@
       "isinGrowth": "INF251K01SR5",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Small Cap Fund - Direct Plan - Growth option",
-      "nav": 14.1736,
-      "navDate": "24-Jun-2026",
+      "nav": 14.0963,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125183Z"
+        "fetchedAt": "2026-06-26T06:59:58.768702Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3243,12 +3243,12 @@
       "isinGrowth": "INF760K01JC6",
       "isinDividendReinvestment": "-",
       "name": "CANARA ROBECO SMALL CAP FUND - DIRECT PLAN - GROWTH OPTION",
-      "nav": 44.51,
-      "navDate": "24-Jun-2026",
+      "nav": 44.28,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125205Z"
+        "fetchedAt": "2026-06-26T06:59:58.768726Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3261,12 +3261,12 @@
       "isinGrowth": "INF740K01QD1",
       "isinDividendReinvestment": "-",
       "name": "DSP Small Cap Fund - Direct Plan - Growth",
-      "nav": 240.257,
-      "navDate": "24-Jun-2026",
+      "nav": 239.846,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125222Z"
+        "fetchedAt": "2026-06-26T06:59:58.768745Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3279,12 +3279,12 @@
       "isinGrowth": "INF754K01JN6",
       "isinDividendReinvestment": "-",
       "name": "Edelweiss Small Cap Fund - Direct Plan - Growth",
-      "nav": 51.877,
-      "navDate": "24-Jun-2026",
+      "nav": 51.507,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125239Z"
+        "fetchedAt": "2026-06-26T06:59:58.768765Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3297,12 +3297,12 @@
       "isinGrowth": "INF090I01IQ4",
       "isinDividendReinvestment": "-",
       "name": "Franklin India Small Cap Fund - Direct - Growth",
-      "nav": 203.1027,
-      "navDate": "24-Jun-2026",
+      "nav": 201.1583,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125260Z"
+        "fetchedAt": "2026-06-26T06:59:58.768785Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3315,12 +3315,12 @@
       "isinGrowth": "INF666M01NJ8",
       "isinDividendReinvestment": "-",
       "name": "Groww Small Cap Fund-Direct-Growth",
-      "nav": 11.7023,
-      "navDate": "24-Jun-2026",
+      "nav": 11.6301,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125282Z"
+        "fetchedAt": "2026-06-26T06:59:58.768808Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3333,12 +3333,12 @@
       "isinGrowth": "INF179KA1RW5",
       "isinDividendReinvestment": "-",
       "name": "HDFC Small Cap Fund - Growth Option - Direct Plan",
-      "nav": 158.874,
-      "navDate": "24-Jun-2026",
+      "nav": 158.068,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125303Z"
+        "fetchedAt": "2026-06-26T06:59:58.768828Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3351,12 +3351,12 @@
       "isinGrowth": "INF0R8701384",
       "isinDividendReinvestment": "-",
       "name": "Helios Small Cap Fund - Direct Plan - Growth Option",
-      "nav": 11.06,
-      "navDate": "24-Jun-2026",
+      "nav": 10.98,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125315Z"
+        "fetchedAt": "2026-06-26T06:59:58.768844Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3369,12 +3369,12 @@
       "isinGrowth": "INF917K01QA1",
       "isinDividendReinvestment": "-",
       "name": "HSBC Small Cap Fund - Direct Growth",
-      "nav": 97.5491,
-      "navDate": "24-Jun-2026",
+      "nav": 97.0144,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125336Z"
+        "fetchedAt": "2026-06-26T06:59:58.768863Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3387,12 +3387,12 @@
       "isinGrowth": "INF00XX01747",
       "isinDividendReinvestment": "-",
       "name": "ITI Small Cap Fund - Direct Plan - Growth Option",
-      "nav": 36.0091,
-      "navDate": "24-Jun-2026",
+      "nav": 35.7678,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125397Z"
+        "fetchedAt": "2026-06-26T06:59:58.768924Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3405,12 +3405,12 @@
       "isinGrowth": "INF192K01NH3",
       "isinDividendReinvestment": "-",
       "name": "JM Small Cap Fund (Direct) - Growth Option",
-      "nav": 11.527,
-      "navDate": "24-Jun-2026",
+      "nav": 11.4702,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125414Z"
+        "fetchedAt": "2026-06-26T06:59:58.768943Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3423,12 +3423,12 @@
       "isinGrowth": "INF174K01KT2",
       "isinDividendReinvestment": "-",
       "name": "Kotak-Small Cap Fund - Growth - Direct",
-      "nav": 314.206,
-      "navDate": "24-Jun-2026",
+      "nav": 312.959,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125438Z"
+        "fetchedAt": "2026-06-26T06:59:58.768968Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3441,12 +3441,12 @@
       "isinGrowth": "INF397L01JS1",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Small Cap Fund-Direct Plan-Growth",
-      "nav": 37.9641,
-      "navDate": "24-Jun-2026",
+      "nav": 37.779,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125452Z"
+        "fetchedAt": "2026-06-26T06:59:58.768982Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3459,12 +3459,12 @@
       "isinGrowth": "INF174V01BK7",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Small Cap Fund - Direct Plan - Growth",
-      "nav": 22.3914,
-      "navDate": "24-Jun-2026",
+      "nav": 22.2875,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125472Z"
+        "fetchedAt": "2026-06-26T06:59:58.769006Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3477,12 +3477,12 @@
       "isinGrowth": "INF769K01NJ4",
       "isinDividendReinvestment": "-",
       "name": "Mirae Asset Small Cap Fund - Direct Plan - Growth",
-      "nav": 12.332,
-      "navDate": "24-Jun-2026",
+      "nav": 12.322,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125494Z"
+        "fetchedAt": "2026-06-26T06:59:58.769024Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3495,12 +3495,12 @@
       "isinGrowth": "INF247L01BY3",
       "isinDividendReinvestment": "-",
       "name": "Motilal Oswal Small Cap Fund - Direct - Growth",
-      "nav": 16.5525,
-      "navDate": "24-Jun-2026",
+      "nav": 16.5235,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125511Z"
+        "fetchedAt": "2026-06-26T06:59:58.769043Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3513,12 +3513,12 @@
       "isinGrowth": "INF204K01J83",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Small Cap Fund - Direct Plan Growth Plan - Bonus Option",
-      "nav": 204.0484,
-      "navDate": "24-Jun-2026",
+      "nav": 202.8225,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125536Z"
+        "fetchedAt": "2026-06-26T06:59:58.769067Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3531,12 +3531,12 @@
       "isinGrowth": "INF204K01K15",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option",
-      "nav": 204.0484,
-      "navDate": "24-Jun-2026",
+      "nav": 202.8225,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125540Z"
+        "fetchedAt": "2026-06-26T06:59:58.769072Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3549,12 +3549,12 @@
       "isinGrowth": "INF663L01W06",
       "isinDividendReinvestment": "-",
       "name": "PGIM India Small Cap Fund - Direct Plan- Growth Option",
-      "nav": 18.87,
-      "navDate": "24-Jun-2026",
+      "nav": 18.69,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125562Z"
+        "fetchedAt": "2026-06-26T06:59:58.769095Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3567,12 +3567,12 @@
       "isinGrowth": "INF966L01689",
       "isinDividendReinvestment": "-",
       "name": "quant Small Cap Fund - Growth Option - Direct Plan",
-      "nav": 306.5552,
-      "navDate": "24-Jun-2026",
+      "nav": 307.0927,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125581Z"
+        "fetchedAt": "2026-06-26T06:59:58.769115Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3585,12 +3585,12 @@
       "isinGrowth": "INF082J01432",
       "isinDividendReinvestment": "-",
       "name": "QUANTUM SMALL CAP FUND - DIRECT PLAN GROWTH OPTION",
-      "nav": 13.91,
-      "navDate": "24-Jun-2026",
+      "nav": 13.8,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125594Z"
+        "fetchedAt": "2026-06-26T06:59:58.769130Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3603,12 +3603,12 @@
       "isinGrowth": "INF200K01T51",
       "isinDividendReinvestment": "-",
       "name": "SBI Small Cap Fund - Direct Plan - Growth",
-      "nav": 205.0655,
-      "navDate": "24-Jun-2026",
+      "nav": 203.9157,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125617Z"
+        "fetchedAt": "2026-06-26T06:59:58.769150Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3621,12 +3621,12 @@
       "isinGrowth": "INF903J01NK9",
       "isinDividendReinvestment": "-",
       "name": "Sundaram Small Cap Fund Direct Plan - Growth",
-      "nav": 320.4021,
-      "navDate": "24-Jun-2026",
+      "nav": 318.6893,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125635Z"
+        "fetchedAt": "2026-06-26T06:59:58.769168Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3639,12 +3639,12 @@
       "isinGrowth": "INF277K011O1",
       "isinDividendReinvestment": "-",
       "name": "Tata Small Cap Fund-Direct Plan-Growth",
-      "nav": 42.8015,
-      "navDate": "24-Jun-2026",
+      "nav": 42.7521,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125664Z"
+        "fetchedAt": "2026-06-26T06:59:58.769199Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3657,12 +3657,12 @@
       "isinGrowth": "INF2F0001537",
       "isinDividendReinvestment": "-",
       "name": "The Wealth Company Small Cap Fund- Direct-Growth",
-      "nav": 11.3693,
-      "navDate": "24-Jun-2026",
+      "nav": 11.2778,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125685Z"
+        "fetchedAt": "2026-06-26T06:59:58.769219Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3675,12 +3675,12 @@
       "isinGrowth": "INF0GCD01800",
       "isinDividendReinvestment": "-",
       "name": "TRUSTMF SMALL CAP FUND -DIRECT PLAN-GROWTH",
-      "nav": 12.96,
-      "navDate": "24-Jun-2026",
+      "nav": 12.89,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125702Z"
+        "fetchedAt": "2026-06-26T06:59:58.769237Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3693,12 +3693,12 @@
       "isinGrowth": "INF582M01BU9",
       "isinDividendReinvestment": "-",
       "name": "Union Small Cap Fund - Direct Plan - Growth Option",
-      "nav": 63.09,
-      "navDate": "24-Jun-2026",
+      "nav": 62.65,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125722Z"
+        "fetchedAt": "2026-06-26T06:59:58.769256Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3711,12 +3711,12 @@
       "isinGrowth": "INF789F1AUQ1",
       "isinDividendReinvestment": "-",
       "name": "UTI Small Cap Fund - Direct Plan - Growth Option",
-      "nav": 29.5564,
-      "navDate": "24-Jun-2026",
+      "nav": 29.3448,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125739Z"
+        "fetchedAt": "2026-06-26T06:59:58.769275Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -3729,12 +3729,12 @@
       "isinGrowth": "INF209K01WQ7",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Value Fund - Growth - Direct Plan",
-      "nav": 151.6507,
-      "navDate": "24-Jun-2026",
+      "nav": 150.9192,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125768Z"
+        "fetchedAt": "2026-06-26T06:59:58.769301Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3747,12 +3747,12 @@
       "isinGrowth": "INF846K010C0",
       "isinDividendReinvestment": "-",
       "name": "Axis Value Fund - Direct Plan - Growth",
-      "nav": 20.6,
-      "navDate": "24-Jun-2026",
+      "nav": 20.58,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125781Z"
+        "fetchedAt": "2026-06-26T06:59:58.769316Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3765,12 +3765,12 @@
       "isinGrowth": "INF194K01Z85",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Value Fund - Direct Plan - Growth",
-      "nav": 168.32,
-      "navDate": "24-Jun-2026",
+      "nav": 168.567,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125798Z"
+        "fetchedAt": "2026-06-26T06:59:58.769347Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3783,12 +3783,12 @@
       "isinGrowth": "INF251K01SD5",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Value Fund - Direct Plan - Growth option",
-      "nav": 14.2847,
-      "navDate": "24-Jun-2026",
+      "nav": 14.2366,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125819Z"
+        "fetchedAt": "2026-06-26T06:59:58.769370Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3801,12 +3801,12 @@
       "isinGrowth": "INF760K01JW4",
       "isinDividendReinvestment": "-",
       "name": "Canara Robeco Value Fund - Direct Plan - Growth Option",
-      "nav": 19.26,
-      "navDate": "24-Jun-2026",
+      "nav": 19.25,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125854Z"
+        "fetchedAt": "2026-06-26T06:59:58.769390Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3819,12 +3819,12 @@
       "isinGrowth": "INF740KA1PP3",
       "isinDividendReinvestment": "-",
       "name": "DSP Value Fund - Direct Plan - Growth",
-      "nav": 24.404,
-      "navDate": "23-Jun-2026",
+      "nav": 24.538,
+      "navDate": "24-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125873Z"
+        "fetchedAt": "2026-06-26T06:59:58.769410Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3837,12 +3837,12 @@
       "isinGrowth": "INF090I01GY2",
       "isinDividendReinvestment": "-",
       "name": "Templeton India Value Fund - Direct - Growth",
-      "nav": 795.5844,
-      "navDate": "24-Jun-2026",
+      "nav": 792.0342,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125892Z"
+        "fetchedAt": "2026-06-26T06:59:58.769432Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3855,12 +3855,12 @@
       "isinGrowth": "INF666M01BE4",
       "isinDividendReinvestment": "-",
       "name": "Groww Value Fund (formerly known as Indiabulls Value Fund) - Direct Plan - Growth Option",
-      "nav": 32.8166,
-      "navDate": "24-Jun-2026",
+      "nav": 32.832,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125913Z"
+        "fetchedAt": "2026-06-26T06:59:58.769470Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3873,12 +3873,12 @@
       "isinGrowth": "INF179K01VC4",
       "isinDividendReinvestment": "-",
       "name": "HDFC Value Fund - Growth Option - Direct Plan",
-      "nav": 867.479,
-      "navDate": "24-Jun-2026",
+      "nav": 865.277,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125967Z"
+        "fetchedAt": "2026-06-26T06:59:58.769525Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3891,12 +3891,12 @@
       "isinGrowth": "INF917K01HD4",
       "isinDividendReinvestment": "-",
       "name": "HSBC Value Fund - Direct Growth",
-      "nav": 128.4331,
-      "navDate": "24-Jun-2026",
+      "nav": 127.9981,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.125988Z"
+        "fetchedAt": "2026-06-26T06:59:58.769543Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3909,12 +3909,12 @@
       "isinGrowth": "INF109K012K1",
       "isinDividendReinvestment": "-",
       "name": "ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Direct Plan - Growth",
-      "nav": 510.11,
-      "navDate": "24-Jun-2026",
+      "nav": 510.51,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126017Z"
+        "fetchedAt": "2026-06-26T06:59:58.769560Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3927,12 +3927,12 @@
       "isinGrowth": "INF00XX01AQ6",
       "isinDividendReinvestment": "-",
       "name": "ITI Value Fund - Direct Plan - Growth Option",
-      "nav": 18.859,
-      "navDate": "24-Jun-2026",
+      "nav": 18.7796,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126038Z"
+        "fetchedAt": "2026-06-26T06:59:58.769581Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3945,12 +3945,12 @@
       "isinGrowth": "INF192K01BT3",
       "isinDividendReinvestment": "-",
       "name": "JM Value Fund (Direct) - Growth Option",
-      "nav": 108.1792,
-      "navDate": "24-Jun-2026",
+      "nav": 107.5831,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126055Z"
+        "fetchedAt": "2026-06-26T06:59:58.769601Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3963,12 +3963,12 @@
       "isinGrowth": "INF397L01KU5",
       "isinDividendReinvestment": "-",
       "name": "LIC MF Value Fund-Direct Plan-Growth",
-      "nav": 29.9765,
-      "navDate": "24-Jun-2026",
+      "nav": 30.0435,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126073Z"
+        "fetchedAt": "2026-06-26T06:59:58.769621Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3981,12 +3981,12 @@
       "isinGrowth": "INF174V01CI9",
       "isinDividendReinvestment": "-",
       "name": "Mahindra Manulife Value Fund - Direct Plan - Growth",
-      "nav": 12.8101,
-      "navDate": "24-Jun-2026",
+      "nav": 12.747,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126095Z"
+        "fetchedAt": "2026-06-26T06:59:58.769640Z"
       },
       "extras": {},
       "fundType": "value",
@@ -3999,12 +3999,12 @@
       "isinGrowth": "INF204K01K49",
       "isinDividendReinvestment": "-",
       "name": "Nippon India Value Fund - Direct Plan Growth Plan",
-      "nav": 248.0038,
-      "navDate": "24-Jun-2026",
+      "nav": 247.2996,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126118Z"
+        "fetchedAt": "2026-06-26T06:59:58.769664Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4017,12 +4017,12 @@
       "isinGrowth": "INF966L01AN3",
       "isinDividendReinvestment": "-",
       "name": "Quant Value Fund - Growth Option  - Direct Plan",
-      "nav": 24.7747,
-      "navDate": "24-Jun-2026",
+      "nav": 24.788,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126133Z"
+        "fetchedAt": "2026-06-26T06:59:58.769677Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4035,12 +4035,12 @@
       "isinGrowth": "INF082J01036",
       "isinDividendReinvestment": "-",
       "name": "Quantum Value Fund - Direct Plan Growth Option",
-      "nav": 125.2,
-      "navDate": "24-Jun-2026",
+      "nav": 124.7,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126150Z"
+        "fetchedAt": "2026-06-26T06:59:58.769695Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4053,12 +4053,12 @@
       "isinGrowth": "INF903J01NN3",
       "isinDividendReinvestment": "-",
       "name": "Sundaram Value Fund Direct Plan - Growth",
-      "nav": 227.4686,
-      "navDate": "24-Jun-2026",
+      "nav": 226.9057,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126168Z"
+        "fetchedAt": "2026-06-26T06:59:58.769716Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4071,12 +4071,12 @@
       "isinGrowth": "INF277K01ND1",
       "isinDividendReinvestment": "-",
       "name": "Tata Value Fund -Direct Plan Growth Option",
-      "nav": 392.8169,
-      "navDate": "24-Jun-2026",
+      "nav": 391.4128,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126198Z"
+        "fetchedAt": "2026-06-26T06:59:58.769744Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4089,12 +4089,12 @@
       "isinGrowth": "INF582M01EK4",
       "isinDividendReinvestment": "-",
       "name": "Union Value Fund - Direct Plan - Growth Option",
-      "nav": 31.03,
-      "navDate": "24-Jun-2026",
+      "nav": 30.94,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126217Z"
+        "fetchedAt": "2026-06-26T06:59:58.769765Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4107,12 +4107,12 @@
       "isinGrowth": "INF789F01VB2",
       "isinDividendReinvestment": "-",
       "name": "UTI Value Fund - Direct Plan - Growth Option",
-      "nav": 181.8149,
-      "navDate": "24-Jun-2026",
+      "nav": 181.3797,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126236Z"
+        "fetchedAt": "2026-06-26T06:59:58.769783Z"
       },
       "extras": {},
       "fundType": "value",
@@ -4125,12 +4125,12 @@
       "isinGrowth": "INF761K01DM6",
       "isinDividendReinvestment": "-",
       "name": "BANK OF INDIA MID & SMALL CAP EQUITY & DEBT FUND - DIRECT PLAN GROWTH",
-      "nav": 46.01,
-      "navDate": "24-Jun-2026",
+      "nav": 45.92,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.126421Z"
+        "fetchedAt": "2026-06-26T06:59:58.769968Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -4143,12 +4143,12 @@
       "isinGrowth": "INF666M01JX7",
       "isinDividendReinvestment": "-",
       "name": "Groww Nifty 500 Momentum 50 ETF FOF - Direct Plan - Growth",
-      "nav": 10.735,
-      "navDate": "24-Jun-2026",
+      "nav": 10.7646,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.133039Z"
+        "fetchedAt": "2026-06-26T06:59:58.777171Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4166,7 +4166,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.134413Z"
+        "fetchedAt": "2026-06-26T06:59:58.778497Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4179,12 +4179,12 @@
       "isinGrowth": "INF209KC1589",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life BSE 500 Momentum 50 Index Fund-Direct Growth",
-      "nav": 10.6629,
-      "navDate": "24-Jun-2026",
+      "nav": 10.6036,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136076Z"
+        "fetchedAt": "2026-06-26T06:59:58.779949Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4197,12 +4197,12 @@
       "isinGrowth": "INF209KC1613",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life BSE 500 Quality 50 Index Fund - Direct Growth",
-      "nav": 10.7326,
-      "navDate": "24-Jun-2026",
+      "nav": 10.7137,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136088Z"
+        "fetchedAt": "2026-06-26T06:59:58.779965Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4215,12 +4215,12 @@
       "isinGrowth": "INF209KC1332",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life BSE India Infrastructure Index Fund-Direct Growth",
-      "nav": 9.7335,
-      "navDate": "24-Jun-2026",
+      "nav": 9.6895,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136107Z"
+        "fetchedAt": "2026-06-26T06:59:58.779982Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4233,12 +4233,12 @@
       "isinGrowth": "INF209KB14N1",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund-Direct Growth",
-      "nav": 13.2281,
-      "navDate": "24-Jun-2026",
+      "nav": 13.2321,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136129Z"
+        "fetchedAt": "2026-06-26T06:59:58.780000Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4256,7 +4256,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136147Z"
+        "fetchedAt": "2026-06-26T06:59:58.780024Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4269,12 +4269,12 @@
       "isinGrowth": "INF209KB19H2",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX 60:40 SDL+AAA PSU-Apr 2027 Index Fund-Direct Growth",
-      "nav": 13.0057,
-      "navDate": "24-Jun-2026",
+      "nav": 13.012,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136165Z"
+        "fetchedAt": "2026-06-26T06:59:58.780042Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4287,12 +4287,12 @@
       "isinGrowth": "INF209KB12O3",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX Gilt-Apr-2029 Index Fund-Direct Growth",
-      "nav": 13.3527,
-      "navDate": "24-Jun-2026",
+      "nav": 13.3558,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136197Z"
+        "fetchedAt": "2026-06-26T06:59:58.780076Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4305,12 +4305,12 @@
       "isinGrowth": "INF209KB11U2",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX Gilt Apr 2028 Index Fund-Direct Growth",
-      "nav": 12.5971,
-      "navDate": "24-Jun-2026",
+      "nav": 12.5925,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136201Z"
+        "fetchedAt": "2026-06-26T06:59:58.780080Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4323,12 +4323,12 @@
       "isinGrowth": "INF209KB19Y7",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX Gilt Apr 2033 Index Fund-Direct Growth",
-      "nav": 12.1541,
-      "navDate": "24-Jun-2026",
+      "nav": 12.1746,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136220Z"
+        "fetchedAt": "2026-06-26T06:59:58.780099Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4341,12 +4341,12 @@
       "isinGrowth": "INF209KC1076",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil IBX Gilt June 2027 Index Fund-Direct Growth",
-      "nav": 11.5875,
-      "navDate": "24-Jun-2026",
+      "nav": 11.5887,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136238Z"
+        "fetchedAt": "2026-06-26T06:59:58.780119Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4364,7 +4364,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136264Z"
+        "fetchedAt": "2026-06-26T06:59:58.780141Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4377,12 +4377,12 @@
       "isinGrowth": "INF209KB14S0",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life CRISIL IBX SDL Jun 2032 INDEX FUND - Direct Growth",
-      "nav": 12.9713,
-      "navDate": "24-Jun-2026",
+      "nav": 12.9655,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136276Z"
+        "fetchedAt": "2026-06-26T06:59:58.780155Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4395,12 +4395,12 @@
       "isinGrowth": "INF209KC1456",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil-IBX financial Services 3 to 6 months Debt Index Fund-Direct Growth",
-      "nav": 11.1215,
-      "navDate": "24-Jun-2026",
+      "nav": 11.1285,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136335Z"
+        "fetchedAt": "2026-06-26T06:59:58.780221Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4413,12 +4413,12 @@
       "isinGrowth": "INF209KC1498",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Crisil-IBX Financial Services 9-12 Months Debt Index Fund-Direct Growth",
-      "nav": 10.89,
-      "navDate": "24-Jun-2026",
+      "nav": 10.8997,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136351Z"
+        "fetchedAt": "2026-06-26T06:59:58.780234Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4431,12 +4431,12 @@
       "isinGrowth": "INF209KB1Z71",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty 50 Equal Weight Index Fund-Direct Growth",
-      "nav": 18.8585,
-      "navDate": "24-Jun-2026",
+      "nav": 18.8731,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136364Z"
+        "fetchedAt": "2026-06-26T06:59:58.780249Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4449,12 +4449,12 @@
       "isinGrowth": "INF209K01VY3",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty 50 Index Fund - Growth - Direct Plan",
-      "nav": 250.3078,
-      "navDate": "24-Jun-2026",
+      "nav": 250.6631,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136381Z"
+        "fetchedAt": "2026-06-26T06:59:58.780268Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4467,12 +4467,12 @@
       "isinGrowth": "INF209KC1183",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty India Defence Index Fund-Direct Growth",
-      "nav": 13.5337,
-      "navDate": "24-Jun-2026",
+      "nav": 13.4387,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136401Z"
+        "fetchedAt": "2026-06-26T06:59:58.780285Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4485,12 +4485,12 @@
       "isinGrowth": "INF209KB1W74",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty Midcap 150 Index Fund-Direct Growth",
-      "nav": 25.8477,
-      "navDate": "24-Jun-2026",
+      "nav": 25.7135,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136426Z"
+        "fetchedAt": "2026-06-26T06:59:58.780314Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -4503,12 +4503,12 @@
       "isinGrowth": "INF209KB10G3",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty Next 50 Index Fund-Direct Growth",
-      "nav": 17.9013,
-      "navDate": "24-Jun-2026",
+      "nav": 17.9356,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136454Z"
+        "fetchedAt": "2026-06-26T06:59:58.780323Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4521,12 +4521,12 @@
       "isinGrowth": "INF209KB11F3",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty SDL Apr 2027 Index Fund-Direct Growth",
-      "nav": 13.1845,
-      "navDate": "24-Jun-2026",
+      "nav": 13.1876,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136471Z"
+        "fetchedAt": "2026-06-26T06:59:58.780357Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4539,12 +4539,12 @@
       "isinGrowth": "INF209KB18B7",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty SDL Plus PSU Bond SEP 2026 60:40 Index Fund-Direct Growth",
-      "nav": 13.1665,
-      "navDate": "24-Jun-2026",
+      "nav": 13.1689,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136488Z"
+        "fetchedAt": "2026-06-26T06:59:58.780374Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4562,7 +4562,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136510Z"
+        "fetchedAt": "2026-06-26T06:59:58.780393Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4575,12 +4575,12 @@
       "isinGrowth": "INF209KB16T3",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty SDL SEP 2027 Index Fund-Direct Growth",
-      "nav": 12.8224,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8267,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136526Z"
+        "fetchedAt": "2026-06-26T06:59:58.780428Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4593,12 +4593,12 @@
       "isinGrowth": "INF209KB1W17",
       "isinDividendReinvestment": "-",
       "name": "Aditya Birla Sun Life Nifty Smallcap 50 Index Fund-Direct Growth",
-      "nav": 22.8179,
-      "navDate": "24-Jun-2026",
+      "nav": 22.7335,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136550Z"
+        "fetchedAt": "2026-06-26T06:59:58.780451Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -4611,12 +4611,12 @@
       "isinGrowth": "INF1J2R01072",
       "isinDividendReinvestment": "-",
       "name": "ANGEL ONE NIFTY 50 INDEX FUND-DIRECT-GROWTH",
-      "nav": 9.8738,
-      "navDate": "24-Jun-2026",
+      "nav": 9.8878,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136565Z"
+        "fetchedAt": "2026-06-26T06:59:58.780467Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4629,12 +4629,12 @@
       "isinGrowth": "INF1J2R01023",
       "isinDividendReinvestment": "-",
       "name": "ANGEL ONE NIFTY TOTAL MARKET INDEX FUND DIRECT PLAN GROWTH OPTION",
-      "nav": 11.772,
-      "navDate": "24-Jun-2026",
+      "nav": 11.7631,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136574Z"
+        "fetchedAt": "2026-06-26T06:59:58.780475Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4647,12 +4647,12 @@
       "isinGrowth": "INF1J2R01122",
       "isinDividendReinvestment": "-",
       "name": "ANGEL ONE NIFTY TOTAL MARKET MOMENTUM QUALITY 50 INDEX FUND - DIRECT GROWTH",
-      "nav": 10.227,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1979,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136584Z"
+        "fetchedAt": "2026-06-26T06:59:58.780484Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4665,12 +4665,12 @@
       "isinGrowth": "INF846KA1424",
       "isinDividendReinvestment": "-",
       "name": "Axis BSE India Sectors Leaders Index Fund- Direct Plan- Growth Option",
-      "nav": 9.5156,
-      "navDate": "24-Jun-2026",
+      "nav": 9.5121,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136593Z"
+        "fetchedAt": "2026-06-26T06:59:58.780495Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4683,12 +4683,12 @@
       "isinGrowth": "INF846K012V6",
       "isinDividendReinvestment": "-",
       "name": "Axis BSE Sensex Index Fund - Direct Plan - Growth",
-      "nav": 10.8153,
-      "navDate": "24-Jun-2026",
+      "nav": 10.8306,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136603Z"
+        "fetchedAt": "2026-06-26T06:59:58.780504Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4701,12 +4701,12 @@
       "isinGrowth": "INF846K010N7",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund - Direct Plan - Growth",
-      "nav": 12.8236,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8286,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136619Z"
+        "fetchedAt": "2026-06-26T06:59:58.780522Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4719,12 +4719,12 @@
       "isinGrowth": "INF846K012O1",
       "isinDividendReinvestment": "-",
       "name": "AXIS CRISIL IBX 50:50 Gilt Plus SDL September 2027 Index Fund- DIRECT PLAN-GROWTH",
-      "nav": 12.812,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8152,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136644Z"
+        "fetchedAt": "2026-06-26T06:59:58.780546Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4737,12 +4737,12 @@
       "isinGrowth": "INF846K017G6",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL IBX SDL May 2027 Index Fund - Direct Plan - Growth",
-      "nav": 13.0966,
-      "navDate": "24-Jun-2026",
+      "nav": 13.1005,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136657Z"
+        "fetchedAt": "2026-06-26T06:59:58.780561Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4755,12 +4755,12 @@
       "isinGrowth": "INF846K015Y3",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL-IBX AAA Bond Financial Services - Sep 2027 Index Fund - Direct Plan - Growth Option",
-      "nav": 11.2127,
-      "navDate": "24-Jun-2026",
+      "nav": 11.2255,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136675Z"
+        "fetchedAt": "2026-06-26T06:59:58.780578Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4773,12 +4773,12 @@
       "isinGrowth": "INF846K017X1",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL-IBX AAA Bond NBFC - Jun 2027 Index Fund - Direct Plan - Growth Option",
-      "nav": 11.3907,
-      "navDate": "24-Jun-2026",
+      "nav": 11.4014,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136695Z"
+        "fetchedAt": "2026-06-26T06:59:58.780599Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4791,12 +4791,12 @@
       "isinGrowth": "INF846KA1028",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL-IBX AAA Bond NBFC-HFC - Jun 2027 Index Fund - Direct Plan - Growth option",
-      "nav": 11.1658,
-      "navDate": "24-Jun-2026",
+      "nav": 11.1753,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136712Z"
+        "fetchedAt": "2026-06-26T06:59:58.780617Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4809,12 +4809,12 @@
       "isinGrowth": "INF846KA1226",
       "isinDividendReinvestment": "-",
       "name": "Axis CRISIL-IBX Financial Services 3-6 Months Debt Index Fund - Direct Plan - Growth option",
-      "nav": 10.4977,
-      "navDate": "24-Jun-2026",
+      "nav": 10.5034,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136730Z"
+        "fetchedAt": "2026-06-26T06:59:58.780636Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4827,12 +4827,12 @@
       "isinGrowth": "INF846K01S29",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty 100 Index Fund - Direct Plan - Growth Option",
-      "nav": 22.4374,
-      "navDate": "24-Jun-2026",
+      "nav": 22.4713,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136750Z"
+        "fetchedAt": "2026-06-26T06:59:58.780663Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4845,12 +4845,12 @@
       "isinGrowth": "INF846K013D2",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty 50 Index Fund - Direct Plan - Growth",
-      "nav": 14.5758,
-      "navDate": "24-Jun-2026",
+      "nav": 14.5965,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136771Z"
+        "fetchedAt": "2026-06-26T06:59:58.780679Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4863,12 +4863,12 @@
       "isinGrowth": "INF846K019W9",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty 500 Index Fund - Direct Plan - Growth Option",
-      "nav": 10.1432,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1379,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136792Z"
+        "fetchedAt": "2026-06-26T06:59:58.780698Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4881,12 +4881,12 @@
       "isinGrowth": "INF846K015W7",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty Bank Index Fund - Direct Plan - Growth Option",
-      "nav": 12.0129,
-      "navDate": "24-Jun-2026",
+      "nav": 12.0193,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136800Z"
+        "fetchedAt": "2026-06-26T06:59:58.780706Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4899,12 +4899,12 @@
       "isinGrowth": "INF846KA1523",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty India Defence Index Fund - Direct Plan - Growth",
-      "nav": 10.4873,
-      "navDate": "24-Jun-2026",
+      "nav": 10.4141,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136824Z"
+        "fetchedAt": "2026-06-26T06:59:58.780734Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4917,12 +4917,12 @@
       "isinGrowth": "INF846K017R3",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty IT Index Fund - Direct Plan - Growth",
-      "nav": 9.6789,
-      "navDate": "24-Jun-2026",
+      "nav": 9.5965,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136834Z"
+        "fetchedAt": "2026-06-26T06:59:58.780744Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4935,12 +4935,12 @@
       "isinGrowth": "INF846K019H0",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty Midcap 50 Index Fund - Direct Plan - Growth Option",
-      "nav": 21.4941,
-      "navDate": "24-Jun-2026",
+      "nav": 21.372,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136853Z"
+        "fetchedAt": "2026-06-26T06:59:58.780761Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -4953,12 +4953,12 @@
       "isinGrowth": "INF846K019E7",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty Next 50 Index Fund - Direct Plan - Growth",
-      "nav": 17.8606,
-      "navDate": "24-Jun-2026",
+      "nav": 17.895,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136872Z"
+        "fetchedAt": "2026-06-26T06:59:58.780779Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4971,12 +4971,12 @@
       "isinGrowth": "INF846K018K6",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty SDL September 2026 Debt Index Fund - Direct Plan - Growth",
-      "nav": 12.8863,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8885,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136890Z"
+        "fetchedAt": "2026-06-26T06:59:58.780798Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -4989,12 +4989,12 @@
       "isinGrowth": "INF846K013H3",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty Smallcap 50 Index Fund - Direct Plan - Growth Option",
-      "nav": 19.8313,
-      "navDate": "24-Jun-2026",
+      "nav": 19.7579,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136908Z"
+        "fetchedAt": "2026-06-26T06:59:58.780817Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -5007,12 +5007,12 @@
       "isinGrowth": "INF846KA1044",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty500 Momentum 50 Index Fund - Direct Plan - Growth Option",
-      "nav": 11.197,
-      "navDate": "24-Jun-2026",
+      "nav": 11.2136,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136926Z"
+        "fetchedAt": "2026-06-26T06:59:58.780837Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5025,12 +5025,12 @@
       "isinGrowth": "INF846KA1200",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty500 Quality 50 Index Fund - Direct Plan - Growth Option",
-      "nav": 10.1395,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1122,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136934Z"
+        "fetchedAt": "2026-06-26T06:59:58.780847Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5043,12 +5043,12 @@
       "isinGrowth": "INF846K013Y8",
       "isinDividendReinvestment": "-",
       "name": "Axis Nifty500 Value 50 Index Fund - Direct Plan - Growth Option",
-      "nav": 11.6679,
-      "navDate": "24-Jun-2026",
+      "nav": 11.5435,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136944Z"
+        "fetchedAt": "2026-06-26T06:59:58.780855Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5061,12 +5061,12 @@
       "isinGrowth": "INF0QA701BA9",
       "isinDividendReinvestment": "-",
       "name": "Bajaj Finserv Nifty 50 Index Fund - Direct - Growth",
-      "nav": 9.7932,
-      "navDate": "24-Jun-2026",
+      "nav": 9.8071,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136953Z"
+        "fetchedAt": "2026-06-26T06:59:58.780865Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5079,12 +5079,12 @@
       "isinGrowth": "INF0QA701BG6",
       "isinDividendReinvestment": "-",
       "name": "Bajaj Finserv Nifty Next 50 Index Fund - Direct - Growth",
-      "nav": 11.4566,
-      "navDate": "24-Jun-2026",
+      "nav": 11.4785,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136973Z"
+        "fetchedAt": "2026-06-26T06:59:58.780883Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5097,12 +5097,12 @@
       "isinGrowth": "INF194KB1IS2",
       "isinDividendReinvestment": "-",
       "name": "Bandhan BSE Healthcare Index Fund Direct Plan - Growth",
-      "nav": 11.2071,
-      "navDate": "24-Jun-2026",
+      "nav": 11.1999,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136990Z"
+        "fetchedAt": "2026-06-26T06:59:58.780903Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5115,12 +5115,12 @@
       "isinGrowth": "INF194KB1KB4",
       "isinDividendReinvestment": "-",
       "name": "Bandhan BSE India Sector Leaders Index Fund - Direct Plan - Growth",
-      "nav": 9.6,
-      "navDate": "24-Jun-2026",
+      "nav": 9.5965,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.136999Z"
+        "fetchedAt": "2026-06-26T06:59:58.780911Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5133,12 +5133,12 @@
       "isinGrowth": "INF194KB1EN2",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX 90:10 SDL PLUS GILT APRIL 2032 INDEX FUND - DIRECT GROWTH",
-      "nav": 13.1356,
-      "navDate": "24-Jun-2026",
+      "nav": 13.1313,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137019Z"
+        "fetchedAt": "2026-06-26T06:59:58.780923Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5151,12 +5151,12 @@
       "isinGrowth": "INF194KB1ET9",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX 90:10 SDL PLUS GILT - NOV 2026 INDEX FUND - DIRECT GROWTH",
-      "nav": 12.9277,
-      "navDate": "24-Jun-2026",
+      "nav": 12.9299,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137040Z"
+        "fetchedAt": "2026-06-26T06:59:58.780940Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5169,12 +5169,12 @@
       "isinGrowth": "INF194KB1EZ6",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX 90:10 SDL PLUS GILT - SEP27 INDEX FUND - DIRECT GROWTH",
-      "nav": 13.0019,
-      "navDate": "24-Jun-2026",
+      "nav": 13.0072,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137059Z"
+        "fetchedAt": "2026-06-26T06:59:58.780957Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5192,7 +5192,7 @@
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137078Z"
+        "fetchedAt": "2026-06-26T06:59:58.780976Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5205,12 +5205,12 @@
       "isinGrowth": "INF194KB1BV1",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX Gilt April 2028 Index Fund Direct Plan-Growth",
-      "nav": 13.8728,
-      "navDate": "24-Jun-2026",
+      "nav": 13.8678,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137095Z"
+        "fetchedAt": "2026-06-26T06:59:58.780996Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5223,12 +5223,12 @@
       "isinGrowth": "INF194KB1FF5",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX GILT APRIL 2032 INDEX FUND - DIRECT GROWTH",
-      "nav": 13.0626,
-      "navDate": "24-Jun-2026",
+      "nav": 13.0714,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137113Z"
+        "fetchedAt": "2026-06-26T06:59:58.781016Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5241,12 +5241,12 @@
       "isinGrowth": "INF194KB1BP3",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN CRISIL IBX Gilt June 2027 Index Fund Direct Plan-Growth",
-      "nav": 13.7771,
-      "navDate": "24-Jun-2026",
+      "nav": 13.7786,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137131Z"
+        "fetchedAt": "2026-06-26T06:59:58.781033Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5259,12 +5259,12 @@
       "isinGrowth": "INF194KB1JR2",
       "isinDividendReinvestment": "-",
       "name": "Bandhan CRISIL-IBX Financial Services 3-6 Months Debt Index Fund - Direct Plan - Growth",
-      "nav": 10.9244,
-      "navDate": "24-Jun-2026",
+      "nav": 10.9305,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137169Z"
+        "fetchedAt": "2026-06-26T06:59:58.781071Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5277,12 +5277,12 @@
       "isinGrowth": "INF194KB1CR7",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN NIFTY 100 INDEX FUND - DIRECT PLAN - GROWTH",
-      "nav": 15.0288,
-      "navDate": "24-Jun-2026",
+      "nav": 15.0515,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137177Z"
+        "fetchedAt": "2026-06-26T06:59:58.781079Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5295,12 +5295,12 @@
       "isinGrowth": "INF194KB1JA8",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty 200 Quality 30 Index Fund - Direct Plan - Growth",
-      "nav": 9.3818,
-      "navDate": "24-Jun-2026",
+      "nav": 9.372,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137193Z"
+        "fetchedAt": "2026-06-26T06:59:58.781100Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5313,12 +5313,12 @@
       "isinGrowth": "INF194K012A8",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN Nifty 50 Index Fund-Direct Plan-Growth",
-      "nav": 53.6624,
-      "navDate": "24-Jun-2026",
+      "nav": 53.7386,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137215Z"
+        "fetchedAt": "2026-06-26T06:59:58.781120Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5331,12 +5331,12 @@
       "isinGrowth": "INF194KB1IY0",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty 500 Momentum 50 Index Fund Direct Plan-Growth",
-      "nav": 9.0642,
-      "navDate": "24-Jun-2026",
+      "nav": 9.0776,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137225Z"
+        "fetchedAt": "2026-06-26T06:59:58.781128Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5349,12 +5349,12 @@
       "isinGrowth": "INF194KB1IW4",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty 500 Value 50 Index Fund Direct Plan - Growth",
-      "nav": 11.5478,
-      "navDate": "24-Jun-2026",
+      "nav": 11.4245,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137234Z"
+        "fetchedAt": "2026-06-26T06:59:58.781137Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5367,12 +5367,12 @@
       "isinGrowth": "INF194KB1HA2",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Alpha 50 Index Fund - Direct Plan - Growth",
-      "nav": 14.1972,
-      "navDate": "24-Jun-2026",
+      "nav": 14.0993,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137243Z"
+        "fetchedAt": "2026-06-26T06:59:58.781145Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5385,12 +5385,12 @@
       "isinGrowth": "INF194KB1JC4",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Alpha Low Volatility 30 Index Fund - Direct Plan - Growth",
-      "nav": 10.0778,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1088,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137261Z"
+        "fetchedAt": "2026-06-26T06:59:58.781164Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5403,12 +5403,12 @@
       "isinGrowth": "INF194KB1IO1",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Bank Index Fund - Direct Plan - Growth",
-      "nav": 11.425,
-      "navDate": "24-Jun-2026",
+      "nav": 11.4311,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137269Z"
+        "fetchedAt": "2026-06-26T06:59:58.781172Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5421,12 +5421,12 @@
       "isinGrowth": "INF194KB1GK3",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty IT Index Fund - Direct Plan - Growth",
-      "nav": 9.3739,
-      "navDate": "24-Jun-2026",
+      "nav": 9.293,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137277Z"
+        "fetchedAt": "2026-06-26T06:59:58.781180Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5439,12 +5439,12 @@
       "isinGrowth": "INF194KB1IT0",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Midcap 150 Index Fund-Direct Plan-Growth",
-      "nav": 10.4079,
-      "navDate": "24-Jun-2026",
+      "nav": 10.3538,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137293Z"
+        "fetchedAt": "2026-06-26T06:59:58.781200Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -5457,12 +5457,12 @@
       "isinGrowth": "INF194KB1JK7",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Next 50 Index Fund - Direct Plan - Growth",
-      "nav": 12.6972,
-      "navDate": "24-Jun-2026",
+      "nav": 12.7216,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137303Z"
+        "fetchedAt": "2026-06-26T06:59:58.781208Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5475,12 +5475,12 @@
       "isinGrowth": "INF194KB1HG9",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN Nifty Smallcap 250 Index Fund - Direct Plan - Growth",
-      "nav": 12.8892,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8323,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137313Z"
+        "fetchedAt": "2026-06-26T06:59:58.781217Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -5493,12 +5493,12 @@
       "isinGrowth": "INF194KB1IK9",
       "isinDividendReinvestment": "-",
       "name": "Bandhan Nifty Total Market Index Fund - Direct Plan - Growth",
-      "nav": 10.168,
-      "navDate": "24-Jun-2026",
+      "nav": 10.1602,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137329Z"
+        "fetchedAt": "2026-06-26T06:59:58.781235Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5511,12 +5511,12 @@
       "isinGrowth": "INF194KB1DV7",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN NIFTY100 LOW VOLATILITY 30 INDEX FUND - GROWTH - DIRECT PLAN",
-      "nav": 15.5715,
-      "navDate": "24-Jun-2026",
+      "nav": 15.6056,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137337Z"
+        "fetchedAt": "2026-06-26T06:59:58.781245Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5529,12 +5529,12 @@
       "isinGrowth": "INF194KB1DP9",
       "isinDividendReinvestment": "-",
       "name": "BANDHAN NIFTY200 MOMENTUM 30 INDEX FUND - GROWTH - DIRECT PLAN",
-      "nav": 15.9297,
-      "navDate": "24-Jun-2026",
+      "nav": 15.938,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137360Z"
+        "fetchedAt": "2026-06-26T06:59:58.781262Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5547,12 +5547,12 @@
       "isinGrowth": "INF251K01SY1",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Nifty 50 Index Fund - Direct Plan - Growth option",
-      "nav": 11.3161,
-      "navDate": "24-Jun-2026",
+      "nav": 11.3323,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137378Z"
+        "fetchedAt": "2026-06-26T06:59:58.781282Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5565,12 +5565,12 @@
       "isinGrowth": "INF251K01UA7",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Nifty Midcap 150 Index Fund - Direct Plan - Growth Option",
-      "nav": 11.011,
-      "navDate": "24-Jun-2026",
+      "nav": 10.9537,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137396Z"
+        "fetchedAt": "2026-06-26T06:59:58.781305Z"
       },
       "extras": {},
       "fundType": "mid-cap",
@@ -5583,12 +5583,12 @@
       "isinGrowth": "INF251K01RL0",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas Nifty SDL December 2026 Index Fund - Direct Plan - Growth Option",
-      "nav": 12.7693,
-      "navDate": "24-Jun-2026",
+      "nav": 12.7717,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137406Z"
+        "fetchedAt": "2026-06-26T06:59:58.781315Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5601,12 +5601,12 @@
       "isinGrowth": "INF251K01RR7",
       "isinDividendReinvestment": "-",
       "name": "Baroda BNP Paribas NIFTY SDL December 2028 Index Fund - Direct Plan - Growth Option",
-      "nav": 12.7941,
-      "navDate": "24-Jun-2026",
+      "nav": 12.8169,
+      "navDate": "25-Jun-2026",
       "source": {
         "provider": "amfi_navall",
         "mode": "official-daily",
-        "fetchedAt": "2026-06-25T12:38:56.137423Z"
+        "fetchedAt": "2026-06-26T06:59:58.781355Z"
       },
       "extras": {},
       "fundType": "large-cap",
@@ -5616,106 +5616,106 @@
   ],
   "fx": [
     {
-      "name": "GBP/INR",
-      "pair": "GBPINR",
-      "symbol": "GBPINR=X",
-      "value": "₹124.3102",
-      "rate": 124.3102035522461,
-      "change": "-1.3363",
-      "changePercent": "-1.06",
+      "name": "EUR/INR",
+      "pair": "EURINR",
+      "symbol": "EURINR=X",
+      "value": "₹107.2126",
+      "rate": 107.21260070800781,
+      "change": "-0.1914",
+      "changePercent": "-0.18",
       "direction": "down",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-25T12:38:48.272374Z"
-    },
-    {
-      "name": "USD/INR",
-      "pair": "USDINR",
-      "symbol": "USDINR=X",
-      "value": "₹94.3950",
-      "rate": 94.3949966430664,
-      "change": "-0.7887",
-      "changePercent": "-0.83",
-      "direction": "down",
-      "source": "yahoo-yfinance",
-      "mode": "fallback-intraday",
-      "asOf": "2026-06-25T12:38:48.283152Z"
+      "asOf": "2026-06-26T06:59:56.004098Z"
     },
     {
       "name": "OMR/INR",
       "pair": "OMRINR",
       "symbol": "OMRINR=X",
-      "value": "₹244.4900",
-      "rate": 244.49000549316406,
+      "value": "₹244.6900",
+      "rate": 244.69000244140625,
       "change": "0.0000",
       "changePercent": "0.00",
       "direction": "up",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-25T12:38:48.307286Z"
+      "asOf": "2026-06-26T06:59:56.026277Z"
+    },
+    {
+      "name": "GBP/INR",
+      "pair": "GBPINR",
+      "symbol": "GBPINR=X",
+      "value": "₹124.4150",
+      "rate": 124.41500091552734,
+      "change": "0.0840",
+      "changePercent": "0.07",
+      "direction": "up",
+      "source": "yahoo-yfinance",
+      "mode": "fallback-intraday",
+      "asOf": "2026-06-26T06:59:56.041071Z"
+    },
+    {
+      "name": "USD/INR",
+      "pair": "USDINR",
+      "symbol": "USDINR=X",
+      "value": "₹94.3850",
+      "rate": 94.38500213623047,
+      "change": "-0.0557",
+      "changePercent": "-0.06",
+      "direction": "down",
+      "source": "yahoo-yfinance",
+      "mode": "fallback-intraday",
+      "asOf": "2026-06-26T06:59:56.048787Z"
     },
     {
       "name": "JPY/INR",
       "pair": "JPYINR",
       "symbol": "JPYINR=X",
-      "value": "₹0.5831",
-      "rate": 0.5830600261688232,
-      "change": "-0.0028",
-      "changePercent": "-0.47",
+      "value": "₹0.5833",
+      "rate": 0.5832599997520447,
+      "change": "-0.0015",
+      "changePercent": "-0.25",
       "direction": "down",
       "source": "yahoo-yfinance",
       "mode": "fallback-intraday",
-      "asOf": "2026-06-25T12:38:48.319119Z"
-    },
-    {
-      "name": "EUR/INR",
-      "pair": "EURINR",
-      "symbol": "EURINR=X",
-      "value": "₹107.1758",
-      "rate": 107.17579650878906,
-      "change": "-0.5512",
-      "changePercent": "-0.51",
-      "direction": "down",
-      "source": "yahoo-yfinance",
-      "mode": "fallback-intraday",
-      "asOf": "2026-06-25T12:38:48.333795Z"
+      "asOf": "2026-06-26T06:59:56.069160Z"
     }
   ],
   "commodities": [
     {
-      "name": "Gold",
-      "symbol": "GC=F",
-      "value": "$3998.70",
-      "unit": "$/oz",
-      "change": "8.40",
-      "changePercent": "0.21",
-      "direction": "up",
+      "name": "Crude Oil",
+      "symbol": "CL=F",
+      "value": "$70.46",
+      "unit": "$/bbl",
+      "change": "-1.46",
+      "changePercent": "-2.03",
+      "direction": "down",
       "source": "yahoo-yfinance"
     },
     {
       "name": "Silver",
       "symbol": "SI=F",
-      "value": "$57.19",
+      "value": "$57.83",
       "unit": "$/oz",
-      "change": "-0.86",
-      "changePercent": "-1.48",
+      "change": "-0.52",
+      "changePercent": "-0.90",
       "direction": "down",
       "source": "yahoo-yfinance"
     },
     {
-      "name": "Crude Oil",
-      "symbol": "CL=F",
-      "value": "$69.89",
-      "unit": "$/bbl",
-      "change": "-0.45",
-      "changePercent": "-0.64",
-      "direction": "down",
+      "name": "Gold",
+      "symbol": "GC=F",
+      "value": "$4039.90",
+      "unit": "$/oz",
+      "change": "9.40",
+      "changePercent": "0.23",
+      "direction": "up",
       "source": "yahoo-yfinance"
     }
   ],
   "sourceHealth": {
     "schemaVersion": "1.0.0",
-    "generatedAt": "2026-06-25T12:40:29.498114Z",
+    "generatedAt": "2026-06-26T07:01:40.257174Z",
     "sections": {
       "indices": {
         "status": "ok",
