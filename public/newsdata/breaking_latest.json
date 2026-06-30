@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "fetchedAt": 1782859407421,
-  "contentHash": "416de8fe8879",
+  "fetchedAt": 1782863586540,
+  "contentHash": "ba1ce99b229d",
   "breaking": [
     {
       "title": "At least 14 children killed in Pakistan’s Lahore when tutoring centre roof collapses",
@@ -16,7 +16,7 @@
       "id": "01bcdf3dd50b673b",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 5.823,
+      "breakingScore": 5.726,
       "breakingReasons": [
         "multi_source_velocity",
         "severity_lexicon"
@@ -41,7 +41,7 @@
       "id": "23d49b86bbf390ab",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 3.809,
+      "breakingScore": 3.712,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -52,27 +52,28 @@
       "firstSeen": 1782851153000
     },
     {
-      "title": "Russia says shot down over 400 Ukrainian drones, baby killed outside Moscow",
-      "summary": "Kyiv has stepped up its long-range drone strike campaign against Russia in recent months, as Moscow's full-scale offensive against Ukraine drags on for almost 4.5 years",
-      "source": "The Hindu International",
+      "title": "Trump reports more than $1.4 billion in income from crypto ventures",
+      "summary": "In his annual disclosure for 2025, the U.S. President received $635 ‌million from sale of his $TRUMP ​meme coins",
+      "source": "The Hindu",
       "sourceGroup": "the_hindu",
-      "url": "https://www.thehindu.com/news/international/russia-says-shot-down-over-400-ukrainian-drones-baby-killed-outside-moscow/article71167097.ece",
-      "publishedAt": 1782838600000,
-      "category": "world",
+      "url": "https://www.thehindu.com/news/international/trump-reports-more-than-14-billion-in-income-from-crypto-ventures/article71167699.ece",
+      "publishedAt": 1782860952000,
+      "category": "topStories",
       "region": "in",
       "language": "en",
-      "id": "1641c2acf9040083",
+      "id": "a7304c59eee2165d",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 3.518,
+      "breakingScore": 2.939,
       "breakingReasons": [
-        "severity_lexicon"
+        "multi_source_velocity"
       ],
-      "sourceCount": 1,
+      "sourceCount": 2,
       "allSources": [
+        "ndtv",
         "the_hindu"
       ],
-      "firstSeen": 1782838600000
+      "firstSeen": 1782860374000
     },
     {
       "title": "Three-year-old rescued and taken to hospital six days after Venezuela quake",
@@ -87,7 +88,7 @@
       "id": "3e78136da7b04026",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 2.899,
+      "breakingScore": 2.802,
       "breakingReasons": [
         "multi_source_velocity"
       ],
@@ -99,43 +100,19 @@
       "firstSeen": 1782854537000
     },
     {
-      "title": "'No direct US-Iran talks': Top US envoys reach Doha for Qatar-mediated negotiations",
-      "summary": "<img align=\"left\" border=\"0\" hspace=\"10\" src=\"https://timesofindia.indiatimes.com/photo/132096958.cms\" style=\"margin-top: 3px; margin-right: 5px;\" />In Doha, US envoys Steve Witkoff and Jared Kushner engaged with Qatari mediators to discuss Iran negotiations. They learned from both Qatar and Iran that no direct meetings would take place between US and Iranian officials, contradicting President Trump's earlier assertions. Instead, the conversations, organized by Qatar, will prioritize implementing a memorandum of understanding, which includes addressing the release of Iran's frozen assets.",
-      "source": "Times of India",
-      "sourceGroup": "times_of_india",
-      "url": "https://timesofindia.indiatimes.com/world/middle-east/no-direct-us-iran-talks-top-us-envoys-reach-doha-for-qatar-mediated-negotiations/articleshow/132096958.cms",
-      "publishedAt": 1782836193000,
-      "category": "india",
-      "region": "in",
-      "language": "en",
-      "id": "4a66a10b862bb824",
-      "suppressionReason": null,
-      "isBreaking": true,
-      "breakingScore": 2.463,
-      "breakingReasons": [
-        "multi_source_velocity"
-      ],
-      "sourceCount": 2,
-      "allSources": [
-        "bbc",
-        "times_of_india"
-      ],
-      "firstSeen": 1782834050000
-    },
-    {
       "title": "West Asia war LIVE: Iran prioritises diplomacy with U.S. but remains ready for war, chief negotiator says",
       "summary": "In call with Iran Prez, PM Modi reiterates importance of freedom of navigation in Hormuz",
       "source": "The Hindu",
       "sourceGroup": "the_hindu",
       "url": "https://www.thehindu.com/news/international/us-iran-deal-strikes-live-updates-30-june-2026-trump-israel-west-asia-war/article71164180.ece",
-      "publishedAt": 1782857687000,
+      "publishedAt": 1782862126000,
       "category": "topStories",
       "region": "in",
       "language": "en",
       "id": "ca48cfe4bf12346c",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 2.46,
+      "breakingScore": 2.466,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -146,6 +123,29 @@
         "times_of_india"
       ],
       "firstSeen": 1782851775000
+    },
+    {
+      "title": "UK charities launch Venezuela earthquakes appeal",
+      "summary": "At least 1,700 people have died and tens of thousands are feared missing after the twin quakes.",
+      "source": "BBC",
+      "sourceGroup": "bbc",
+      "url": "https://www.bbc.co.uk/news/articles/c982qy7qv5go?at_medium=RSS&at_campaign=rss",
+      "publishedAt": 1782860684000,
+      "category": "world",
+      "region": "in",
+      "language": "en",
+      "id": "54207e231934c694",
+      "suppressionReason": null,
+      "isBreaking": true,
+      "breakingScore": 2.433,
+      "breakingReasons": [
+        "severity_lexicon"
+      ],
+      "sourceCount": 1,
+      "allSources": [
+        "bbc"
+      ],
+      "firstSeen": 1782860684000
     },
     {
       "title": "Russia Urges Pakistan, Afghanistan To Use Diplomacy To Solve Disputes",
@@ -160,7 +160,7 @@
       "id": "d6d22565678446ef",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 2.407,
+      "breakingScore": 2.311,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -183,7 +183,7 @@
       "id": "0a1e87a3c5f86db4",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 2.344,
+      "breakingScore": 2.247,
       "breakingReasons": [
         "severity_lexicon"
       ],
