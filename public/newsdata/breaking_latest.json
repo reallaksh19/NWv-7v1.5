@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "fetchedAt": 1782854097985,
-  "contentHash": "4e5b8b30e65e",
+  "fetchedAt": 1782859407421,
+  "contentHash": "416de8fe8879",
   "breaking": [
     {
       "title": "At least 14 children killed in Pakistan’s Lahore when tutoring centre roof collapses",
@@ -16,7 +16,7 @@
       "id": "01bcdf3dd50b673b",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 5.946,
+      "breakingScore": 5.823,
       "breakingReasons": [
         "multi_source_velocity",
         "severity_lexicon"
@@ -27,29 +27,6 @@
         "the_hindu"
       ],
       "firstSeen": 1782848208000
-    },
-    {
-      "title": "WHO sounds alarm on disease outbreaks in quake-hit Venezuela",
-      "summary": "By the latest official count, some 1,700 are dead and 5,000 are injured, with no governmental word on the number of missing. Other estimates place these in the tens of thousands",
-      "source": "The Hindu International",
-      "sourceGroup": "the_hindu",
-      "url": "https://www.thehindu.com/news/international/who-sounds-alarm-on-disease-outbreaks-in-quake-hit-venezuela/article71167071.ece",
-      "publishedAt": 1782837658000,
-      "category": "world",
-      "region": "in",
-      "language": "en",
-      "id": "d63a4e6a0f54b3b9",
-      "suppressionReason": null,
-      "isBreaking": true,
-      "breakingScore": 5.119,
-      "breakingReasons": [
-        "severity_lexicon"
-      ],
-      "sourceCount": 1,
-      "allSources": [
-        "the_hindu"
-      ],
-      "firstSeen": 1782837658000
     },
     {
       "title": "Firefighters struggle to contain deadly Greek wildfire",
@@ -64,7 +41,7 @@
       "id": "23d49b86bbf390ab",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 3.932,
+      "breakingScore": 3.809,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -73,29 +50,6 @@
         "bbc"
       ],
       "firstSeen": 1782851153000
-    },
-    {
-      "title": "State orders twin probes into Davangere hospital oxygen cylinder blast",
-      "summary": "The State Health Department has ordered two separate inquiries into the oxygen cylinder explosion inside the operation theatre of the Chigateri District Hospital in Davangere",
-      "source": "The Hindu",
-      "sourceGroup": "the_hindu",
-      "url": "https://www.thehindu.com/news/national/karnataka/state-orders-twin-probes-into-davangere-hospital-oxygen-cylinder-blast/article71166818.ece",
-      "publishedAt": 1782849044000,
-      "category": "topStories",
-      "region": "in",
-      "language": "en",
-      "id": "6b84fdd0ef4108e7",
-      "suppressionReason": null,
-      "isBreaking": true,
-      "breakingScore": 3.883,
-      "breakingReasons": [
-        "severity_lexicon"
-      ],
-      "sourceCount": 1,
-      "allSources": [
-        "the_hindu"
-      ],
-      "firstSeen": 1782849044000
     },
     {
       "title": "Russia says shot down over 400 Ukrainian drones, baby killed outside Moscow",
@@ -110,7 +64,7 @@
       "id": "1641c2acf9040083",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 3.641,
+      "breakingScore": 3.518,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -121,19 +75,115 @@
       "firstSeen": 1782838600000
     },
     {
+      "title": "Three-year-old rescued and taken to hospital six days after Venezuela quake",
+      "summary": "Video footage shows rescuers cheering as the child is pulled from rubble in La Guaira state.",
+      "source": "BBC World",
+      "sourceGroup": "bbc",
+      "url": "https://www.bbc.co.uk/news/articles/c1jykwk8n18o?at_medium=RSS&at_campaign=rss",
+      "publishedAt": 1782855052000,
+      "category": "world",
+      "region": "in",
+      "language": "en",
+      "id": "3e78136da7b04026",
+      "suppressionReason": null,
+      "isBreaking": true,
+      "breakingScore": 2.899,
+      "breakingReasons": [
+        "multi_source_velocity"
+      ],
+      "sourceCount": 2,
+      "allSources": [
+        "bbc",
+        "ndtv"
+      ],
+      "firstSeen": 1782854537000
+    },
+    {
+      "title": "'No direct US-Iran talks': Top US envoys reach Doha for Qatar-mediated negotiations",
+      "summary": "<img align=\"left\" border=\"0\" hspace=\"10\" src=\"https://timesofindia.indiatimes.com/photo/132096958.cms\" style=\"margin-top: 3px; margin-right: 5px;\" />In Doha, US envoys Steve Witkoff and Jared Kushner engaged with Qatari mediators to discuss Iran negotiations. They learned from both Qatar and Iran that no direct meetings would take place between US and Iranian officials, contradicting President Trump's earlier assertions. Instead, the conversations, organized by Qatar, will prioritize implementing a memorandum of understanding, which includes addressing the release of Iran's frozen assets.",
+      "source": "Times of India",
+      "sourceGroup": "times_of_india",
+      "url": "https://timesofindia.indiatimes.com/world/middle-east/no-direct-us-iran-talks-top-us-envoys-reach-doha-for-qatar-mediated-negotiations/articleshow/132096958.cms",
+      "publishedAt": 1782836193000,
+      "category": "india",
+      "region": "in",
+      "language": "en",
+      "id": "4a66a10b862bb824",
+      "suppressionReason": null,
+      "isBreaking": true,
+      "breakingScore": 2.463,
+      "breakingReasons": [
+        "multi_source_velocity"
+      ],
+      "sourceCount": 2,
+      "allSources": [
+        "bbc",
+        "times_of_india"
+      ],
+      "firstSeen": 1782834050000
+    },
+    {
+      "title": "West Asia war LIVE: Iran prioritises diplomacy with U.S. but remains ready for war, chief negotiator says",
+      "summary": "In call with Iran Prez, PM Modi reiterates importance of freedom of navigation in Hormuz",
+      "source": "The Hindu",
+      "sourceGroup": "the_hindu",
+      "url": "https://www.thehindu.com/news/international/us-iran-deal-strikes-live-updates-30-june-2026-trump-israel-west-asia-war/article71164180.ece",
+      "publishedAt": 1782857687000,
+      "category": "topStories",
+      "region": "in",
+      "language": "en",
+      "id": "ca48cfe4bf12346c",
+      "suppressionReason": null,
+      "isBreaking": true,
+      "breakingScore": 2.46,
+      "breakingReasons": [
+        "severity_lexicon"
+      ],
+      "sourceCount": 3,
+      "allSources": [
+        "ndtv",
+        "the_hindu",
+        "times_of_india"
+      ],
+      "firstSeen": 1782851775000
+    },
+    {
+      "title": "Russia Urges Pakistan, Afghanistan To Use Diplomacy To Solve Disputes",
+      "summary": "Pakistan accuses Afghanistan of harbouring militants it blames for plotting attacks in Pakistan.",
+      "source": "NDTV",
+      "sourceGroup": "ndtv",
+      "url": "https://www.ndtv.com/world-news/russia-urges-pakistan-afghanistan-to-use-diplomacy-to-solve-disputes-11709970#publisher=newsstand",
+      "publishedAt": 1782855402000,
+      "category": "topStories",
+      "region": "in",
+      "language": "en",
+      "id": "d6d22565678446ef",
+      "suppressionReason": null,
+      "isBreaking": true,
+      "breakingScore": 2.407,
+      "breakingReasons": [
+        "severity_lexicon"
+      ],
+      "sourceCount": 1,
+      "allSources": [
+        "ndtv"
+      ],
+      "firstSeen": 1782855402000
+    },
+    {
       "title": "Ayodhya Bar boycott: Supreme Court has said even the ‘wicked’ have the right to a lawyer",
       "summary": "A 2010 judgment of the Supreme Court, refers to Article 22(1) of the Constitution, which mandates that an arrested person should not be ‘denied the right to consult, and to be defended by, a legal practitioner of his choice’",
-      "source": "The Hindu National",
+      "source": "The Hindu",
       "sourceGroup": "the_hindu",
       "url": "https://www.thehindu.com/news/national/ayodhya-bar-boycott-sc-has-said-even-the-wicked-have-the-right-to-a-lawyer/article71165409.ece",
       "publishedAt": 1782852649000,
-      "category": "india",
+      "category": "topStories",
       "region": "in",
       "language": "en",
       "id": "0a1e87a3c5f86db4",
       "suppressionReason": null,
       "isBreaking": true,
-      "breakingScore": 2.466,
+      "breakingScore": 2.344,
       "breakingReasons": [
         "severity_lexicon"
       ],
@@ -142,52 +192,6 @@
         "the_hindu"
       ],
       "firstSeen": 1782852649000
-    },
-    {
-      "title": "U.P. Congress chief, MPs stopped from visiting Ram Temple in Ayodhya, put under house arrest",
-      "summary": "U.P. Congress chief Ajay Rai says he was arrested from his hotel and is being detained in a State-run university guest house; Amethi MP asks why the right to darshan is being denied on political grounds",
-      "source": "The Hindu National",
-      "sourceGroup": "the_hindu",
-      "url": "https://www.thehindu.com/news/national/uttar-pradesh/up-congress-chief-ajay-rai-placed-under-house-arrest-in-ayodhya/article71163158.ece",
-      "publishedAt": 1782852287000,
-      "category": "india",
-      "region": "in",
-      "language": "en",
-      "id": "faeb6047e38f35f7",
-      "suppressionReason": null,
-      "isBreaking": true,
-      "breakingScore": 2.458,
-      "breakingReasons": [
-        "severity_lexicon"
-      ],
-      "sourceCount": 1,
-      "allSources": [
-        "the_hindu"
-      ],
-      "firstSeen": 1782852287000
-    },
-    {
-      "title": "Operation Toofan volunteer arrested in bar brawl",
-      "summary": "",
-      "source": "The Hindu",
-      "sourceGroup": "the_hindu",
-      "url": "https://www.thehindu.com/news/national/kerala/operation-toofan-volunteer-arrested-in-bar-brawl/article71166339.ece",
-      "publishedAt": 1782850605000,
-      "category": "topStories",
-      "region": "in",
-      "language": "en",
-      "id": "1d4a548589572ef9",
-      "suppressionReason": null,
-      "isBreaking": true,
-      "breakingScore": 2.419,
-      "breakingReasons": [
-        "severity_lexicon"
-      ],
-      "sourceCount": 1,
-      "allSources": [
-        "the_hindu"
-      ],
-      "firstSeen": 1782850605000
     }
   ]
 }
